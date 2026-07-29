@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_capacity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_btm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_fom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_pvsmoothing_fom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_manual.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_calendar_cycle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_lmolto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_nmc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_powerflow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_voltage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_cec6par.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_financial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell_dispatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_geothermal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_iec61853.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_irradproc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_miniz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_mlmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ondinv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_physics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_power_electronics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_powerblock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ptes_chp_dispatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_incidence_modifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_io_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_shade_loss_mpp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvinv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvshade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvwatts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_resilience.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_sandia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_shared_inverter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_snowmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate_equations.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_weatherfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos_cable_vessel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwakemodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwatts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lsqfit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_gamma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_jacobian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_lu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_newton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_solve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\DB8_vmpp_impp_uint8_bin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_aoi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_capacity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_btm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_fom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_pvsmoothing_fom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_manual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_calendar_cycle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_lmolto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_nmc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_powerflow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_voltage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_cec6par.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_financial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell_dispatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_geothermal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_iec61853.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_irradproc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_miniz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_mlmodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ondinv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_power_electronics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_powerblock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ptes_chp_dispatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_incidence_modifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_io_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_shade_loss_mpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvinv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvmodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvshade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvwatts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_resilience.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_sandia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_shared_inverter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_snowmodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate_equations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_weatherfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos_cable_vessel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwakemodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwatts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lsqfit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{C2742582-4DA7-38C8-8A82-B0C4D993583F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2D10E145-424C-34DB-9737-C6430B5D4915}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

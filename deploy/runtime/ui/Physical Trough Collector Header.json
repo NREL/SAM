@@ -831,6 +831,24 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "opt_model": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": [
+                0.0,
+                1.0,
+                1.0,
+                1.0
+            ],
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "ui_A_aperture": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1185,6 +1203,16 @@
         "\tacollector[2] = ${csp_dtr_sca_piping_dist_3};",
         "\tacollector[3] = ${csp_dtr_sca_piping_dist_4};",
         "\treturn acollector;",
+        "};\r",
+        "\r",
+        "// Just input aggregator\r",
+        "equations{ 'opt_model' } = define() {\r",
+        "\tacollector[0] = ${DISP_opt_model_1} + 1;\r",
+        "\tacollector[1] = ${DISP_opt_model_2} + 1;\r",
+        "\tacollector[2] = ${DISP_opt_model_3} + 1;\r",
+        "\tacollector[3] = ${DISP_opt_model_4} + 1;\r",
+        "\r",
+        "\treturn acollector;\r",
         "};",
         ""
     ],

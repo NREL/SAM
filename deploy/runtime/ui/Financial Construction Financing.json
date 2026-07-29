@@ -1,7 +1,7 @@
 {
     "Name": "Financial Construction Financing",
-    "Width": 869.0,
-    "Height": 309.0,
+    "Width": 862.0,
+    "Height": 292.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 114.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -115,11 +115,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 70.0
+                    "Integer": 64.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -173,15 +173,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 330.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 75.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 67.0
+                    "Integer": 64.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -239,11 +239,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 76.0
+                    "Integer": 58.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -301,7 +301,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -363,7 +363,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -421,19 +421,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 717.0
+                    "Integer": 702.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 104.0
+                    "Integer": 122.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -483,7 +483,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 258.0
                 },
                 "Y": {
                     "Type": 3.0,

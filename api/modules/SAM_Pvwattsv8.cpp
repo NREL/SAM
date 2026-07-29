@@ -278,6 +278,60 @@ SAM_EXPORT void SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aset(SAM_table 
 	});
 }
 
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_celltech_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "celltech", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_coeff_inputs_king_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "coeff_inputs_king", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_coeff_inputs_lee_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "coeff_inputs_lee", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_coeff_inputs_pelland_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "coeff_inputs_pelland", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_max_abs_airmass_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "max_abs_airmass", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_max_prec_water_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "max_prec_water", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_min_abs_airmass_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "min_abs_airmass", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_min_prec_water_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "min_prec_water", number);
+	});
+}
+
+SAM_EXPORT void SAM_Pvwattsv8_SpectralCorrection_spectral_correction_model_choice_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "spectral_correction_model_choice", number);
+	});
+}
+
 SAM_EXPORT void SAM_Pvwattsv8_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
@@ -746,6 +800,90 @@ SAM_EXPORT double* SAM_Pvwattsv8_AdjustmentFactors_adjust_timeindex_aget(SAM_tab
 	result = ssc_data_get_array(ptr, "adjust_timeindex", length);
 	if (!result)
 		make_access_error("SAM_Pvwattsv8", "adjust_timeindex");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_SpectralCorrection_celltech_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "celltech", &result))
+		make_access_error("SAM_Pvwattsv8", "celltech");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_SpectralCorrection_coeff_inputs_king_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "coeff_inputs_king", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "coeff_inputs_king");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_SpectralCorrection_coeff_inputs_lee_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "coeff_inputs_lee", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "coeff_inputs_lee");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Pvwattsv8_SpectralCorrection_coeff_inputs_pelland_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "coeff_inputs_pelland", length);
+	if (!result)
+		make_access_error("SAM_Pvwattsv8", "coeff_inputs_pelland");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_SpectralCorrection_max_abs_airmass_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "max_abs_airmass", &result))
+		make_access_error("SAM_Pvwattsv8", "max_abs_airmass");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_SpectralCorrection_max_prec_water_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "max_prec_water", &result))
+		make_access_error("SAM_Pvwattsv8", "max_prec_water");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_SpectralCorrection_min_abs_airmass_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "min_abs_airmass", &result))
+		make_access_error("SAM_Pvwattsv8", "min_abs_airmass");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_SpectralCorrection_min_prec_water_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "min_prec_water", &result))
+		make_access_error("SAM_Pvwattsv8", "min_prec_water");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Pvwattsv8_SpectralCorrection_spectral_correction_model_choice_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "spectral_correction_model_choice", &result))
+		make_access_error("SAM_Pvwattsv8", "spectral_correction_model_choice");
 	});
 	return result;
 }

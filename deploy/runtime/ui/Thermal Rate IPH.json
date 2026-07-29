@@ -1,7 +1,7 @@
 {
     "Name": "Thermal Rate IPH",
-    "Width": 1153.0,
-    "Height": 606.0,
+    "Width": 849.0,
+    "Height": 306.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -273,7 +273,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -364,7 +364,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 162.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -488,7 +488,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -578,7 +578,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,

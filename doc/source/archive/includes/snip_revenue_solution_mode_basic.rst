@@ -6,7 +6,7 @@ SAM offers two solution modes for the Commercial PPA and Independent Power Produ
 * Specify PPA Price allows you to specify the :doc:`PPA price <../financial-metrics/mtf_ppa_price>` as an input, and SAM calculates the resulting IRR.
 
 Solution Mode 1: Specify IRR Target
-...................................
+-----------------------------------
 
 The Specify IRR Target option allows you to specify a desired target IRR. SAM finds the PPA price required to meet the target given the financing assumptions and costs you specify.
 
@@ -48,7 +48,7 @@ The financial optimization options allow you to automatically optimize the debt 
   Check this option instead of entering a value PPA Escalation Rate to allow SAM to find the PPA escalation rate value that results in the lowest levelized cost of energy. When you check this option, SAM disables the PPA escalation rate input variable and reports it as a result in the Metrics table on the Results page.
 
 Solution Mode 2: Specify PPA Price
-..................................
+----------------------------------
 
 Choose this option when you want SAM to calculate the IRR based on a power purchase bid price that you specify.
 

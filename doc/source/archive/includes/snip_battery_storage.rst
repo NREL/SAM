@@ -17,13 +17,13 @@ You can model a system with the battery connected to either the AC or the DC sid
 
 For more about the SAM's battery model, see:
 
-* DiOrio, N., Freeman, J; Blair, N (2018). DC-connected Solar Plus Storage Modeling and Analysis for Behind-the-Meter Systems in the System Advisor Model. 6 pp. NREL/CP-6A20-71336 (`PDF 1 MB <https://docs.nrel.gov/docs/fy18osti/68614.pdf>`__)
+* DiOrio, N., Freeman, J; Blair, N (2018). DC-connected Solar Plus Storage Modeling and Analysis for Behind-the-Meter Systems in the System Advisor Model. 6 pp. NREL/CP-6A20-71336 (`PDF 1 MB <https://docs.nlr.gov/docs/fy18osti/68614.pdf>`__)
 
-* DiOrio, N. (2017). An Overview of the Automated Dispatch Controller Algorithms in the System Advisor Model. 22 pp. NREL/TP-6A20-68614 (`PDF 1 MB <https://www.nrel.gov/docs/fy18osti/71636.pdf>`__)
+* DiOrio, N. (2017). An Overview of the Automated Dispatch Controller Algorithms in the System Advisor Model. 22 pp. NREL/TP-6A20-68614 (`PDF 1 MB <https://www.nlr.gov/docs/fy18osti/71636.pdf>`__)
 
-* DiOrio, N.; Dobos, A.; Janzou, S.; Nelson, A.; Lundstrom, B. (2015). Technoeconomic Modeling of Battery Energy Storage in SAM. 32 pp. NREL/TP-6A20-64641 (`PDF 2.6 MB <https://docs.nrel.gov/docs/fy15osti/64641.pdf>`__)
+* DiOrio, N.; Dobos, A.; Janzou, S.; Nelson, A.; Lundstrom, B. (2015). Technoeconomic Modeling of Battery Energy Storage in SAM. 32 pp. NREL/TP-6A20-64641 (`PDF 2.6 MB <https://docs.nlr.gov/docs/fy15osti/64641.pdf>`__)
 
-* DiOrio, N.; Dobos, A.; Janzou, S. (2015). Economic Analysis Case Studies of Battery Energy Storage with SAM. 22 pp. NREL/TP-6A20-64987 (`PDF 550 KB <https://docs.nrel.gov/docs/fy16osti/64987.pdf>`__)
+* DiOrio, N.; Dobos, A.; Janzou, S. (2015). Economic Analysis Case Studies of Battery Energy Storage with SAM. 22 pp. NREL/TP-6A20-64987 (`PDF 550 KB <https://docs.nlr.gov/docs/fy16osti/64987.pdf>`__)
 
 For general information about batteries and the one of the references used to develop this model, see Linden, D.; Reddy, T.; (2011). Linden's Handbook of Batteries. 4th edition. New York: McGraw Hill.
 

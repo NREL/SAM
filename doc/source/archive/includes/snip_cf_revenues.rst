@@ -26,7 +26,7 @@ When you choose **Specify PPA Price** for **Solution Mode** on the Financial Par
 .. note:: SAM uses the PPA Price to calculate the :doc:`levelized cost of energy <../financial-metrics/mtf_lcoe>`.
 
 Revenue for PPA Single Owner Financial Model
-............................................
+--------------------------------------------
 
 The Single Owner financial model reports three revenue values in the project cash flow.
 
@@ -42,7 +42,7 @@ The Single Owner financial model reports three revenue values in the project cas
   The net revenue earned from electricity sales, accounting for revenue lost do self-consumption.
 
 Revenue for PPA Partnership and Sale Leaseback Models
-.....................................................
+-----------------------------------------------------
 
 **PPA revenue to project**
   The project's annual revenue from electricity sales, not accounting for salvage value:
@@ -59,6 +59,6 @@ Revenue for PPA Partnership and Sale Leaseback Models
 
   Because Salvage Value is zero for all years except the last year of the analysis period, the Total Revenue and Total PPA Revenue are the same for all years except for the last year.
 
-  For the Single Owner and Leveraged Partnership Flip financial models (both of which include debt), total revenue may also include production-based :doc:`incentive <../incentives-and-depreciation/incentives>`   (PBI) amounts. For each PBI amount that you check on the :doc:`fin_overview <../financial-parameters/fin_overview>`   page under **Debt Service**, **Production Based Incentives (PBI) Available for Debt Service**, SAM displays a row for the PBI above the Total Revenue row, and includes the amount in the Total Revenue amount:
+  For the Single Owner and Leveraged Partnership Flip financial models (both of which include debt), total revenue may also include production-based :doc:`incentive <../incentives-and-depreciation/cash_incentives>`   (PBI) amounts. For each PBI amount that you check on the :doc:`fin_overview <../financial-parameters/fin_overview>`   page under **Debt Service**, **Production Based Incentives (PBI) Available for Debt Service**, SAM displays a row for the PBI above the Total Revenue row, and includes the amount in the Total Revenue amount:
 
 *Total Revenue = Total PPA Revenue + Salvage Value + PBI*

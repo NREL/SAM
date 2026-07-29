@@ -61,6 +61,11 @@
 			"wake_future_loss": 0,
 			"wake_int_loss": 0
 		},
+		"Lifetime": {
+			"ac_degradation": [0.640000],
+			"analysis_period": 25,
+			"system_use_lifetime_output": 1
+		},
 		"AdjustmentFactors": {
 			"adjust_constant": 0,
 			"adjust_en_periods": 0,

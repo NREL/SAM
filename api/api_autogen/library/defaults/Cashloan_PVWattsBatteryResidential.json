@@ -19,17 +19,29 @@
 			"system_capacity": 8
 		},
 		"SystemCosts": {
+			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [15.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 12.4564,
+			"om_batt_replacement_cost": [434.000000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [30.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 666254
+			"om_replacement_cost_escal": 0,
+			"total_installed_cost": 40698.3
 		},
 		"LandLease": {
 		},
 		"Depreciation": {
+			"depr_basis_mat": [
+				[1.000000, 30556.000000, 75.079319, 0.000000, 0.000000, 7.000000],
+				[2.000000, 10142.291489, 24.920681, 1.000000, 1.000000, 7.000000]
+			],
+			"depr_en_basis_mat": 1
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": [0.000000],
@@ -48,10 +60,10 @@
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
-			"ptc_fed_term": 10,
+			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"PaymentIncentives": {
 			"cbi_fed_amount": 0,
@@ -163,7 +175,8 @@
 [0]			],
 			"nm_dollars_applied_ym": [
 [0]			],
-			"utility_bill_w_sys": [0]
+			"utility_bill_w_sys": [0],
+			"utility_bill_wo_sys": [0]
 		},
 		"Battery": {
 		},
@@ -182,7 +195,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 55134.3
+			"battery_total_cost_lcos": 10142.3
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

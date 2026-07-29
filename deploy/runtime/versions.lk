@@ -55,8 +55,95 @@ function variable_name_change(new, old){
 	value(new, oldvalue(old), 'Variable name changed from \"' + old + '\" to \"' +  new + '\"');
 }
 
-version_upgrade{'2026.2.19'} = define() {
+version_upgrade{'2026.7.3'} = define() {
 	const cfg = config();
+	
+	is_itc_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' || cfg.fin == 'Community Solar' || cfg.fin == 'Host Developer');
+	is_cash_flow = cfg.fin != "LCOE Calculator" && cfg.fin != "None";
+	
+	if (is_itc_fin) {
+		message("Front-of-meter financial models have new options to determine depreciation allocations and ITC qualifying costs.", "error");
+		value('itc_qualification_choice', 1, "ITC qualification and depreciation can now be calculated automatically as a percentage of installation cost. Previous manual depreciation allocations have been retained.");
+		macrs_5 = oldvalue('depr_alloc_macrs_5_percent');
+		macrs_15 = oldvalue('depr_alloc_macrs_15_percent');
+		sl_5 = oldvalue('depr_alloc_sl_5_percent');
+		sl_15 = oldvalue('depr_alloc_sl_15_percent');
+		sl_20 = oldvalue('depr_alloc_sl_20_percent');
+		sl_39 = oldvalue('depr_alloc_sl_39_percent');
+		custom = oldvalue('depr_alloc_custom_percent');
+		
+		value('ui_depr_alloc_macrs_5_percent', macrs_5, "Copying existing allocation to new UI variable.");
+		value('ui_depr_alloc_macrs_15_percent', macrs_15, "Copying existing allocation to new UI variable.");
+		value('ui_depr_alloc_sl_5_percent', sl_5, "Copying existing allocation to new UI variable.");
+		value('ui_depr_alloc_sl_15_percent', sl_15, "Copying existing allocation to new UI variable.");
+		value('ui_depr_alloc_sl_20_percent', sl_20, "Copying existing allocation to new UI variable.");
+		value('ui_depr_alloc_sl_39_percent', sl_39, "Copying existing allocation to new UI variable.");
+		value('ui_depr_alloc_custom_percent', custom, "Copying existing allocation to new UI variable.");
+	}
+	
+	if (cfg.fin == 'Commercial') {
+		message("The Commercial financial model now uses depreciation allocation and ITC qualification inputs to more accurately represent depreciation and tax credit benefits.", "error");
+		value('itc_qualification_choice', 1, "ITC qualification and depreciation can now be calculated automatically as a percentage of installation cost. Previous manual depreciation allocations have been retained.");
+		has_itc_fed = oldvalue('itc_fed_amount') > 0 || oldvalue('itc_fed_percent') > 0;
+		has_itc_sta = oldvalue('itc_sta_amount') > 0 || oldvalue('itc_sta_percent') > 0;
+		depr_fed_type = oldvalue('depr_fed_type');
+		// Nothing to do on 0, defaults are 0
+		if (depr_fed_type == 1) {
+			value('ui_depr_alloc_macrs_5_percent', 100.0, "Copying existing allocation to new UI variable.");
+			value('depr_itc_fed_macrs_5', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+			value('depr_itc_sta_macrs_5', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+		}
+		else if (depr_fed_type == 2) {
+			sl_depr_yrs = oldvalue('depr_fed_sl_years');
+			if (sl_depr_yrs == 5) {
+				value('ui_depr_alloc_sl_5_percent', 100.0, "Copying existing allocation to new UI variable.");
+				value('depr_itc_fed_sl_5', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+				value('depr_itc_sta_sl_5', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+			}
+			else if (sl_depr_yrs == 15) {
+				value('ui_depr_alloc_sl_15_percent', 100.0, "Copying existing allocation to new UI variable.");
+				value('depr_itc_fed_sl_15', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+				value('depr_itc_sta_sl_15', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+			}
+			else if (sl_depr_yrs == 20) {
+				value('ui_depr_alloc_sl_20_percent', 100.0, "Copying existing allocation to new UI variable.");
+				value('depr_itc_fed__sl_20', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+				value('depr_itc_sta__sl_20', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+			}
+			else if (sl_depr_yrs == 39) {
+				value('ui_depr_alloc_sl_39_percent', 100.0, "Copying existing allocation to new UI variable.");
+				value('depr_itc_fed_sl_39', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+				value('depr_itc_sta_sl_39', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+			}
+			else {
+				value('ui_depr_alloc_custom_percent', 100.0, "Copying existing allocation to new UI variable.");
+				value('depr_itc_fed_custom', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+				value('depr_itc_fed_custom', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+				sl_depr = 1.0 / sl_depr_yrs;
+				sl_custom_arr = [];
+				for (i = 0; i < sl_depr_yrs; i++) {
+					sl_custom_arr[i] = sl_depr;
+				}
+				value('depr_custom_schedule', sl_custom_arr, "Use custom depreciation for non-standard straight line length");
+			}
+		}
+		else if (depr_fed_type == 3) {
+			value('ui_depr_alloc_custom_percent', 100.0, "Copying existing allocation to new UI variable.");
+			value('depr_itc_fed_custom', has_itc_fed, "Update to detailed ITC basis qualification variable.");
+			value('depr_itc_fed_custom', has_itc_sta, "Update to detailed ITC basis qualification variable.");
+			custom_depr = oldvalue('depr_fed_custom');
+			value('depr_custom_schedule', custom_depr, "Update to new custom depreciation variable.");
+		}
+	}
+	
+	if (cfg.fin == 'Residential') {		
+		has_itc_fed = oldvalue('itc_fed_amount') > 0 || oldvalue('itc_fed_percent') > 0;
+		has_itc_sta = oldvalue('itc_sta_amount') > 0 || oldvalue('itc_sta_percent') > 0;
+		value('system_itc_basis_cost_fed_include', has_itc_fed, "Update to component-based ITC basis qualification variable.");
+		value('system_itc_basis_cost_sta_include', has_itc_sta, "Update to component-based ITC basis qualification variable.");
+		value('batt_itc_basis_cost_fed_include', has_itc_fed, "Update to component-based ITC basis qualification variable.");
+		value('batt_itc_basis_cost_sta_include', has_itc_sta, "Update to component-based ITC basis qualification variable.");
+	}
 
 	if (cfg.tech == 'Flat Plate PV' || cfg.tech == 'PV Battery' || cfg.tech == 'Photovoltaic Wind Battery Hybrid' ) {
 		message('The Detailed PV model input pages have been reorganized to make it easier to find related inputs with improved messages to help you find and fix problems with the system design.', 'error');
@@ -68,15 +155,25 @@ version_upgrade{'2026.2.19'} = define() {
 	if (cfg.tech == 'MEwave' || cfg.tech == 'MEtidal' || cfg.tech == 'MEwave Battery')
 	{
 		//variable name changes
-		variable_name_change('project_contingency_budget_cost', 'project_contingency_cost');
-		variable_name_change('project_contingency_budget_cost_rvalue', 'project_contingency_cost_rvalue');
-		variable_name_change('insurance_during_construction_method', 'insurance_during_construction_cost_method');
-		variable_name_change('insurance_during_construction_modeled', 'insurance_during_construction_cost_modeled');
+		//variable_name_change('project_contingency_budget_cost', 'project_contingency_cost');
+		//variable_name_change('project_contingency_budget_cost_rvalue', 'project_contingency_cost_rvalue');
+		//variable_name_change('insurance_during_construction_method', 'insurance_during_construction_cost_method');
+		//variable_name_change('insurance_during_construction_modeled', 'insurance_during_construction_cost_modeled');
+		//variable_name_change("generic_degradation", "ac_degradation");
+		if (cfg.fin != "None") {
+			variable_name_change('project_contingency_cost', 'project_contingency_budget_cost');
+			variable_name_change('project_contingency_cost_rvalue', 'project_contingency_budget_cost_rvalue');
+			variable_name_change('insurance_during_construction_cost_method', 'insurance_during_construction_method');
+			variable_name_change('insurance_during_construction_cost_modeled', 'insurance_during_construction_modeled');
+		}
+		if (is_cash_flow) {
+			variable_name_change("ac_degradation", "generic_degradation");
+		}
 	}
 
-	if(cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery') {
+	if((cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery') && is_cash_flow) {
 		message('PVWatts now runs in lifetime mode so that time series outputs are over the analysis period instead of one year.', 'warning');
-		message('PVWatts degradation is now modeled as DC degradation instead of AC degradation. DC degradation is an annual reduction in the DC output of the array instead of AC output of the system.', 'warning');
+		message('PVWatts degradation is now modeled as DC degradation instead of AC degradation. DC degradation is an annual reduction in the DC output of the array instead of AC output of the system. DC degradation is applied linearly.', 'warning');
 		old_degradation = oldvalue('degradation');
 
 		value('dc_degradation', old_degradation, 'New DC degradation on DC Degradation page set to old AC degradation value from AC Degradation page.');
@@ -199,9 +296,48 @@ version_upgrade{'2026.2.19'} = define() {
 		
 	}
 	
-	if (cfg.tech == 'Wind Power' || strpos(cfg.tech, "Hybrid") > -1) {
+	if (cfg.tech == 'Wind Power') {
 		message('Wind balance of system cost estimators have been removed. Total capital costs remain the same in this version. Please uses SAM 2025.4.16 or older if you need access to the balance of system cost estimators within SAM.', 'warning');
+		if (is_cash_flow) {
+			wind_degradation = oldvalue('degradation');
+			value('ac_degradation', wind_degradation, 'Wind has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation". For Wind Power, lifetime mode applies degradation linearly.');
+		}
 	}
+	
+	if (cfg.tech == 'Custom Generation Profile' && is_cash_flow ) {
+		ac_degradation = oldvalue('degradation');
+		value('ac_degradation', ac_degradation, 'Custom generation profile has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation".');
+	
+	}
+	
+	
+	if (strpos(cfg.tech, "Hybrid") > -1) {
+		// Detailed PV already used lifetime, no changes there
+		if (cfg.tech != 'Photovoltaic Wind Battery Hybrid' && is_cash_flow) {
+			message('PVWatts now runs in lifetime mode so that time series outputs are over the analysis period instead of one year.', 'warning');
+			message('PVWatts degradation is now modeled as DC degradation instead of AC degradation. DC degradation is an annual reduction in the DC output of the array instead of AC output of the system. DC degradation is applied linearly.', 'warning');
+			old_degradation = oldvalue('pvwatts_degradation');
+
+			value('pvwatts_dc_degradation', old_degradation, 'New DC degradation on DC Degradation page set to old AC degradation value from AC Degradation page.');
+		}
+	
+		message('Wind balance of system cost estimators have been removed. Total capital costs remain the same in this version. Please uses SAM 2025.4.16 or older if you need access to the balance of system cost estimators within SAM.', 'warning');
+		wind_degradation = oldvalue('wind_degradation');
+		value('wind_ac_degradation', wind_degradation, 'Wind has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation". For Wind Power, lifetime mode applies degradation linearly.');
+	}
+	
+	if (cfg.tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid') {
+		spec_mode = oldvalue('spec_mode');
+		if (spec_mode == 2) {
+			value('spec_mode', 3, "Additional options have been added to custom generation profile, combined cases is now spec_mode 3");
+		}
+		
+		ac_degradation = oldvalue('customgeneration_degradation');
+		value('customgeneration_ac_degradation', ac_degradation, 'Custom generation profile has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation".');
+	
+	}
+	
+
 };
 
 version_upgrade{'2024.12.12'} = define() {

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\bspline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\bspline_basis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\bspline_basis_1d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\bspline_builders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\bspline_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\data_point.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\data_table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\function.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\json_parser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\knot_vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\knot_builders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\kronecker_product.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\src\utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\splinter\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2D10E145-424C-34DB-9737-C6430B5D4915}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

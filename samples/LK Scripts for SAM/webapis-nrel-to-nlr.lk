@@ -1,0 +1,63 @@
+/*
+
+This script makes a backup copy of webapis.conf and creates a new version of the
+file with "nrel.gov" replaced by "nlr.gov".
+
+Use this script to update webapis.conf for SAM versions older than 
+SAM 2025.4.16 Revision 2 to avoid errors with the software registration and web 
+API features.
+
+To run this script:
+
+1. Click Run above.
+
+2. When the script finishes, close this window and restart SAM.
+
+*/
+
+path = runtimedir();
+
+fname = 'webapis.conf';
+fname_backup = 'webapis-backup.txt';
+
+f_webapis = path + fname;
+f_backup = path + fname_backup;
+
+ok = file_exists(f_webapis);
+
+if (ok) {
+
+	// get text from current webapis.conf and replace nrel.gov with nlr.gov
+	str = read_text_file(f_webapis);
+	str = replace(str, 'nrel.gov', 'nlr.gov');
+
+	// create backup of current webapis.conf
+	rename_file(f_webapis,f_backup);
+	rename_ok = file_exists(f_backup);
+	if ( !rename_ok ) {
+		outln('Failed to rename ' + fname + ' to ' + fname_backup + '. Please request a webapis.conf file from sam.support@nlr.gov.');
+		return;
+	}
+
+	// write updated text to new webapis.conf
+	write_ok = write_text_file(f_webapis, str);
+	if ( !write_ok ) {
+		outln('Failed to write to ' + fname + '.');
+		outln('Restoring from backup...');
+		rename_file(f_backup,f_webapis);
+		rename_ok = file_exists(f_webapis);
+		if ( !rename_ok ) {
+			outln('Failed to rename ' + fname_backup + ' to ' + fname + '. Please request a webapis.conf file from sam.support@nlr.gov.');
+		}
+		else {
+			outln('Failed to write webapis file. Please request a webapis.conf file from sam.support@nlr.gov.');
+		}
+		return;
+	}
+	
+	outln('Webapis.conf file updated. Please restart SAM and verify that the registration process works.');
+
+}
+else {
+	outln('Unable to find webapis file: ' + f_webapis + '. Please request a webapis.conf file from sam.support@nlr.gov.');
+}

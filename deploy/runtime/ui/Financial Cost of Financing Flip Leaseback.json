@@ -119,7 +119,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 74.0
+                    "Integer": 101.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -139,7 +139,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,

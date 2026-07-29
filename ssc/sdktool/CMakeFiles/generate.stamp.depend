@@ -1,0 +1,6 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindwxWidgets.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/UsewxWidgets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/ssc/sdktool/CMakeLists.txt

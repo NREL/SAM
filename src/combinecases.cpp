@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -63,14 +63,14 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	m_custom_generation_case = SamApp::Window()->GetCurrentCase();
 	m_custom_generation_case_name = SamApp::Window()->Project().GetCaseName(m_custom_generation_case);
 	m_custom_generation_case_window = SamApp::Window()->GetCaseWindow(m_custom_generation_case);
-	if (m_custom_generation_case->Values(0).Get("generic_degradation")) {
-		m_generic_degradation = m_custom_generation_case->Values(0).Get("generic_degradation")->Array();	// name in generic-battery cases
+	if (m_custom_generation_case->Values(0).Get("ac_degradation")) {
+		m_ac_degradation = m_custom_generation_case->Values(0).Get("ac_degradation")->Array();	// name in generic-battery cases
 	}
 	else if (m_custom_generation_case->Values(0).Get("degradation")) {
-		m_generic_degradation = m_custom_generation_case->Values(0).Get("degradation")->Array();			// name in other cases, if defined
+		m_ac_degradation = m_custom_generation_case->Values(0).Get("degradation")->Array();			// name in other cases, if defined
 	}
 	else {
-		m_generic_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
+		m_ac_degradation.push_back(0.);	// no value defined for LCOE and None financial models, set to zero
 	}
 
 	// Text at top of window
@@ -94,13 +94,13 @@ CombineCasesDialog::CombineCasesDialog(wxWindow* parent, const wxString& title, 
 	// Due to complexity of AC and DC degradation and lifetime and single year simulations, require user to provide an
 	// AC degradation rate for the combined project and ignore degradation rate inputs of individual system cases.
 	m_schnDegradation = new AFSchedNumeric(this, ID_spndDegradation, wxDefaultPosition, wxSize(64, 22));
-	if (m_generic_degradation.size() == 1) {
+	if (m_ac_degradation.size() == 1) {
 		m_schnDegradation->UseSchedule(false);
-		m_schnDegradation->SetValue(m_generic_degradation[0]);
+		m_schnDegradation->SetValue(m_ac_degradation[0]);
 	}
 	else {
 		m_schnDegradation->UseSchedule(true);
-		m_schnDegradation->SetSchedule(m_generic_degradation);
+		m_schnDegradation->SetSchedule(m_ac_degradation);
 	}
 	wxString degradation_label = "%/year  Annual AC degradation rate for all cases";
 	wxBoxSizer* szdegradation = new wxBoxSizer(wxHORIZONTAL);
@@ -411,7 +411,7 @@ void CombineCasesDialog::OnEvt(wxCommandEvent& e)
 																								//  sets the hidden 'Nameplate capacity' widget value
 					m_custom_generation_case->Values(0).Get("system_capacity")->Set(nameplate);			// the actual used system_capacity, which corresponds to the
 																								//  'Nameplate capacity' widget that is hidden when combining cases
-					m_custom_generation_case->Values(0).Get("spec_mode")->Set(2);							// specify the third radio button
+					m_custom_generation_case->Values(0).Get("spec_mode")->Set(3);							// specify the third radio button
 					m_custom_generation_case->Values(0).Get("derate")->Set(0);								// no additional losses- losses were computed in the individual models
 					m_custom_generation_case->Values(0).Get("heat_rate")->Set(0);							// no fuel costs- accounted for in O&M fuel costs from subsystem cash flows
 					m_custom_generation_case->Values(0).Get("energy_output_array")->Set(hourly_energy.data(), hourly_energy.ncells());

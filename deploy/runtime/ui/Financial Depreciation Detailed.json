@@ -1,7 +1,7 @@
 {
     "Name": "Financial Depreciation Detailed",
-    "Width": 863.0,
-    "Height": 495.0,
+    "Width": 864.0,
+    "Height": 415.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 485.0
+                    "Integer": 407.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -32,7 +32,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Depreciation"
+                    "String": "Depreciation Class Allocations and Bonus Depreciation"
                 },
                 "Bold": {
                     "Type": 2.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -115,7 +115,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -123,7 +123,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -185,7 +185,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -239,7 +239,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 267.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -247,7 +247,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -301,7 +301,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -309,7 +309,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -363,7 +363,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 204.0
+                    "Integer": 321.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -371,7 +371,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -421,19 +421,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 582.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 375.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 125.0
+                    "Integer": 146.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -441,7 +441,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Non-depreciable assets"
+                    "String": "Non-depreciable"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -487,7 +487,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 348.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -495,7 +495,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -541,77 +541,15 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "Label1132"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 285.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 267.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 53.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Bonus:"
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
                     "String": "Label1211111"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 450.0
+                    "Integer": 729.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -619,7 +557,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -669,11 +607,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 672.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -681,7 +619,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -731,11 +669,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 603.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -743,7 +681,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -793,11 +731,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 591.0
+                    "Integer": 306.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -805,7 +743,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -855,19 +793,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 330.0
+                    "Integer": 603.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 23.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 169.0
+                    "Integer": 238.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -875,7 +813,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Bonus Depreciation"
+                    "String": "Qualifies for Bonus Depreciation"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -917,11 +855,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 279.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 23.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -929,7 +867,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -937,7 +875,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "ITC Qualification"
+                    "String": "Qualifies for ITC"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -983,7 +921,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -991,7 +929,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -999,7 +937,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Classes"
+                    "String": "Depreciation Classes"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1041,11 +979,73 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 195.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 147.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 77.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Allocation Inputs"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "Label121121314"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1053,15 +1053,2108 @@
                 },
                 "Height": {
                     "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Applied Allocations"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_custom_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_macrs_15_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_macrs_5_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_none"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_sl_15_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_sl_20_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_sl_39_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_alloc_sl_5_percent"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 516.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 65.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 660.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 23.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_custom"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
                     "Integer": 21.0
                 },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Allocations"
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 37.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_macrs_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 27.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_macrs_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_sl_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 31.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_sl_20"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_sl_39"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 35.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_fed_sl_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 699.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 29.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 780.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 60.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_custom"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 38.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_macrs_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_macrs_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 26.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_sl_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 32.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_sl_20"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 34.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_sl_39"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_bonus_sta_sl_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 819.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                }
+            }
+        },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_custom_schedule"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 67.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "Value"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 8.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_custom"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_macrs_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 11.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_macrs_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 9.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_sl_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 15.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_sl_20"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 17.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_sl_39"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 19.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_fed_sl_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 336.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 13.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_custom"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 348.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_macrs_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 213.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_macrs_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 10.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_sl_15"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 267.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_sl_20"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_sl_39"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 321.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 20.0
+                }
+            }
+        },
+        "CheckBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "depr_itc_sta_sl_5"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 240.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "State": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 14.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_alloc_inputs"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 417.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Text determined by set_itc_basis_choice() on Financial ITC Qualification forms."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1074,7 +3167,7 @@
                 },
                 "Bold": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "FontSize": {
                     "Type": 3.0,
@@ -1082,15 +3175,15 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 }
             }
         },
@@ -1099,23 +3192,23 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "LabelDepr1"
+                    "String": "lbl_applied_allocations"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 824.0
+                    "Integer": 369.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 39.0
+                    "Integer": 52.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1123,7 +3216,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The allocation for each depreciation class is a percentage of the total capital cost. Allocations apply to both state depreciation and federal depreciation."
+                    "String": "Text determined by set_itc_basis_choice() on Financial ITC Qualification forms."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1156,63 +3249,51 @@
                 }
             }
         },
-        "Label": {
+        "Divider": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "LabelDepr3"
+                    "String": "object 2213"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 468.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 60.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 384.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 39.0
+                    "Integer": 16.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Check the box for each asset class that qualifies for federal or state bonus depreciation, and enter the bonus amount as a percentage of the total qualifying allocations."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
+                "Orientation": {
                     "Type": 3.0,
                     "Integer": 0.0
                 },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
                 },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Applied Allocations and Bonus Depreciation"
                 },
-                "AlignTop": {
+                "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 }
@@ -1223,23 +3304,23 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "LabelDepr4"
+                    "String": "object 75"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 825.0
+                    "Integer": 831.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1247,69 +3328,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Total capital cost includes the total installed cost from the Installation Costs page and other financial costs and fees from the Financial Parameters page. SAM displays the value in the Metrics table on the Results page."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "LabelDepr41"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 441.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 825.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 39.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Check the box for each asset class that qualifies for the investment tax credit (ITC). This determines the basis used to calculate the ITC amount."
+                    "String": "Specify allocations as a percentage of capital cost (total installed cost from the Installation Costs page plus financial costs from the Financial Parameters page). Check the box for each depreciation class that also qualifies for the ITC."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1347,7 +3366,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_custom_percent"
+                    "String": "ui_depr_alloc_custom_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1355,7 +3374,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 348.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1363,7 +3382,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1379,7 +3398,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1430,7 +3449,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_macrs_15_percent"
+                    "String": "ui_depr_alloc_macrs_15_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1438,7 +3457,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1446,7 +3465,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1462,7 +3481,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1513,7 +3532,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_macrs_5_percent"
+                    "String": "ui_depr_alloc_macrs_5_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1521,7 +3540,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1529,7 +3548,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1545,7 +3564,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1596,7 +3615,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_none"
+                    "String": "ui_depr_alloc_sl_15_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1612,7 +3631,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1628,90 +3647,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": " %"
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 38.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_alloc_sl_15_percent"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 195.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 150.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 65.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1762,7 +3698,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_sl_20_percent"
+                    "String": "ui_depr_alloc_sl_20_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1770,7 +3706,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 177.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1778,7 +3714,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1794,7 +3730,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1845,7 +3781,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_sl_39_percent"
+                    "String": "ui_depr_alloc_sl_39_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1853,7 +3789,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 204.0
+                    "Integer": 321.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1861,7 +3797,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1877,7 +3813,7 @@
                 },
                 "Format": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": 0.0
                 },
                 "Decimals": {
                     "Type": 3.0,
@@ -1928,7 +3864,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "depr_alloc_sl_5_percent"
+                    "String": "ui_depr_alloc_sl_5_percent"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1936,7 +3872,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 123.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1944,1432 +3880,65 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": " %"
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 351.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 267.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": " %"
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 9.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_custom"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 234.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 23.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_macrs_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 96.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 13.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_macrs_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 69.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 11.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_sl_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 150.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 17.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_sl_20"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 177.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 19.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_sl_39"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 204.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_fed_sl_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 390.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 123.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                }
-            }
-        },
-        "Numeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 441.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 267.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 60.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Value": {
-                    "Type": 1.0,
-                    "Double": 0.0
-                },
-                "Mode": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Format": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                },
-                "Decimals": {
-                    "Type": 3.0,
-                    "Integer": 3.0
-                },
-                "Prefix": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Suffix": {
-                    "Type": 5.0,
-                    "String": " %"
-                },
-                "ThousandsSep": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "Editable": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "ForeColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "BackColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 255.0,
-                        "Blue": 255.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 10.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_custom"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 234.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
                     "Integer": 24.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_macrs_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 96.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Caption": {
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "State": {
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": " %"
+                },
+                "ThousandsSep": {
                     "Type": 2.0,
                     "Boolean": 0.0
                 },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 14.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_macrs_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 69.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 12.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_sl_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 150.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 18.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_sl_20"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 177.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 20.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_sl_39"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 204.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 22.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_bonus_sta_sl_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 480.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 123.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 16.0
-                }
-            }
-        },
-        "SchedNumeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_custom_schedule"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 81.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 234.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 67.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Label": {
-                    "Type": 5.0,
-                    "String": "Value"
-                },
-                "UseSchedule": {
+                "Editable": {
                     "Type": 2.0,
                     "Boolean": 1.0
                 },
-                "ScheduleOnly": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
                 },
-                "FixedLength": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "Description": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 8.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_custom"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 234.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 28.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_macrs_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 96.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 27.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_macrs_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 69.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 25.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_sl_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 150.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 31.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_sl_20"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 177.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_sl_39"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 204.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 35.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_fed_sl_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 621.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 123.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 29.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_custom"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 234.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 37.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_macrs_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 96.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 28.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_macrs_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 69.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 26.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_sl_15"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 150.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 32.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_sl_20"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 177.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 34.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_sl_39"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 204.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 36.0
-                }
-            }
-        },
-        "CheckBox": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "depr_itc_sta_sl_5"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 702.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 123.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "State": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 3.0
                 }
             }
         }
@@ -3382,7 +3951,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3395,7 +3964,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3408,7 +3977,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 100.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3434,7 +4003,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3447,7 +4016,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3460,7 +4029,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3473,7 +4042,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 3.0,
+            "Flags": 9.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3499,7 +4068,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3512,7 +4081,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3525,7 +4094,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3538,7 +4107,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3551,7 +4120,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3564,7 +4133,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3577,7 +4146,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3590,7 +4159,7 @@
             "Units": "%",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -3603,7 +4172,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3616,7 +4185,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3629,7 +4198,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3642,7 +4211,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3655,7 +4224,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3668,7 +4237,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3681,7 +4250,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3694,7 +4263,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": [
                 0.0
             ],
@@ -3722,7 +4291,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3735,7 +4304,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3748,7 +4317,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3761,7 +4330,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3774,7 +4343,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3787,7 +4356,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3800,7 +4369,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3813,7 +4382,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3826,7 +4395,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3839,7 +4408,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3852,7 +4421,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3865,7 +4434,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3878,7 +4447,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3891,7 +4460,7 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "CheckBox",
             "sscVariableName": "",
@@ -3904,38 +4473,194 @@
             "Units": " ",
             "Group": "Depreciation",
             "IndexLabels": "5-yr MACRS Only| Proportionally",
-            "Flags": 1.0,
+            "Flags": 3.0,
             "DefaultValue": 1.0,
             "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_custom_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Custom depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_macrs_15_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "15-yr MACRS depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_macrs_5_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "5-yr MACRS depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_sl_15_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "15-yr straight line depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_sl_20_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "20-yr straight line depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_sl_39_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "39-yr straight line depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "ui_depr_alloc_sl_5_percent": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "5-yr straight line depreciation allocation input",
+            "Units": "",
+            "Group": "Depreciation",
+            "IndexLabels": "",
+            "Flags": 3.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Numeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         }
     },
     "Equations": [
-        "",
-        "//equations{ 'depr_alloc_none' } = define() {",
-        "//\treturn 100.0 - ( \t${depr_alloc_macrs_5_percent} + ${depr_alloc_macrs_15_percent} ",
-        "//\t+ \t${depr_alloc_sl_5_percent} + \t${depr_alloc_sl_15_percent} ",
-        "//\t+ \t${depr_alloc_sl_20_percent} + \t${depr_alloc_sl_39_percent} ",
-        "//\t+  \t${depr_alloc_custom_percent} ); };",
-        "\t",
-        "// note that equations or callbacks called twice - widget and case events so message box appears twice.",
         "equations{ 'depr_alloc_none' } = define() {",
-        "\tx= 100.0 - ( \t${depr_alloc_macrs_5_percent} + ${depr_alloc_macrs_15_percent} ",
-        "\t+ \t${depr_alloc_sl_5_percent} + \t${depr_alloc_sl_15_percent} ",
-        "\t+ \t${depr_alloc_sl_20_percent} + \t${depr_alloc_sl_39_percent} ",
-        "\t+  \t${depr_alloc_custom_percent} ); ",
-        "\t  if (x < 0.0)",
-        "\t  {",
+        "\tx = 100.0 - (${depr_alloc_macrs_5_percent} \r",
+        "\t\t+ ${depr_alloc_macrs_15_percent} ",
+        "\t\t+ ${depr_alloc_sl_5_percent} \r",
+        "\t\t+ ${depr_alloc_sl_15_percent} ",
+        "\t\t+ ${depr_alloc_sl_20_percent}\r",
+        "\t\t+ ${depr_alloc_sl_39_percent}\r",
+        "\t\t+ ${depr_alloc_custom_percent}); ",
+        "\t  if (x < 0.0) {",
         "\t\tmsgbox(\"Non-depreciable assets < 0%.\\nPlease check allocation percentages.\");",
         "\t  }",
-        "\t  else if (x > 100.0)",
-        "\t  {",
+        "\t  else if (x > 100.0) {",
         "\t\tmsgbox(\"Non-depreciable assets > 100%.\\nPlease check allocation percentages.\");",
         "\t  }",
         "\treturn x;",
-        "\t};",
-        "\t",
+        "};",
+        "\r",
+        "equations{'$MIMO depreciation_calc_or_manual'} = define() {\r",
+        "\tuser_custom_allocations = ${itc_qualification_choice};\r",
+        "\r",
+        "\tallocs = [];\r",
+        "\tdepr_index = ${itc_basis_depreciation_allocation};\r",
+        "\tnon_depr_index = ${non_itc_basis_depreciation_allocation};\r",
+        "\t\r",
+        "\tdepr_list = ['depr_alloc_macrs_5_percent','depr_alloc_macrs_15_percent',\r",
+        "\t\t'depr_alloc_sl_5_percent', 'depr_alloc_sl_15_percent',\r",
+        "\t\t'depr_alloc_sl_20_percent', 'depr_alloc_sl_39_percent',\r",
+        "\t\t'depr_alloc_custom_percent'];\r",
+        "\titc_depr_choice = ?${itc_basis_depreciation_allocation}[\r",
+        "\t\t'depr_alloc_macrs_5_percent','depr_alloc_macrs_15_percent',\r",
+        "\t\t'depr_alloc_sl_5_percent', 'depr_alloc_sl_15_percent',\r",
+        "\t\t'depr_alloc_sl_20_percent', 'depr_alloc_sl_39_percent',\r",
+        "\t\t'depr_alloc_custom_percent', 'none'];\r",
+        "\tnon_itc_depr_choice = ?${non_itc_basis_depreciation_allocation}[\r",
+        "\t\t'depr_alloc_macrs_5_percent','depr_alloc_macrs_15_percent',\r",
+        "\t\t'depr_alloc_sl_5_percent', 'depr_alloc_sl_15_percent',\r",
+        "\t\t'depr_alloc_sl_20_percent', 'depr_alloc_sl_39_percent',\r",
+        "\t\t'depr_alloc_custom_percent', 'none'];\r",
+        "\r",
+        "\tfor (i = 0; i < #depr_list; i++) {\r",
+        "\t\tallocs[i] = 0; //Set to 0 to avoid non-depreciable equation warning\r",
+        "\t}\r",
+        "\r",
+        "\tpercent = 0;\r",
+        "\tif (user_custom_allocations == 0) {\r",
+        "\t\tdepr_choice = ${depr_allocation_choice};\r",
+        "\t\tif (depr_choice == 0) {\r",
+        "\t\t\tpercent = ${itc_basis_cost_percent_fed};\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tpercent = ${itc_basis_cost_percent_sta};\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tpercent = -1;\r",
+        "\t}\r",
+        "\r",
+        "\tif (itc_depr_choice == non_itc_depr_choice && itc_depr_choice != 'none') {\r",
+        "\t\tallocs[depr_index] = 100;\r",
+        "\t\t}\r",
+        "\telse {\r",
+        "\t\tif (itc_depr_choice != 'none') {\r",
+        "\t\t\tallocs[depr_index] = percent;\r",
+        "\t\t}\r",
+        "\t\tif (non_itc_depr_choice != 'none') {\r",
+        "\t\t\tallocs[non_depr_index] = 100 - percent;\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\r",
+        "\tif (user_custom_allocations == 0) {\r",
+        "\t\t${depr_alloc_macrs_5_percent} = allocs[0];\r",
+        "\t\t${depr_alloc_macrs_15_percent} = allocs[1];\r",
+        "\t\t${depr_alloc_sl_5_percent} = allocs[2];\r",
+        "\t\t${depr_alloc_sl_15_percent} = allocs[3];\r",
+        "\t\t${depr_alloc_sl_20_percent} = allocs[4];\r",
+        "\t\t${depr_alloc_sl_39_percent} = allocs[5];\r",
+        "\t\t${depr_alloc_custom_percent} = allocs[6];\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\t${depr_alloc_macrs_5_percent} = ${ui_depr_alloc_macrs_5_percent};\r",
+        "\t\t${depr_alloc_macrs_15_percent} = ${ui_depr_alloc_macrs_15_percent};\r",
+        "\t\t${depr_alloc_sl_5_percent} = ${ui_depr_alloc_sl_5_percent};\r",
+        "\t\t${depr_alloc_sl_15_percent} = ${ui_depr_alloc_sl_15_percent};\r",
+        "\t\t${depr_alloc_sl_20_percent} = ${ui_depr_alloc_sl_20_percent};\r",
+        "\t\t${depr_alloc_sl_39_percent} = ${ui_depr_alloc_sl_39_percent};\r",
+        "\t\t${depr_alloc_custom_percent} = ${ui_depr_alloc_custom_percent};\r",
+        "\t}\r",
+        "\t\r",
+        "};",
         "",
         ""
     ],
@@ -3949,6 +4674,8 @@
         "on_load{'Financial Depreciation Detailed'} = define()\r",
         "{\r",
         "\tchange_depreciation_length();\r",
+        "\tset_itc_basis_choice();\r",
+        "\titc_basis_depreciation_choice();\r",
         "};"
     ]
 }

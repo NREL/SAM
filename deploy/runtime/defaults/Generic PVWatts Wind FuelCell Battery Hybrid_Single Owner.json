@@ -40714,7 +40714,7 @@
             0.0
         ],
         "ptc_fed_escal": 0.0,
-        "ptc_fed_term": 10.0,
+        "ptc_fed_term": 0.0,
         "ptc_sta_amount": [
             0.0
         ],

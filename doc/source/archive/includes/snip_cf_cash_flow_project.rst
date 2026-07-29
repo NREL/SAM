@@ -2,7 +2,7 @@
 The project cash flows include those from operating activities, investing activities, incentives, and issuance of equity. The pre-tax cash flow is the total project cash flow.
 
 Cash Flow from Operating Activities
-...................................
+-----------------------------------
 
 The cash flow from operating activities are the project earnings including interest on reserves and production-based incentives payments less interest paid on debt.
 
@@ -21,7 +21,7 @@ The cash flow from operating activities are the project earnings including inter
 *Total = EBITDA + Interest on Reserves + Total PBI - Interest*
 
 Cash Flow from Investing Activities
-...................................
+-----------------------------------
 
 **Purchase of property cost**
   The purchase of property cost applies only in Year Zero of the cash flow. It is the sum of the total installed cost from the Installation Costs page and debt-related and financing costs from the Financial Parameters page less any investment-based incentives defined on the Incentives page:
@@ -81,7 +81,7 @@ Cash Flow from Investing Activities
 *Total in Year n>0 = Working Capital (increase)/decrease + Major Equipment (increase)/decrease + Reserve Capital Spending*
 
 Cash Flow from Financing Activities
-...................................
+-----------------------------------
 
 Cash flows from financing activities include income from incentive payments, equity capital, and, for Single Owner and Leveraged Partnership Flip, debt capital.
 
@@ -96,7 +96,7 @@ Cash flows from financing activities include income from incentive payments, equ
 
 *Issuance of Equity in Year Zero = Total Installed Cost + Financing Cost - ( Debt Funding + Total IBI + Total CBI )*
 
-  Where *Total Installed Cost*   is the project capital cost from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page, *Financing Cost*   is the total debt costs and development fees, *Debt*   (Single Owner and Leveraged Partnership Flip only) is the debt funding amount described below, and *Total IBI*   and *Total CBI*   are the investment-based incentive and capacity based incentive amounts described below.
+  Where *Total Installed Cost*   is the project capital cost from the :doc:`Installation Costs <../installation-costs/index>`   page, *Financing Cost*   is the total debt costs and development fees, *Debt*   (Single Owner and Leveraged Partnership Flip only) is the debt funding amount described below, and *Total IBI*   and *Total CBI*   are the investment-based incentive and capacity based incentive amounts described below.
 
 **Total project cash flow from financing activities**
   The total cash flow from financing activities is the sum of equity capital, incentive payments, and debt capital.

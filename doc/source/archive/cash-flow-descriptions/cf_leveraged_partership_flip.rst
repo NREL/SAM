@@ -18,7 +18,7 @@ Revenue
 Project Expenses
 ~~~~~~~~~~~~~~~~
 
-The expense rows are for annual project costs calculated from assumptions you specify on the :doc:`Financial Parameters <../financial-parameters/fin_all_equity_partnership>`, :doc:`Installation costs <../installation-costs/installation_costs>`, and :doc:`Operating costs <../operating-costs/operating_costs>` pages.
+The expense rows are for annual project costs calculated from assumptions you specify on the :doc:`Financial Parameters <../financial-parameters/fin_all_equity_partnership>`, :doc:`Installation costs <../installation-costs/index>`, and :doc:`Operating costs <../operating-costs/operating_costs>` pages.
 
 The operating expenses are based on the first year or annual schedule costs you specify on the Operating costs page, and are adjusted by the inflation rate from the :doc:`Financial Parameters <../financial-parameters/fin_all_equity_partnership>` page and optional escalation rate from the Installation costs page.
 

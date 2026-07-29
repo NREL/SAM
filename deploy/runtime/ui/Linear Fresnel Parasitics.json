@@ -1,7 +1,7 @@
 {
     "Name": "Linear Fresnel Parasitics",
-    "Width": 791.0,
-    "Height": 295.0,
+    "Width": 784.0,
+    "Height": 283.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,

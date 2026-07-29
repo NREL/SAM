@@ -22,6 +22,8 @@ DSCR debt sizing note, see Brian email 10/31/2025 "Addtional thoughts on debt si
 
 ## Complete
 
+Custom generation lifetime data per https://github.com/NatLabRockies/SAM/pull/2166. 4/7/2026
+
 New topic for snow download window. 2/3/2026
 
 New revised topics for PV UI redesign. 2/3/2026

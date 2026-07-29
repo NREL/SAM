@@ -1,7 +1,7 @@
 {
     "Name": "Tower SolarPilot Solar Field",
-    "Width": 855.0,
-    "Height": 1188.0,
+    "Width": 856.0,
+    "Height": 1215.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -1560,7 +1560,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1101.0
+                    "Integer": 1122.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2789,7 +2789,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1080.0
+                    "Integer": 1101.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2835,11 +2835,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 396.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1074.0
+                    "Integer": 1092.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2889,7 +2889,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1080.0
+                    "Integer": 1101.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2993,7 +2993,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 336.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -3047,7 +3047,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 201.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3121,7 +3121,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 45.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3183,7 +3183,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 63.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3689,7 +3689,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1101.0
+                    "Integer": 1122.0
                 },
                 "Width": {
                     "Type": 3.0,

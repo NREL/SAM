@@ -1,7 +1,7 @@
 {
     "Name": "Battery Voltage",
-    "Width": 1056.0,
-    "Height": 709.0,
+    "Width": 1055.0,
+    "Height": 732.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 696.0
+                    "Integer": 720.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 567.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 489.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -219,7 +219,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 516.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -302,7 +302,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 402.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,7 +385,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 435.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,7 +468,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 486.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -551,7 +551,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 408.0
+                    "Integer": 432.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -634,7 +634,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 408.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -696,7 +696,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -746,7 +746,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 381.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -796,7 +796,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 204.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -879,7 +879,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 207.0
+                    "Integer": 231.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -962,7 +962,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 258.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1045,7 +1045,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1094,7 +1094,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 417.0
+                    "Integer": 441.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1207,7 +1207,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 111.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1236,7 +1236,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 570.0
+                    "Integer": 594.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1306,7 +1306,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 72.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

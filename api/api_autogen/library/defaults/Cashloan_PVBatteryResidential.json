@@ -16,7 +16,7 @@
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 8.00718
+			"system_capacity": 8.00246
 		},
 		"SystemCosts": {
 			"add_om_num_types": 1,
@@ -32,11 +32,16 @@
 			"om_production": [0.000000],
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 40727.8
+			"total_installed_cost": 40708.4
 		},
 		"LandLease": {
 		},
 		"Depreciation": {
+			"depr_basis_mat": [
+				[1.000000, 30565.380692, 75.083721, 0.000000, 0.000000, 7.000000],
+				[2.000000, 10143.018465, 24.916279, 1.000000, 0.000000, 7.000000]
+			],
+			"depr_en_basis_mat": 1
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": [0.000000],
@@ -55,10 +60,10 @@
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
-			"ptc_fed_term": 10,
+			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"PaymentIncentives": {
 			"cbi_fed_amount": 0,
@@ -170,7 +175,8 @@
 [0]			],
 			"nm_dollars_applied_ym": [
 [0]			],
-			"utility_bill_w_sys": [0]
+			"utility_bill_w_sys": [0],
+			"utility_bill_wo_sys": [0]
 		},
 		"Battery": {
 		},
@@ -189,7 +195,7 @@
 		},
 		"LCOS": {
 			"batt_salvage_percentage": 0,
-			"battery_total_cost_lcos": 10144.4
+			"battery_total_cost_lcos": 10143
 		},
 		"ElectricityRates": {
 			"rate_escalation": [0.000000]

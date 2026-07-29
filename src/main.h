@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -254,6 +254,7 @@ struct InputPageGroup
 	bool OrganizeAsExclusivePages;
 	wxString ExclusivePageVar;
 	std::vector< PageInfo > ExclusiveHeaderPages;
+    std::vector< PageInfo > ExclusiveFooterPages;
     std::vector< PageInfo > BinSummary;
 	bool ExclusiveTabs;
     bool ExclusiveHide;
@@ -325,7 +326,8 @@ public:
 		const wxString &hlpcxt,
 		const wxString &exclvar,
 		const std::vector<PageInfo> &exclhdr_pages,
-		bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top);
+		bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top,
+		const std::vector<PageInfo> &exclftr_pages = std::vector<PageInfo>());
 
 	wxArrayString GetTechnologies();
 	wxArrayString GetFinancingForTech(const wxString &tech);

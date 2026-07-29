@@ -1,7 +1,7 @@
 {
     "Name": "Custom Generation Plant",
-    "Width": 788.0,
-    "Height": 581.0,
+    "Width": 792.0,
+    "Height": 617.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 440.0
+                    "Integer": 478.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 486.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 126.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -123,11 +123,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 33.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -184,15 +184,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 219.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 183.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 143.0
+                    "Integer": 140.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -221,11 +221,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 423.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 387.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -304,11 +304,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 444.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 414.0
+                    "Integer": 450.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -387,11 +387,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 444.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 255.0
+                    "Integer": 291.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -470,15 +470,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 219.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 143.0
+                    "Integer": 140.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -494,7 +494,7 @@
                 },
                 "Label": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "kW"
                 },
                 "Description": {
                     "Type": 5.0,
@@ -502,7 +502,72 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 4.0
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataLifetimeArray": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "energy_output_array_lifetime"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 219.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 140.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 28.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ColumnLabel": {
+                    "Type": 5.0,
+                    "String": "kW"
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "AnalysisPeriod": {
+                    "Type": 3.0,
+                    "Integer": 25.0
+                },
+                "AnnualEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "WeeklyEnabled": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowMode": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
                 }
             }
         },
@@ -515,11 +580,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 423.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 297.0
+                    "Integer": 333.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -598,11 +663,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 423.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 324.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -681,11 +746,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 453.0
+                    "Integer": 444.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 423.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -764,11 +829,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 216.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -826,15 +891,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 405.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 750.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -876,15 +941,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 750.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -926,15 +991,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 237.0
+                    "Integer": 273.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 750.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -976,19 +1041,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 471.0
+                    "Integer": 510.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 768.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 27.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1038,7 +1103,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1046,11 +1111,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 689.0
+                    "Integer": 662.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 71.0
+                    "Integer": 90.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1062,7 +1127,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Calculate generation profiles and nameplate capacity from open cases"
+                    "StringList": "Constant generation profile from nameplate capacity and capacity factor|Import single-year hourly or subhourly generation profile from file|Import lifetime hourly or subhourly generation profile from file|Calculate generation profiles and nameplate capacity from open cases"
                 },
                 "ShowCaptions": {
                     "Type": 2.0,
@@ -1074,7 +1139,7 @@
                 },
                 "TabOrder": {
                     "Type": 3.0,
-                    "Integer": 1.0
+                    "Integer": -1.0
                 }
             }
         },
@@ -1087,11 +1152,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 123.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1170,11 +1235,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1253,11 +1318,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 597.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1455,7 +1520,7 @@
         "energy_output_array": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Hourly or subhourly generation profile",
+            "Label": "Single-year generation profile",
             "Units": "kWac",
             "Group": "Custom Generation Profile",
             "IndexLabels": "",
@@ -1463,7 +1528,22 @@
             "DefaultValue": [
                 0.0
             ],
-            "UIObject": "DataArray",
+            "UIObject": "DataLifetimeArray",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "energy_output_array_lifetime": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Lifetime generation profile",
+            "Units": "kWac",
+            "Group": "Custom Generation Profile",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "DataLifetimeArray",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1525,7 +1605,7 @@
             "Label": "Generic system plant output specification mode",
             "Units": " ",
             "Group": "Custom Generation Profile",
-            "IndexLabels": "Constant generation profile from nameplate capacity and capacity factor|Import hourly or subhourly generation profile from file|Calculate generation profiles and nameplate capacity from open cases",
+            "IndexLabels": "Constant generation profile from nameplate capacity and capacity factor|Import single-year hourly or subhourly generation profile from file|Import lifetime hourly or subhourly generation profile from file|Calculate generation profiles and nameplate capacity from open cases",
             "Flags": 1.0,
             "DefaultValue": 0.0,
             "UIObject": "RadioChoice",
@@ -1593,8 +1673,7 @@
         "\t\t",
         "\t// 1MMBTU = 0.2931 MWh www.convert-measurement-units.com/conversion-calculator.php?type=energy",
         "\treturn 100.0/(${heat_rate} * 0.2931);",
-        "};",
-        "",
+        "};\r",
         "",
         "equations{ 'first_year_output' } = define() {",
         "\toutput = 0.0;",
@@ -1606,6 +1685,23 @@
         "\t\t\t* ${user_capacity_factor}/100",
         "\t\t\t* derate;",
         "\t}",
+        "\telseif(${spec_mode} == 2) {\r",
+        "\t\tgen = ${energy_output_array_lifetime};\r",
+        "\t\tif (#gen > 1) {\r",
+        "\t\t\tsteps_per_year = #(gen) / ${analysis_period};\r",
+        "\t\t\thours_per_step = 8760.0 / steps_per_year;\r",
+        "\t\t\t\r",
+        "\t\t\tstep_per_hr = 1.0 / hours_per_step;\r",
+        "\t\t\toutput = 0;\r",
+        "\t\t\tfor (i = 0; i < 8760 * step_per_hr; i++) {\r",
+        "\t\t\t\toutput += gen[i]*derate;\r",
+        "\t\t\t}\r",
+        "\t\t\toutput *= hours_per_step;\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\toutput = gen[0] * 8760 *derate;\r",
+        "\t\t}\r",
+        "\t}\r",
         "\telse",
         "\t{",
         "\t\toutput = sum(${energy_output_array})*(8760/#(${energy_output_array}))*derate;",
@@ -1621,10 +1717,23 @@
         "\t\toutput = ${system_capacity}",
         "\t\t\t* derate;",
         "\t}",
-        "\telse",
+        "\telse if (${spec_mode} == 1 || ${spec_mode} == 3)",
         "\t{",
         "\t\toutput = max(${energy_output_array});",
-        "\t}",
+        "\t}\r",
+        "\telse if (${spec_mode} == 2) {\r",
+        "\t\tgen = ${energy_output_array_lifetime};\r",
+        "\t\tsteps_per_year = #(gen) / ${analysis_period};\r",
+        "\t\thours_per_step = 8760.0 / steps_per_year;\r",
+        "\t\tstep_per_hr = 1.0 / hours_per_step;\r",
+        "\t\toutput = 0;\r",
+        "\t\tfor (i = 0; i < 8760 * step_per_hr; i++) {\r",
+        "\t\t\tif (gen[i] > output) output = gen[i];\r",
+        "\t\t}\r",
+        "\t\t\t\r",
+        "\t\t\r",
+        "\t}\r",
+        "\t",
         "\treturn output;",
         "};",
         "",
@@ -1638,7 +1747,8 @@
         "\t{",
         "\t\tif ( ${first_year_output_peak} != 0 )",
         "\t\t\toutput = ${first_year_output}/${system_capacity}/8760*100;",
-        "\t}",
+        "\t}\r",
+        "\t\t",
         "\treturn output;",
         "};",
         "",
@@ -1670,7 +1780,7 @@
         "};",
         "",
         "on_change{'btn_selectcases'} = define() {",
-        "\tif ( value('spec_mode') == 2 ) {",
+        "\tif ( value('spec_mode') == 3 ) {",
         "\t\tcombine_cases();",
         "    }",
         "};",
@@ -1691,21 +1801,27 @@
         "}",
         "",
         "function check_inputs() {",
-        "\tmode = value('spec_mode');",
+        "\tmode = value('spec_mode');\r",
+        "\tsingle_year_tech = financing() == \"LCOE Calculator\" || financing() == \"None\";",
         "\tenable('system_capacity',",
-        "\t\tmode == 0 || mode == 1);",
+        "\t\tmode != 3);",
         "\tenable('user_capacity_factor', ",
         "\t\tmode == 0 );",
         "\tenable('energy_output_array',",
-        "\t\tmode == 1 || mode == 2);",
+        "\t\tmode == 1 || mode == 3);\r",
+        "\tenable('energy_output_array_lifetime',\r",
+        "\t\tmode == 2);\t",
         "\tenable('btn_selectcases',",
-        "\t\tmode == 2);",
+        "\t\tmode == 3);",
         "\tenable('system_capacity_combined',",
-        "\t\tmode == 2);",
-        "\tcolor = 'black';\t",
-        "\tif ( mode == 1 )",
-        "\t\ttxt = 'Click \"Edit array...\" to import generation data from a file. After importing the data, type a value for the nameplate capacity, which SAM uses to calculate the capacity factor and dollar amounts from any costs or incentives expressed $/W. Use the calculated values below to help you choose a nameplate capacity value. See Help for details.';",
-        "\telseif ( mode == 2 )",
+        "\t\tmode == 3);",
+        "\tcolor = 'black';\r",
+        "\t// single_year_tech\r",
+        "\tif ( mode == 1 )\r",
+        "        txt = 'Click \"Edit array...\" to import generation data from a file. After importing the data, type a value for the nameplate capacity, which SAM uses to calculate the capacity factor and dollar amounts from any costs or incentives expressed $/W. Use the calculated values below to help you choose a nameplate capacity value. See Help for details.';\t",
+        "\telseif ( mode == 2 )\r",
+        "\t\ttxt = 'Click \"Edit lifetime array...\" to import generation data from a file. After importing the data, type a value for the nameplate capacity, which SAM uses to calculate the capacity factor and dollar amounts from any costs or incentives expressed $/W. Use the calculated values below to help you choose a nameplate capacity value. See Help for details.';\r",
+        "\telseif ( mode == 3 )",
         "\t\ttxt = 'Click \"Select cases...\" to select open cases, simulate those cases and combine their generation profiles into a single profile to be used with this generic case. Click \"Edit array...\" to view or edit the combined simulated productions.';",
         "\telse",
         "\t\ttxt = '';",
@@ -1713,7 +1829,13 @@
         "\t\t\ttxt += ' Nameplate capacity exceeds 110% of peak generation.';",
         "\t\t\tcolor = 'red';",
         "\t\t}\t",
-        "*/\t\t",
+        "*/\t\r",
+        "\t// Overwrite text with error message\r",
+        "\tif (mode == 2 && single_year_tech) {\r",
+        "\t\tcolor = 'red';\r",
+        "\t\ttxt = 'This financial model only runs single year data. To avoid the model interpreting lifetime data as subhourly, please choose an option besides importing lifetime data.';\r",
+        "\t}\r",
+        "",
         "\tproperty('import_message','caption',txt);",
         "\tproperty('import_message','TextColour',color);",
         "}",
@@ -1731,7 +1853,6 @@
         "\telse {",
         "\t\tproperty('adjust', 'AnalysisPeriod', 1);",
         "\t}",
-        "}",
-        ""
+        "}"
     ]
 }

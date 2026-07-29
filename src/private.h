@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -35,17 +35,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // by default, should be NULL
 static const char *version_label = 0; //"iscc-ge";
 
-// NREL Developer API:
-// For calls to NREL Developer APIs for weather file downloads, REopt calls, etc.
+// NLR Developer API:
+// For calls to NLR Developer APIs for weather file downloads, REopt calls, etc.
 // Get an API key at https://developer.nlr.gov
 const char *sam_api_key = "";
 
-// Email address used to register for NREL Developer API
-// For calls to NSRDB and other NREL Developer APIs that require an email address
+// Email address used to register for NLR Developer API
+// For calls to NSRDB and other NLR Developer APIs that require an email address
 const char* user_email = "";
 
 // Google APIs:
-// For non-NREL builds of SAM, use this instead of NREL geocoding API
+// For non-NLR builds of SAM, use this instead of NLR geocoding API
 // Requires Google Cloud account and subscription https://cloud.google.com
 const char *google_api_key = "";
 
@@ -55,7 +55,7 @@ const char *google_api_key = "";
 // Get a an Azure Maps key at https://azure.microsoft.com/
 const char *azure_api_key = "";
 
-// Private NREL Developer geocoding API for NREL versions of SAM
+// Private NLR Developer geocoding API for NLR versions of SAM
 const char *geocode_api_key = "";
 
 // specific to SAM and SAM-private - can be separate include file

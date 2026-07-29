@@ -1,7 +1,7 @@
 {
     "Name": "Battery Dispatch Standalone Options BTM",
-    "Width": 1056.0,
-    "Height": 188.0,
+    "Width": 1057.0,
+    "Height": 208.0,
     "FormObjects": {
         "CheckBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 87.0
                 },
                 "Width": {
                     "Type": 3.0,

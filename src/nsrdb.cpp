@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -566,7 +566,7 @@ void NSRDBDialog::GetResources()
 	double lat, lon;
 	if (is_addr)	//entered an address instead of a lat/long
 	{
-		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+		// use GeoTools::GeocodeGoogle for non-NLR builds and set google_api_key in private.h
 		if (!GeoTools::GeocodeDeveloper(location, &lat, &lon))
 		{
 			wxMessageBox("Failed to geocode address.\n\n" + location, "NSRDB Download Message", wxOK, this);

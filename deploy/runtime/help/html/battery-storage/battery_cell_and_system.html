@@ -1,0 +1,1587 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Battery Cell and System &#8212; SAM Help</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2da3bde9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'battery-storage/battery_cell_and_system';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Battery Dispatch BTM" href="battery_dispatch_btm.html" />
+    <link rel="prev" title="Battery Overview" href="battery_storage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/SAM-logo-horizontal.png" class="logo__image only-light" alt="SAM Help - Home"/>
+    <script>document.write(`<img src="../_static/SAM-logo-horizontal.png" class="logo__image only-dark" alt="SAM Help - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">About SAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/technology_options.html">Performance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/fin_overview.html">Financial Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/user_support.html">User Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/keep_up_to_date.html">SAM Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/component_models_databases.html">Models and Databases</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/welcome_page.html">Welcome Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/create_project.html">Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/choose_models.html">Choose Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/main_window.html">Main Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/input_pages.html">Input Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/costs.html">Costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/financial_model_inputs.html">Financial Model Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/run_simulations.html">Run Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/results_page.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/youtube_channel.html">Videos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_menu.html">File Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/case_menu.html">Case Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/manage_cases.html">Manage Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/export_data.html">Export Data and Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/inputs_browser.html">Inputs Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/time_series_viewer.html">Time Series Data Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/weekday_schedule.html">Weekday Weekend Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/notes.html">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/excel_exchange.html">Excel Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/macros.html">Macros and Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sdk.html">Software Development Kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_formats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/installation.html">Software Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/registration.html">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/configure_proxy_server.html">Web Access and Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/function_keys.html">Keyboard Shortcuts</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../window-reference/index.html">Window reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_combine_cases.html">Combine Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_array.html">Edit Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_lifetime.html">Edit Lifetime Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_losses.html">Edit Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_material_properties.html">Edit Material Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_monthly_values.html">Edit Monthly Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_column.html">Edit Data Table by Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_row.html">Edit Data Table by Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_parametric_variables.html">Edit Parametric Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_shading_data.html">Edit Shading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_parametric_quick_setup.html">Parametric Quick Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nohrsc_advanced_download.html">Advanced NOHRSC Download Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nsrdb_advanced_download.html">NSRDB Advanced Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_ptes_design_pt.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wave_download.html">Wave Resource Data Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wind_toolkit_download.html">WIND Toolkit Download</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../simulation-options/index.html">Simulation Options</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/simulation_options.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/parametrics.html">Parametric Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/stochastic.html">Stochastic Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/p50p90.html">P50/P90 Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/pvuncertainty.html">Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/release_notes.html">Release Notes</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weather Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-data/index.html">Weather Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data.html">Weather Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_manage_folders.html">Folders and Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data_elements.html">Weather Data Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_typical_single.html">Typical and Single Year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_time_convention.html">Time and Sun Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/accessing-weather-data-from-lk.html">Weather Data and LK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/irradiance_error_codes.html">Irradiance Error Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-file-formats/index.html">Weather File Formats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format.html">Weather File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_sam_csv_solar.html">SAM CSV Format for Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_wind.html">SAM CSV Format for Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_marine_energy.html">CSV Format for Marine Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_srw_wind.html">SRW Format for Wind</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../detailed-photovoltaic-model/index.html">Detailed Photovoltaic Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_overview.html">Getting Started with the Detailed Photovoltaic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_system_size.html">System Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_tracking_layout_land.html">Tracking Layout Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_soiling_shading_snow.html">Soiling Shading Snow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_electrical_losses.html">Electrical Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_sizing_instructions.html">PV Sizing Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_results.html">Detailed PV Model Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pvwatts/index.html">PVWatts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts.html">PVWatts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_results.html">PVWatts Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-concentration-photovoltaic/index.html">High Concentration Photovoltaic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_overview.html">High Concentration Photovoltaic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_results.html">Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Battery Storage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="battery_storage.html">Battery Overview</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Battery Cell and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="battery_dispatch_btm.html">Battery Dispatch BTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="battery_dispatch_fom.html">Battery Dispatch FOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="battery_time_step.html">Battery Time Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="battery_life.html">Battery Life</a></li>
+<li class="toctree-l2"><a class="reference internal" href="battery_results.html">Battery Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hybrid-systems/index.html">Hybrid Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_systems.html">Hybrid Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system.html">Hybrid System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system_costs.html">Hybrid System costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../wind-power/index.html">Wind Power</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_power.html">Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_resource.html">Wind Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_turbine.html">Wind Turbine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_farm.html">Wind Farm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_uncertainties.html">Uncertainties</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-wave/index.html">Marine Energy Wave</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave.html">Marine Energy Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_resource.html">Wave Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_converter.html">Wave Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-tidal/index.html">Marine Energy Tidal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal.html">Marine Energy Tidal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_resource.html">Tidal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_converter.html">Tidal Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../solar-water-heating/index.html">Solar Water Heating</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_overview.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_system.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_results.html">Solar Water Heating Model Hourly Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fuel-cell/index.html">Fuel Cell</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_fuel_cell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_dispatch.html">Fuel Cell Dispatch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../biopower/index.html">Biomass Combustion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower.html">Biomass Combustion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_location_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock.html">Feedstock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_plant_specs.html">Plant Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_emissions.html">Emissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock_costs.html">Feedstock costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geothermal/index.html">Geothermal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_overview.html">Geothermal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_geothermal_resource.html">Geothermal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_plant_equipment.html">Plant and Equipment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_power_block.html">Power Block</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../custom-generation/index.html">Custom Generation Profile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation.html">Custom Generation Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation_profile.html">Generation Profile</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concentrating Solar-Thermal Power</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-empirical-trough-model/index.html">CSP Empirical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_overview.html">CSP Empirical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-physical-trough-model/index.html">CSP Physical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_overview.html">CSP Physical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_script_parameters.html">Script-only Parameters</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-power-tower-molten-salt/index.html">CSP Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_overview.html">CSP Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_tower_and_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_electric_htf_heater.html">Electric HTF Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/index.html">CSP Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_overview.html">CSP Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/index.html">CSP Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_overview.html">CSP Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-generic-solar/index.html">CSP Generic Solar</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_overview.html">CSP Generic Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_thermal_storage.html">Thermal Storage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-parabolic-trough/index.html">IPH Parabolic Trough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough.html">IPH Parabolic Trough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_collectors.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_receivers.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_tes.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/index.html">IPH Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds.html">IPH Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_collector_receiver.html">Collector and Receiver</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/index.html">IPH Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf.html">IPH Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_collector_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-power-tower-molten-salt/index.html">IPH Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt.html">IPH Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_tower_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electric-thermal-energy-storage/index.html">Electric Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes.html">Electric Thermal Energy Storage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_heater.html">Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pumped-thermal-energy-storage/index.html">Pumped Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_energy_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_heat_pump.html">Heat Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Degradation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../degradation/index.html">Degradation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation.html">Degradation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_ac.html">AC Degradation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_dc.html">DC Degradation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grid</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grid/index.html">Grid</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_limits.html">Grid Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_outage.html">Grid Outage</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Financial Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation-costs/index.html">Installation costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_pv.html">PV Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_standalone_battery.html">Battery Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_wind.html">Wind Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_geothermal.html">Geothermal Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_swh.html">SWH Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_fuel_cell.html">Fuel Cell Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_biopower.html">Biomass Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_custom_generation.html">Custom Generation Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_trough.html">Trough Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_tower.html">Tower Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_linear_fresnel.html">Fresnel Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_generic_solar.html">Generic Solar System (GSS) costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_etes.html">ETES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_ptes.html">PTES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_marine_energy.html">Marine Energy Installation costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../operating-costs/index.html">Operating costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/operating_costs.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_operating.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_battery.html">Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_pv-battery.html">PV Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_fuel_cell.html">Fuel Cell Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_marine_energy.html">Marine Energy Operating costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-parameters/index.html">Financial Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_overview.html">Financial Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_residential.html">Residential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_commercial.html">Commercial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host.html">Third Party Ownership - Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host_developer.html">Third Party Ownership - Host / Developer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_community_solar.html">Community Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_single_owner.html">Single Owner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_merchant_plant.html">Merchant Plant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_leveraged_partnership.html">Leveraged Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_all_equity_partnership.html">All Equity Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_sale_leaseback.html">Sale Leaseback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoefcr.html">LCOE Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoh.html">LCOH Calculator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../revenue/index.html">Revenue</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_ppa.html">PPA Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_merchant_plant.html">Merchant Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_tod_factors.html">Time of Delivery Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_iph.html">Industrial Process Heat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../incentives-and-depreciation/index.html">Incentives and Depreciation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/cash_incentives.html">Cash Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/tax_credits_depreciation.html">Tax Credits and Depreciation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electricity-rates-and-load/index.html">Electricity Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_load.html">Electric Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_rates.html">Electricity Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_purchases.html">Electricity Purchases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_bill_results.html">Electricity Bill Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../thermal-rates-and-load/index.html">Thermal Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_load.html">Thermal Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_rates.html">Thermal Rates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../results/index.html">Results Page</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../results/results.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/graphs.html">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/data.html">Data Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/cashflow.html">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/timeseries.html">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/profiles.html">Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/heatmap.html">Heat Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/pdfcdf.html">PDF / CDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/uncertainties.html">Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/spatial.html">Spatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/notices.html">Notices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-metrics/index.html">Financial Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_overview.html">Financial Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_debt_and_equity.html">Debt and Equity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_revenues.html">Electricity Bill and Savings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_indifference_point.html">Indifference Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_irr.html">Internal Rate of Return (IRR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_levelized.html">Levelized Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcoe.html">Levelized cost of Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcos.html">Levelized Cost of Storage (LCOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lppa.html">Levelized PPA price (LPPA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_npv.html">Net Present Value (NPV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_payback.html">Payback Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_price.html">PPA Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_escalation.html">PPA Price Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_costs.html">Net Capital Cost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance-metrics/index.html">Performance Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_overview.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_biomass_usage.html">Annual Biomass Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_energy.html">Annual Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_water_usage.html">Annual Water Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_aux_w_wo_solar.html">Aux with and without Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_capacity_factor.html">Capacity Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_kwhkwyear1.html">Energy Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_gross_to_net_conv_factor.html">Gross-to-net Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_heat_rate.html">Heat Rate and Thermal Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_pump_power.html">Pump Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_p90_energy.html">p90 Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_solar_fraction.html">Solar Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_system_performance_factor.html">Performance Ratio</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Shade Calculator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-reference/index.html">3D Shade Calculator Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-overview.html">3D Shade Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shade-data-description.html">Shade data description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-create.html">Active surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shading-objects.html">Shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-3d-scene.html">3D scene view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-birds-eye.html">Bird’s eye view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-elevations.html">Elevations view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-analyze.html">Analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-import_export.html">Import and Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-save-close.html">Save and Close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shortcuts.html">Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-file-types.html">File Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-howto/index.html">3D Shade Calculator How-To</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-define-location.html">Define the scene location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-underlay.html">Use an image underlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-add-shading-objects.html">Add shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-active-surface.html">Add active surface objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-change-view.html">Change the view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-zoom-pan.html">Zoom and pan the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-select.html">Select an object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-move.html">Move objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-resize.html">Resize objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-rotate.html">Rotate objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-delete.html">Delete and copy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-colors.html">Change object colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-generate-data.html">Generate shade data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-export.html">Export shade data</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/battery-storage/battery_cell_and_system.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Battery Cell and System</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-the-meter-btm-and-front-of-meter-fom-batteries">Behind-the-meter (BTM) and Front-of-meter (FOM) Batteries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lead-acid">Lead Acid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lithium-ion">Lithium Ion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-batteries">Flow Batteries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-bank-sizing">Battery Bank Sizing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-desired-bank-size-automatic-sizing">Set Desired Bank Size: Automatic Sizing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-cells-manual-sizing">Specify Cells: Manual Sizing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations-for-automatic-bank-sizing">Calculations for Automatic Bank Sizing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-and-capacity">Current and Capacity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lead-acid-and-lithium-ion-battery-parameters">Lead Acid and Lithium-ion Battery Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-battery-parameters">Flow Battery Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-properties">Computed Properties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-converters">Power Converters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dc-connected-pv-battery-only">DC Connected (PV Battery Only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ac-connected">AC Connected</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charge-limits-and-priority">Charge Limits and Priority</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-voltage">Battery Voltage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrochemical-model">Electrochemical Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-table">Voltage Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-losses">Battery Losses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-equipment-losses">Ancillary Equipment Losses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losses-by-operating-mode">Losses by operating mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-losses">Time series losses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-availability">Battery Availability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-thermal">Battery Thermal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-properties">Thermal Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacity-fade-with-temperature">Capacity Fade with Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-properties">Physical Properties</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="battery-cell-and-system">
+<h1>Battery Cell and System<a class="headerlink" href="#battery-cell-and-system" title="Link to this heading">#</a></h1>
+<p>The Battery Cell and System page displays inputs describing the battery’s performance characteristics.</p>
+<section id="behind-the-meter-btm-and-front-of-meter-fom-batteries">
+<h2>Behind-the-meter (BTM) and Front-of-meter (FOM) Batteries<a class="headerlink" href="#behind-the-meter-btm-and-front-of-meter-fom-batteries" title="Link to this heading">#</a></h2>
+<p>The financial model determines whether you are modeling a behind-the-meter (BTM) or front-of-meter (FOM) battery.</p>
+<p>A BTM battery can discharge to the grid or to meet a building or facility’s electricity load. A BTM battery may be standalone or installed with on-site power generating equipment to reduce a residential or commercial building or facility owner’s electricity bill. SAM assumes the battery is BTM for the Distributed financial models (Residential, Commercial, and Third Party Ownership).</p>
+<p>A FOM battery can only discharge to the grid. It may be standalone or installed as part of a power generation project to maximize revenue for a power generation project. The battery is FOM for the PPA financial models (Single Owner, Partnership Flip, Sale Leaseback) and for the Merchant Plant model.</p>
+<p>The battery in a PV-battery application may be connected either to the AC or DC side of the inverter.</p>
+<img alt="IMG_BATT-BTM-configurations.png" class="align-center" src="../_images/IMG_BATT-configurations.png" />
+<p>Figure 1: Battery Configurations. Standalone battery is the same as Custom Generation Profile but with no system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a DC-connected PV-storage system, SAM assumes that the inverter on the Inverter page is a bidirectional or hybrid inverter that converts both DC power to AC and AC power to DC whether or not the inverter actually supports bidirectional conversion. You can use the “CEC hybrid” field in the inverter library to help identify bidirectional inverters.</p>
+</div>
+</section>
+<section id="chemistry">
+<h2>Chemistry<a class="headerlink" href="#chemistry" title="Link to this heading">#</a></h2>
+<p>The battery type defines the battery chemistry for (lithium ion, lead acid, or flow battery), and the type of battery for each chemistry. When you choose a battery type, SAM automatically changes the battery property input variables to default values for that type. These default values were drawn from DiOrio (2015) “Technoeconomic Modeling of Battery Energy Storage in SAM” available <a class="reference external" href="https://sam.nlr.gov/battery-storage/battery-publications.html">here</a>, which also includes more details on how SAM calculates battery capacity.</p>
+<dl>
+<dt><strong>Battery type</strong></dt><dd><p>Choose the battery chemistry and battery type for the batteries in your system.</p>
+<p>When you choose a battery type, SAM replaces the values of <strong>Voltage Properties</strong> and <strong>Current and Capacity</strong> input variables as appropriate with values for each battery type.</p>
+<p>When you choose a custom battery type for either the lead acid or lithium ion chemistry, SAM does not replace the input variable values.</p>
+</dd>
+</dl>
+<p>To model a battery type not included in the list, choose either <strong>Lead Acid: Custom</strong> or <strong>Lithium Ion: Custom</strong>, and specify your voltage, current, and capacity properties appropriate for the battery.
+When you choose the custom lead acid battery type, SAM retains the capacity and discharge rate values from the table below from the previous state. For example, if you change the battery type from flooded lead acid to custom lead acid, SAM will apply the capacity/discharge rate table for flooded batteries to your custom battery.</p>
+<section id="lead-acid">
+<h3>Lead Acid<a class="headerlink" href="#lead-acid" title="Link to this heading">#</a></h3>
+<p>The three lead acid battery types use the lead acid battery capacity model described in DiOrio (2015), cited above:</p>
+<ul class="simple">
+<li><p>Flooded lead acid batteries with a liquid electrolyte.</p></li>
+<li><p>Valve Regulated (VRLA) batteries are sealed, and the electrolyte is bound in a gel.</p></li>
+<li><p>VRLA Absorptive Glass Mat (AGM) batteries are sealed, and the electrolyte is immobilized in porous separators.</p></li>
+</ul>
+<p>Lead acid battery capacity is dependent on the discharge rate. When you choose different lead-acid battery types from the list, SAM changes internal variable values that define the relationship between capacity and discharge rate as shown in the table below. It is not possible to change these values from the Battery Storage input page. These values are based on analysis of information for batteries from different manufacturers. SAM considers the 20-hour discharge rate to be the nominal capacity of a lead-acid battery and scales the capacity at faster discharge rates as a percent of the that 20-hour capacity.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Discharge Rate</p></th>
+<th class="head"><p>Flooded Capacity %</p></th>
+<th class="head"><p>VRLA Gel Capacity %</p></th>
+<th class="head"><p>VRLA AGM Capacity %</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>20-hr ( 0.05 C )</p></td>
+<td><p>100</p></td>
+<td><p>100</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>10-hr ( 0.1C )</p></td>
+<td><p>87</p></td>
+<td><p>84.9</p></td>
+<td><p>93.2</p></td>
+</tr>
+<tr class="row-even"><td><p>1-hr ( C )</p></td>
+<td><p>47</p></td>
+<td><p>63.1</p></td>
+<td><p>58.1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lithium-ion">
+<h3>Lithium Ion<a class="headerlink" href="#lithium-ion" title="Link to this heading">#</a></h3>
+<p>The six lithium ion battery types use of the lithium-ion battery capacity model described in DiOrio (2015) “Technoeconomic Modeling of Battery Energy Storage in SAM” cited above:</p>
+<ul class="simple">
+<li><p>LMO: Lithium Manganese Oxide (<img alt="EQ_BATT_lmo" src="../_images/EQ_BATT_lmo.png" />) – An inexpensive high-voltage cathode material with high power capabilities but potentially lower lifespan.</p></li>
+<li><p>LFP: Lithium Iron Phosphate (<img alt="EQ_BATT_lfp" src="../_images/EQ_BATT_lfp.png" /> – A lower voltage cathode material with excellent safety properties but lower volumetric energy.</p></li>
+<li><p>LCO: Lithium Cobalt Oxide (<img alt="EQ_BATT_lco" src="../_images/EQ_BATT_lco.png" /> – Among the first and still a common cathode material with high specific energy, but potentially costly and toxic.</p></li>
+<li><p>LTO: Lithium Titanate (<img alt="EQ_BATT_lto" src="../_images/EQ_BATT_lto.png" /> – A promising anode material with excellent lifetime properties but lower specific capacity and important cost considerations.</p></li>
+<li><p>NMC: Nickel Manganese Cobalt (<img alt="EQ_BATT_nmc" src="../_images/EQ_BATT_nmc.png" /> – A less expensive cathode material than LCO with potentially improved safety characteristics</p></li>
+<li><p>NCA: Nickel Cobalt Aluminum (<img alt="EQ_BATT_nca" src="../_images/EQ_BATT_nca.png" /> – Similar in respects to NMC as a cathode material with high specific energy</p></li>
+</ul>
+<p>When you choose a lithium ion battery, SAM assigns values to voltage, lifetime, and thermal properties as appropriate from Reddy (2011), available <a class="reference external" href="https://sam.nlr.gov/battery-storage/battery-publications.html">here</a>, and from manufacturer data sheets. SAM does not change any internal variables or calculations.</p>
+</section>
+<section id="flow-batteries">
+<h3>Flow Batteries<a class="headerlink" href="#flow-batteries" title="Link to this heading">#</a></h3>
+<p>Flow battery designers can decouple power output (kW) from energy capacity (kWh) when sizing systems. Flow batteries may be able to cycle more deeply and operate for more total cycles than lithium ion or lead acid batteries, but flow batteries also have pumps, which should be considered when calculating <strong>Ancillary Equipment Losses</strong>.</p>
+<dl>
+<dt><strong>Vanadium Redox Flow</strong></dt><dd><p>The vanadium redox flow battery model available in SAM comes from R. D’Agnostino et. al, (2014) “A Vanadium-Redox Flow-Battery Model for Evaluation of Distributed Storage Implementation in Residential Energy Systems”</p>
+<p>VRFB: Vanadium Redox Flow (V  <sup>2+</sup>,V  <sup>3+</sup>   <em>anolyte</em>  ), (VO  <sup>2+</sup>, VO  <sup>2+</sup>, <em>catholyte</em>  )</p>
+</dd>
+<dt><strong>All Iron Redox Flow</strong></dt><dd><p>The all iron redox flow battery model available in SAM shares the same input field framework as the vanadium flow battery, but relies on tabular voltage vs. depth-of-discharge in place of a voltage model. Default iron flow battery values are based on preliminary manufacturer data and feedback for an all-iron hybrid-redox flow battery.</p>
+<p>AIFB: All Iron Redox Flow (Fe  <sup>2+</sup>, Fe  <sup>3+</sup>  )</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="battery-bank-sizing">
+<h2>Battery Bank Sizing<a class="headerlink" href="#battery-bank-sizing" title="Link to this heading">#</a></h2>
+<p>The two battery bank sizing options allow you to either automatically size the battery bank based on desired size, or to manually specify the number of cells per string and strings in parallel.</p>
+<p>The automatic option uses the basic equations described below to determine numbers of cells and strings or stacks, which may not always result in realistic values. If you use the automatic sizing option, be sure to check the <strong>Computed Properties</strong> values to be sure they are what you expect.</p>
+<section id="set-desired-bank-size-automatic-sizing">
+<h3>Set Desired Bank Size: Automatic Sizing<a class="headerlink" href="#set-desired-bank-size-automatic-sizing" title="Link to this heading">#</a></h3>
+<p>For automatic sizing choose <strong>Set desired bank size</strong>.</p>
+<dl>
+<dt><strong>Desired bank power, kW</strong></dt><dd><p>The battery’s maximum discharge rate in kW. Compare this to <strong>Maximum discharge power</strong> under <strong>Computed Properties</strong> to verify that SAM calculated a discharge power close enough to the desired value to meet your requirements.</p>
+<p>The desired bank power can be in either DC kW or AC kW depending on whether you choose <strong>DC units</strong> or <strong>AC units</strong>. If you use AC units, SAM calculates the nominal bank power in DC kW using the appropriate conversion efficiency from the <strong>Power Converters</strong> section for either an AC- or DC-connected battery.</p>
+</dd>
+<dt><strong>Desired bank capacity, h or kWh</strong></dt><dd><p>The nominal size of the battery bank. Choose h   to specify the size in hours of storage at the nominal discharge rate, or choose kWh   to specify the size in kWh of available energy. Compare this to <strong>Nominal bank capacity</strong> under <strong>Computed Properties</strong> to verify that SAM calculated a nominal value close enough to the desired value to meet your requirements.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some battery data sheets provide both a nominal battery capacity and an available or usable battery capacity that is less than the nominal capacity. Use the higher nominal capacity value for the desired bank size, and then use the inputs under <strong>Charge Limits and Priority</strong> on the Battery Dispatch page to limit the battery to the available capacity. This will ensure that SAM calculates costs in $/kWh based on the nominal capacity.</p>
+</div>
+</section>
+<section id="specify-cells-manual-sizing">
+<h3>Specify Cells: Manual Sizing<a class="headerlink" href="#specify-cells-manual-sizing" title="Link to this heading">#</a></h3>
+<p>For manual sizing choose <strong>Specify cells</strong>.</p>
+<dl class="simple">
+<dt><strong>Number of cells in series</strong></dt><dd><p>The number of cells in series in each string of the battery bank. The number of cells in series determines the maximum discharge power and the nominal bank voltage.</p>
+</dd>
+<dt><strong>Number of strings in parallel</strong></dt><dd><p>The number of strings of cells in parallel in the battery bank. The number of strings in parallel determines the nominal bank capacity.</p>
+</dd>
+<dt><strong>Max C-rate of charge, per/hour</strong></dt><dd><p>The maximum charge rate as a fraction of the battery bank capacity. For example, a 10 kWh battery with C-rate of charge of 0.5 can charge at a maximum rate 10 kWh × 0.5/h = 5 kW.</p>
+</dd>
+<dt><strong>Max C-rate of discharge, per/hour</strong></dt><dd><p>The maximum discharge rate as a fraction of the battery bank capacity. For example, a 10 kWh battery with C-rate of discharge of 0.5 can discharge at a maximum rate 10 kWh × 0.5/h = 5 kW.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For flow batteries, the capacity and power are decoupled so the the C-rate is a calculated value rather than an input.</p>
+</div>
+</section>
+<section id="calculations-for-automatic-bank-sizing">
+<h3>Calculations for Automatic Bank Sizing<a class="headerlink" href="#calculations-for-automatic-bank-sizing" title="Link to this heading">#</a></h3>
+<p>SAM’s bank sizing calculations use basic equations using the cell property information you specify. The calculated values are designed to help you get started with your system design. They do not account for many real-life design factors. You should use these values for an initial preliminary analysis and then use <strong>Specify cells</strong> for conventional batteries or <strong>Specify capacity and stack configuration</strong> for flow batteries to refine your analysis.</p>
+<dl>
+<dt><strong>Number of cells in series, Number of cells per stack</strong></dt><dd><p>SAM calculates a number of cells in series for a conventional battery, or cells per stack for a flow battery assuming one stack, that either meets exactly or slightly exceeds the desired bank voltage based on the cell nominal voltage. For example, for a desired bank voltage of 24 V with a nominal cell voltage of 3.6 V, SAM calculates <em>24 V ÷ 3.6 V/cell = 6.7</em>, or 7 cells in series. The actual nominal bank voltage is <em>3.6 V/cell × 7 cells = 25.2 V</em>. SAM displays the actual battery bank properties as calculated values under Current and Capacity.</p>
+</dd>
+<dt><strong>Number Strings in parallel (Lithium-ion and Lead-acid Batteries)</strong></dt><dd><p>SAM calculates the bank capacity by determining the number of strings of cells in parallel required to ensure that the actual capacity is as close as possible to the desired value given the cell capacity that you specify under <strong>Current and Capacity</strong>. For the example above, if the desired bank capacity is 3 kWh, and the cell capacity is 1.5 Ah, the calculated bank voltage would be 25.2 V, and one string of cells has a capacity of <em>25.2 V × 1.5 Ah = 37.8 Wh</em>, or 0.0378 kWh. To reach the desired bank capacity of 3 kWh: <em>3 kWh ÷ 0.0378 kWh/string = 79.4</em>, or 80 strings.</p>
+<p>The calculated C-rates of charge and discharge are the desired bank power divided by the computed bank capacity.</p>
+</dd>
+<dt><strong>Capacity and Stack Configuration (Flow Batteries)</strong></dt><dd><p>For flow batteries, the capacity is independent of the power block and can be specified exactly by the amount of electrolyte in the tanks. SAM sets nominal bank capacity to the desired capacity you specify. SAM calculates the nominal power ratings using the desired stack (bank) voltage and other properties in the <strong>Current and Capacity</strong> group. The number of stacks in parallel is depends on whether the cells are power limited or current limited.</p>
+<p>For the <strong>Power limited</strong> option, the number of stacks in parallel is the ceiling of the desired bank power divided by the product of <strong>Cell max power discharge</strong> and the number of cells in the stack (assuming one stack in series). For example, consider a flow battery with a desired bank capacity of 100 kWh, bank power of 50 kW, and bank voltage of 48V with 1.4V cells and a cell power discharge max of 2W. The number of cells in the stack is <em>ceiling(48V ÷ 1.4V/cell) = ceiling(34.2 cells) = 35 cells</em>  . The bank voltage is <em>35 cells × 1.4V/cell = 49V</em>  . To achieve 50KW with limitations of 2W/cell, there must be <em>ceiling(50 kW / (0.002 kW/cell * 35 cells)) = 715 stacks in parallel</em>.</p>
+<p>For the <strong>Current limited</strong> option, the number of stacks in parallel is the ceiling of the desired bank power divided by the product of the battery bank voltage and <strong>Cell max current discharge</strong>. In the example above, if all properties are the same except the battery is current limited with 10A per cell (and consequently per stack), the number of stacks in parallel must be: <em>ceiling(50 kW / (49V * 10 A * 0.001) ) = 103 stacks in parallel</em>.</p>
+<p>For the <strong>Limit both current and power</strong> option, the stacks are sized by using the current limit, and within the model at each time step the current and power through the cells are checked and reduced if necessary.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="current-and-capacity">
+<h2>Current and Capacity<a class="headerlink" href="#current-and-capacity" title="Link to this heading">#</a></h2>
+<p>The Current and Capacity parameters depend on the battery chemistry:</p>
+<ul class="simple">
+<li><p>For lead acid and Lithium-ion batteries, you specify a cell capacity value, and SAM displays the computed properties based on the battery bank sizing parameters.</p></li>
+<li><p>For flow batteries, you choose whether the battery is power- or current-limited and specify minimum and maximum rates.</p></li>
+</ul>
+<section id="lead-acid-and-lithium-ion-battery-parameters">
+<h3>Lead Acid and Lithium-ion Battery Parameters<a class="headerlink" href="#lead-acid-and-lithium-ion-battery-parameters" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>Desired bank voltage</strong></dt><dd><p>The battery bank voltage you are trying to achieve in your design. This input is only enabled when you choose <strong>Set desired bank size</strong>. SAM calculates the number of cells in series based on the desired bank voltage and cell nominal voltage:</p>
+<p><em>Number of Cells in Series = ROUND UP ( Desired Bank Voltage ÷ Cell Nominal Voltage )</em></p>
+</dd>
+<dt><strong>Cell nominal voltage</strong></dt><dd><p>The reference voltage of a single, fully charged cell in the battery as reported by the manufacturer. The typical nominal voltage for a lead acid cell is 2 V, and for lithium ion cell is 3.7 V.</p>
+<p>SAM uses the nominal voltage to size the battery bank and compute the battery bank’s nominal voltage.</p>
+</dd>
+<dt><strong>Cell capacity</strong></dt><dd><p>The capacity of a single cell when the battery is fully charged. SAM sets this value to a default value when you choose a battery chemistry, but you can change its value.</p>
+</dd>
+</dl>
+</section>
+<section id="flow-battery-parameters">
+<h3>Flow Battery Parameters<a class="headerlink" href="#flow-battery-parameters" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>Desired bank voltage</strong></dt><dd><p>The battery bank voltage you are trying to achieve in your design. This input is only enabled when you choose <strong>Set desired bank size</strong>. SAM calculates the number of cells in series based on the desired bank voltage and cell nominal voltage:</p>
+<p><em>Number of Cells in Series = ROUND UP ( Desired Bank Voltage ÷ Cell Nominal Voltage )</em></p>
+</dd>
+<dt><strong>Cell nominal voltage</strong></dt><dd><p>The reference voltage of a single, fully charged cell in the battery as reported by the manufacturer.</p>
+<p>SAM uses the nominal voltage to size the battery bank and compute the battery bank’s nominal voltage.**Power limited with Cell max power charge and discharge**
+Limit the maximum charge and discharge power.</p>
+</dd>
+<dt><strong>Current limited with Cell max current charge and discharge</strong></dt><dd><p>Limit the maximum charge and discharge current.</p>
+</dd>
+<dt><strong>Limit both current and power</strong></dt><dd><p>Limit both the charge limits by both power and current.</p>
+</dd>
+</dl>
+</section>
+<section id="computed-properties">
+<h3>Computed Properties<a class="headerlink" href="#computed-properties" title="Link to this heading">#</a></h3>
+<p>The computed properties are a summary of the battery bank system design. The values may either be ones that you specify or that SAM calculates depending on whether you choose the <strong>Set desired bank size</strong> or <strong>Specify cells</strong> option.</p>
+<dl>
+<dt><strong>Nominal bank capacity, DC kWh</strong></dt><dd><p>The nominal size of the battery. SAM uses this value in battery cost calculations with $/kWh units, and to determine the battery state of charge and capacity reduction over the battery life.</p>
+<p><em>Nominal Bank Capacity (DC kWh) = Cell Capacity (Ah) × Cell Voltage (VDC) × Total Number of Cells</em></p>
+<p>The cell voltage is shown under <strong>Battery Voltage</strong>.</p>
+</dd>
+<dt><strong>Nominal bank power, DC kW</strong></dt><dd><p>The nominal maximum discharge power in DC kW. SAM uses this value in battery cost calculations with $/kW units.</p>
+</dd>
+<dt><strong>Time at maximum power</strong></dt><dd><p>The number of hours the battery could discharge continuously at its maximum discharge power. This is either the input value you provide under <strong>Battery Bank Sizing</strong>, or calculated as:</p>
+<p><em>Time at Maximum Power (h) = Nominal Bank Capacity (kWh) ÷ Maximum Discharge Power (kW)</em></p>
+</dd>
+<dt><strong>Nominal bank voltage, VDC</strong></dt><dd><p>The nominal voltage of the battery bank.</p>
+<p><em>Nominal Bank Voltage (VDC) = Cell Voltage (VDC) × Cells in Series</em></p>
+</dd>
+<dt><strong>Total number of cells</strong></dt><dd><p>The product of cells (stacks) in series and strings (stacks) in parallel.</p>
+</dd>
+<dt><strong>Cells in series / Cells per stack</strong></dt><dd><p>The number of cells in series in each string.</p>
+<p>If you choose <strong>Set desired bank size</strong> under <strong>Battery Bank Sizing</strong>:</p>
+<p><em>Cells in Series = Nominal Bank Voltage (VDC) ÷ Nominal Cell Voltage (VDC)</em></p>
+<p>If you choose <strong>Specify cells</strong>, then this is the value you entered for <strong>Number of cells in series</strong> under <strong>Battery Bank Sizing</strong>.</p>
+</dd>
+<dt><strong>Strings in parallel / Stacks in parallel</strong></dt><dd><p>The number of strings of battery cells in series in the battery bank.</p>
+<p>If you choose <strong>Set desired bank size</strong> under <strong>Battery Bank Sizing</strong>:</p>
+<p><em>Strings in Parallel = Nominal Bank Capacity (kWh) ÷ ( Cell Capacity (Ah) × Nominal Cell Voltage (VDC) )</em></p>
+<p>If you choose <strong>Specify cells</strong>, then this is the value you entered for <strong>Number of strings in parallel</strong> under <strong>Battery Bank Sizing</strong>.</p>
+</dd>
+<dt><strong>Stacks in series</strong></dt><dd><p>For flow batteries, the number of stacks in series.</p>
+</dd>
+<dt><strong>Max C-rate of discharge, per/h</strong></dt><dd><p>If you choose <strong>Set desired bank size</strong> under <strong>Battery Bank Sizing</strong>, SAM calculates the value as:</p>
+<p><em>Max C-rate of Discharge (per/h) = Maximum Discharge Power (DC kW) ÷ Nominal Bank Capacity (DC kWh)</em></p>
+<p>If you choose <strong>Specify cells</strong>, then this is the value you entered for <strong>Max C-rate of discharge</strong> under <strong>Battery Bank Sizing</strong>.</p>
+</dd>
+<dt><strong>Max C-rate of charge, per/h</strong></dt><dd><p>If you choose <strong>Set desired bank size</strong> under <strong>Battery Bank Sizing</strong>, SAM calculates the value as:</p>
+<p><em>Max C-rate of Charge (per/h) = Maximum Charge Power (DC kW) ÷ Nominal Bank Capacity (DC kWh)</em></p>
+<p>If you choose <strong>Specify cells</strong>, then this is the value you entered for <strong>Max C-rate of charge</strong> under <strong>Battery Bank Sizing</strong>.</p>
+</dd>
+<dt><strong>Maximum discharge current, A</strong></dt><dd><p>The battery’s maximum discharge current. The battery may discharge at a rate up to the maximum.</p>
+<p><em>Maximum Discharge Current (A) = Nominal Bank Capacity (DC kWh) ÷ Nominal Bank Voltage (VDC) × Max C-rate of Discharge (1/h) × 1000 Wh/kWh</em></p>
+</dd>
+<dt><strong>Maximum charge current, A</strong></dt><dd><p>The battery’s maximum charge current. The battery may charge at a rate up to the maximum.</p>
+<p><em>Maximum Discharge Current (A) = Nominal Bank Capacity (DC kWh) ÷ Nominal Bank Voltage (VDC) × Max C-rate of Charge (1/h) × 1000 Wh/kWh</em></p>
+</dd>
+<dt><strong>Maximum discharge power, DC kW</strong></dt><dd><p>The battery can discharge at up to the maximum discharge power. The maximum discharge power is also the nominal DC power of the battery bank used for $/kW-based battery cost calculations.</p>
+<p>When the units for <strong>Desired bank power</strong> are DC kW:</p>
+<p><em>Maximum Discharge Power (DC kW) = Cell Capacity (Ah) × Cell Nominal Voltage (VDC) × Max C-rate of Discharge (1/h) × Total Number of Cells ÷ 1000 W/kW</em></p>
+<p>When the units for <strong>Desired bank power</strong> are AC kW, the discharge power in DC kW depends on whether the battery is AC-connected or DC-connected.</p>
+<p>AC-connected:</p>
+<p><em>Maximum Discharge Power (DC kW) = Desired Bank Power (AC kW) ÷ DC to AC Conversion Efficiency</em></p>
+<p>DC-connected:</p>
+<p><em>Maximum Discharge Power (DC kW) = Desired Bank Power (AC kW) ÷ ( DC to AC Conversion Efficiency × Inverter Nominal Efficiency )</em></p>
+</dd>
+<dt><strong>Maximum charge power, DC kW</strong></dt><dd><p>The maximum charge power, calculated from the nominal bank capacity and maximum C-rate of charge.</p>
+<p>When the units for <strong>Desired bank power</strong> are DC kW:</p>
+<p><em>Maximum Charge Power (DC kW) = Cell Capacity (Ah) × Cell Nominal Voltage (VDC) × Max C-rate of Charge (1/h) × Total Number of Cells ÷ 1000 W/kW</em></p>
+<p>When the units for <strong>Desired bank power</strong> are AC kW, the discharge power in DC kW depends on whether the battery is AC- or DC-connected.</p>
+<p>AC-connected:</p>
+<p><em>Maximum Charge Power (DC kW) = Desired Bank Power (AC kW) ÷ DC to AC Conversion Efficiency</em></p>
+<p>DC-connected:</p>
+<p><em>Maximum Charge Power (DC kW) = Desired Bank Power (AC kW) ÷ ( DC to DC Conversion Efficiency × Inverter Nominal Efficiency )</em></p>
+</dd>
+<dt><strong>Maximum discharge power, AC kW</strong></dt><dd><p>The AC equivalent of the discharge power in DC kW.</p>
+<p>For the <strong>Set desired bank size</strong> option, if the <strong>Desired bank power</strong> units are AC kW, SAM sets the maximum discharge power to the desired value.</p>
+<p>Otherwise, it is calculated from the DC value:</p>
+<p>AC-connected:</p>
+<p><em>Maximum Discharge Power (AC kW) = Maximum Discharge Power (DC kW) × DC to AC Conversion Efficiency</em></p>
+<p>DC-connected:</p>
+<p><em>Maximum Discharge Power (AC kW) = Maximum Discharge Power (DC kW) × ( DC to DC Conversion Efficiency × Inverter Nominal Efficiency )</em></p>
+</dd>
+<dt><strong>Maximum charge power, AC kW</strong></dt><dd><p>The AC equivalent of the charge power in DC kW.</p>
+<p>For the <strong>Set desired bank size</strong> option, if the <strong>Desired bank power</strong> units are AC kW, SAM sets the maximum charge power to the desired value.</p>
+<p>Otherwise, it is calculated from the DC value:</p>
+<p>AC-connected:</p>
+<p><em>Maximum Charge Power (AC kW) = Maximum Charge Power (DC kW) × DC to AC Conversion Efficiency</em></p>
+<p>DC-connected:</p>
+<p><em>Maximum Charge Power (AC kW) = Maximum Charge Power (DC kW) × ( DC to DC Conversion Efficiency × Inverter Nominal Efficiency )</em></p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="power-converters">
+<h2>Power Converters<a class="headerlink" href="#power-converters" title="Link to this heading">#</a></h2>
+<p>For photovoltaic-battery systems, SAM can model a battery that is connected to either the DC or AC side of the photovoltaic inverter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The DC connected option is only available with the PV Battery configuration. The Standalone and Custom Generation Profile - Battery configurations assume that the battery is the only DC component in the system.</p>
+<p>The Power Converters conversion efficiency inputs account for electrical losses associated with any battery power converter equipment except for the photovoltaic inverter. SAM models each battery converter as a fixed conversion efficiency.</p>
+<p>The photovoltaic inverter is a separate component from the battery power converters specified here and uses a more sophisticated model with an efficiency curve that varies with the inverter load. You specify the photovoltaic inverter model and parameters on the <a class="reference internal" href="../detailed-photovoltaic-model/pv_inverter.html"><span class="doc">Inverter</span></a> page. SAM models the inverter as a hybrid inverter with inputs for both a photovoltaic array and battery, regardless of whether the inverter you choose is actually a hybrid inverter. You can use the cec_hybrid column in the inverter library to find inverters that are specified as hybrid inverters.</p>
+</div>
+<section id="dc-connected-pv-battery-only">
+<h3>DC Connected (PV Battery Only)<a class="headerlink" href="#dc-connected-pv-battery-only" title="Link to this heading">#</a></h3>
+<p>Choose <strong>DC Connected</strong> for a battery connected to the DC side of a hybrid photovoltaic inverter as shown in the diagram above.</p>
+<p>To account for electrical losses from a DC-DC converter between the photovoltaic array and inverter, be sure to assign an appropriate value to the <strong>DC power optimizer loss</strong> on the <a class="reference internal" href="../detailed-photovoltaic-model/pv_electrical_losses.html"><span class="doc">Losses</span></a>   page.</p>
+<p>For a DC-connected battery, during time steps when the total power from the photovoltaic array and battery is greater than the inverter’s nameplate capacity, the inverter limits its output power to the nameplate capacity. For the dispatch options with <strong>Battery can charge from clipped system power</strong> enabled on the Battery Dispatch page, if the battery is not fully charged and is not discharging, the array power in excess of the inverter’s nominal capacity charges the battery.</p>
+<dl class="simple">
+<dt><strong>DC to DC conversion efficiency, %</strong></dt><dd><p>For the DC-connected option, the electrical conversion efficiency of the battery management system (BMS). SAM applies this loss to power into or out of the battery to account for power consumed by the BMS. SAM disables this input for the AC Connected option.</p>
+</dd>
+<dt><strong>Inverter efficiency cutoff, %</strong></dt><dd><p>For the DC-connected option, the inverter efficiency cutoff is the photovoltaic inverter operating efficiency threshold below which the battery is not allowed to charge from the grid, or to discharge when the discharge power is greater than the inverter’s maximum rated power. SAM reports the inverter operating efficiency in the time series results.</p>
+</dd>
+</dl>
+</section>
+<section id="ac-connected">
+<h3>AC Connected<a class="headerlink" href="#ac-connected" title="Link to this heading">#</a></h3>
+<p>Choose <strong>AC Connected</strong> for a battery connected to the grid interconnection point as shown in the diagram above. Power conversion equipment is required to convert DC power from the battery to AC power before it can serve the load or be sent to the grid, and to convert AC power from the grid or pvhotovoltaic inverter before it can charge the battery.</p>
+<dl class="simple">
+<dt><strong>AC to DC conversion efficiency, %</strong></dt><dd><p>For the AC-connected option, the electrical conversion efficiency associated with the equipment that converts AC power from either the photovoltaic inverter output or grid to DC power for the battery. SAM disables this input for the DC Connected option.</p>
+</dd>
+<dt><strong>DC to AC conversion efficiency, %</strong></dt><dd><p>For the AC-connected option, the electrical conversion efficiency associated with the equipment that converts DC power from the battery to AC power for either the AC load or grid, or both. SAM disables this input for the DC Connected option.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="charge-limits-and-priority">
+<h2>Charge Limits and Priority<a class="headerlink" href="#charge-limits-and-priority" title="Link to this heading">#</a></h2>
+<p>The Charge Limits and Priority inputs are constraints on the battery dispatch calculations.</p>
+<p>The limits on minimum and maximum state of charge affect both the amount of energy available for battery dispatch calculations, and the depth of charge-discharge cycles for battery life calculations. Choose values appropriate for the type of battery you are modeling. The default values state of charge range of 15% to 95% is reasonable for most Li-ion battery types.</p>
+<dl class="simple">
+<dt><strong>Minimum state of charge, %</strong></dt><dd><p>A limit on the quantity of energy that can be drained from the battery as a percentage of available capacity. For example, a value of 15% would prevent the battery from discharging below 15% of the battery’s available capacity in a given time step.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The minimum and maximum state of charge are both as a percentage of available battery capacity, which changes over time as the batteries degrade and are replaced. The available capacity in a given time step is likely to be less than the battery’s nominal capacity shown on the Battery Cell and System page.</p>
+</div>
+<dl class="simple">
+<dt><strong>Maximum state of charge, %</strong></dt><dd><p>A limit on the quantity of energy that can be sent to the battery as a percentage of available capacity. For example a value of 95% would prevent the battery from charging above 95% state of charge.</p>
+</dd>
+<dt><strong>Initial state of charge, %</strong></dt><dd><p>The state of charge of the battery at the beginning of the simulation. A value of 100% would be for a fully charged battery, 0% would be for a fully discharged battery.</p>
+</dd>
+<dt><strong>Minimum time at charge state, min</strong></dt><dd><p>There may be periods of time where the photovoltaic or other power system output varies above and below the load causing rapid cycling of the battery. Rapid cycling may also result for dispatch options that respond to power prices when prices change rapidly from time step to time step. This kind of cycling, especially if the cycles are deep, may degrade battery performance over time. The minimum time at charge state prevents the battery from changing between charging and discharging within the number of minutes that you specify.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The minimum time at charge state only applies when the simulation time step is smaller than the minimum time at charge state. For example, the default value of 10 minutes would only apply for 5-minute or 1-minute simulation time steps; It has no effect for hourly simulations.</p>
+</div>
+</section>
+<section id="battery-voltage">
+<h2>Battery Voltage<a class="headerlink" href="#battery-voltage" title="Link to this heading">#</a></h2>
+<p>The voltage properties are technical specifications available on most battery manufacturer data sheets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you change the battery type, SAM changes the voltage properties inputs to default values appropriate for the battery chemistry you selected. You can use these default values unless you have better information from a manufacturer’s data sheet or other source.</p>
+</div>
+<p>Battery voltage varies with state of charge as the internal open circuit potential decreases or increases. Voltage variations in charging and discharging affect the battery’s round-trip efficiency reported in the results. During charging, voltage increases, requiring more power to charge the cell. During discharge the voltage decreases and less power can be extracted. The round-trip efficiency is computed as the net amount of energy discharged from a cell divided by how much energy it took to charge the cell.</p>
+<dl class="simple">
+<dt><strong>Cell Internal resistance, Ohm</strong></dt><dd><p>The cell internal resistance for each cell in the battery in Ohms. SAM assumes that this is a constant value and uses it in voltage and thermal calculations by scaling the cell internal resistance to a total battery resistance based on the cell configuration.</p>
+</dd>
+<dt><strong>Nominal bank voltage, VDC</strong></dt><dd><p>The battery bank voltage from the <strong>Computed Properties</strong> on the Battery Cell and System page.</p>
+</dd>
+<dt><strong>Nominal cell voltage, VDC</strong></dt><dd><p>The nominal voltage of a single cell from the <strong>Current and Capacity</strong> inputs on the Battery Cell and System page.</p>
+</dd>
+</dl>
+<section id="electrochemical-model">
+<h3>Electrochemical Model<a class="headerlink" href="#electrochemical-model" title="Link to this heading">#</a></h3>
+<p>The electrochemical voltage model can be used for Lithium-ion and lead acid batteries and provides a way to characterize the battery’s voltage curve using data provided on some battery manufacturer data sheets. It is disabled for flow batteries. The model is described in Section 2.1 of <a class="reference external" href="https://sam.nlr.gov/battery-storage/battery-publications.html">DiOrio (2015) Technoeconomic Modeling of Battery Energy Storage in SAM</a>.</p>
+<dl>
+<dt><strong>C-rate of discharge curve</strong></dt><dd><p>Battery manufacturer data sheets typically include a set of curves like the one below that show cell voltage as a function of charge removed for different discharge rates. The “C-rate” is the current used to discharge the battery. It is defined as the current divided by the rated capacity.</p>
+<p>In this example, if the discharge current is given at the 20-hour discharge rate, the C-rate would be <em>I:sub:`20`÷ q:sub:`20`× C = 0.05 × C (C/20)</em>  .</p>
+</dd>
+</dl>
+<img alt="IMG_BATT-DischargeCurve.png" class="align-center" src="../_images/IMG_BATT-DischargeCurve.png" />
+<dl class="simple">
+<dt><strong>Cutoff cell voltage, VDC</strong></dt><dd><p>The minimum allowed cell voltage.</p>
+</dd>
+<dt><strong>Nominal zone cell voltage, VDC</strong></dt><dd><p>The cell voltage (Vnom) at the end of the nominal zone, as shown in the Nominal Current Discharge Characteristic graph below.. The cell charge removed at this point is <img alt="EQ_BATT_Nominal" src="../_images/EQ_BATT_Nominal.png" />  .</p>
+</dd>
+<dt><strong>Exponential zone cell voltage, VDC</strong></dt><dd><p>The cell voltage (Vexp) at the end of the exponential zone, as shown in the Nominal Current Discharge Characteristic graph below. The cell charge removed at this point is <img alt="EQ_BATT_Exponential" src="../_images/EQ_BATT_Exponential.png" />  .</p>
+</dd>
+<dt><strong>Fully charged cell voltage, VDC</strong></dt><dd><p>The cell voltage (Vfull) at the given C-rate when a cell is at its maximum charge.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The voltage inputs must satisfy Vfull &gt; Vexp &gt; Vnom.</p>
+</div>
+<dl class="simple">
+<dt><strong>Charge removed at exponential and nominal point</strong></dt><dd><p>Voltage vs discharge curves show that cell-voltage typically undergoes several distinct regions depending on charge.</p>
+</dd>
+</dl>
+<img alt="IMG_BATT-NominalDischargeCharacteristic.png" class="align-center" src="../_images/IMG_BATT-NominalDischargeCharacteristic.png" />
+<dl class="simple">
+<dt><strong>C-rate of discharge curve</strong></dt><dd><p>This parameter determines the shape of the voltage curve between the end of the nominal zone and 100% discharge.</p>
+</dd>
+</dl>
+</section>
+<section id="voltage-table">
+<h3>Voltage Table<a class="headerlink" href="#voltage-table" title="Link to this heading">#</a></h3>
+<p>The voltage table option defines the voltage curve using data from the voltage table. It can be used for any type of battery, but requires data not often provided on manufacturer data sheets.</p>
+<p>SAM uses linear interpolation with an adjustment for cell internal resistance for cell voltage calculations during simulations. Each row in the table must have a different voltage value.</p>
+<p>The voltage table must contain at least two values, and must include cell voltage values less than and greater than the cell nominal voltage.</p>
+<p><strong>To use the voltage table to define the voltage curve:</strong></p>
+<ol class="arabic">
+<li><p>Choose <strong>Voltage table</strong>.</p></li>
+<li><p>For <strong>Rows</strong>, type the number of pairs of voltage - depth of discharge pairs you want to use to define the voltage. The table will expand to the number of rows you type.</p>
+<p>You can also click Import to import data from a text file. Try clicking Export to create a template file to see what the text format should be.</p>
+</li>
+<li><p>Type values in the depth of discharge and cell voltage columns. The Voltage Discharge graph will update as you type.</p></li>
+</ol>
+</section>
+</section>
+<section id="battery-losses">
+<h2>Battery Losses<a class="headerlink" href="#battery-losses" title="Link to this heading">#</a></h2>
+<p>Some battery systems have losses that are not accounted for by the conversion losses specified under Power Converters above. You can use the ancillary equipment losses to account for these additional losses. By default, these losses are set to zero, which is appropriate for most analyses.</p>
+<section id="ancillary-equipment-losses">
+<h3>Ancillary Equipment Losses<a class="headerlink" href="#ancillary-equipment-losses" title="Link to this heading">#</a></h3>
+<p>These are losses to account for electrical losses or consumption by equipment in the battery system such as for heaters and pumps for temperature control equipment.</p>
+<p>For DC-connected batteries, the losses are applied the system’s DC power. For AC-connected systems, they are applied to the AC power.</p>
+</section>
+<section id="losses-by-operating-mode">
+<h3>Losses by operating mode<a class="headerlink" href="#losses-by-operating-mode" title="Link to this heading">#</a></h3>
+<p>Choose this option to specify losses by month that apply when the battery is charging, discharging, or idle.</p>
+<dl>
+<dt><strong>Charging mode losses</strong></dt><dd><p>Losses that apply when the battery is charging.</p>
+<p>Click <strong>Edit values</strong> to specify the loss in kW by month. SAM applies the loss in each time step of the month. For example, if the expected loss in January is 500 W, enter 0.5 for January, and SAM will reduce the available power by 0.5 kW for each time step in January.</p>
+</dd>
+<dt><strong>Discharging mode losses</strong></dt><dd><p>Losses that apply when the battery is discharging.</p>
+</dd>
+<dt><strong>Idle mode losses</strong></dt><dd><p>Losses that apply when the battery is neither charging, nor discharging.</p>
+</dd>
+</dl>
+</section>
+<section id="time-series-losses">
+<h3>Time series losses<a class="headerlink" href="#time-series-losses" title="Link to this heading">#</a></h3>
+<p>Choose this option to specify hourly or subhourly time series losses.</p>
+<dl class="simple">
+<dt><strong>Time series losses</strong></dt><dd><p>Click <strong>Edit array</strong> to enter or import kW loss values for each time step of the simulation.</p>
+</dd>
+</dl>
+</section>
+<section id="battery-availability">
+<h3>Battery Availability<a class="headerlink" href="#battery-availability" title="Link to this heading">#</a></h3>
+<p>Battery availability losses can represent battery downtime for maintenance, system outages, or other times when the battery can neither charge nor discharge. The battery availability loss has the effect of reducing electricity to/from battery and battery state of charge in the time steps with availability losses.</p>
+<p>To explore the effect of battery availability losses, use the following output variables</p>
+<ul class="simple">
+<li><p><strong>Electricity to/from battery AC (kW)</strong></p></li>
+<li><p><strong>Battery state of charge (%)</strong></p></li>
+<li><p><strong>Battery availability loss (%)</strong></p></li>
+</ul>
+<p>The <strong>Electricity to […] from battery (kW)</strong> and <strong>Electricity to battery from […] (kW)</strong> variables may also be useful.</p>
+<p>Battery availability losses affect both power and capacity. For a time step with availability loss, the loss percentage for that time step applies to both the battery power (kW) and capacity (kWh). Because the availability loss is intended to represent downtime for maintenance, the loss percentage also applies to the battery state of charge, assuming that cells are discharged to safely perform maintenance. This means that the battery will have a lower state of charge at the end of the availability loss period than at the beginning.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the battery state of charge (SOC) is low when the availability loss period begins, the SOC could fall below the minimum SOC from the Battery Dispatch page. For example, a battery with a 10% minimum SOC that is at its minimum charge state when a period of 50% availability begins, would have a SOC of 5% at the end of the period.</p>
+</div>
+<dl>
+<dt><strong>Edit losses</strong></dt><dd><p>The <a class="reference internal" href="../window-reference/win_edit_losses.html"><span class="doc">Edit Losses</span></a>   window allows you to define loss factors as follows:</p>
+<ul class="simple">
+<li><p>Constant loss is a single loss factor that applies to the system’s entire output. You can use this to model an availability factor.</p></li>
+<li><p>Time series losses apply to specific time steps.</p></li>
+</ul>
+<p>SAM multiplies the battery power in each time step by the loss percentage that you specify for that time step. For a given time step, a loss of zero would result in no adjustment. A loss of 5% would reduce the power by 5%, and a loss of -5% would increase the power by 5%.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="battery-thermal">
+<span id="fom-thermal"></span><h2>Battery Thermal<a class="headerlink" href="#battery-thermal" title="Link to this heading">#</a></h2>
+<p>The battery thermal model calculates the battery temperature in each simulation time step. Battery temperature affects battery capacity and degradation. The model’s two main heat-transfer terms are transfer between the battery and its environment, and energy generated by resistive heating inside the battery. The cell internal resistance input is under Battery Voltage.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To verify that the battery thermal model is working as you expect, look at the <strong>Battery temperature</strong> output variable in the time series results to make sure it is within a reasonable range. If the temperature is higher or lower than you expect, you may need to adjust the thermal or physical properties inputs.</p>
+</div>
+<section id="thermal-properties">
+<h3>Thermal Properties<a class="headerlink" href="#thermal-properties" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>Specific heat Cp, J/kg-K</strong></dt><dd><p>Estimated specific heat capacity for the battery.</p>
+</dd>
+<dt><strong>Heat transfer coefficient h, W/m²-K</strong></dt><dd><p>Estimated heat transfer coefficient for heat transfer from the battery to the room.</p>
+<p>The default value for smaller batteries assumed for behind-the-meter applications is 7.5 W/m²-K. For larger batteries in front-of-meter applications, the default is 15 W/m²-K.</p>
+</dd>
+<dt><strong>Environment temp option</strong></dt><dd><p>Choose how to represent the temperature of the battery’s environment.</p>
+<img alt="SS_Battery-TempOption.png" class="align-center" src="../_images/SS_Battery-TempOption.png" />
+</dd>
+<dt><strong>Enter single fixed temperature</strong></dt><dd><p>Choose this option to model the battery environment temperature as a single constant value throughout the year.</p>
+</dd>
+<dt><strong>Enter time series temperature</strong></dt><dd><p>Choose this option to provide your own time series temperature data for the battery environment.</p>
+</dd>
+<dt><strong>Single environment temperature</strong></dt><dd><p>For the Enter Single Fixed Temperature option, the temperature of the battery environment in degrees Celsius. This is disabled for the Enter Time Series Temperature option.</p>
+</dd>
+<dt><strong>Time series environment temperature</strong></dt><dd><p>For the Enter Time Series Temperature option, click <strong>Edit array</strong> to enter or import hourly or subhourly temperature data in degrees Celsius. Note that the number of time steps must match the simulation time step determined by the weather file. This is disabled for the Enter Single Fixed Temperature option.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a battery in a conditioned space, be sure to account for power required for heating or cooling equipment under <strong>Battery Losses</strong>. SAM does not explicitly model battery heating or cooling equipment, so you should set the battery environment temperature inputs to the temperature of the conditioned space.</p>
+</div>
+</section>
+<section id="capacity-fade-with-temperature">
+<h3>Capacity Fade with Temperature<a class="headerlink" href="#capacity-fade-with-temperature" title="Link to this heading">#</a></h3>
+<p>The manufacturer data sheet may include battery capacity versus temperature data showing how the battery’s capacity decreases with ambient temperature. The Capacity Fade curve must have at least two rows of data.</p>
+<dl class="simple">
+<dt><strong>Temp, °C</strong></dt><dd><p>Battery environment temperature in degrees Celsius.</p>
+</dd>
+<dt><strong>Capacity, %</strong></dt><dd><p>Battery discharge capacity as a percentage of rated capacity at the given temperature.</p>
+</dd>
+</dl>
+</section>
+<section id="physical-properties">
+<h3>Physical Properties<a class="headerlink" href="#physical-properties" title="Link to this heading">#</a></h3>
+<p>The physical properties inputs are designed to scale with battery size so you don’t have to change them each time you change the size of the battery bank. These values should be reasonable estimates of the battery bank or individual battery’s actual dimensions. They do not need to be exact.</p>
+<dl>
+<dt><strong>Specific energy per mass (Wh/kg)</strong></dt><dd><p>Energy content per unit mass. SAM uses this value to calculate the battery bank’s mass based on its rated capacity in kWh. If you know the battery bank mass, you can calculate the specific energy by dividing the battery bank’s rated capacity in DC Watt-hours by its mass in kilograms.</p>
+</dd>
+<dt><strong>Battery mass, kg</strong></dt><dd><p>An estimate of the battery bank’s mass.</p>
+<p><em>Battery Mass (kg) = Nominal Bank Capacity (DC kWh) × 1,000 (Wh/kWh) ÷ Specific Energy per Mass (Wh/kg)</em></p>
+</dd>
+<dt><strong>Compute battery surface area as cube</strong></dt><dd><p>Choose this option to represent the battery bank as a cube for temperature calculation purposes. This option works better for smaller batteries than larger ones. Disable the option to represent the battery as a single battery.</p>
+</dd>
+<dt><strong>Specific energy per volume, Wh/L</strong></dt><dd><p>The battery bank’s energy content per unit volume. If you know the battery bank’s volume, you can calculate the specific energy by dividing the battery bank’s rated capacity in DC Watt-hours by its volume in liters. This option is enabled with <strong>Compute battery surface area as cube</strong>.</p>
+</dd>
+<dt><strong>Battery volume, m³</strong></dt><dd><p>For the <strong>Compute battery surface area as cube</strong> option, an estimate the volume of the battery bank, represented as a cube.</p>
+<p><em>Battery Volume (m³) = Nominal Bank Capacity (DC kWh) ÷ Specific Energy per Volume (Wh/L)</em></p>
+</dd>
+<dt><strong>Energy capacity of one module, kWh</strong></dt><dd><p>The nominal capacity of a single battery when <strong>Compute battery surface area as cube</strong> is disabled. This value is only used for battery temperature calculations, so the value should be reasonably close to the actual capacity of a single battery but does not need to be exact.</p>
+</dd>
+<dt><strong>Surface area of one module, m²</strong></dt><dd><p>The surface area of a single battery when <strong>Compute battery surface area as cube</strong> is disabled. You can calculate this value by multiplying the battery’s length, width, and height measurements.</p>
+</dd>
+<dt><strong>Battery surface area, m²</strong></dt><dd><p>An estimate of the surface area of a single battery when <strong>Compute battery surface area as cube</strong> is disabled.</p>
+<p><em>Battery Surface Area (m²) = Nominal Bank Capacity (DC kWh) ÷ Energy Capacity of One Module (DC kWh) × Surface Area of One Module (m²)</em></p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="battery_storage.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Battery Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="battery_dispatch_btm.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Battery Dispatch BTM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#behind-the-meter-btm-and-front-of-meter-fom-batteries">Behind-the-meter (BTM) and Front-of-meter (FOM) Batteries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lead-acid">Lead Acid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lithium-ion">Lithium Ion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-batteries">Flow Batteries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-bank-sizing">Battery Bank Sizing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-desired-bank-size-automatic-sizing">Set Desired Bank Size: Automatic Sizing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-cells-manual-sizing">Specify Cells: Manual Sizing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations-for-automatic-bank-sizing">Calculations for Automatic Bank Sizing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-and-capacity">Current and Capacity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lead-acid-and-lithium-ion-battery-parameters">Lead Acid and Lithium-ion Battery Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-battery-parameters">Flow Battery Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computed-properties">Computed Properties</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-converters">Power Converters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dc-connected-pv-battery-only">DC Connected (PV Battery Only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ac-connected">AC Connected</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#charge-limits-and-priority">Charge Limits and Priority</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-voltage">Battery Voltage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrochemical-model">Electrochemical Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#voltage-table">Voltage Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-losses">Battery Losses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-equipment-losses">Ancillary Equipment Losses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losses-by-operating-mode">Losses by operating mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-losses">Time series losses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-availability">Battery Availability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#battery-thermal">Battery Thermal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-properties">Thermal Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacity-fade-with-temperature">Capacity Fade with Temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-properties">Physical Properties</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, National Laboratory of the Rockies.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

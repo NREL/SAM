@@ -50,6 +50,9 @@
     "energy_output_array": [
         0.0
     ],
+    "energy_output_array_lifetime": [
+        0.0
+    ],
     "first_year_output": 756864000.0,
     "first_year_output_peak": 96000.0,
     "fixed_charge_rate": 0.09243041098233787,

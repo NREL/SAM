@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{33BEB79E-FF10-35DE-856B-8A412AC74B9E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>wex</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">wex.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">wexd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">wex.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">wex</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\build_resources\libcurl_ssl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/wxWidgets-3.2.8.1/lib/vc_x64_lib/mswu" /external:I "C:/wxWidgets-3.2.8.1/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_LIB;LK_USE_WXWIDGETS;_UNICODE;_MBCS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";UNICODE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_LIB;LK_USE_WXWIDGETS;_UNICODE;_MBCS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H=\"slimftmodules.h\";FT_CONFIG_OPTIONS_H=\"slimftoptions.h\";UNICODE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\build_resources\libcurl_ssl_x64\include;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\build_resources\libcurl_ssl_x64\include;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\build_resources\libcurl_ssl_x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/wxWidgets-3.2.8.1/lib/vc_x64_lib/mswu" /external:I "C:/wxWidgets-3.2.8.1/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_LIB;LK_USE_WXWIDGETS;_UNICODE;_MBCS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H="slimftmodules.h";FT_CONFIG_OPTIONS_H="slimftoptions.h";UNICODE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_LIB;LK_USE_WXWIDGETS;_UNICODE;_MBCS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;NOPCH;FT2_BUILD_LIBRARY;OPJ_STATIC;FT_CONFIG_MODULES_H=\"slimftmodules.h\";FT_CONFIG_OPTIONS_H=\"slimftoptions.h\";UNICODE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\build_resources\libcurl_ssl_x64\include;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\wex\src\..\build_resources\libcurl_ssl_x64\include;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/wex/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/wex/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\wex\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/wex/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/wex/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\wex\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\clipper\clipper.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\codeedit.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\csv.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dclatex.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvautocolourassigner.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvdcctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvdmapctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvfilereader.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvplotctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvplotctrlsettings.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvplothelper.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvpncdfctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvprofilectrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvscatterplotctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvselectionlist.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvstatisticstablectrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvtimeseriesctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\dview\dvtimeseriesdataset.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\easycurl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\extgrid.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\exttext.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\exttextstream.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\exttree.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\gleasy.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\label.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\lkscript.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\metro.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pagelayout.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pageobjects.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\mplcontour.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plannotation.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plcontourplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\ploutdev.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plsectorplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\pltext.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plwindrose.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\radiochoice.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\diurnal.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\numeric.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfannotation.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfbarcode.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfcffdecoder.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfcffindex.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfcolour.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfdc.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfdecode.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfdocument.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfencoding.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfencrypt.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffont.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdata.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdatacore.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdataopentype.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdatatruetype.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdatatype0.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdatatype1.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdescription.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontdetails.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontextended.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontmanager.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontparser.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontparsertruetype.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontparsertype1.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontsubsetcff.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontsubsettruetype.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdffontvolt.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfform.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfgradient.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfgraphics.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfimage.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfkernel.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdflayer.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfobjects.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfocg.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfparser.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfpattern.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfprint.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfrijndael.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdftemplate.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfutility.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\pdf\pdfxml.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plaxis.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plcolourmap.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plbarplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plhistplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\pllineplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plplotctrl.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\plscatterplot.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\registration.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\snaplay.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\tpdlg.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\uiform.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\utils.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftbase.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftbbox.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftbitmap.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftfntfmt.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftgasp.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftglyph.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftinit.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftstroke.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftsynth.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftsystem.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\fttype1.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\cff\cff.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\cid\type1cid.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\psaux\psaux.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\pshinter\pshinter.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\psnames\psnames.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\raster\raster.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\sfnt\sfnt.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\smooth\smooth.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\truetype\truetype.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\type1\type1.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\freetype\src\base\ftlcdfil.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\geom.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\geom2.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\global.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\io.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\libqhull.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\mem.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\merge.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\poly.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\poly2.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\qset.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\random.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\rboxlib.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\stat.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\user.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\usermem.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\userprintf.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\plot\qhull\userprintf_rbox.c" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\ole\activex.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\ole\excelauto.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\wex\src\ole\iehtmlwin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

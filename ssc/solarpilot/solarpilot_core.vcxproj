@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{02F881BA-5BC8-3121-A7F9-F723CD21CBBB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>solarpilot_core</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\solarpilot\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">solarpilot_core.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">solarpilot_cored</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\solarpilot\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">solarpilot_core.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">solarpilot_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/solarpilot/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/solarpilot/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\solarpilot\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/solarpilot/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/solarpilot/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\solarpilot\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Ambient.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\API_structures.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\AutoPilot_API.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\definitions.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\exceptions.hpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Financial.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Flux.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\fluxsim.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\heliodata.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Heliostat.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\interop.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\IOUtil.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Land.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\LayoutSimulateThread.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\mod_base.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\OpticalMesh.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\optimize.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\SolarField.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\solpos.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\STObject.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\string_util.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\STSimulateThread.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\solarpilot\Toolbox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -41,7 +41,7 @@
 		},
 		"FinancialParameters": {
 			"analysis_period": 20,
-			"construction_financing_cost": 1.20245e+07,
+			"construction_financing_cost": 1.30098e+07,
 			"cost_debt_closing": 0,
 			"cost_debt_fee": 2.75,
 			"cost_other_financing": 0,
@@ -85,11 +85,11 @@
 			"om_batt_replacement_cost": [252.000000],
 			"om_batt_variable_cost": [0.000000],
 			"om_capacity_escal": 0,
-			"om_fixed": [5431316.800000],
+			"om_fixed": [6890485.800000],
 			"om_fixed_escal": 0,
 			"om_production_escal": 0,
 			"om_replacement_cost_escal": 0,
-			"total_installed_cost": 4.58078e+08
+			"total_installed_cost": 4.95611e+08
 		},
 		"LandLease": {
 		},
@@ -110,36 +110,41 @@
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
-			"ptc_fed_term": 10,
+			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"Depreciation": {
 			"depr_alloc_custom_percent": 0,
-			"depr_alloc_macrs_15_percent": 1.5,
-			"depr_alloc_macrs_5_percent": 90,
-			"depr_alloc_sl_15_percent": 2.5,
-			"depr_alloc_sl_20_percent": 3,
+			"depr_alloc_macrs_15_percent": 0,
+			"depr_alloc_macrs_5_percent": 100,
+			"depr_alloc_sl_15_percent": 0,
+			"depr_alloc_sl_20_percent": 0,
 			"depr_alloc_sl_39_percent": 0,
 			"depr_alloc_sl_5_percent": 0,
-			"depr_bonus_fed": 0,
+			"depr_basis_mat": [
+				[1.000000, 487946178.078583, 98.453478, 0.000000, 0.000000, 0.000000],
+				[2.000000, 7664732.844088, 1.546522, 0.000000, 0.000000, 0.000000]
+			],
+			"depr_bonus_fed": 100,
 			"depr_bonus_fed_custom": 0,
-			"depr_bonus_fed_macrs_15": 0,
+			"depr_bonus_fed_macrs_15": 1,
 			"depr_bonus_fed_macrs_5": 1,
-			"depr_bonus_fed_sl_15": 0,
-			"depr_bonus_fed_sl_20": 0,
+			"depr_bonus_fed_sl_15": 1,
+			"depr_bonus_fed_sl_20": 1,
 			"depr_bonus_fed_sl_39": 0,
-			"depr_bonus_fed_sl_5": 0,
-			"depr_bonus_sta": 0,
+			"depr_bonus_fed_sl_5": 1,
+			"depr_bonus_sta": 100,
 			"depr_bonus_sta_custom": 0,
-			"depr_bonus_sta_macrs_15": 0,
-			"depr_bonus_sta_macrs_5": 0,
-			"depr_bonus_sta_sl_15": 0,
-			"depr_bonus_sta_sl_20": 0,
+			"depr_bonus_sta_macrs_15": 1,
+			"depr_bonus_sta_macrs_5": 1,
+			"depr_bonus_sta_sl_15": 1,
+			"depr_bonus_sta_sl_20": 1,
 			"depr_bonus_sta_sl_39": 0,
-			"depr_bonus_sta_sl_5": 0,
+			"depr_bonus_sta_sl_5": 1,
 			"depr_custom_schedule": [0.000000],
+			"depr_en_basis_mat": 1,
 			"depr_fedbas_method": 1,
 			"depr_itc_fed_custom": 0,
 			"depr_itc_fed_macrs_15": 0,
@@ -416,6 +421,18 @@
 		"HybridFin": {
 		},
 		"Monthly": {
+		},
+		"NonEnergyRevenue": {
+			"energy_expenses_ret": [100.000000],
+			"energy_revenue_ret": [100.000000],
+			"non_energy_expenses": [0.000000],
+			"non_energy_expenses_ds": 1,
+			"non_energy_expenses_escal": 0,
+			"non_energy_expenses_ret": [0.000000],
+			"non_energy_revenue": [0.000000],
+			"non_energy_revenue_ds": 1,
+			"non_energy_revenue_escal": 0,
+			"non_energy_revenue_ret": [0.000000]
 		}
 	}
 }

@@ -730,7 +730,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 63.0
+                    "Integer": 57.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3054,7 +3054,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": "111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
-            "UIObject": "TOUSchedule",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -3188,7 +3188,8 @@
         "\tenable(\"hc_ctl9\", bEnable);",
         "}",
         "on_load{'Geothermal Power Block'} = define() {",
-        "\tupdate_hybrid_dispatch_inputs();",
+        "\tupdate_hybrid_dispatch_inputs();\r",
+        "\tenable_power_block();",
         "};",
         "",
         "on_change{'geopowerblock.pwrb.condenser_type'} = define() {",
@@ -3196,8 +3197,31 @@
         "};",
         "",
         "on_change{'model_choice'} = define() {",
-        "\tupdate_hybrid_dispatch_inputs();",
-        "};",
+        "\tupdate_hybrid_dispatch_inputs();\r",
+        "\tenable_power_block();\r",
+        "};\r",
+        "\t\r",
+        "\r",
+        "function enable_power_block() {\r",
+        "\tis_getem = value('model_choice') == 0;\r",
+        "\tenable('eta_ref', !is_getem);\r",
+        "\tenable('T_htf_hot_ref', !is_getem);\r",
+        "\tenable('T_htf_cold_ref', !is_getem);\r",
+        "\tenable('P_boil', !is_getem);\r",
+        "\tenable('pb_bd_frac', !is_getem);\r",
+        "\tenable('geopowerblock.pwrb.condenser_type', !is_getem);\r",
+        "\tenable('T_amb_des', !is_getem);\r",
+        "\tenable('dT_cw_ref', !is_getem);\r",
+        "\tenable('T_approach', !is_getem);\r",
+        "\tenable('T_ITD_des', !is_getem);\r",
+        "\tenable('P_cond_ratio', !is_getem);\r",
+        "\tenable('P_cond_min', !is_getem);\r",
+        "\tenable('hr_pl_nlev', !is_getem);\r",
+        "\tenable('hybrid_dispatch_schedule', !is_getem);\r",
+        "\tenable('P_boil', !is_getem);\r",
+        "\tenable('P_boil', !is_getem);\r",
+        "\tenable('P_boil', !is_getem);\r",
+        "}",
         ""
     ]
 }

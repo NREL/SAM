@@ -2343,7 +2343,9 @@
         "\t",
         "\tconstant_loss = (${wind_farm_wake_model} != 3);",
         "\tenable( \"wind_resource_turbulence_coeff\", constant_loss);",
-        "\tenable( \"wake_loss\", !constant_loss);",
+        "\tenable( \"wake_loss\", !constant_loss);\r",
+        "\t\r",
+        "\tloss_adjustment_set();",
         "};",
         "",
         "on_change{\"windfarm.layout.file_or_controls\"} = define()",
@@ -2400,6 +2402,21 @@
         "\tconstant_loss = (${wind_farm_wake_model} != 3);",
         "\tenable( \"wind_resource_turbulence_coeff\", constant_loss);",
         "\tenable( \"wake_loss\", !constant_loss);",
-        "};"
+        "};\r",
+        "\r",
+        "function loss_adjustment_set() \r",
+        "{\r",
+        "\tif (financing() != \"LCOE Calculator\" && financing() != \"None\") {\r",
+        "\t\tif (value('system_use_lifetime_output') == 1) {\r",
+        "\t\t\tproperty('adjust', 'AnalysisPeriod', value('analysis_period'));\r",
+        "\t\t}\r",
+        "\t\telse {\r",
+        "\t\t\tproperty('adjust', 'AnalysisPeriod', 1);\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tproperty('adjust', 'AnalysisPeriod', 1);\r",
+        "\t}\r",
+        "}"
     ]
 }

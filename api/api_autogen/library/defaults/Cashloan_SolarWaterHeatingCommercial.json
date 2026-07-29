@@ -28,18 +28,57 @@
 		"LandLease": {
 		},
 		"Depreciation": {
-			"depr_fed_custom": [0.000000],
-			"depr_fed_sl_years": 7,
-			"depr_fed_type": 1,
-			"depr_sta_custom": [0.000000],
-			"depr_sta_sl_years": 7,
-			"depr_sta_type": 1
+			"depr_alloc_custom_percent": 0,
+			"depr_alloc_macrs_15_percent": 0,
+			"depr_alloc_macrs_5_percent": 100,
+			"depr_alloc_sl_15_percent": 0,
+			"depr_alloc_sl_20_percent": 0,
+			"depr_alloc_sl_39_percent": 0,
+			"depr_alloc_sl_5_percent": 0,
+			"depr_basis_mat": [
+				[1.000000, 8059.800000, 100.000000, 0.000000, 0.000000, 0.000000],
+				[2.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+			],
+			"depr_bonus_fed": 100,
+			"depr_bonus_fed_custom": 0,
+			"depr_bonus_fed_macrs_15": 1,
+			"depr_bonus_fed_macrs_5": 1,
+			"depr_bonus_fed_sl_15": 1,
+			"depr_bonus_fed_sl_20": 1,
+			"depr_bonus_fed_sl_39": 0,
+			"depr_bonus_fed_sl_5": 1,
+			"depr_bonus_sta": 100,
+			"depr_bonus_sta_custom": 0,
+			"depr_bonus_sta_macrs_15": 1,
+			"depr_bonus_sta_macrs_5": 1,
+			"depr_bonus_sta_sl_15": 1,
+			"depr_bonus_sta_sl_20": 1,
+			"depr_bonus_sta_sl_39": 0,
+			"depr_bonus_sta_sl_5": 1,
+			"depr_custom_schedule": [0.000000],
+			"depr_en_basis_mat": 1,
+			"depr_fedbas_method": 1,
+			"depr_itc_fed_custom": 0,
+			"depr_itc_fed_macrs_15": 0,
+			"depr_itc_fed_macrs_5": 0,
+			"depr_itc_fed_sl_15": 0,
+			"depr_itc_fed_sl_20": 0,
+			"depr_itc_fed_sl_39": 0,
+			"depr_itc_fed_sl_5": 0,
+			"depr_itc_sta_custom": 0,
+			"depr_itc_sta_macrs_15": 0,
+			"depr_itc_sta_macrs_5": 0,
+			"depr_itc_sta_sl_15": 0,
+			"depr_itc_sta_sl_20": 0,
+			"depr_itc_sta_sl_39": 0,
+			"depr_itc_sta_sl_5": 0,
+			"depr_stabas_method": 1
 		},
 		"TaxCreditIncentives": {
 			"itc_fed_amount": [0.000000],
 			"itc_fed_amount_deprbas_fed": 1,
 			"itc_fed_amount_deprbas_sta": 1,
-			"itc_fed_percent": [30.000000],
+			"itc_fed_percent": [0.000000],
 			"itc_fed_percent_deprbas_fed": 1,
 			"itc_fed_percent_deprbas_sta": 1,
 			"itc_fed_percent_maxvalue": [99999999999999997748809823456034029568.000000],
@@ -52,10 +91,10 @@
 			"itc_sta_percent_maxvalue": [99999999999999997748809823456034029568.000000],
 			"ptc_fed_amount": [0.000000],
 			"ptc_fed_escal": 0,
-			"ptc_fed_term": 10,
+			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"PaymentIncentives": {
 			"cbi_fed_amount": 0,
@@ -160,7 +199,8 @@
 [0]			],
 			"nm_dollars_applied_ym": [
 [0]			],
-			"utility_bill_w_sys": [0]
+			"utility_bill_w_sys": [0],
+			"utility_bill_wo_sys": [0]
 		},
 		"Battery": {
 		},

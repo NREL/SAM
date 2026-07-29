@@ -32,8 +32,12 @@
         "analysis_period": 25.0,
         "annual_albedo": 0.1839506853933204,
         "annual_beam": 7.335643835616439,
+        "annual_csky_beam": 0.0,
+        "annual_csky_diffuse": 0.0,
+        "annual_csky_global": 0.0,
         "annual_diffuse": 1.3484328767123289,
         "annual_global": 5.794761643835617,
+        "annual_precipitation": 0.0,
         "annual_snow": NaN,
         "annual_tdry": 21.938470319634705,
         "annual_twet": NaN,
@@ -51,8 +55,11 @@
         "contingency_percent": 3.0,
         "country": "-",
         "dc_ac_ratio": 1.3,
-        "degradation": [
+        "dc_degradation": [
             0.5
+        ],
+        "degradation": [
+            0.0
         ],
         "elev": 358.0,
         "en_snowloss": 0.0,
@@ -203,7 +210,7 @@
         "step": 3600.0,
         "subtotal_direct": 99000000.0,
         "system_capacity": 100000.0,
-        "system_use_lifetime_output": 0.0,
+        "system_use_lifetime_output": 1.0,
         "tilt": 0.0,
         "total_direct_cost": 101970000.0,
         "total_indirect_cost": 5000000.0,
@@ -239,6 +246,9 @@
     "Wind": {
         "a_error_test_number": 17.345,
         "a_error_test_string": "\"default err msg\"",
+        "ac_degradation": [
+            0.64
+        ],
         "adjust": 0.0,
         "adjust_constant": 0.0,
         "adjust_en_periods": 0.0,
@@ -305,7 +315,7 @@
         "specify_label": 1.0,
         "step": 3600.0,
         "system_capacity": 200000.0,
-        "system_use_lifetime_output": 0.0,
+        "system_use_lifetime_output": 1.0,
         "total_installed_cost": 317480000.0,
         "total_installed_cost_per_kw": 1587.4,
         "turb_generic_loss": 1.7,
@@ -10103,7 +10113,7 @@
         "batt_dispatch_pvs_ki": 1.8,
         "batt_dispatch_pvs_kp": 1.2,
         "batt_dispatch_pvs_max_ramp": 10.0,
-        "batt_dispatch_pvs_nameplate": 276923.1,
+        "batt_dispatch_pvs_nameplate": 276923.07692307696,
         "batt_dispatch_pvs_nameplate_ac": 20000.0,
         "batt_dispatch_pvs_ramp_interval": 180.0,
         "batt_dispatch_pvs_short_forecast_enable": 0.0,
@@ -12462,7 +12472,7 @@
         ],
         "en_standalone_batt": 0.0,
         "grid_interconnection_limit_kwac": 20000.0,
-        "hybrid_system_capacity": 276923.1,
+        "hybrid_system_capacity": 276923.07692307696,
         "inflation_rate": 2.5,
         "lbl_fom_dispatch_message": "",
         "om_batt_capacity_cost": [
@@ -12485,7 +12495,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.05
+            0.10000000149011612
         ],
         "pv.storage.p1.charge": 1.0,
         "pv.storage.p1.discharge": 0.0,
@@ -12542,9 +12552,13 @@
         "wind_ui_step_minutes": 60.0
     },
     "Hybrid": {
-        "ac_nameplate": 76923.1,
+        "ac_nameplate": 76923.07692307692,
         "analysis_period": 25.0,
         "analysis_period_warning": "",
+        "batt_basis_cost": 74460094.41528,
+        "batt_itc_basis_cost_fed_include": 1.0,
+        "batt_itc_basis_cost_sta_include": 1.0,
+        "batt_itc_basis_percent": 14.773576331900462,
         "batt_power_discharge_max_kwac": 57600.0730368,
         "batt_replacement_option": 1.0,
         "batt_salvage_percentage": 0.0,
@@ -12632,7 +12646,11 @@
         ],
         "cp_capacity_payment_esc": 0.0,
         "cp_capacity_payment_type": 0.0,
-        "cp_system_nameplate": 276.9231,
+        "cp_system_nameplate": 276.923076923077,
+        "custom_generation_basis_cost": 0.0,
+        "customgeneration_itc_basis_cost_fed_include": 0.0,
+        "customgeneration_itc_basis_cost_sta_include": 0.0,
+        "customgeneration_itc_basis_percent": 0.0,
         "debt_message": "",
         "debt_option": 1.0,
         "debt_percent": 60.0,
@@ -12644,26 +12662,63 @@
         "depr_alloc_sl_20_percent": 0.0,
         "depr_alloc_sl_39_percent": 0.0,
         "depr_alloc_sl_5_percent": 0.0,
-        "depr_bonus_fed": 0.0,
+        "depr_allocation_choice": 0.0,
+        "depr_basis_mat": [
+            [
+                1.0,
+                112068500.0,
+                22.23543432429263,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                2.0,
+                317480000.0,
+                62.99098934380692,
+                0.0,
+                0.0,
+                0.0
+            ],
+            [
+                3.0,
+                74460094.41528,
+                14.773576331900462,
+                1.0,
+                1.0,
+                0.0
+            ],
+            [
+                6.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+            ]
+        ],
+        "depr_bonus_fed": 100.0,
         "depr_bonus_fed_custom": 0.0,
         "depr_bonus_fed_macrs_15": 0.0,
         "depr_bonus_fed_macrs_5": 1.0,
-        "depr_bonus_fed_sl_15": 0.0,
-        "depr_bonus_fed_sl_20": 0.0,
+        "depr_bonus_fed_sl_15": 1.0,
+        "depr_bonus_fed_sl_20": 1.0,
         "depr_bonus_fed_sl_39": 0.0,
-        "depr_bonus_fed_sl_5": 0.0,
-        "depr_bonus_sta": 0.0,
+        "depr_bonus_fed_sl_5": 1.0,
+        "depr_bonus_sta": 100.0,
         "depr_bonus_sta_custom": 0.0,
         "depr_bonus_sta_macrs_15": 0.0,
         "depr_bonus_sta_macrs_5": 1.0,
-        "depr_bonus_sta_sl_15": 0.0,
-        "depr_bonus_sta_sl_20": 0.0,
+        "depr_bonus_sta_sl_15": 1.0,
+        "depr_bonus_sta_sl_20": 1.0,
         "depr_bonus_sta_sl_39": 0.0,
-        "depr_bonus_sta_sl_5": 0.0,
+        "depr_bonus_sta_sl_5": 1.0,
         "depr_custom_schedule": [
             0.0
         ],
+        "depr_en_basis_mat": 1.0,
         "depr_fedbas_method": 1.0,
+        "depr_itc_fed_capex": 0.0,
         "depr_itc_fed_custom": 0.0,
         "depr_itc_fed_macrs_15": 0.0,
         "depr_itc_fed_macrs_5": 1.0,
@@ -12671,6 +12726,7 @@
         "depr_itc_fed_sl_20": 0.0,
         "depr_itc_fed_sl_39": 0.0,
         "depr_itc_fed_sl_5": 0.0,
+        "depr_itc_sta_capex": 0.0,
         "depr_itc_sta_custom": 0.0,
         "depr_itc_sta_macrs_15": 0.0,
         "depr_itc_sta_macrs_5": 1.0,
@@ -21474,6 +21530,12 @@
         "dscr_reserve_months": 6.0,
         "en_electricity_rates": 1.0,
         "enable_interconnection_limit": 0.0,
+        "energy_expenses_ret": [
+            100.0
+        ],
+        "energy_revenue_ret": [
+            100.0
+        ],
         "equip1_reserve_cost": 0.1,
         "equip1_reserve_freq": 15.0,
         "equip2_reserve_cost": 0.0,
@@ -21487,6 +21549,10 @@
         ],
         "flip_target_percent": 11.0,
         "flip_target_year": 20.0,
+        "fuel_cell_basis_cost": 0.0,
+        "fuel_cell_itc_basis_cost_fed_include": 0.0,
+        "fuel_cell_itc_basis_cost_sta_include": 0.0,
+        "fuel_cell_itc_basis_percent": 0.0,
         "grid_curtailment": [
             1e38,
             1e38,
@@ -30254,7 +30320,11 @@
         ],
         "grid_curtailment_price_esc": 0.0,
         "grid_interconnection_limit_kwac": 20000.0,
+        "hybrid_basis_cost": 0.0,
         "hybrid_capital_cost": 0.0,
+        "hybrid_itc_basis_cost_fed_include": 0.0,
+        "hybrid_itc_basis_cost_sta_include": 0.0,
+        "hybrid_itc_basis_percent": 0.0,
         "ibi_fed_amount": 0.0,
         "ibi_fed_amount_deprbas_fed": 0.0,
         "ibi_fed_amount_deprbas_sta": 0.0,
@@ -30302,6 +30372,14 @@
         "inflation_rate": 2.5,
         "insurance_rate": 0.0,
         "is_btm": 0.0,
+        "itc_basis_cost": 0.0,
+        "itc_basis_cost_capex_fed": 74460094.41528,
+        "itc_basis_cost_capex_sta": 74460094.41528,
+        "itc_basis_cost_percent_fed": 14.773576331900462,
+        "itc_basis_cost_percent_sta": 14.773576331900462,
+        "itc_basis_depreciation_allocation": 0.0,
+        "itc_basis_percent_depr": 14.773576331900462,
+        "itc_basis_percent_input": 0.0,
         "itc_fed_amount": [
             0.0
         ],
@@ -30315,6 +30393,7 @@
         "itc_fed_percent_maxvalue": [
             1e38
         ],
+        "itc_qualification_choice": 0.0,
         "itc_sta_amount": [
             0.0
         ],
@@ -30966,7 +31045,7 @@
             ]
         ],
         "loan_moratorium": 0.0,
-        "mera_cost1": 27692310.0,
+        "mera_cost1": 27692307.692307697,
         "mera_cost2": 0.0,
         "mera_cost3": 0.0,
         "mera_name1": "Replacement Reserve 1",
@@ -30975,6 +31054,25 @@
         "months_receivables_reserve": 0.0,
         "months_working_reserve": 6.0,
         "nominal_discount_rate": 9.060000000000004,
+        "non_energy_expenses": [
+            0.0
+        ],
+        "non_energy_expenses_ds": 1.0,
+        "non_energy_expenses_escal": 0.0,
+        "non_energy_expenses_ret": [
+            0.0
+        ],
+        "non_energy_revenue": [
+            0.0
+        ],
+        "non_energy_revenue_ds": 1.0,
+        "non_energy_revenue_escal": 0.0,
+        "non_energy_revenue_is_shown": 0.0,
+        "non_energy_revenue_ret": [
+            0.0
+        ],
+        "non_itc_basis_depreciation_allocation": 0.0,
+        "non_itc_basis_percent_depr": 85.22642366809954,
         "om_capacity": 0.0,
         "om_fixed": 0.0,
         "om_production": 0.0,
@@ -31014,7 +31112,7 @@
         "ppa_escalation": 1.0,
         "ppa_multiplier_model": 0.0,
         "ppa_price_input": [
-            0.05
+            0.10000000149011612
         ],
         "ppa_soln_mode": 1.0,
         "prop_tax_assessed_decline": 0.0,
@@ -31025,12 +31123,17 @@
             0.0
         ],
         "ptc_fed_escal": 0.0,
-        "ptc_fed_term": 10.0,
+        "ptc_fed_term": 0.0,
         "ptc_sta_amount": [
             0.0
         ],
         "ptc_sta_escal": 0.0,
-        "ptc_sta_term": 10.0,
+        "ptc_sta_term": 0.0,
+        "pv_basis_cost": 112068500.0,
+        "pv_itc_basis_cost": 0.0,
+        "pv_itc_basis_cost_fed_include": 0.0,
+        "pv_itc_basis_cost_sta_include": 0.0,
+        "pv_itc_basis_percent": 22.23543432429263,
         "pv_total_installed_cost": 112068500.0,
         "rate_escalation": [
             0.0
@@ -31047,13 +31150,15 @@
         "show_DebtConstDSCR": 1.0,
         "show_ReserveAccounts": 1.0,
         "show_construction_period": 1.0,
+        "show_depr_alloc": 1.0,
+        "show_itc_qualification": 1.0,
         "solution_mode_message": "",
         "start_day_of_year": 3.335046e-317,
         "start_day_of_year_tod_ui": 3.335046e-317,
         "state_tax_rate": [
             7.0
         ],
-        "system_capacity": 276923.1,
+        "system_capacity": 276923.07692307696,
         "term_int_rate": 7.0,
         "term_tenor": 18.0,
         "tod_library": "Uniform Dispatch",
@@ -31062,10 +31167,17 @@
         "ui_battery_cost": 74460094.41528,
         "ui_customgeneration_capacity": 0.0,
         "ui_customgeneration_cost": 0.0,
+        "ui_depr_alloc_custom_percent": 0.0,
+        "ui_depr_alloc_macrs_15_percent": 0.0,
+        "ui_depr_alloc_macrs_5_percent": 0.0,
+        "ui_depr_alloc_sl_15_percent": 0.0,
+        "ui_depr_alloc_sl_20_percent": 0.0,
+        "ui_depr_alloc_sl_39_percent": 0.0,
+        "ui_depr_alloc_sl_5_percent": 0.0,
         "ui_electricity_rate_option": 0.0,
         "ui_fuel_cell_capacity": 0.0,
         "ui_fuel_cell_cost": 0.0,
-        "ui_hyb_pv_capacity": 76923.1,
+        "ui_hyb_pv_capacity": 76923.07692307692,
         "ui_pv_cost": 112068500.0,
         "ui_system_nameplate_standalone": 0.0,
         "ui_wacc": 6.709740000000002,
@@ -32504,6 +32616,10 @@
         "ur_yearzero_usage_peaks": [
             0.0
         ],
+        "wind_basis_cost": 317480000.0,
+        "wind_itc_basis_cost_fed_include": 0.0,
+        "wind_itc_basis_cost_sta_include": 0.0,
+        "wind_itc_basis_percent": 62.99098934380692,
         "wind_system_capacity": 200000.0,
         "wind_total_installed_cost": 317480000.0
     }

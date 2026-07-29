@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -5140,7 +5140,7 @@ bool CodeGen_php5::SupportingFiles()
 	fprintf(f, "	char buf[16];\n");
 	fprintf(f, "	sprintf(buf, \"%%d\", ssc_version());\n");
 	fprintf(f, "	php_info_print_table_start();\n");
-	fprintf(f, "	php_info_print_table_header(2, \"NREL SAM Simulation Core(SSC) support\", \"enabled\");\n");
+	fprintf(f, "	php_info_print_table_header(2, \"NLR SAM Simulation Core(SSC) support\", \"enabled\");\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Version\", buf );\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Build\", ssc_build_info() );\n");
 	fprintf(f, "	php_info_print_table_end();\n");
@@ -5751,7 +5751,7 @@ bool CodeGen_php7::SupportingFiles()
 	fprintf(f, "	char buf[16];\n");
 	fprintf(f, "	sprintf(buf, \"188713200\", ssc_version());\n");
 	fprintf(f, "	php_info_print_table_start();\n");
-	fprintf(f, "	php_info_print_table_header(2, \"NREL SAM Simulation Core(SSC) support\", \"enabled\");\n");
+	fprintf(f, "	php_info_print_table_header(2, \"NLR SAM Simulation Core(SSC) support\", \"enabled\");\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Version\", buf );\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Build\", ssc_build_info() );\n");
 	fprintf(f, "	php_info_print_table_end();\n");
@@ -6384,7 +6384,7 @@ bool CodeGen_php8::SupportingFiles()
 	fprintf(f, "	char buf[16];\n");
 	fprintf(f, "	sprintf(buf, \"188713200\", ssc_version());\n");
 	fprintf(f, "	php_info_print_table_start();\n");
-	fprintf(f, "	php_info_print_table_header(2, \"NREL SAM Simulation Core(SSC) support\", \"enabled\");\n");
+	fprintf(f, "	php_info_print_table_header(2, \"NLR SAM Simulation Core(SSC) support\", \"enabled\");\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Version\", buf );\n");
 	fprintf(f, "	php_info_print_table_row(2, \"Build\", ssc_build_info() );\n");
 	fprintf(f, "	php_info_print_table_end();\n");

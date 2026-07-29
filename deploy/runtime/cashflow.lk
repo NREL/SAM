@@ -57,11 +57,9 @@ function is_iph_tech()
 
 function is_batt_tech()
 {
-	// may need to update to include PVWatts Battery, but as of 2020.2.29:
-	// no battery replacements for PVWatts Battery
-	// no retail purchases for PVWatts Battery because it is only behind-the-meter
 	tech = technology();
 	x = ( tech == 'PV Battery' ||
+	      tech == 'PVWatts Battery' ||
 	      tech == 'Standalone Battery' ||
 	      tech == 'Custom Generation Battery' ||
 	      ( tech == 'Fuel Cell' && value('en_batt') == true ) );
@@ -241,6 +239,9 @@ function cf_revenue()
 		{
 			cfline( 'cf_curtailment_value', 0);
 			cfline( 'cf_capacity_payment', 0);
+			cfline('cf_energy_revenue',0);
+			cfline('cf_energy_revenue_retained_percent',0);
+			cfline('cf_energy_revenue_retained',0);			
 		}
 	}
 	elseif ( fin == 'Community Solar')
@@ -280,6 +281,12 @@ function cf_revenue()
 		cfline('cf_pbi_total_oth',0);
 	}
 	cfline( 'cf_net_salvage_value', 0);
+	
+	if ( fin == 'Single Owner' && !is_iph_tech()) // As of May 2026, only single supports non-energy revenue
+	{
+		if (value('non_energy_revenue_ds')==1) cfline('cf_non_energy_revenue',0);
+	}
+	
 	cfline( 'cf_total_revenue', 0);
 	cfline( '' );
 }
@@ -368,7 +375,6 @@ function cf_om_expenses()
 		cfline( 'battery_cf_om_fixed,battery_cf_om_production,battery_cf_om_capacity,battery_cf_battery_replacement_cost_schedule',0);
 		cfline( 'Project Costs', -1, 0 );
 	}
-
 }
 
 function cf_operating_expenses()
@@ -390,6 +396,15 @@ function cf_operating_expenses()
 	}
 	if ( fin == "Residential" || fin == "Commercial" ) { cfline( 'cf_net_salvage_value', 0); }
 	if ( fin == 'Sale Leaseback' ) { cfline('cf_sponsor_margin', 0); }
+	
+	if ( fin == 'Single Owner' && !is_iph_tech()) // As of May 2026, only single supports non-energy revenue
+	{
+		cfline('cf_total_energy_expenses',0);
+		cfline('cf_energy_expenses_paid_percent', 0);
+		cfline('cf_energy_expenses_paid',0);
+		if(value('non_energy_expenses_ds')==1) cfline('cf_non_energy_expenses',0);
+	}
+	
 	cfline( 'cf_operating_expenses', 0);
 	if ( fin == "Residential" || fin == "Commercial" )
 	{
@@ -484,7 +499,7 @@ function cf_income_tax_savings() // residential, commmercial only
 	cfline( 'STATE INCOME TAX', -1 );
 	cfline( 'cf_sta_taxable_incentive_income',0);
 	cfline( 'cf_deductible_expenses', 0);
-	if ( fin == 'Commercial' ) { cfline( 'cf_sta_depr_sched',3); cfline( 'cf_sta_depreciation', 0,-1); }
+	if ( fin == 'Commercial' ) { cfline( 'cf_stadepr_total', 0,-1); }
 	if ( fin == 'Commercial' || res_loan_type == 1 ) { cfline('cf_debt_payment_interest',0,-1); }
 	cfline( 'cf_sta_taxable_income_less_deductions', 0);
 	cfline( 'state tax credits:',-1,0);
@@ -498,14 +513,9 @@ function cf_income_tax_savings() // residential, commmercial only
 	cfline( '' );
 	cfline( 'FEDERAL INCOME TAX', -1 );
 	cfline( 'cf_fed_taxable_incentive_income',0);
-	if ( fin == 'Commercial' )
-	{
-		cfline( 'cf_fed_depr_sched');
-		cfline( 'cf_fed_depreciation', 0);
-	}
 	cfline( 'cf_deductible_expenses', 0);
 	cfline( 'cf_sta_tax_savings',0);
-	if ( fin == 'Commercial' ) { cfline( 'cf_fed_depr_sched'); cfline( 'cf_fed_depreciation', 0,-1); }
+	if ( fin == 'Commercial' ) { cfline( 'cf_feddepr_total', 0,-1); }
 	if ( fin == 'Commercial' || res_loan_type == 1 ) { cfline('cf_debt_payment_interest',0,-1); }
 	cfline( 'cf_fed_taxable_income_less_deductions', 0);
 	cfline( 'federal tax credits:',-1,0);
@@ -544,6 +554,11 @@ function cf_operating_activities() // all PPA models except Sale Leaseback
 			if ( value('pbi_oth_for_ds')==0 ) { cfline('cf_pbi_total_oth',0); }
 		}
 		cfline('cf_debt_payment_interest', 0,-1);
+	}
+	if ( fin == 'Single Owner' && !is_iph_tech()) // As of May 2026, only single supports non-energy revenue
+	{
+		if(value('non_energy_revenue_ds')==0) cfline('cf_non_energy_revenue',0);
+		if(value('non_energy_expenses_ds')==0) cfline('cf_non_energy_expenses',0, -1);
 	}
 	cfline('cf_project_operating_activities', 0);
 	cfline('');
@@ -1017,6 +1032,7 @@ function cf_reserves()
 
 function depreciation_tables()
 {
+	cfrow('DEPRECIATION AND ITC: STATE',-1);
 	cfrow('% of Basis\nPrior to\nAllocation,Gross\nBasis Allocations,Basis Reduction\nfor IBI,Basis Reduction\nfor CBI,Basis After IBI and\nCBI Reductions,ITC Qualifying\nCosts,% of ITC\nQualifying\nCosts,ITC as Percentage\nAmount,50% Basis\nReduction for\nITC as %,ITC as Fixed\nAmount,50% Basis\nReduction for\nITC as Fixed\nAmount,State ITC\nReduction,Federal ITC\nReduction,Basis After ITC\nReduction,Bonus\nDepreciation\nReduction,Depreciable Basis',-2);
 	cfrow('MACRS 5-yr,depr_stabas_percent_macrs_5,depr_alloc_macrs_5,depr_stabas_ibi_reduc_macrs_5,depr_stabas_cbi_reduc_macrs_5,depr_stabas_prior_itc_macrs_5,itc_sta_qual_macrs_5,depr_stabas_percent_qual_macrs_5,depr_stabas_percent_amount_macrs_5,itc_disallow_sta_percent_macrs_5,depr_stabas_fixed_amount_macrs_5,itc_disallow_sta_fixed_macrs_5,depr_stabas_itc_sta_reduction_macrs_5,depr_stabas_itc_fed_reduction_macrs_5,depr_stabas_after_itc_macrs_5,depr_stabas_first_year_bonus_macrs_5,depr_stabas_macrs_5' );
 	cfrow('MACRS 15-yr,depr_stabas_percent_macrs_15,depr_alloc_macrs_15,depr_stabas_ibi_reduc_macrs_15,depr_stabas_cbi_reduc_macrs_15,depr_stabas_prior_itc_macrs_15,itc_sta_qual_macrs_15,depr_stabas_percent_qual_macrs_15,depr_stabas_percent_amount_macrs_15,itc_disallow_sta_percent_macrs_15,depr_stabas_fixed_amount_macrs_15,itc_disallow_sta_fixed_macrs_15,depr_stabas_itc_sta_reduction_macrs_15,depr_stabas_itc_fed_reduction_macrs_15,depr_stabas_after_itc_macrs_15,depr_stabas_first_year_bonus_macrs_15,depr_stabas_macrs_15' );
@@ -1568,7 +1584,13 @@ function set_om(xl)
 	{
 		if (value('system_use_recapitalization')==1) { xl_set_output( xl, 'cf_recapitalization' );  }
 	}
-
+	
+	if ( fin == 'Single Owner' && !is_iph_tech())
+	{
+		xl_set_output( xl, 'cf_energy_expenses_paid_percent' );
+		xl_set_output( xl, 'cf_non_energy_expenses' );
+		xl_set_value_yesno( xl, 'non_energy_expenses_ds');
+	}
 }
 
 function set_land_lease(xl)
@@ -1598,7 +1620,7 @@ function set_land_lease(xl)
 
 function set_rescom(xl)
 {
-
+	fin = financing();
 	N = value('analysis_period');
 	if ( N>100 ) msgbox('The Excel workbook only shows cash flow values for a 100-year analysis period or less. Your analysis is for ' + N + ' years.');
 
@@ -1615,6 +1637,9 @@ function set_rescom(xl)
 	set_om(xl);
 
 	set_incentives(xl);
+	if (fin == 'Commercial' ) {
+		set_depreciation_detailed ( xl );
+	}
 }
 
 function set_taxes_insurance(xl)
@@ -1794,6 +1819,9 @@ function set_annual_values( xl )
 		{
 			xl_set_output( xl, 'cf_capacity_payment'); // capacity payments
 			xl_set_output( xl, 'cf_curtailment_value'); // curtailment payments
+			xl_set_output( xl,'cf_energy_revenue_retained_percent');
+			xl_set_output( xl,'cf_non_energy_revenue');	
+			xl_set_value_yesno( xl, 'non_energy_revenue_ds');	
 		}
 	}
 	// tech-dependent
@@ -2016,6 +2044,7 @@ cashflow{ 'Commercial' } = define()
 	cf_income_tax_savings();
 	cf_after_tax_cash_flow();
 	cf_incentives();
+	depreciation_tables();
 };
 
 cashflow{ 'Single Owner' } = define()
@@ -2160,8 +2189,7 @@ cashflow_to_excel{ 'Residential' } = define()
 
 	//Variables specific to residential model
 	xl_set( xl, (${mortgage}?'Yes':'No'), 'UseTaxDeductibleInterest');
-	xl_set( xl, 'N/A', 'StateDepreciation');
-	xl_set( xl, 'N/A', 'FederalDepreciation');
+	xl_set( xl, 'No', 'UseTaxDeductableOpEx');
 };
 
 cashflow_to_excel{ 'Commercial' } = define()
@@ -2174,21 +2202,7 @@ cashflow_to_excel{ 'Commercial' } = define()
 
 	//Variables specific to commercial model
 	xl_set( xl, 'Yes', 'UseTaxDeductibleInterest');
-	s = value('depr_sta_type');
-	if (s == 0) state = 'No Depreciation';
-	if (s == 1) state = '5-yr MACRS';
-	if (s == 2) state = 'Straight Line' + value('depr_sta_sl_years') + ' Years';
-	if (s == 3) state = 'Custom (see cash flow)';
-	xl_set( xl, state, 'StateDepreciation'); //show depreciation type in inputs table for reference only
-	f = value('depr_fed_type'); //show depreciation percentages in cash flow for calculations
-	if (f == 0) fed = 'No Depreciation';
-	if (f == 1) fed = '5-yr MACRS';
-	if (f == 2) fed = 'Straight Line' + value('depr_sta_sl_years') + ' Years';
-	if (f == 3) fed = 'Custom (see cash flow)';
-	xl_set( xl, fed, 'FederalDepreciation');
-	xl_set ( xl, output('cf_sta_depr_sched'), 'StateDepreciationSchedule');
-	xl_set ( xl, output('cf_fed_depr_sched'), 'FederalDepreciationSchedule');
-
+	xl_set( xl, 'Yes', 'UseTaxDeductableOpEx');
 };
 
 cashflow_to_excel{ 'Merchant Plant'} = define()

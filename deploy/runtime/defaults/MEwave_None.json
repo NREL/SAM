@@ -2966,7 +2966,7 @@
     "export_cable_voltage_option_ac": 0.0,
     "export_cable_voltage_option_hvdc": 0.0,
     "floating_array": 1.0,
-    "frequency_sum": 99.88999999999992,
+    "frequency_sum": 99.88999999999993,
     "inter_array_cable_length": 0.0,
     "inter_array_cable_voltage": 7.2,
     "inter_array_cable_voltage_calculated": 7.2,

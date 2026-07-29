@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F7E53ED7-676D-3E49-A77A-BD2002AF16C8}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>tcs</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\tcs\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">tcs.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">tcsd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\tcs\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">tcs.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">tcs</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\nlopt;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\lpsolve;C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/tcs/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/tcs/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\tcs\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/tcs/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/tcs/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\tcs\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\base_dispatch.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\base_dispatch_lpsolve.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\base_dispatch_ortools.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\co2_compressor_library.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\CO2_properties.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_dispatch.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_dispatch_ortools.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_radiator.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_cavity_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_core.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_cr_electric_resistance.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_cr_heat_pump.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_fresnel_collector_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_gen_collector_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_lf_dsg_collector_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mono_eq_methods.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mspt_collector_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mspt_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mspt_receiver_222.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_piston_cylinder_tes.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_packedbed_tes.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_gen.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_heat_sink.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_heat_sink_physical.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_ptes.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_Rankine_indirect_224.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_steam_heat_sink.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pt_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pt_sf_perf_interp.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_stratified_tes.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_tes_core.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_tou_block_schedules.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_trough_collector_receiver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_two_tank_tes.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_util.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_weatherreader.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_system_costs.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\cst_iph_dispatch.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\dispatch_builder.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\etes_dispatch.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\fmin.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\fmin_callbacks.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\heat_exchangers.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\interconnect.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\nlopt_callbacks.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\numeric_solvers.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\ptes_solver_design_point.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_cycle_components.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_htrbypass_cycle.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_partialcooling_cycle.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_pc_csp_int.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_power_cycle.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_recompression_cycle.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_turbinesplitflow_cycle.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\tcskernel.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\trnsys_weatherreader.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\typelib.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\ud_power_cycle.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\water_properties.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\waterprop.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\weatherreader_csp_solver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\cavity_calcs.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\datatest.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\htf_props.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\interpolation_routines.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\pump.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_csp_util.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_lf_st_pt_type232.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_mw_gen_Type260_csp_solver.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_mw_lf_type261_steam.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_mw_lf_type261_Wnet.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_mw_pt_type228.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_mw_type234.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_trough_model_type805.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_trough_plant_type807.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_trough_storage_type806.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\storage_hx.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sumprod.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\tou_translator.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\flat_plate_solar_collector.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\base_dispatch.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\base_dispatch_lpsolve.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\base_dispatch_ortools.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\cavity_calcs.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\co2_compressor_library.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\CO2_properties.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\co2_testing.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_dispatch.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_dispatch_ortools.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_radiator.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_cavity_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_core.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_cr_electric_resistance.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_cr_heat_pump.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_fresnel_collector_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_gen_collector_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_lf_dsg_collector_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mspt_collector_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mspt_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_mspt_receiver_222.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_piston_cylinder_tes.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_packedbed_tes.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_gen.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_heat_sink.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_heat_sink_physical.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_ptes.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_Rankine_indirect_224.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pc_steam_heat_sink.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pt_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_pt_sf_perf_interp.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_stratified_tes.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_tes_core.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_trough_collector_receiver.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_two_tank_tes.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_solver_util.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\csp_system_costs.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\cst_iph_dispatch.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\dispatch_builder.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\etes_dispatch.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\flat_plate_solar_collector.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\fmin.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\fmin_callbacks.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\heat_exchangers.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\htf_props.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\interconnect.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\interpolation_routines.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\nlopt_callbacks.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\numeric_solvers.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\ptes_solver_design_point.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sam_csp_util.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_cycle_components.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_cycle_templates.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_htrbypass_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_partialcooling_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_pc_csp_int.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_power_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_recompression_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\sco2_turbinesplitflow_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\storage_hx.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\tcskernel.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\tcstype.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\tcs_debug.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\ud_power_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\user_defined_power_cycle.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\waterprop.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\tcs\water_properties.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

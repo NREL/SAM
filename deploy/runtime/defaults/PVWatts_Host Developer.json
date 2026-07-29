@@ -33,15 +33,23 @@
     "annual_albedo": 0.183951,
     "annual_beam": 7.33564,
     "annual_crit": 0.0,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.34843,
     "annual_global": 5.79476,
     "annual_peak": 274.231,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 21.9385,
     "annual_twet": NaN,
     "annual_wspd": 1.78648,
     "array_type": 1.0,
     "azimuth": 180.0,
+    "batt_itc_basis_cost": 0.0,
+    "batt_itc_basis_cost_fed_include": 0.0,
+    "batt_itc_basis_cost_sta_include": 0.0,
+    "batt_itc_basis_percent": 0.0,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "batt_simple_enable": 0.0,
@@ -226,36 +234,57 @@
     "debt_option": 1.0,
     "debt_percent": 60.0,
     "degradation": [
-        0.5
+        0.0
     ],
     "depr_alloc_custom_percent": 0.0,
-    "depr_alloc_macrs_15_percent": 1.5,
-    "depr_alloc_macrs_5_percent": 90.0,
-    "depr_alloc_none": 3.0,
-    "depr_alloc_sl_15_percent": 2.5,
-    "depr_alloc_sl_20_percent": 3.0,
+    "depr_alloc_macrs_15_percent": 0.0,
+    "depr_alloc_macrs_5_percent": 100.0,
+    "depr_alloc_none": 0.0,
+    "depr_alloc_sl_15_percent": 0.0,
+    "depr_alloc_sl_20_percent": 0.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
-    "depr_bonus_fed": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            1.0,
+            948196.8,
+            100.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "depr_bonus_fed": 100.0,
     "depr_bonus_fed_custom": 0.0,
     "depr_bonus_fed_macrs_15": 1.0,
     "depr_bonus_fed_macrs_5": 1.0,
-    "depr_bonus_fed_sl_15": 0.0,
-    "depr_bonus_fed_sl_20": 0.0,
+    "depr_bonus_fed_sl_15": 1.0,
+    "depr_bonus_fed_sl_20": 1.0,
     "depr_bonus_fed_sl_39": 0.0,
-    "depr_bonus_fed_sl_5": 0.0,
-    "depr_bonus_sta": 0.0,
+    "depr_bonus_fed_sl_5": 1.0,
+    "depr_bonus_sta": 100.0,
     "depr_bonus_sta_custom": 0.0,
     "depr_bonus_sta_macrs_15": 1.0,
     "depr_bonus_sta_macrs_5": 1.0,
-    "depr_bonus_sta_sl_15": 0.0,
-    "depr_bonus_sta_sl_20": 0.0,
+    "depr_bonus_sta_sl_15": 1.0,
+    "depr_bonus_sta_sl_20": 1.0,
     "depr_bonus_sta_sl_39": 0.0,
-    "depr_bonus_sta_sl_5": 0.0,
+    "depr_bonus_sta_sl_5": 1.0,
     "depr_custom_schedule": [
         0.0
     ],
+    "depr_en_basis_mat": 1.0,
     "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
     "depr_itc_fed_custom": 0.0,
     "depr_itc_fed_macrs_15": 0.0,
     "depr_itc_fed_macrs_5": 1.0,
@@ -263,6 +292,7 @@
     "depr_itc_fed_sl_20": 0.0,
     "depr_itc_fed_sl_39": 0.0,
     "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
     "depr_itc_sta_custom": 0.0,
     "depr_itc_sta_macrs_15": 0.0,
     "depr_itc_sta_macrs_5": 1.0,
@@ -18488,7 +18518,7 @@
     "grid_per_watt": 0.05,
     "grid_percent": 0.0,
     "grid_total": 27000.0,
-    "host_nominal_discount_rate": 9.060000000000004,
+    "host_nominal_discount_rate": 9.060000000000003,
     "host_real_discount_rate": 6.4,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
@@ -18559,19 +18589,27 @@
     "inverterarray_power_w": 469565.2173913044,
     "is_advanced": 0.0,
     "is_btm": 1.0,
+    "itc_basis_cost_capex_fed": 0.0,
+    "itc_basis_cost_capex_sta": 0.0,
+    "itc_basis_cost_percent_fed": 0.0,
+    "itc_basis_cost_percent_sta": 0.0,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 0.0,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        30.0
+        0.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -18585,7 +18623,7 @@
     "itc_sta_percent_maxvalue": [
         1e38
     ],
-    "land_area_value": 2.340996281197352,
+    "land_area_value": 2.3409962811973519,
     "land_fixed": 0.0,
     "land_per_acre": 0.0,
     "land_per_watt": 0.0,
@@ -36791,7 +36829,7 @@
     "module_power": 540.0,
     "module_total": 232200.0,
     "module_type": 0.0,
-    "modulearray_area": 2842.105263157895,
+    "modulearray_area": 2842.1052631578947,
     "modulearray_power": 540.0,
     "modulearray_power_w": 540000.0,
     "months_receivables_reserve": 0.0,
@@ -36810,7 +36848,9 @@
         156.2,
         184.05
     ],
-    "nominal_discount_rate": 9.060000000000004,
+    "nominal_discount_rate": 9.060000000000003,
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 100.0,
     "normalize_to_utility_bill": 0.0,
     "om_capacity": [
         22.0
@@ -36878,7 +36918,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.106
+        0.10000000149011612
     ],
     "ppa_soln_mode": 0.0,
     "prop_tax_assessed_decline": 0.0,
@@ -36889,12 +36929,12 @@
         0.0
     ],
     "ptc_fed_escal": 0.0,
-    "ptc_fed_term": 10.0,
+    "ptc_fed_term": 0.0,
     "ptc_sta_amount": [
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv_capex_cost_choice": 0.0,
     "pv_land_area_is_shown": 0.0,
     "pvwatts.advanced.is_shown": 0.0,
@@ -36941,6 +36981,8 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "soiling": [
         0.0,
         0.0,
@@ -36960,9 +37002,9 @@
     "solar_resource": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy",
     "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "solution_mode_message": "",
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0
@@ -36971,6 +37013,10 @@
     "step": 3600.0,
     "subtotal_direct": 680400.0,
     "system_capacity": 540.0,
+    "system_itc_basis_cost": 948196.8,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 100.0,
     "system_use_lifetime_output": 1.0,
     "term_int_rate": 7.0,
     "term_tenor": 18.0,
@@ -36979,20 +37025,27 @@
     "total_direct_cost": 707616.0,
     "total_indirect_cost": 205200.0,
     "total_installed_cost": 948196.8,
-    "total_land_area": 2.340996281197352,
-    "total_module_area": 2842.105263157895,
+    "total_land_area": 2.3409962811973519,
+    "total_module_area": 2842.1052631578947,
     "tz": -7.0,
-    "ui_ac_capacity": 0.4695652173913044,
+    "ui_ac_capacity": 0.46956521739130438,
     "ui_annual_load": 0.0,
-    "ui_array_land_area_acres": 2.340996281197352,
-    "ui_array_land_area_ha": 0.9473690460319912,
+    "ui_array_land_area_acres": 2.3409962811973519,
+    "ui_array_land_area_ha": 0.9473690460319911,
     "ui_array_land_area_multiplier": 1.0,
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 0.0,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,
     "ui_land_area_per_mw": 0.0,
     "ui_step_minutes": 60.0,
-    "ui_total_land_area_ha": 0.9473690460319912,
-    "ui_total_module_area": 2842.105263157895,
+    "ui_total_land_area_ha": 0.9473690460319911,
+    "ui_total_module_area": 2842.1052631578947,
     "ui_total_module_area_acres": 0.7022988843592055,
     "ui_total_module_area_ha": 0.28421052631578949,
     "ui_use_acre_per_mw": 0.0,
@@ -38774,7 +38827,7 @@
             1.0,
             1e38,
             0.0,
-            0.05,
+            0.1599999964237213,
             0.0
         ],
         [
@@ -38782,7 +38835,7 @@
             1.0,
             1e38,
             0.0,
-            0.075,
+            0.10000000149011612,
             0.0
         ],
         [
@@ -38790,7 +38843,7 @@
             1.0,
             1e38,
             0.0,
-            0.06,
+            0.15000000596046449,
             0.0
         ],
         [
@@ -38798,7 +38851,7 @@
             1.0,
             1e38,
             0.0,
-            0.05,
+            0.10000000149011612,
             0.0
         ]
     ],

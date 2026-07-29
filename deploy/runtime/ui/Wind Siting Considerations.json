@@ -1,7 +1,7 @@
 {
     "Name": "Wind Siting Considerations",
-    "Width": 714.0,
-    "Height": 520.0,
+    "Width": 718.0,
+    "Height": 499.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,
@@ -251,11 +251,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -379,7 +379,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 219.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -387,7 +387,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 216.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -469,7 +469,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,

@@ -4819,6 +4819,19 @@
             "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
+        },
+        "total_system_installed_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
         }
     },
     "Equations": [
@@ -4893,7 +4906,9 @@
         "\treturn ${total_indirect_cost} - ${total_battery_indirect_cost};",
         "};",
         "",
-        "",
+        "equations{'total_system_installed_cost'} = define() {\r",
+        "\treturn ${total_installed_cost} - ${battery_total_cost_lcos};\r",
+        "};",
         ""
     ],
     "Callbacks": [

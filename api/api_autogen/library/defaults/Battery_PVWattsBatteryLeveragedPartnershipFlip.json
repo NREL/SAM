@@ -33,7 +33,7 @@
 			"batt_replacement_capacity": 70,
 			"batt_replacement_option": 1,
 			"batt_replacement_schedule_percent": [0.000000],
-			"batt_surface_area": 1227.67,
+			"batt_surface_area": 18000,
 			"en_batt": 1,
 			"en_standalone_batt": 0,
 			"en_wave_batt": 0
@@ -382,7 +382,7 @@
 			"dispatch_tod_factors": [1.000000, 1.500000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000],
 			"ppa_escalation": 1,
 			"ppa_multiplier_model": 0,
-			"ppa_price_input": [0.075000]
+			"ppa_price_input": [0.088000]
 		},
 		"Revenue": {
 		},

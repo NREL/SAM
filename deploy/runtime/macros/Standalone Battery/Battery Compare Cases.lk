@@ -147,7 +147,13 @@ for (i=0; i<num_cases; i++)
 	aep[i] = get('annual_energy');
 	arrayRatedPower[i] = get('system_capacity');
 	npv[i] = get('project_return_aftertax_npv');
-	capacityFactor[i] = get('capacity_factor');
+	if (config[0] == "Standalone Battery") {
+		capacityFactor[i] = nan();
+	}
+	else {
+		capacityFactor[i] = get('capacity_factor');
+	}
+	roundtripEfficiency[i] = get('average_battery_roundtrip_efficiency');
 	capEx[i] = get('total_installed_cost');
 	opEx[i] = get('present_value_oandm');
 	batt_annual_discharge = get('cf_annual_discharge_lcos');
@@ -316,6 +322,13 @@ reportCode =
 		     '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[3]) +'% </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Battery Roundtrip Efficiency</td>'
+             '<td>'+ sprintf("%.1f",roundtripEfficiency[0]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",roundtripEfficiency[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",roundtripEfficiency[2]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",roundtripEfficiency[3]) +'% </td>'
          '</tr>'
          
          '<tr>'
@@ -514,7 +527,7 @@ reportCode =
 '</section>'
 '</body>'
 '<footer style="text-align:center;">'
-    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p>This report was generated using the System Advisor Model Battery Compare Cases macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'
@@ -593,6 +606,12 @@ reportCode =
 		     '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[2]) +'% </td>'
+         '</tr>'
+         '<tr>'
+             '<td>Battery Roundtrip Efficiency</td>'
+             '<td>'+ sprintf("%.1f",roundtripEfficiency[0]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",roundtripEfficiency[1]) +'% </td>'
+			 '<td>'+ sprintf("%.1f",roundtripEfficiency[2]) +'% </td>'
          '</tr>'
          
          '<tr>'
@@ -767,7 +786,7 @@ reportCode =
 '</section>'
 '</body>'
 '<footer style="text-align:center;">'
-    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p>This report was generated using the System Advisor Model Battery Compare Cases macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'
@@ -866,7 +885,11 @@ reportCode =
 			 '<td>'+ sprintf("%.1f",capacityFactor[0]) +'% </td>'
 			 '<td>'+ sprintf("%.1f",capacityFactor[1]) +'% </td>'
          '</tr>'
-         
+         '<tr>'
+             '<td>Battery Roundtrip Efficiency</td>'
+             '<td>'+ sprintf("%.1f",roundtripEfficiency[0]) +'% </td>'
+		     '<td>'+ sprintf("%.1f",roundtripEfficiency[1]) +'% </td>'
+         '</tr>'
          '<tr>'
              '<td>Total Installed Cost</td>'
 			 '<td>'+ sprintf("$%,",capEx[0]) +' </td>'
@@ -1047,7 +1070,7 @@ reportCode =
 	
 '</body>'
 '<footer style="text-align:center;">'
-    '<p>This report was generated using the System Advisor Model testMacro on:</P>'
+    '<p>This report was generated using the System Advisor Model Battery Compare Cases macro on:</P>'
     '<p id="demo" ></p>'
 
         '<script>'

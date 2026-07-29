@@ -155,7 +155,7 @@ Tower Height and Piping Losses
 DESIGN POINT Integration with Natural Gas Combined Cycle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Default values of these parameters are from the NREL Triple Pressure NGCC model developed in IPSEpro using general information to define components. As the size of the duct burner increases, the efficiency of the NGCC decreases, but the value of replacing the duct burner with solar thermal power increases. Consequently, a thorough economic analysis of an ISCC plant must necessarily consider the capital and operational costs of the NGCC plant, and that capability is beyond the current scope of the SAM model.
+Default values of these parameters are from the NLR Triple Pressure NGCC model developed in IPSEpro using general information to define components. As the size of the duct burner increases, the efficiency of the NGCC decreases, but the value of replacing the duct burner with solar thermal power increases. Consequently, a thorough economic analysis of an ISCC plant must necessarily consider the capital and operational costs of the NGCC plant, and that capability is beyond the current scope of the SAM model.
 
 System Availability
 ~~~~~~~~~~~~~~~~~~~

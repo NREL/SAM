@@ -9508,8 +9508,12 @@
     "analysis_period_warning": "No messages.",
     "annual_albedo": 0.1839506853933204,
     "annual_beam": 7.335643835616439,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.3484328767123289,
     "annual_global": 5.794761643835617,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 21.938470319634705,
     "annual_twet": NaN,
@@ -18407,6 +18411,10 @@
     "batt_h_to_ambient": 100.0,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
+    "batt_itc_basis_cost": 79183092.05780399,
+    "batt_itc_basis_cost_fed_include": 1.0,
+    "batt_itc_basis_cost_sta_include": 1.0,
+    "batt_itc_basis_percent": 41.1135066070932,
     "batt_life_excl": 0.0,
     "batt_life_model": 0.0,
     "batt_lifetime_matrix": [
@@ -19597,8 +19605,8 @@
     "cbi_uti_maxvalue": 1e38,
     "cbi_uti_tax_fed": 1.0,
     "cbi_uti_tax_sta": 1.0,
-    "cec_a_ref": 1.82452,
-    "cec_adjust": 0.0529963,
+    "cec_a_ref": 1.8177168054163749,
+    "cec_adjust": -0.762030773,
     "cec_alpha_sc": 0.005484,
     "cec_area": 2.58,
     "cec_array_cols": 10.0,
@@ -19614,9 +19622,9 @@
     "cec_gap_spacing": 0.05,
     "cec_heat_transfer": 0.0,
     "cec_height": 0.0,
-    "cec_i_l_ref": 13.7267,
+    "cec_i_l_ref": 13.726885700899237,
     "cec_i_mp_ref": 12.82,
-    "cec_i_o_ref": 2.59771e-11,
+    "cec_i_o_ref": 2.347840466886919e-11,
     "cec_i_sc_ref": 13.71,
     "cec_is_bifacial": 1.0,
     "cec_material": "Mono-c-Si",
@@ -19626,14 +19634,15 @@
     "cec_mounting_orientation": 0.0,
     "cec_n_s": 72.0,
     "cec_p_mp_ref": 530.748,
-    "cec_r_s": 0.16229,
-    "cec_r_sh_ref": 133.611,
+    "cec_r_s": 0.16348162284110616,
+    "cec_r_sh_ref": 132.73556544102204,
     "cec_standoff": 6.0,
     "cec_t_noct": 43.1,
     "cec_temp_corr_mode": 0.0,
     "cec_transient_thermal_model_unit_mass": 11.0919,
     "cec_v_mp_ref": 41.4,
     "cec_v_oc_ref": 49.2,
+    "celltech": 0.0,
     "chk_update_peaks": 0.0,
     "city": "-",
     "clipping_correction_method_ui": 0.0,
@@ -28853,33 +28862,54 @@
         0.0
     ],
     "depr_alloc_custom_percent": 0.0,
-    "depr_alloc_macrs_15_percent": 1.5,
-    "depr_alloc_macrs_5_percent": 90.0,
-    "depr_alloc_none": 3.0,
-    "depr_alloc_sl_15_percent": 2.5,
-    "depr_alloc_sl_20_percent": 3.0,
+    "depr_alloc_macrs_15_percent": 0.0,
+    "depr_alloc_macrs_5_percent": 100.0,
+    "depr_alloc_none": 0.0,
+    "depr_alloc_sl_15_percent": 0.0,
+    "depr_alloc_sl_20_percent": 0.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
-    "depr_bonus_fed": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            1.0,
+            113413206.80458193,
+            58.8864933929068,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            2.0,
+            79183092.05780399,
+            41.1135066070932,
+            1.0,
+            1.0,
+            0.0
+        ]
+    ],
+    "depr_bonus_fed": 100.0,
     "depr_bonus_fed_custom": 0.0,
     "depr_bonus_fed_macrs_15": 1.0,
     "depr_bonus_fed_macrs_5": 1.0,
-    "depr_bonus_fed_sl_15": 0.0,
-    "depr_bonus_fed_sl_20": 0.0,
+    "depr_bonus_fed_sl_15": 1.0,
+    "depr_bonus_fed_sl_20": 1.0,
     "depr_bonus_fed_sl_39": 0.0,
-    "depr_bonus_fed_sl_5": 0.0,
-    "depr_bonus_sta": 0.0,
+    "depr_bonus_fed_sl_5": 1.0,
+    "depr_bonus_sta": 100.0,
     "depr_bonus_sta_custom": 0.0,
     "depr_bonus_sta_macrs_15": 1.0,
     "depr_bonus_sta_macrs_5": 1.0,
-    "depr_bonus_sta_sl_15": 0.0,
-    "depr_bonus_sta_sl_20": 0.0,
+    "depr_bonus_sta_sl_15": 1.0,
+    "depr_bonus_sta_sl_20": 1.0,
     "depr_bonus_sta_sl_39": 0.0,
-    "depr_bonus_sta_sl_5": 0.0,
+    "depr_bonus_sta_sl_5": 1.0,
     "depr_custom_schedule": [
         0.0
     ],
+    "depr_en_basis_mat": 1.0,
     "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
     "depr_itc_fed_custom": 0.0,
     "depr_itc_fed_macrs_15": 0.0,
     "depr_itc_fed_macrs_5": 1.0,
@@ -28887,6 +28917,7 @@
     "depr_itc_fed_sl_20": 0.0,
     "depr_itc_fed_sl_39": 0.0,
     "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
     "depr_itc_sta_custom": 0.0,
     "depr_itc_sta_macrs_15": 0.0,
     "depr_itc_sta_macrs_5": 1.0,
@@ -38985,6 +39016,12 @@
     "enable_subhourly_clipping": 0.0,
     "enable_subhourly_clipping_ui": 0.0,
     "enable_subinterval_distribution": 0.0,
+    "energy_expenses_ret": [
+        100.0
+    ],
+    "energy_revenue_ret": [
+        100.0
+    ],
     "engr_fixed": 0.0,
     "engr_per_watt": 0.02,
     "engr_percent": 0.0,
@@ -48380,9 +48417,9 @@
     ],
     "inv_cec_cg_vdcmax": 600.0,
     "inv_cec_cg_vdco": 398.497,
-    "inv_cec_date": "3/23/2020",
+    "inv_cec_date": "2020-03-23",
     "inv_cec_hybrid": "N",
-    "inv_cec_name": "Sungrow Power Supply Co - Ltd : SC2500U [550V]",
+    "inv_cec_name": "Sungrow Power Supply Co Ltd: SC2500U {550V}",
     "inv_cec_type": "Utility Interactive",
     "inv_ds_ac_voltage": 240.0,
     "inv_ds_data_filename": "",
@@ -49991,19 +50028,27 @@
     "irrad_mode": 0.0,
     "is_advanced": 0.0,
     "is_btm": 0.0,
+    "itc_basis_cost_capex_fed": 79183092.05780399,
+    "itc_basis_cost_capex_sta": 79183092.05780399,
+    "itc_basis_cost_percent_fed": 41.1135066070932,
+    "itc_basis_cost_percent_sta": 41.1135066070932,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 41.1135066070932,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        0.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -50030,7 +50075,7 @@
     "landprep_per_watt": 0.01,
     "landprep_percent": 0.0,
     "landprep_total": 999992.9217600002,
-    "lat": 33.45000076293945,
+    "lat": 33.45,
     "layout_warning": "No system sizing messages.",
     "lbl_bifacial": "",
     "lbl_fom_dispatch_message": "",
@@ -50678,7 +50723,7 @@
     "library_folder_list": "x",
     "library_paths": "",
     "loan_moratorium": 0.0,
-    "lon": -111.9800033569336,
+    "lon": -111.98,
     "mera_cost1": 9999929.2176,
     "mera_cost2": 0.0,
     "mera_cost3": 0.0,
@@ -50706,6 +50751,25 @@
     "nohrsc_station_id": "",
     "nohrsc_year": "",
     "nominal_discount_rate": 9.060000000000004,
+    "non_energy_expenses": [
+        0.0
+    ],
+    "non_energy_expenses_ds": 1.0,
+    "non_energy_expenses_escal": 0.0,
+    "non_energy_expenses_ret": [
+        0.0
+    ],
+    "non_energy_revenue": [
+        0.0
+    ],
+    "non_energy_revenue_ds": 1.0,
+    "non_energy_revenue_escal": 0.0,
+    "non_energy_revenue_is_shown": 0.0,
+    "non_energy_revenue_ret": [
+        0.0
+    ],
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 58.8864933929068,
     "om_batt_capacity_cost": [
         7.25
     ],
@@ -50778,7 +50842,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.075
+        0.08799999952316284
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -50786,15 +50850,15 @@
     "property_assessed_value": 192596298.8623859,
     "property_tax_rate": 0.0,
     "ptc_fed_amount": [
-        0.03
+        0.0
     ],
-    "ptc_fed_escal": 2.5,
-    "ptc_fed_term": 10.0,
+    "ptc_fed_escal": 0.0,
+    "ptc_fed_term": 0.0,
     "ptc_sta_amount": [
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.radmode.is_shown": 0.0,
     "pv.storage.p1.charge": 1.0,
     "pv.storage.p1.discharge": 0.0,
@@ -50821,6 +50885,7 @@
     "pv.storage.p6.dischargetogrid": 0.0,
     "pv.storage.p6.gridcharge": 0.0,
     "pv_capex_cost_choice": 0.0,
+    "pv_spectral.is_shown": 0.0,
     "rate_escalation": [
         0.0
     ],
@@ -50880,6 +50945,8 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "sky_model": 2.0,
     "snl_a": -3.62,
     "snl_a0": 0.9597,
@@ -50991,8 +51058,12 @@
     "spe_transient_thermal_model_unit_mass": 11.0919,
     "spe_vmp": 41.4,
     "spe_voc": 49.2,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "spectral_correction_celltech": "monoSi",
+    "spectral_correction_model_choice": 0.0,
+    "spectral_correction_msg": "No spectral correction messages.",
+    "spectral_recommend_choice": 0.0,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0
@@ -51082,7 +51153,7 @@
     "subarray1_tilt_eq_lat": 0.0,
     "subarray1_track_mode": 1.0,
     "subarray1_tracking_loss": 0.0,
-    "subarray1_ui_length_side": 2.265905637534131,
+    "subarray1_ui_length_side": 2.277235165721802,
     "subarray1_ui_nmodules": 188412.0,
     "subarray1_ui_nrows": 6729.0,
     "subarray1_ui_row_spacing": 7.553018791780437,
@@ -51346,6 +51417,10 @@
     "subarray4_ui_row_spacing": 7.590783885739338,
     "subtotal_direct": 173459393.66952006,
     "system_capacity": 99999.29217600002,
+    "system_itc_basis_cost": 113413206.80458193,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 58.8864933929068,
     "system_use_lifetime_output": 1.0,
     "term_int_rate": 7.0,
     "term_tenor": 18.0,
@@ -51377,6 +51452,13 @@
     "ui_copy_batt_discharge_percent_4": 25.0,
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 9.959203353786e-312,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_electricity_rate_option": 0.0,
     "ui_land_area_additional": 0.0,
     "ui_land_area_additional_units": 0.0,

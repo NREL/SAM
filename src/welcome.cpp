@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -435,7 +435,7 @@ void WelcomeScreen::OnCommand( wxCommandEvent &evt )
 	}
 		break;
 	case ID_GET_STARTED:
-		SamApp::ShowHelp( "getting_started");
+		SamApp::ShowHelp( "getting-started/welcome_page");
 		break;
 	case ID_OPEN_SCRIPT:
 		SamScriptWindow::OpenFiles();

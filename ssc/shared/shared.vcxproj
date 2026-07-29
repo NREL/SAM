@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9CF13BCD-318A-3994-9C52-552CE8CE2F04}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>shared</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\shared\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">shared.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sharedd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\shared\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">shared.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">shared</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/eigen3" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/coin" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/highs" /bigobj /w44191 /w44242 /w44266 /w44302 /w44388 /w44826 /w44905 /w44906 /w44928 /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4005;4018;4065;4068;4101;4146;4200;4244;4251;4267;4305;4307;4309;4334;4355;4477;4506;4715;4800;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/eigen3" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/coin" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/highs" /bigobj /w44191 /w44242 /w44266 /w44302 /w44388 /w44826 /w44905 /w44906 /w44928 /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4005;4018;4065;4068;4101;4146;4200;4244;4251;4267;4305;4307;4309;4334;4355;4477;4506;4715;4800;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\..;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/shared/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/shared/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindBZip2.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\SelectLibraryConfigurations.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-config-version.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindCbc.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindClp.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindEigen3.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindSCIP.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\Findre2.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-config-version.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-generate.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-options.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2Config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2ConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2Targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2Targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-config-version.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\utf8_range\utf8_range-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\utf8_range\utf8_range-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\utf8_range\utf8_range-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\share\eigen3\cmake\Eigen3Config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\share\eigen3\cmake\Eigen3ConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\share\eigen3\cmake\Eigen3Targets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\shared\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/shared/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/shared/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindBZip2.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\SelectLibraryConfigurations.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cbc\CbcTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Cgl\CglTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Clp\ClpTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\CoinUtils\CoinUtilsTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\Osi\OsiTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\absl\abslTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-config-version.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\highs\highs-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindCbc.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindClp.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindEigen3.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\FindSCIP.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\modules\Findre2.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsConfig.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsTargets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\ortools\ortoolsTargets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-config-version.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-generate.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-options.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\protobuf\protobuf-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2Config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2ConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2Targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\re2\re2Targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-config-version.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\scip\scip-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\utf8_range\utf8_range-config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\utf8_range\utf8_range-targets-release.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\cmake\utf8_range\utf8_range-targets.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\share\eigen3\cmake\Eigen3Config.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\share\eigen3\cmake\Eigen3ConfigVersion.cmake;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\share\eigen3\cmake\Eigen3Targets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\shared\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_gamma.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_jacobian.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_lu.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_newton.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_search.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\6par_solve.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\DB8_vmpp_impp_uint8_bin.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_aoi.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_capacity.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_capacity.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_btm.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_btm.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_fom.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_automatic_fom.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_pvsmoothing_fom.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_pvsmoothing_fom.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_manual.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_dispatch_manual.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_calendar_cycle.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_calendar_cycle.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_lmolto.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_lmolto.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_nmc.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_lifetime_nmc.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_powerflow.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_powerflow.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_voltage.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_battery_voltage.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_cec6par.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_cec6par.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_financial.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_financial.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell_dispatch.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_fuel_cell_dispatch.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_geothermal.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_geothermal.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_iec61853.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_iec61853.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_irradproc.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_irradproc.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_miniz.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_miniz.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_mlmodel.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_mlmodel.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ondinv.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ondinv.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_physics.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_physics.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_power_electronics.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_power_electronics.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_powerblock.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_powerblock.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ptes_chp_dispatch.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_ptes_chp_dispatch.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_incidence_modifier.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_incidence_modifier.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_io_manager.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_io_manager.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_shade_loss_mpp.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pv_shade_loss_mpp.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvinv.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvinv.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvmodel.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvmodel.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvshade.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvshade.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvwatts.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_pvwatts.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_resilience.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_resilience.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_sandia.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_sandia.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_shared_inverter.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_shared_inverter.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_snowmodel.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_snowmodel.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_time.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_time.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_util.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_util.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate_equations.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_utility_rate_equations.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_weatherfile.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_weatherfile.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos_cable_vessel.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_wind_obos_cable_vessel.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windfile.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windfile.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwakemodel.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwakemodel.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwatts.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lib_windwatts.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\logger.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\logger.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lsqfit.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\shared\lsqfit.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

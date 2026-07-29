@@ -2228,7 +2228,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 57.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2612,7 +2612,7 @@
             "IndexLabels": "",
             "Flags": 0.0,
             "DefaultValue": 0.0,
-            "UIObject": "",
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },

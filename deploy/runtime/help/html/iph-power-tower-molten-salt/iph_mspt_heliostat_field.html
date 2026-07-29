@@ -1,0 +1,1440 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Heliostat Field &#8212; SAM Help</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2da3bde9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'iph-power-tower-molten-salt/iph_mspt_heliostat_field';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tower and Receiver" href="iph_mspt_tower_receiver.html" />
+    <link rel="prev" title="System Design" href="iph_mspt_system_design.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/SAM-logo-horizontal.png" class="logo__image only-light" alt="SAM Help - Home"/>
+    <script>document.write(`<img src="../_static/SAM-logo-horizontal.png" class="logo__image only-dark" alt="SAM Help - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">About SAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/technology_options.html">Performance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/fin_overview.html">Financial Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/user_support.html">User Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/keep_up_to_date.html">SAM Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/component_models_databases.html">Models and Databases</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/welcome_page.html">Welcome Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/create_project.html">Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/choose_models.html">Choose Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/main_window.html">Main Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/input_pages.html">Input Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/costs.html">Costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/financial_model_inputs.html">Financial Model Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/run_simulations.html">Run Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/results_page.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/youtube_channel.html">Videos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_menu.html">File Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/case_menu.html">Case Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/manage_cases.html">Manage Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/export_data.html">Export Data and Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/inputs_browser.html">Inputs Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/time_series_viewer.html">Time Series Data Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/weekday_schedule.html">Weekday Weekend Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/notes.html">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/excel_exchange.html">Excel Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/macros.html">Macros and Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sdk.html">Software Development Kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_formats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/installation.html">Software Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/registration.html">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/configure_proxy_server.html">Web Access and Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/function_keys.html">Keyboard Shortcuts</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../window-reference/index.html">Window reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_combine_cases.html">Combine Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_array.html">Edit Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_lifetime.html">Edit Lifetime Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_losses.html">Edit Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_material_properties.html">Edit Material Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_monthly_values.html">Edit Monthly Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_column.html">Edit Data Table by Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_row.html">Edit Data Table by Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_parametric_variables.html">Edit Parametric Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_shading_data.html">Edit Shading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_parametric_quick_setup.html">Parametric Quick Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nohrsc_advanced_download.html">Advanced NOHRSC Download Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nsrdb_advanced_download.html">NSRDB Advanced Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_ptes_design_pt.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wave_download.html">Wave Resource Data Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wind_toolkit_download.html">WIND Toolkit Download</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../simulation-options/index.html">Simulation Options</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/simulation_options.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/parametrics.html">Parametric Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/stochastic.html">Stochastic Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/p50p90.html">P50/P90 Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/pvuncertainty.html">Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/release_notes.html">Release Notes</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weather Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-data/index.html">Weather Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data.html">Weather Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_manage_folders.html">Folders and Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data_elements.html">Weather Data Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_typical_single.html">Typical and Single Year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_time_convention.html">Time and Sun Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/accessing-weather-data-from-lk.html">Weather Data and LK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/irradiance_error_codes.html">Irradiance Error Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-file-formats/index.html">Weather File Formats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format.html">Weather File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_sam_csv_solar.html">SAM CSV Format for Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_wind.html">SAM CSV Format for Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_marine_energy.html">CSV Format for Marine Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_srw_wind.html">SRW Format for Wind</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../detailed-photovoltaic-model/index.html">Detailed Photovoltaic Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_overview.html">Getting Started with the Detailed Photovoltaic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_system_size.html">System Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_tracking_layout_land.html">Tracking Layout Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_soiling_shading_snow.html">Soiling Shading Snow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_electrical_losses.html">Electrical Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_sizing_instructions.html">PV Sizing Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_results.html">Detailed PV Model Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pvwatts/index.html">PVWatts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts.html">PVWatts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_results.html">PVWatts Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-concentration-photovoltaic/index.html">High Concentration Photovoltaic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_overview.html">High Concentration Photovoltaic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_results.html">Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../battery-storage/index.html">Battery Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_storage.html">Battery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_cell_and_system.html">Battery Cell and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_btm.html">Battery Dispatch BTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_fom.html">Battery Dispatch FOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_time_step.html">Battery Time Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_life.html">Battery Life</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_results.html">Battery Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hybrid-systems/index.html">Hybrid Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_systems.html">Hybrid Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system.html">Hybrid System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system_costs.html">Hybrid System costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../wind-power/index.html">Wind Power</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_power.html">Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_resource.html">Wind Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_turbine.html">Wind Turbine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_farm.html">Wind Farm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_uncertainties.html">Uncertainties</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-wave/index.html">Marine Energy Wave</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave.html">Marine Energy Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_resource.html">Wave Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_converter.html">Wave Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-tidal/index.html">Marine Energy Tidal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal.html">Marine Energy Tidal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_resource.html">Tidal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_converter.html">Tidal Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../solar-water-heating/index.html">Solar Water Heating</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_overview.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_system.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_results.html">Solar Water Heating Model Hourly Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fuel-cell/index.html">Fuel Cell</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_fuel_cell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_dispatch.html">Fuel Cell Dispatch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../biopower/index.html">Biomass Combustion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower.html">Biomass Combustion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_location_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock.html">Feedstock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_plant_specs.html">Plant Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_emissions.html">Emissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock_costs.html">Feedstock costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geothermal/index.html">Geothermal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_overview.html">Geothermal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_geothermal_resource.html">Geothermal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_plant_equipment.html">Plant and Equipment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_power_block.html">Power Block</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../custom-generation/index.html">Custom Generation Profile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation.html">Custom Generation Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation_profile.html">Generation Profile</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concentrating Solar-Thermal Power</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-empirical-trough-model/index.html">CSP Empirical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_overview.html">CSP Empirical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-physical-trough-model/index.html">CSP Physical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_overview.html">CSP Physical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_script_parameters.html">Script-only Parameters</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-power-tower-molten-salt/index.html">CSP Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_overview.html">CSP Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_tower_and_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_electric_htf_heater.html">Electric HTF Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/index.html">CSP Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_overview.html">CSP Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/index.html">CSP Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_overview.html">CSP Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-generic-solar/index.html">CSP Generic Solar</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_overview.html">CSP Generic Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_thermal_storage.html">Thermal Storage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-parabolic-trough/index.html">IPH Parabolic Trough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough.html">IPH Parabolic Trough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_collectors.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_receivers.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_tes.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/index.html">IPH Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds.html">IPH Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_collector_receiver.html">Collector and Receiver</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/index.html">IPH Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf.html">IPH Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_collector_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">IPH Power Tower Molten Salt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="iph_mspt.html">IPH Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iph_mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iph_mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iph_mspt_tower_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iph_mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iph_mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electric-thermal-energy-storage/index.html">Electric Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes.html">Electric Thermal Energy Storage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_heater.html">Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pumped-thermal-energy-storage/index.html">Pumped Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_energy_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_heat_pump.html">Heat Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Degradation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../degradation/index.html">Degradation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation.html">Degradation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_ac.html">AC Degradation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_dc.html">DC Degradation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grid</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grid/index.html">Grid</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_limits.html">Grid Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_outage.html">Grid Outage</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Financial Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation-costs/index.html">Installation costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_pv.html">PV Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_standalone_battery.html">Battery Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_wind.html">Wind Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_geothermal.html">Geothermal Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_swh.html">SWH Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_fuel_cell.html">Fuel Cell Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_biopower.html">Biomass Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_custom_generation.html">Custom Generation Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_trough.html">Trough Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_tower.html">Tower Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_linear_fresnel.html">Fresnel Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_generic_solar.html">Generic Solar System (GSS) costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_etes.html">ETES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_ptes.html">PTES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_marine_energy.html">Marine Energy Installation costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../operating-costs/index.html">Operating costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/operating_costs.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_operating.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_battery.html">Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_pv-battery.html">PV Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_fuel_cell.html">Fuel Cell Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_marine_energy.html">Marine Energy Operating costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-parameters/index.html">Financial Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_overview.html">Financial Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_residential.html">Residential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_commercial.html">Commercial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host.html">Third Party Ownership - Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host_developer.html">Third Party Ownership - Host / Developer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_community_solar.html">Community Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_single_owner.html">Single Owner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_merchant_plant.html">Merchant Plant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_leveraged_partnership.html">Leveraged Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_all_equity_partnership.html">All Equity Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_sale_leaseback.html">Sale Leaseback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoefcr.html">LCOE Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoh.html">LCOH Calculator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../revenue/index.html">Revenue</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_ppa.html">PPA Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_merchant_plant.html">Merchant Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_tod_factors.html">Time of Delivery Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_iph.html">Industrial Process Heat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../incentives-and-depreciation/index.html">Incentives and Depreciation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/cash_incentives.html">Cash Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/tax_credits_depreciation.html">Tax Credits and Depreciation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electricity-rates-and-load/index.html">Electricity Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_load.html">Electric Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_rates.html">Electricity Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_purchases.html">Electricity Purchases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_bill_results.html">Electricity Bill Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../thermal-rates-and-load/index.html">Thermal Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_load.html">Thermal Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_rates.html">Thermal Rates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../results/index.html">Results Page</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../results/results.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/graphs.html">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/data.html">Data Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/cashflow.html">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/timeseries.html">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/profiles.html">Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/heatmap.html">Heat Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/pdfcdf.html">PDF / CDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/uncertainties.html">Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/spatial.html">Spatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/notices.html">Notices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-metrics/index.html">Financial Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_overview.html">Financial Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_debt_and_equity.html">Debt and Equity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_revenues.html">Electricity Bill and Savings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_indifference_point.html">Indifference Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_irr.html">Internal Rate of Return (IRR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_levelized.html">Levelized Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcoe.html">Levelized cost of Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcos.html">Levelized Cost of Storage (LCOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lppa.html">Levelized PPA price (LPPA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_npv.html">Net Present Value (NPV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_payback.html">Payback Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_price.html">PPA Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_escalation.html">PPA Price Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_costs.html">Net Capital Cost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance-metrics/index.html">Performance Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_overview.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_biomass_usage.html">Annual Biomass Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_energy.html">Annual Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_water_usage.html">Annual Water Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_aux_w_wo_solar.html">Aux with and without Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_capacity_factor.html">Capacity Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_kwhkwyear1.html">Energy Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_gross_to_net_conv_factor.html">Gross-to-net Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_heat_rate.html">Heat Rate and Thermal Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_pump_power.html">Pump Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_p90_energy.html">p90 Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_solar_fraction.html">Solar Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_system_performance_factor.html">Performance Ratio</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Shade Calculator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-reference/index.html">3D Shade Calculator Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-overview.html">3D Shade Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shade-data-description.html">Shade data description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-create.html">Active surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shading-objects.html">Shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-3d-scene.html">3D scene view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-birds-eye.html">Bird’s eye view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-elevations.html">Elevations view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-analyze.html">Analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-import_export.html">Import and Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-save-close.html">Save and Close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shortcuts.html">Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-file-types.html">File Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-howto/index.html">3D Shade Calculator How-To</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-define-location.html">Define the scene location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-underlay.html">Use an image underlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-add-shading-objects.html">Add shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-active-surface.html">Add active surface objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-change-view.html">Change the view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-zoom-pan.html">Zoom and pan the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-select.html">Select an object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-move.html">Move objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-resize.html">Resize objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-rotate.html">Rotate objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-delete.html">Delete and copy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-colors.html">Change object colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-generate-data.html">Generate shade data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-export.html">Export shade data</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/iph-power-tower-molten-salt/iph_mspt_heliostat_field.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Heliostat Field</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Heliostat Field</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-and-tower-model-type-during-simulation">Field and tower model type (during simulation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-and-tower-design-macros">Field and Tower Design Macros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-settings">Optimization Settings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heliostat-properties">Heliostat Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heliostat-operation">Heliostat Operation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atmospheric-attenuation">Atmospheric Attenuation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solar-field-layout-constraints">Solar Field Layout Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-heliostat-position-data">Importing Heliostat Position Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-layout-table-with-external-data">Using the Layout Table with External Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#land-area">Land Area</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heliostat-field-availability">Heliostat Field Availability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solarpilot-field-layout-and-geometry-optimization">SolarPILOT Field Layout and Geometry Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-optimization">Geometry Optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines-for-choosing-variable-ranges-for-optimization">Guidelines for Choosing Variable Ranges for Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-layout">Field Layout</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="heliostat-field">
+<h1>Heliostat Field<a class="headerlink" href="#heliostat-field" title="Link to this heading">#</a></h1>
+<p>The Heliostat Field page displays the variables that specify the position of the heliostats in the solar field along with the heliostat geometry and optical properties. Unlike parabolic trough and dish system designs, which can be based on modular designs of individual components, power tower system designs typically require optimization of the tower height, receiver geometry, and distribution of heliostats around the receiver as a complete system.</p>
+<p>Page numbers relevant to this section from references cited with download links under “Power Tower” on the <a class="reference external" href="https://sam.nlr.gov/concentrating-solar-power/csp-publications">CSP Publications</a> page of the SAM website:</p>
+<ul class="simple">
+<li><p>Wagner (2008) p 10, 23-42, 49</p></li>
+<li><p>SolarPILOT documentation (forthcoming): Layout Setup, Heliostats</p></li>
+<li><p>Kistler (1986) p 25-37, 39-47, 74-75</p></li>
+</ul>
+<section id="id1">
+<h2>Heliostat Field<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The heliostat field inputs determine the position of heliostats in the field and define optimization settings for the SolarPILOT optimization algorithm. The algorithm considers the system’s projected cost of energy by running a simulation for several time steps that represent a range of weather conditions based on the number of days and hourly frequency in flux map lookup specified on the Tower and Receiver page, the weather file specified on the <a class="reference internal" href="../csp-power-tower-molten-salt/mspt_location_and_resource.html"><span class="doc">Location and Resource</span></a> page and costs from the <a class="reference internal" href="../installation-costs/cc_tower.html"><span class="doc">Installation Costs</span></a> page. The algorithm modifies the receiver aperture width, receiver height, tower height, and heliostat positions based on the optimization settings to find the values that minimize the system’s cost of energy. The optimization objective is penalized in the cases where either the maximum flux on the receiver exceeds the limit specified on the Tower and Receiver page, or when the power delivered from the receiver after estimated surface and piping losses does not meet the design-point value.  If the flux at the reference point exceeds the maximum value, the algorithm considers increasing the receiver surface area to avoid exceeding the maximum flux in spite of the higher cost. See SolarPILOT Field Layout and Optimization below for details.</p>
+<dl>
+<dt><strong>Heliostat Field Table</strong></dt><dd><p>The heliostat field table lists the x-y coordinates (<strong>X Position</strong>, <strong>Y Position</strong> in the table) of each heliostat in the field, where the point (0,0) is the position of the center of the base of the tower. You can either import heliostat position data (see below) from a text file, paste it from your computer’s clipboard, or you can choose an option to automatically generate or automatically optimize the field to calculate heliostat positions.</p>
+<p>You can also export the x-y coordinates from the table to a text file, or paste them to your computer’s clipboard.</p>
+<p>The two-dimensional map of the heliostat field  shows the position of each heliostat in the table. The y-axis is north-south where north is positive, and the x-axis is east-west where east is positive. Each row in the table represents a single heliostat position. The top of the map is north.</p>
+</dd>
+<dt><strong>Heliostats</strong></dt><dd><p>The total number of individual heliostats in the field, equal to the number of rows in the heliostat layout table. SAM automatically populates the field when you import heliostat position data from a file or when the field layout is automatically generated or optimized.</p>
+</dd>
+</dl>
+<section id="field-and-tower-model-type-during-simulation">
+<h3>Field and tower model type (during simulation)<a class="headerlink" href="#field-and-tower-model-type-during-simulation" title="Link to this heading">#</a></h3>
+<p>These options determine what happens when you click <strong>Simulate</strong> to run a simulation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The simulation results may be based on different heliostat positions, tower height, and receiver dimensions than you see on the Heliostat Field page and Tower and Receiver page. See below for details.</p>
+</div>
+<p>Depending on the option you choose, the simulation may used optimized values for the heliostat position table, tower height, and receiver dimension instead of the input values. SAM does not update the inputs with optimized values unless you run one of the field and tower design macros described below. The following output variables available on the <a class="reference internal" href="../results/data.html"><span class="doc">Data Tables</span></a> tab of the Results page show the data used for the simulation:</p>
+<ul class="simple">
+<li><p><strong>Heliostat position table - out</strong></p></li>
+<li><p><strong>Number of heliostats - out</strong></p></li>
+<li><p><strong>Tower height - out</strong></p></li>
+<li><p><strong>Receiver tube outer diameter - out</strong></p></li>
+<li><p><strong>Receiver aperture width - out</strong> or <strong>Cavity receiver aperture width - out</strong></p></li>
+<li><p><strong>Receiver height - out</strong> or  <strong>Cavity receiver height - out</strong></p></li>
+</ul>
+<dl>
+<dt><strong>Use current field layout and tower dimensions</strong></dt><dd><p>When you click <strong>Simulate</strong>, SAM does not run SolarPILOT. It uses the data from the heliostat field table on the Heliostat Field page with the values of <strong>Tower height</strong>, <strong>Receiver height</strong>, <strong>Receiver diameter</strong>, and <strong>Receiver aperture width</strong> on the Tower and Receiver page for the simulation. The heliostat position table, tower height, and receiver dimensions in the Results are the same as those shown on the Heliostat Field page and Tower and Receiver page:</p>
+<img alt="MSPT_use-current-layout-and-tower-dimensions.png" class="align-center" src="../_images/MSPT_use-current-layout-and-tower-dimensions.png" />
+</dd>
+<dt><strong>Generate heliostat layout using current tower dimensions</strong></dt><dd><p>When you click <strong>Simulate</strong>, SAM runs SolarPILOT to calculate the number and position of heliostats to achieve the target design-point reciever power based on the values of <strong>Tower height</strong>, <strong>Receiver height</strong>, <strong>Receiver diameter</strong>, and <strong>Receiver aperture with</strong> on the Tower and Receiver page. The tower height and receiver dimensions in the results are the same as the inputs on the Tower and Receiver page. The heliostat position table in the results may be different from the table on the Heliostat Field page:</p>
+<img alt="MSPT_generate-heliostat-layout.png" class="align-center" src="../_images/MSPT_generate-heliostat-layout.png" />
+</dd>
+<dt><strong>Optimize heliostat layout and tower dimensions</strong></dt><dd><p>When you click <strong>Simulate</strong>, SAM runs SolarPILOT to calculate the number and position of heliostats <em>and</em>   the values of tower height, receiver height and receiver diameter or aperture width (depending on the receiver type). This option uses the inputs under <strong>Optimization Settings</strong> in addition to considering the location and other design parameters and system costs. The heliostat position table in the results may be different from the data on the Heliostat Field page as shown in the image above. The tower height, and receiver dimensions in the results may also be different from the inputs on the Tower and Receiver page:</p>
+<img alt="MSPT_generate-heliostat-layout.png" class="align-center" src="../_images/MSPT_generate-heliostat-layout-and-tower-dimensions.png" />
+</dd>
+</dl>
+</section>
+<section id="field-and-tower-design-macros">
+<h3>Field and Tower Design Macros<a class="headerlink" href="#field-and-tower-design-macros" title="Link to this heading">#</a></h3>
+<p>Use the field and tower design macros to run SolarPILOT without running a simulation. You can run the appropriate macro to ensure that the heliostat position table, tower height, and receiver dimension inputs on the Heliostat Field page and Tower and Receiver page are the same as the data used for the simulation, or if you want to optimize the field without running a simulation.</p>
+<dl class="simple">
+<dt><strong>Macro: Generate heliostat layout using tower dimensions</strong></dt><dd><p>Run SolarPILOT now to generate values for the table of heliostat x-y positions based the tower height, receiver height, and receiver diameter/aperture width values from the Tower and Receiver page, taking into consideration the location and other design parameters and system costs. This changes the values in the heliostat position table, but not the tower height and receiver dimensions.</p>
+</dd>
+<dt><strong>Macro: Optimize heliostat layout and tower dimensions</strong></dt><dd><p>Run SolarPILOT now to generate both values for the table of heliostat x-y positions and calculate optimal tower height, receiver height, and receiver diameter/aperture width values. This option uses the inputs under <strong>Optimization Settings</strong> in addition to considering the location and other design parameters and system costs. This changes values in the heliostat position table and the tower height and receiver dimensions on the Tower and Receiver page.</p>
+</dd>
+</dl>
+</section>
+<section id="optimization-settings">
+<h3>Optimization Settings<a class="headerlink" href="#optimization-settings" title="Link to this heading">#</a></h3>
+<p>The optimization settings allow you to control aspects of the SolarPILOT optimization algorithm. The local derivative free (DFO) algorithm used in SAM is implemented in the <a class="reference external" href="https://nlopt.readthedocs.io">NLopt package</a>, provided for free online by MIT. This open-source code is implemented in C++, and can be readily incorporated into existing simulation frameworks such as SAM. A number of algorithms are provided in the NLOpt package, and gradient-based, global, and local derivative-free algorithms are all represented. Because this application is particularly interested in DFO without specified upper or lower bounds on variables and with a maximum flux constraint, only a one algorithm is used. The Bounded Optimization BY Quadratic Approximation (BOBYQA) routine optimizes the objective by iteratively constructing an objective function model based on a quadratic surface approximation (M. Powell, 2009). The stopping criteria for this algorithm was modified for the NLopt library. As described in the reference, most iterative changes to the variable set represent a solution to the quadratic problem within the current trust region, which can change from iteration to iteration. This algorithm (along with its predecessor NEWUOA) is somewhat unique among the NLopt library in its application of a quadratic response surface model.</p>
+<dl>
+<dt><strong>Initial optimization step size</strong></dt><dd><p>The normalized step size used by SAM’s optimization algorithms to take the first step away from the initial design point. The step size represents the total fractional departure in any and all optimization variables.</p>
+<p>For example, if the initial design to be optimized includes a tower height <img alt="EQ_HF_h-tower" src="../_images/EQ_HF_h-tower.png" />, receiver height of <img alt="EQ_HF_h-rec" src="../_images/EQ_HF_h-rec.png" />, and receiver aspect ratio <img alt="EQ_HF_alpha" src="../_images/EQ_HF_alpha.png" />, all variables are first normalized by their initial value:</p>
+<img alt="EQ_HF_h-tower0.png" class="align-center" src="../_images/EQ_HF_h-tower0.png" />
+<img alt="EQ_HF_h-rec0.png" class="align-center" src="../_images/EQ_HF_h-rec0.png" />
+<img alt="EQ_HF_alpha0.png" class="align-center" src="../_images/EQ_HF_alpha0.png" />
+<p>Next, the optimization algorithm chooses a search “direction” and takes a step by manipulating the normalized variable values. The step taken must fall within the initial optimization step size. Assuming a step size of 0.02, one such step may result in the values:</p>
+<img alt="EQ_HF_h-tower-norm.png" class="align-center" src="../_images/EQ_HF_h-tower-norm.png" />
+<img alt="EQ_HF_h-rec-norm.png" class="align-center" src="../_images/EQ_HF_h-rec-norm.png" />
+<img alt="EQ_HF_alpha-norm.png" class="align-center" src="../_images/EQ_HF_alpha-norm.png" />
+<p>Examining the step distances, we see that:</p>
+<img alt="EQ_HF_init-step-size.png" class="align-center" src="../_images/EQ_HF_init-step-size.png" />
+</dd>
+<dt><strong>Maximum optimization iterations</strong></dt><dd><p>The maximum number of iterations (field layouts) allowed during optimization. The algorithm may satisfy convergence criteria before reaching the iteration limit and terminate. If the algorithm reaches the maximum number of iterations without converging, SAM will use the layout with the best objective function observed during iteration.</p>
+</dd>
+<dt><strong>Optimization convergence tolerance</strong></dt><dd><p>The normalized tolerance that determines whether the algorithm has converged. Convergence may be obtained by the algorithm taking a normalized step size that is less in magnitude than the tolerance, or by the objective function (normalized) value ceasing to change by at least the tolerance value from iteration to iteration.</p>
+<p>Increasing the tolerance value will generally result in fewer optimization steps taken, but may lead to lesser improvement in the objective function before convergence.</p>
+<p>Note that the algorithms have different procedures for algorithm termination, and the tolerance value is usually one of several criteria. For more detailed information on algorithm behavior, refer to the <a class="reference external" href="http://ab-initio.mit.edu/wiki/index.php/NLopt">NLOpt documentation</a>  .</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="heliostat-properties">
+<h2>Heliostat Properties<a class="headerlink" href="#heliostat-properties" title="Link to this heading">#</a></h2>
+<p>The heliostat properties define the area of a single heliostat mirrored surface, focusing and canting properties, and the optical error characteristics of the heliostat. Note that SAM assumes that each heliostat employs a two-axis drive system with a pivot at the center of the mirrored surface. Heliostats are also assumed to be rectangular in shape. Individual facets are modeled to be adjacent with no gaps in between.</p>
+<dl>
+<dt><strong>Heliostat width, m</strong></dt><dd><p>The width of the heliostat surface in meters, including the mirrored surface, edge supports and any cutouts.</p>
+</dd>
+<dt><strong>Heliostat height, m</strong></dt><dd><p>The height of the heliostat surface in meters, including the mirrored surface, edge supports and any cutouts or slots.</p>
+<p>SAM assumes that the heliostat pivot point is half of the heliostat height. (The tower height is defined as the height between the pivot point and the vertical center of the receiver.)</p>
+</dd>
+<dt><strong>Ratio of reflective area to profile</strong></dt><dd><p>The fraction of the area defined by the heliostat width and height that actually reflects sunlight. This value determines the ratio of reflective area on each heliostat to the total projected area of the heliostat on a plane normal to the heliostat surface. The ratio accounts for non-reflective area on the heliostat that may cause shading of neighboring heliostats.</p>
+</dd>
+<dt><strong>Single heliostat area, m²</strong></dt><dd><p>The area of the heliostat mirrored area, equal to the product of the heliostat width and height and the ratio of reflective area to heliostat profile.</p>
+</dd>
+<dt><strong>Image error (slope,single axis), mrad</strong></dt><dd><p>A measure of the deviation of the actual heliostat image on the receiver from the expected or ideal image that helps determine the overall shape and distribution of the reflected solar flux on the receiver. This value specifies the total conical error distribution for each heliostat at one standard deviation in radians. The Image Error term describes the “slope” error of the reflector surface, or equivalently the error distribution in which a normal vector to the heliostat may lie. The error term lies along a single axis in heliostat coordinates. SAM assumes that the orthogonal axis shares the same image error.</p>
+<p>SAM applies the value to each heliostat in the field regardless of its distance from the tower. The image error accounts for all error sources, including tracking imprecision, foundation motion, mirror waviness, panel alignment problems, atmospheric refraction and tower sway.</p>
+</dd>
+<dt><strong>Reflected image conical error, mrad</strong></dt><dd><p>The equivalent conical error distribution about the reflected image vector, given the Image Error input. The total conical error is calculated as the root sum square of twice each individual-axis error component, though SAM assumes both error terms are equal.</p>
+</dd>
+</dl>
+<p><img alt="EQ_HF_image-conical-error" src="../_images/EQ_HF_image-conical-error.png" /></p>
+<blockquote>
+<div><p>Here, <img alt="EQ_HF_image-conical-error1" src="../_images/EQ_HF_image-conical-error1.png" />   is the reflected image conical error (mrad), and <img alt="EQ_HF_image-conical-error2" src="../_images/EQ_HF_image-conical-error2.png" />   is the Image Error (slope, single axis) input.</p>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>Number of heliostat facets – X</strong></dt><dd><p>The number of heliostat facets (also known as “canting” panels) in the X direction. As shown in the following diagram, there are 5 facets in the X direction.</p>
+</dd>
+</dl>
+<img alt="IMG_HF_heliostat-facets.png" class="align-center" src="../_images/IMG_HF_heliostat-facets.png" />
+<dl>
+<dt><strong>Number of heliostat facets –Y</strong></dt><dd><p>The number of heliostat facets (also known as “canting” panels) in the Y direction. As shown in the diagram above, there are 3 facets in the Y direction.</p>
+</dd>
+<dt><strong>Heliostat focusing method</strong></dt><dd><p>The method used to determine the focal point for the heliostat (facet) surface(s). If multiple facets are used, the method applies to each facet individually.</p>
+</dd>
+<dt><strong>Ideal</strong></dt><dd><p>Each heliostat is focused using a parabolic shape where the focal length is equal to the distance between the heliostat centroid and the receiver image plane. The vector defining the focal point is collinear with the normal vector from the surface of the heliostat.</p>
+</dd>
+<dt><strong>Flat</strong></dt><dd><p>The heliostat is not focused and assumed to be planar. Flat heliostats facets may still be canted into a semi-focused shape.</p>
+</dd>
+<dt><strong>Heliostat canting method</strong></dt><dd><p>The method used to determine the focal point for the facets (if multiple facets are used). The focal point of the facets may differ from the focal point of the mirror surfaces. Canting is achieved by mounting individual mirror facets such that their normal vector differs from the heliostat aiming vector.</p>
+<p>Individual facets may be canted and either flat or focused. Canting of flat facets achieves some degree of focusing, and performance of canted heliostats is maximized when sun position matches most closely that at which the panels were canted. As sun position deviates from the canting design point, additional optical aberration occurs and may degrade heliostat performance.</p>
+<p>The canting process involves first choosing the heliostat aim point (determining the heliostat aiming vector) then modifying the aiming vector of each individual facet to achieve the best possible concentration ratio on the receiver given the heliostat’s aiming position.</p>
+<p>Facet aiming vectors may differ from the heliostat aiming vector after canting because of the displacement of each facet away from the centroid of the receiver (the origin of the receiver aiming vector).</p>
+</dd>
+<dt><strong>None</strong></dt><dd><p>Heliostats are not canted and all facets are mounted such that their surface normal vector as the same directionality as the heliostat aiming vector.</p>
+</dd>
+<dt><strong>On-axis</strong></dt><dd><p>Heliostats facets are mounted such that their normal vector intercepts the receiver focal point while the heliostat aiming vector also points to the receiver focal point. The heliostat facets are perfectly focused in the case where the sun position lies along the extrapolated heliostat aiming vector (in other words, when the heliostat is directly in the receiver shadow!).</p>
+</dd>
+<dt><strong>Equinox</strong></dt><dd><p>Heliostat facets are mounted such that their reflected image strikes the receiver aim point when the sun is at its equinox position (noon on March 20th or September 20th).</p>
+</dd>
+<dt><strong>Summer solstice</strong></dt><dd><p>Heliostat facets are mounted such that their reflected image strikes the receiver aim point when the sun is at its summer solstice position (noon on June 21st).</p>
+</dd>
+<dt><strong>Winter solstice</strong></dt><dd><p>Heliostat facets are mounted such that their reflected image strikes the receiver aim point when the sun is at its winter solstice position (noon on December 21st).</p>
+</dd>
+<dt><strong>Mirror Reflectance and Soiling</strong></dt><dd><p>The mirror reflectance input is the solar weighted specular reflectance. The solar-weighted specular reflectance is the fraction of incident solar radiation reflected into a given solid angle about the specular reflection direction. The appropriate choice for the solid angle is that subtended by the receiver as viewed from the point on the mirror surface from which the ray is being reflected. For parabolic troughs, typical values for solar mirrors are 0.923 (4-mm glass), 0.945 (1-mm or laminated glass), 0.906 (silvered polymer), 0.836 (enhanced anodized aluminum), and 0.957 (silvered front surface).</p>
+</dd>
+</dl>
+</section>
+<section id="heliostat-operation">
+<h2>Heliostat Operation<a class="headerlink" href="#heliostat-operation" title="Link to this heading">#</a></h2>
+<dl>
+<dt><strong>Heliostat stow/deploy angle, degrees</strong></dt><dd><p>Solar elevation angle below which the heliostat field will not operate.</p>
+</dd>
+<dt><strong>Wind stow speed, m/s</strong></dt><dd><p>Wind velocity from the weather file at which the heliostats defocus and go into stowed position. At wind speeds above the stow speed, SAM assumes that the heliostats move into stow position to protect the mirror surface and support structure from wind damage. SAM accounts for the parasitic tracking power required to stow the heliostats, and to reposition them when the wind speed falls below the stow speed.</p>
+</dd>
+<dt><strong>Heliostat startup energy, kWe-hr</strong></dt><dd><p>The energy required to bring a single heliostat out of stow position to begin operation. Heliostat startup energy is applied during time steps when the field first operates after inactivity.</p>
+</dd>
+<dt><strong>Heliostat tracking energy, kWe</strong></dt><dd><p>The power required to operate a single heliostat. The tracking energy is applied during each time step in which a heliostat provides power to the receiver.</p>
+</dd>
+<dt><strong>Design-point DNI, W/m**</strong><sup>2</sup>**</dt><dd><p>The direct normal irradiation (beam normal) available at the reference design point. The power delivered to the receiver by the field when SAM determines the solar field layout depends on the Design-point DNI value that you specify.</p>
+<p>Increasing this value indicates that fewer heliostats are needed to achieve the reference condition power, while decreasing this value has the opposite effect. The design-point DNI value should represent the DNI at which your plant should achieve the specified thermal rating, including thermal and piping losses</p>
+<p>The Design-point DNI value is applied at the summer solstice noon sun position.</p>
+</dd>
+</dl>
+</section>
+<section id="atmospheric-attenuation">
+<h2>Atmospheric Attenuation<a class="headerlink" href="#atmospheric-attenuation" title="Link to this heading">#</a></h2>
+<p>Atmospheric attenuation is the optical loss applied to each heliostat due to scattering and distortion of light as it travels the distance between the heliostat and receiver. Attenuation loss depends strongly on the site air content and weather conditions, and attenuation increases as the distance between the heliostat and receiver increases.</p>
+<p>You can define attenuation loss using a polynomial equation that calculates the fraction of loss as a function of the distance that the reflected light travels (also known as slant range).</p>
+<p>The polynomial equation takes the following form, assuming polynomial coefficients <img alt="EQ_HF_atm_atten_coeffs" src="../_images/EQ_HF_atm_atten_coeffs.png" />:</p>
+<img alt="EQ_HF_atm_atten.png" class="align-center" src="../_images/EQ_HF_atm_atten.png" />
+<p>Where:</p>
+<img alt="EQ_HF_atm_atten_s.png" class="align-center" src="../_images/EQ_HF_atm_atten_s.png" />
+<p>The heliostat x-y position <img alt="EQ_HF_x-y" src="../_images/EQ_HF_x-y.png" /> and the tower height <img alt="EQ_HF_h-tower-var" src="../_images/EQ_HF_h-tower-var.png" /> determine the slant range <img alt="EQ_HF_slant-range" src="../_images/EQ_HF_slant-range.png" /> in kilometers.</p>
+<dl class="simple">
+<dt><strong>Polynomial coefficient 0</strong></dt><dd><p>The constant term <img alt="EQ_HF_atm_atten_C0" src="../_images/EQ_HF_atm_atten_C0.png" />   in the atmospheric attenuation polynomial equation.</p>
+</dd>
+<dt><strong>Polynomial coefficient 1</strong></dt><dd><p>The linear term <img alt="EQ_HF_atm_atten_C1" src="../_images/EQ_HF_atm_atten_C1.png" />   in the atmospheric attenuation polynomial equation.</p>
+</dd>
+<dt><strong>Polynomial coefficient 2</strong></dt><dd><p>The quadratic term <img alt="EQ_HF_atm_atten_C2" src="../_images/EQ_HF_atm_atten_C2.png" />   in the atmospheric attenuation polynomial equation.</p>
+</dd>
+<dt><strong>Polynomial coefficient 3</strong></dt><dd><p>The cubic term <img alt="EQ_HF_atm_atten_C3" src="../_images/EQ_HF_atm_atten_C3.png" />   in the atmospheric attenuation polynomial equation.</p>
+</dd>
+<dt><strong>Average attenuation loss, %</strong></dt><dd><p>SAM calculates the average attenuation loss for the current field layout. This calculated value is the average attenuation loss evaluated according to the attenuation loss polynomial over all heliostat positions specified in the layout table.</p>
+</dd>
+</dl>
+</section>
+<section id="solar-field-layout-constraints">
+<h2>Solar Field Layout Constraints<a class="headerlink" href="#solar-field-layout-constraints" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt><strong>Max Heliostat Distance to Tower Height Ratio and Min Heliostat Distance to Tower Height Ratio</strong></dt><dd><p>The maximum and minimum ratio of the distance from the heliostat furthest and closest from the tower to the tower height.</p>
+</dd>
+<dt><strong>Tower Height, m</strong></dt><dd><p>The height of the tower in meters, from the heliostat pivot points to the vertical center of the receiver panels. Specify this value on the Tower and Receiver page. Note that the tower height value may be automatically populated by the SolarPILOT optimization algorithm.</p>
+</dd>
+<dt><strong>Max Distance to Tower and Min Distance from Tower, m</strong></dt><dd><p>The maximum and minimum allowable radial distances in meters between the center of the tower base and heliostats furthest from the tower. Under certain conditions, SAM uses this value to calculate the radial step size. (See radial step size variable description below.)</p>
+</dd>
+</dl>
+</section>
+<section id="importing-heliostat-position-data">
+<h2>Importing Heliostat Position Data<a class="headerlink" href="#importing-heliostat-position-data" title="Link to this heading">#</a></h2>
+<p>The heliostat positions in the field are determined by the table of x-y coordinates for each heliostat in the field. You can either generate data for the table automatically using SolarPILOT, or import the data from a text file. This section explains how to import the data from a text file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also paste data into the table from your computer’s clipboard as rows of tab-delimited values.</p>
+</div>
+<section id="using-the-layout-table-with-external-data">
+<h3>Using the Layout Table with External Data<a class="headerlink" href="#using-the-layout-table-with-external-data" title="Link to this heading">#</a></h3>
+<p>SAM can model a wide variety of heliostat field layouts originating from any kind of layout method. You can model field layouts generated outside of SAM by importing the heliostat positions into the table on the Heliostat Field page. You can either import a text file of x-y heliostat coordinates or copy and paste the data into the table from a spreadsheet program or text editor.</p>
+<p>After you import the data, you can use the diagram of the field to verify that it imported correctly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use your own field position data, you should make sure that the tower height, receiver height, receiver diameter, and other input values are appropriate for your field layout.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you click <strong>Generate heliostat layout</strong> or <strong>Optimize solar field geometry</strong> after importing heliostat position data, <em>SAM will overwrite your data</em> with values calculated by SolarPILOT. It will also overwrite the table as part of the simulation if you check <strong>Always layout automatically</strong> or <strong>Always optimize</strong>.</p>
+</div>
+<p>Each row specifies the position of an individual heliostat relative to the tower. The first column in the table specifies the x-coordinate along the east-west axis of the field, with negative values indicating positions west of the tower, and positive values indicating positions east of the tower. The second column specifies the y-coordinate along the north-south axis, with positive values indicating positions north of the tower, and negative values indicating positions south of the tower. The tower is assumed to be at 0,0. Note that this convention also applies to systems in the southern hemisphere. SAM allows input of any field layout with no restrictions on heliostat positioning, field symmetry, etc. Use negative values for positions west and south of the tower. The heliostat coordinates do not have to be in a particular order in the file. Each column in the file should be separated by a tab or comma, and each row by a new line. A file with the following contents would describe a solar field with three heliostats at (x = 0.0, y = 75.0), (x = 7.5, y = 70.0), and (x = 15.0, y = 65.0):</p>
+<blockquote>
+<div><p>0.0 75.0</p>
+<p>7.5 70.0</p>
+<p>15.0 65.0</p>
+</div></blockquote>
+</section>
+</section>
+<section id="land-area">
+<h2>Land Area<a class="headerlink" href="#land-area" title="Link to this heading">#</a></h2>
+<p>SAM uses the land area to calculate land-related costs on the <a class="reference internal" href="../installation-costs/cc_tower.html"><span class="doc">Installation Costs</span></a> page when you specify costs in $/acre.</p>
+<dl>
+<dt><strong>Non-solar field land area, acres</strong></dt><dd><p>The land area occupied by the system, not including the heliostat field and tower.</p>
+</dd>
+<dt><strong>Solar field land area multiplier</strong></dt><dd><p>The ratio of the land area occupied by the solar field to the base land area. Use this multiplier to account for any land required for the solar field in excess of the convex hull defined by the base land area.</p>
+</dd>
+<dt><strong>Base land area, acres</strong></dt><dd><p>The land area contained within a convex polygon that tightly bounds the heliostat field. The base land area includes any region contained within the heliostat field boundary, including the base of the tower.</p>
+<p>SAM calculates the base land area by constructing a “convex hull” around the heliostat field layout and calculating the total area of that shape. The following figure illustrates a heliostat field layout and the convex hull shape determined by SAM. The convex hull is a polygon with vertices overlapping the set of most distant heliostat positions at any given azimuthal angle.</p>
+</dd>
+</dl>
+<p><img alt="IMG_HF_layout" src="../_images/IMG_HF_layout.png" /></p>
+<dl class="simple">
+<dt><strong>Total land area, acres</strong></dt><dd><p>The land area required for the entire system, including the heliostat field, tower, power plant, piping, storage tanks, buildings, etc.</p>
+</dd>
+</dl>
+<p><em>Total Land Area (acres) = Non-Solar Field Area (acres) + Base Land Area (acres) × Solar Field Land Area Multiplier</em></p>
+<blockquote>
+<div><p>The total land area appears on the <a class="reference internal" href="../installation-costs/cc_tower.html"><span class="doc">Installation Costs</span></a>   page, where you can specify land costs in dollars per acre.</p>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>Total heliostat reflective area, m²</strong></dt><dd><p>Total mirrored area of the heliostat field, equal to the heliostat reflective area multiplied by the number of heliostats. SAM uses the total reflective area to calculate the site improvements and heliostat costs expressed in dollars per square meter on the <a class="reference internal" href="../installation-costs/cc_tower.html"><span class="doc">Installation Costs</span></a>   page.</p>
+</dd>
+</dl>
+</section>
+<section id="heliostat-field-availability">
+<h2>Heliostat Field Availability<a class="headerlink" href="#heliostat-field-availability" title="Link to this heading">#</a></h2>
+<p>The heliostat field availability losses account for losses due to soiling, field component outages, or other events that affect the performance of equipment in the solar field.</p>
+<dl>
+<dt><strong>Time Series Performance Losses</strong></dt><dd><p>The time series performance losses apply during the performance simulation.</p>
+<p>Click <strong>Edit losses</strong> to specify constant, hourly, or hourly block schedules to alter the solar field output over time. The loss affects the solar field optical efficiency by increasing or decreasing the efficiency proportionally based on the value(s) that you specify for availability. This input may be useful in characterizing heliostat downtime, washing schedules, or other effects where field production may not match the ideal calculation.</p>
+<p>The default value of 1% for the constant loss is to account for heliostat availability losses due to downtime of some heliostats in the field for maintenance and repair.</p>
+</dd>
+<dt><strong>Design-point availability</strong></dt><dd><p>The design-point availability is an input to the SolarPilot optimization. It is not used during the performance simulation. Use this value to ensure that the optimization accounts for availability losses you are including the performance simulation.</p>
+</dd>
+</dl>
+</section>
+<section id="solarpilot-field-layout-and-geometry-optimization">
+<h2>SolarPILOT Field Layout and Geometry Optimization<a class="headerlink" href="#solarpilot-field-layout-and-geometry-optimization" title="Link to this heading">#</a></h2>
+<p>SolarPILOT™ simplifies the task of choosing values for the relatively large number of input parameters required to specify the power tower solar field and receiver. Because the heliostat field is typically the most capital intensive part of a power tower project, often accounting for 30-40% of the total installation cost, optimizing the heliostat field size is a critical step in minimizing overall project cost.</p>
+<p>The SolarPILOT optimization algorithm searches for a set of optimal system design values, where the optimal system is defined as the one that results in the lowest levelized cost of energy. Note that the optimization process is separate from the simulation process. When you run SolarPILOT, it populates some of the input variables in the SAM input pages (listed below) with optimal values. Before running simulations, you can choose to either keep the values generated by the algorithm or modify them.</p>
+<p>SolarPILOT was developed by NLR and generates field layouts and characterizes optical performance of the solar field using an analytical technique derived from the Hermite polynomial approach used in DELSOL3 and elsewhere (Dellin, 1979; Kistler, 1986; Lipps &amp; Vant-Hull, 1978; Walzel, Lipps, &amp; Vant-Hull, 1977). More information on SolarPILOT is available in the SolarPILOT technical documentation.</p>
+<p>The <a class="reference external" href="https://www.osti.gov/biblio/1231208">DELSOL3</a> code from Sandia National Laboratories was implemented in SAM 2014.1.14 and older versions through the PTGen program described in the thesis <em>Simulation and Predictive Performance Modeling of Utility-Scale Central Receiver System Power Plants</em> (Wagner 2008) (<a class="reference external" href="http://digital.library.wisc.edu/1793/45001">PDF 33 MB</a>).</p>
+<p>To use SolarPILOT for optimization:</p>
+<ol class="arabic simple">
+<li><p>On the <a class="reference internal" href="../installation-costs/index.html"><span class="doc">Installation Costs</span></a> page, enter values for the capital costs.</p></li>
+<li><p>On the <a class="reference internal" href="../csp-power-tower-molten-salt/mspt_heliostat_field.html"><span class="doc">Heliostat Field</span></a>, <a class="reference internal" href="../csp-power-tower-molten-salt/mspt_power_cycle.html"><span class="doc">Power Cycle</span></a>, and <a class="reference internal" href="../csp-power-tower-molten-salt/mspt_tower_and_receiver.html"><span class="doc">Tower and Receiver</span></a> pages, enter values defining geometry and optical parameters.  The optimization algorithm works by exploring the design near the initial guess values, so be sure to enter your best guess for tower height, receiver diameter, and receiver height based on the system you are simulating.</p></li>
+<li><p>On the Heliostat Field page, enter values to define the parameters of the optimization.</p></li>
+<li><p>On the Heliostat Field page, click <strong>Optimize Solar Field Geometry</strong>.</p></li>
+</ol>
+<p>As the optimization progresses, SAM displays a table showing the tower height (THT), receiver height to diameter ratio (Aspect), receiver height (RecHeight), along with the objective function (Obj) and peak flux intensity on the receiver (Flux).</p>
+<p>The objective function value is a surrogate for cost of energy, but includes penalties for flux exceeding the maximum allowable value or power falling below the target design-point value. The objective function value is not the same as the levelized cost of energy, and is only useful in the context of the optimization.</p>
+<ol class="arabic simple">
+<li><p>After SolarPILOT finishes the optimization, SAM displays the the optimization results in the Optimization Summary table.</p></li>
+</ol>
+<p>To replace the inputs for receiver height, receiver diameter, tower height, and heliostat layout in SAM with the optimal values in the table, click <strong>Yes</strong>. To discard the optimization results without changing the SAM inputs, click <strong>No</strong>.</p>
+<ol class="arabic simple">
+<li><p>Review the variables on the input pages. Modify any values as needed, and then configure and run simulations to simulate the system(s) and display annual production, levelized cost of energy, and other results on the <a class="reference internal" href="../getting-started/results_page.html"><span class="doc">Results</span></a> page.</p></li>
+</ol>
+</section>
+<section id="geometry-optimization">
+<h2>Geometry Optimization<a class="headerlink" href="#geometry-optimization" title="Link to this heading">#</a></h2>
+<p>Optimizing the solar field reduces the system’s cost of energy by exploring the design space around the initial guess values for tower height, receiver height, and receiver aspect ratio. SolarPILOT uses the optimization algorithm that you specify on the Heliostat Field page to manipulate the design. The algorithm is constructed to seek the minimum cost of energy for the system subject to maximum flux and minimum power constraints. Each step in the optimization process consists of a full layout and performance simulation performed by SolarPILOT. Optimization accounts for the weather data in the file that you select, capital costs, optical performance, and approximate thermal performance.</p>
+<p>The optimization algorithm uses the solar multiple and the estimated receiver and piping thermal losses to calculate the receiver’s thermal rating, which is calculated as follows:</p>
+<img alt="EQ_HF_q-des.png" class="align-center" src="../_images/EQ_HF_q-des.png" />
+<p>Here, <img alt="EQ_qdotdesign" src="../_images/EQ_qdotdesign.png" /> is the receiver design-point thermal power output that is displayed as Receiver Design Thermal Power (MWt) on the Tower and Receiver page, <img alt="EQ_HF_rho" src="../_images/EQ_HF_rho.png" /> is the Coating Absorptance value from the Tower and Receiver page, <img alt="EQ_HF_q-hl" src="../_images/EQ_HF_q-hl.png" /> is the Estimated Receiver Heat Loss (kWt/m2) value from the Tower and Receiver page, <img alt="EQ_HF_A-rec" src="../_images/EQ_HF_A-rec.png" /> is the calculated Receiver Area value displayed on the Installation Costs page, and <img alt="EQ_HF_Q-dot-pipe" src="../_images/EQ_HF_Q-dot-pipe.png" /> is the Total Piping Loss (converted to MWt) displayed on the Parasitics page.</p>
+<p>The algorithm holds the following variables constant as it searches for the optimal system:</p>
+<ul class="simple">
+<li><p>Solar Multiple on the Tower and Receiver page.</p></li>
+<li><p>Nameplate Capacity on the Power Cycle page.</p></li>
+<li><p>Heliostat Width on the Heliostat Field page.</p></li>
+<li><p>Heliostat Height on the Heliostat Field page.</p></li>
+<li><p>Maximum Receiver Flux (boiler, superheater, and reheater fluxes for the direct steam tower model) on the Tower and Receiver page.</p></li>
+</ul>
+<p>The algorithm searches to find optimal values of the following variables on the Tower and Receiver page. When SolarPILOT finishes running, SAM optionally populates the variables with the optimal values.</p>
+<ul class="simple">
+<li><p>Receiver Diameter</p></li>
+<li><p>Receiver Height (calculated as a function of the receiver height to the receiver diameter ratio)</p></li>
+<li><p>For the direct steam tower model, boiler, superheater, and reheater height. The sum of these three heights is the receiver height.</p></li>
+<li><p>Tower Height</p></li>
+</ul>
+<p>SAM also populates the following variables on the Heliostat Field page with values from SolarPILOT:</p>
+<ul class="simple">
+<li><p>Field layout table</p></li>
+<li><p>Total Reflective Area</p></li>
+<li><p>Number of Heliostats</p></li>
+</ul>
+<p>The optimization algorithm uses the following values from the input pages, but does not change their values.</p>
+<p>From the Heliostat Field page:</p>
+<ul class="simple">
+<li><p>Heliostat Width</p></li>
+<li><p>Heliostat Height</p></li>
+<li><p>Ratio of Reflective Area to Profile</p></li>
+<li><p>Mirror Reflectivity and Soiling</p></li>
+<li><p>Max Distance from Tower</p></li>
+<li><p>Min Distance from tower</p></li>
+<li><p>Image Error</p></li>
+</ul>
+<p>For the molten salt tower model, from the Tower and Receiver page:</p>
+<ul class="simple">
+<li><p>Coating Absorptivity</p></li>
+<li><p>Max Receiver Flux</p></li>
+<li><p>Estimated receiver heat loss</p></li>
+<li><p>Receiver flux map resolution</p></li>
+</ul>
+<p>For the direct steam tower model, from the Tower and Receiver page:</p>
+<ul class="simple">
+<li><p>Coating Absorptivity</p></li>
+<li><p>Max Boiler Flux</p></li>
+<li><p>Max Superheater Flux</p></li>
+<li><p>Superheater Outlet Temperature Set Point</p></li>
+<li><p>Reference Superheater Efficiency</p></li>
+<li><p>Max Reheater Flux</p></li>
+<li><p>Reheater Outlet Temperature Set Point</p></li>
+<li><p>Reference Reheater Efficiency</p></li>
+<li><p>Estimated receiver heat loss</p></li>
+<li><p>Receiver flux map resolution</p></li>
+</ul>
+<p>From the Power Cycle page:</p>
+<ul class="simple">
+<li><p>Nameplate Capacity</p></li>
+<li><p>Rated Cycle Conversion Efficiency</p></li>
+</ul>
+<p>Since the optimization algorithm uses derivative-free nonlinear algorithms, it is impossible to guarantee that the solution identified by SAM is optimal. The success of the optimization algorithm depends on the initial guess values (the values entered for receiver height, diameter, and tower height) when the optimization process begins and on the optimization settings on the Heliostat Field page. It is possible that the algorithm will converge to a solution that is not optimal, or to a solution that does not satisfy the flux or power requirements that you specify.</p>
+<p>Finding an optimal set of input parameters is often an iterative process that may require you to run the optimization algorithm and adjust guess values or settings several times until the algorithm finds a reasonable field layout for your analysis. You may find more consistent success by successively reducing the Initial Optimization Step Size, decreasing the Optimization Convergence Tolerance, or starting the simulation using randomized starting values for the receiver height, diameter, and tower height.</p>
+<p>Keep in mind that because the algorithm uses capital costs from the Installation Costs page in the optimization process, unreasonable cost values may also prevent the algorithm from finding an optimal field layout.</p>
+<section id="guidelines-for-choosing-variable-ranges-for-optimization">
+<h3>Guidelines for Choosing Variable Ranges for Optimization<a class="headerlink" href="#guidelines-for-choosing-variable-ranges-for-optimization" title="Link to this heading">#</a></h3>
+<p>The optimization algorithm does its best to find parameter values for an optimal system within the search ranges you specify on the SolarPILOT input tabs. Because the algorithm searches a discrete number of values within the range for each parameter, defining too broad of a range increases the chances that the optimal value lies between the values included in the search. On the other hand, defining too narrow a range increases the chances that the optimal value lies outside of the search range.</p>
+<p>The ability of the optimization algorithm to find an optimal system is sensitive to the following variable ranges:</p>
+<ul class="simple">
+<li><p>Receiver diameter range, defined by Minimum Receiver Diameter and Maximum Receiver Diameter.</p></li>
+<li><p>Receiver height to diameter ratio range, defined by Minimum Receiver Height/Diameter Ratio and Maximum Receiver Height/Diameter Ratio.</p></li>
+<li><p>Tower height range, defined by Minimum Tower Height and Maximum Tower Height.</p></li>
+<li><p>Heliostat distance from tower range, defined by Maximum Distance from Tower and Minimum Distance from Tower values on the Heliostat Field page.</p></li>
+</ul>
+<p>The following rules of thumb may be helpful in choosing search ranges for these variables, although they may not apply to some systems.</p>
+<ul class="simple">
+<li><p>Tower height: The tower height typically falls between 15 m for very small systems (5 MWe) and 300 m for very large systems (150 MWe). For example, a reasonable range for a 30 MWe system with a solar multiple of 1.0 would be between 40 m and 120 m.</p></li>
+<li><p>Receiver diameter: The optimization algorithm searches for a receiver diameter value that maximizes absorbed radiation from the heliostat field within the flux limit defined by the maximum value on the Receiver/Tower page. Like the tower height, the receiver area typically scales with system’s design thermal power. For very small systems, the optimal receiver diameter is typically between 1 m and 3 m, while very large systems may require a diameter of 25 m.</p></li>
+<li><p>Receiver height to diameter ratio: This ratio should generally fall between 0.5 and 2.0.</p></li>
+<li><p>Heliostat distance from tower: If the minimum distance is too small, the inner zones in the heliostat will contain no heliostats (the first rows in the field layout table on the Heliostat Field page contain zeros), which will cause the simulation to fail. If the maximum distance is too large, the outer zones will contain no heliostats. On the other hand, if the maximum distance is too small, all of the outer zones will contain heliostats. For very small systems, the maximum distance might be set to 300 m, and for very large systems, a distance of 2000 m might be appropriate.</p></li>
+</ul>
+</section>
+</section>
+<section id="field-layout">
+<h2>Field Layout<a class="headerlink" href="#field-layout" title="Link to this heading">#</a></h2>
+<p>The heliostat field layout is managed by NLR’s SolarPILOT™ software. SolarPILOT replaces DELSOL3 in SAM 2014.1.14 and older versions. SolarPILOT evaluates the heliostat field layout by characterizing each potential heliostat position individually. This approach replaces DELSOL3’s zonal simplification. This approach allows much greater flexibility in the types of heliostat field layouts that SAM can model, although improved flexibility comes with a greater computational burden for optical characterization.</p>
+<p>SolarPILOT is <a class="reference external" href="https://www.nlr.gov/csp/solarpilot.html">available as stand-alone software</a>, and is integrated with SAM using its application programming interface (API) SAM.</p>
+<p>SAM offers two options for designing the heliostat field:</p>
+<ul class="simple">
+<li><p>You can design the field outside of SAM and import the layout as a table of heliostat positions with Cartesian x and y coordinates with respect to the tower at position (0,0).</p></li>
+<li><p>You can use SAM to run SolarPILOT and automatically generate heliostat positions given a tower height, heliostat geometry and optical properties, and receiver geometry and optical properties.</p></li>
+</ul>
+<p>SAM uses the following process to choose which heliostat positions will be included in the final layout:</p>
+<ol class="arabic simple">
+<li><p><strong>Collect user-specified information</strong> on receiver geometry, heliostat geometry, system optical properties, tower height, plant location and weather data, atmospheric conditions, and field layout constraints. Choose each input in this group carefully, as the layout algorithm incorporates all of this information in identifying the most productive heliostat positions.</p></li>
+<li><p><strong>Generate a set of potential heliostat positions</strong> using the “radial stagger” layout method. All positions within the minimum and maximum land bounds are initially included in the list of potential heliostats.</p></li>
+</ol>
+<p>The radial stagger layout method places heliostats in rows of constant radius (iso-radial lines) where the center of the tower base is the center point and along lines of constant azimuth angle (aso-azimuthal lines):</p>
+<img alt="IMG_Tower-solar-pilot-radial-stagger-layout.png" class="align-center" src="../_images/IMG_Tower-solar-pilot-radial-stagger-layout.png" />
+<p>The initial spacing between heliostats in a row is a distance twice the width of a heliostat. As the radial position of the rows increases, so too does the spacing between heliostats as they maintain their position along an azimuthal line. Spacing continues to increase until the distance between heliostats meets or exceeds 2 ⅔ times the heliostat width. Spacing then resets to the original factor of 2 times the width.</p>
+<p>The radial spacing between rows depends on the distance of each row from the tower. Row positions are determined to ensure that heliostats that lie directly behind a closer row (every other row in the layout) has sufficient space to eliminate blocking of reflected light:</p>
+<img alt="IMG_Tower-solar-pilot-eliminate-blocking.png" class="align-center" src="../_images/IMG_Tower-solar-pilot-eliminate-blocking.png" />
+<ol class="arabic simple">
+<li><p><strong>Evaluate the available heliostat positions</strong> from step (2) to determine estimated annual performance for each heliostat. A set of approximately 25 time steps are simulated throughout the year using averaged weather profiles for each simulation. The time steps compose 4 daily profiles with simulations every other hour. Each hour in the time step contains averaged weather data for the quarter of the year surrounding that day at the same hour of the day. In this way, SAM predicts the amount of power delivered by each heliostat position.</p></li>
+</ol>
+<p>The simulations evaluate the optical efficiency of each heliostat and include cosine, attenuation, intercept factor, reflectance and soiling, and blocking effects.</p>
+<p>Note that all heliostats are aimed at the centerpoint of the receiver during layout calculations. This approach is known as simple aim point strategy, where heliostats aim their reflection at the vertical centerline of the receiver in the region nearest the heliostat.</p>
+<p>Note that shadowing is not considered during layout simulations for several reasons:</p>
+<ul class="simple">
+<li><p>Blocking and shadowing simulations result in similar efficiency trends over the year, so inclusion of blocking is typically sufficient to remove problematic heliostats.</p></li>
+<li><p>The number of heliostats within range for shadowing from a given heliostat depends on the elevation angle of the sun, and low-elevation scenarios can result in comparison of a very large number of heliostats, significantly slowing down simulation speed.</p></li>
+<li><p>The final layout is not significantly impacted by shadowing, given the blocking consideration mentioned above.</p></li>
+<li><p>Inclusion of shadowing can lead to “cascaded” efficiency loss, where heliostats that would normally be omitted due to blocking shadow neighboring heliostats and cause subsequent removal of otherwise productive heliostats.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Collect simulation</strong> results for each heliostat and ranks each heliostat according to its simulated annual productivity.</p></li>
+<li><p><strong>Run a reference-point simulation</strong> that determines the energy delivered by the solar field to the receiver at a reference condition. The reference condition is the summer solstice at solar noon.</p></li>
+<li><p><strong>Remove the worst-performing heliostats</strong> from the layout in order beginning with the poorest heliostat. Removal continues while the total power delivered to the receiver exceeds the design-point thermal power plus estimated thermal losses from the receiver surface and from runner piping. Once the delivered power falls below the design threshold, the resulting list of heliostats comprises the final field layout.</p></li>
+</ol>
+<p>Heliostat layout generation assumes a constant receiver height and diameter and a constant tower height. SAM can optimize these variable values using the optimization tool. More information on solar field geometry optimization is provided in the Optimization section below.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="iph_mspt_system_design.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">System Design</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="iph_mspt_tower_receiver.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tower and Receiver</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Heliostat Field</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-and-tower-model-type-during-simulation">Field and tower model type (during simulation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-and-tower-design-macros">Field and Tower Design Macros</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-settings">Optimization Settings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heliostat-properties">Heliostat Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heliostat-operation">Heliostat Operation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atmospheric-attenuation">Atmospheric Attenuation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solar-field-layout-constraints">Solar Field Layout Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-heliostat-position-data">Importing Heliostat Position Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-layout-table-with-external-data">Using the Layout Table with External Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#land-area">Land Area</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heliostat-field-availability">Heliostat Field Availability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solarpilot-field-layout-and-geometry-optimization">SolarPILOT Field Layout and Geometry Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-optimization">Geometry Optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines-for-choosing-variable-ranges-for-optimization">Guidelines for Choosing Variable Ranges for Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-layout">Field Layout</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, National Laboratory of the Rockies.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

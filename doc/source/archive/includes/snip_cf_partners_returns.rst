@@ -7,7 +7,7 @@ Tax Investor
 The tax investor cash flows represent the tax investor share of project cash flows.
 
 Tax Investor Pre-Tax Returns
-............................
+----------------------------
 
 **Total tax investor pre-tax returns**
   In Year Zero, the tax investor pre-tax cash flow is the portion of equity capital allocated to the tax investor:
@@ -47,7 +47,7 @@ Tax Investor Pre-Tax Returns
   Where *C*\ :sub:`PreTax,n`\    is the tax investor pre-tax cash flow described above, *d*\ :sub:`nominal`\    is the nominal discount rate from the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page.
 
 Tax Investor After-Tax Returns
-..............................
+------------------------------
 
 **Tax investor cash (total pre-tax returns)**
   The tax investor pre-tax cash flow, described above.
@@ -119,7 +119,7 @@ Developer
 The Developer cash flows represent the developer share of project cash flows.
 
 Developer Pre-Tax Returns
-.........................
+-------------------------
 
 **Pre-tax development fee**
   A fee received by the developer.
@@ -164,7 +164,7 @@ Developer Pre-Tax Returns
   The cumulative tax investor pre-tax NPV in the flip year defined on the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page.
 
 Developer After-Tax Returns
-...........................
+---------------------------
 
 **Equity Investment**
   The developer's share of the project equity capital.

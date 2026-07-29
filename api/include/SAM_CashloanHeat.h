@@ -471,52 +471,340 @@ extern "C"
 	//
 
 	/**
-	 * Set depr_fed_custom: Federal custom depreciation [%/year]
+	 * Set depr_alloc_custom_percent: Custom depreciation federal and state allocation [%]
 	 * options: None
-	 * constraints: None
-	 * required if: depr_fed_type=3
-	 */
-	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_fed_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set depr_fed_sl_years: Federal depreciation straight-line Years [years]
-	 * options: None
-	 * constraints: INTEGER,POSITIVE
-	 * required if: depr_fed_type=2
-	 */
-	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_fed_sl_years_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_fed_type: Federal depreciation type
-	 * options: 0=none,1=macrs_half_year,2=sl,3=custom
-	 * constraints: INTEGER,MIN=0,MAX=3
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_fed_type_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_custom_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
-	 * Set depr_sta_custom: State custom depreciation [%/year]
+	 * Set depr_alloc_macrs_15_percent: 15-yr MACRS depreciation federal and state allocation [%]
 	 * options: None
-	 * constraints: None
-	 * required if: depr_sta_type=3
-	 */
-	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_sta_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
-
-	/**
-	 * Set depr_sta_sl_years: State depreciation straight-line years [years]
-	 * options: None
-	 * constraints: INTEGER,POSITIVE
-	 * required if: depr_sta_type=2
-	 */
-	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_sta_sl_years_nset(SAM_table ptr, double number, SAM_error *err);
-
-	/**
-	 * Set depr_sta_type: State depreciation type
-	 * options: 0=none,1=macrs_half_year,2=sl,3=custom
-	 * constraints: INTEGER,MIN=0,MAX=3
+	 * constraints: MIN=0,MAX=100
 	 * required if: ?=0
 	 */
-	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_sta_type_nset(SAM_table ptr, double number, SAM_error *err);
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_macrs_5_percent: 5-yr MACRS depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_15_percent: 15-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_sl_15_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_20_percent: 20-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_sl_20_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_39_percent: 39-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_sl_39_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_alloc_sl_5_percent: 5-yr straight line depreciation federal and state allocation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_alloc_sl_5_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_basis_mat: Depreciation Basis Matrix
+	 * options: None
+	 * constraints: col 0=tech no, col 1=basis amount ($), col 2=% of total installed cost, col 3=fed itc qual 0/1, col 4=state itc qual 0/1, col 5=depreciation selection(0=macrs 5, 1=macrs 15, 2=sl 5, 3=sl 15, 4=sl 20, 5=sl 39, 6=custom)
+	 * required if: depr_en_basis_mat=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_basis_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed: Federal bonus depreciation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_custom: Federal bonus depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_custom_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_macrs_15: Federal bonus depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_macrs_5: Federal bonus depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_15: Federal bonus depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_20: Federal bonus depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_39: Federal bonus depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_fed_sl_5: Federal bonus depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta: State bonus depreciation [%]
+	 * options: None
+	 * constraints: MIN=0,MAX=100
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_custom: State bonus depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_custom_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_macrs_15: State bonus depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_macrs_5: State bonus depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_15: State bonus depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_20: State bonus depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_39: State bonus depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_bonus_sta_sl_5: State bonus depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_custom_schedule: Custom depreciation schedule [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set depr_en_basis_mat: Enable Depreciation Basis Matrix [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_en_basis_mat_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_fedbas_method: Method of federal depreciation reduction
+	 * options: 0=5yr MACRS,1=Proportional
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_fedbas_method_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_custom: Federal ITC depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_custom_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_macrs_15: Federal ITC depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_macrs_5: Federal ITC depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_15: Federal ITC depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_20: Federal ITC depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_39: Federal ITC depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_fed_sl_5: Federal ITC depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_custom: State ITC depreciation custom [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_custom_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_macrs_15: State ITC depreciation 15-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_macrs_5: State ITC depreciation 5-yr MACRS [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_15: State ITC depreciation 15-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_20: State ITC depreciation 20-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_39: State ITC depreciation 39-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_itc_sta_sl_5: State ITC depreciation 5-yr straight line [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_stabas_method: Method of state depreciation reduction
+	 * options: 0=5yr MACRS,1=Proportional
+	 * constraints: INTEGER,MIN=0,MAX=1
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_Depreciation_depr_stabas_method_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -1671,6 +1959,14 @@ extern "C"
 	 */
 	SAM_EXPORT void SAM_CashloanHeat_ChargesByMonth_utility_bill_w_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
+	/**
+	 * Set utility_bill_wo_sys: Electricity bill without system [$]
+	 * options: None
+	 * constraints: None
+	 * required if: *
+	 */
+	SAM_EXPORT void SAM_CashloanHeat_ChargesByMonth_utility_bill_wo_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
 
 	//
 	// Battery parameters
@@ -2067,17 +2363,89 @@ extern "C"
 	 * Depreciation Getters
 	 */
 
-	SAM_EXPORT double* SAM_CashloanHeat_Depreciation_depr_fed_custom_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_custom_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double* SAM_CashloanHeat_Depreciation_depr_sta_custom_aget(SAM_table ptr, int* length, SAM_error *err);
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_sl_15_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_sl_20_percent_nget(SAM_table ptr, SAM_error *err);
 
-	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_error *err);
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_sl_39_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Depreciation_depr_basis_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_fed_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_en_basis_mat_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_fed_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_itc_sta_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Depreciation_depr_stabas_method_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**
@@ -2386,6 +2754,8 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_ChargesByMonth_utility_bill_w_sys_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_CashloanHeat_ChargesByMonth_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err);
+
 
 	/**
 	 * Battery Getters
@@ -2551,10 +2921,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_energy_without_battery_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_fed_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_fed_depreciation_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_fed_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2562,6 +2928,28 @@ extern "C"
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_fed_taxable_incentive_income_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_fed_taxable_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_me1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_me2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_me3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_feddepr_total_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_federal_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2657,10 +3045,6 @@ extern "C"
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err);
 
-	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err);
-
-	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_depreciation_aget(SAM_table ptr, int* length, SAM_error *err);
-
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_tax_savings_aget(SAM_table ptr, int* length, SAM_error *err);
@@ -2668,6 +3052,28 @@ extern "C"
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_taxable_incentive_income_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_sta_taxable_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_custom_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_me1_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_me2_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_me3_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_stadepr_total_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -2678,6 +3084,410 @@ extern "C"
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_utility_bill_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_CashloanHeat_Outputs_cf_value_added_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_none_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_none_percent_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_alloc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_after_itc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_amount_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_qual_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_percent_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_prior_itc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_fedbas_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_after_itc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_amount_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_qual_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_percent_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_prior_itc_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_depr_stabas_total_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_discounted_payback_nget(SAM_table ptr, SAM_error *err);
 
@@ -2698,6 +3508,110 @@ extern "C"
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_ibi_total_sta_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_ibi_total_uti_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_fixed_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_fed_percent_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_fixed_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_disallow_sta_percent_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_fixed_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_percent_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_fed_qual_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_fixed_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_percent_total_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_custom_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_macrs_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_macrs_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_sl_15_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_sl_20_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_sl_39_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_sl_5_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_sta_qual_total_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_itc_total_nget(SAM_table ptr, SAM_error *err);
 
@@ -2736,6 +3650,10 @@ extern "C"
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_npv_energy_lcos_real_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_payback_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_pre_depr_alloc_basis_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_CashloanHeat_Outputs_pre_itc_qual_basis_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_CashloanHeat_Outputs_present_value_fuel_nget(SAM_table ptr, SAM_error *err);
 

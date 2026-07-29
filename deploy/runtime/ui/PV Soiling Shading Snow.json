@@ -1,7 +1,7 @@
 {
     "Name": "PV Soiling Shading Snow",
-    "Width": 1008.0,
-    "Height": 683.0,
+    "Width": 1013.0,
+    "Height": 739.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -74,11 +74,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -425,11 +425,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 822.0
+                    "Integer": 816.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -462,11 +462,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 561.0
+                    "Integer": 618.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -507,15 +507,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 396.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 999.0
+                    "Integer": 1000.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 150.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -548,7 +548,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 999.0
+                    "Integer": 1000.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -585,11 +585,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 999.0
+                    "Integer": 1000.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 111.0
+                    "Integer": 141.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -614,11 +614,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 561.0
+                    "Integer": 618.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -924,11 +924,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 849.0
+                    "Integer": 843.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -983,11 +983,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1020,11 +1020,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 849.0
+                    "Integer": 843.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 699.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1079,11 +1079,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 699.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1120,11 +1120,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 849.0
+                    "Integer": 843.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 672.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1179,11 +1179,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 507.0
+                    "Integer": 564.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1245,11 +1245,11 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 492.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 999.0
+                    "Integer": 1000.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1327,7 +1327,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 78.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1377,11 +1377,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 420.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1389,7 +1389,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1563,11 +1563,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 393.0
+                    "Integer": 387.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 615.0
+                    "Integer": 672.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1774,11 +1774,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1815,11 +1815,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 300.0
+                    "Integer": 294.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2142,11 +2142,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 423.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2183,11 +2183,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 429.0
+                    "Integer": 423.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2510,11 +2510,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 552.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2551,11 +2551,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 552.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2878,11 +2878,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2919,11 +2919,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 327.0
+                    "Integer": 354.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3080,11 +3080,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 36.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 645.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4266,6 +4266,18 @@
         "\t\t\tshow( prefix + vars[j], value( prefix + 'enable') == 1 );\r",
         "\t\t}\t\r",
         "\t}\r",
+        "\t\r",
+        "\t// disable bifacial inputs unless module is bifacial\r",
+        "\tenable('subarray1_rear_soiling_loss', is_bifacial());\r",
+        "\tenable('subarray1_rack_shading', is_bifacial());\r",
+        "\tfor ( i=2; i<=n_subarrays_max; i++ ) {\r",
+        "\t\tprefix = 'subarray' + to_string(i);\r",
+        "\t\tif (value(prefix + '_enable') == 1) {\r",
+        "\t\t\tenable(prefix + '_rear_soiling_loss', is_bifacial());\r",
+        "\t\t\tenable(prefix + '_rack_shading', is_bifacial());\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\t\r",
         "\t// hide until we implement a bifacial rack shading calculation\r",
         "\tshow('Label_bifacial_0', false);\r",
         "\tshow('calculate_rack_shading', false);\r",

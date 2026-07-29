@@ -432,6 +432,35 @@ extern "C"
 
 
 	//
+	// Lifetime parameters
+	//
+
+	/**
+	 * Set ac_degradation: Annual AC degradation for lifetime simulations [%/year]
+	 * options: None
+	 * constraints: None
+	 * required if: system_use_lifetime_output=1
+	 */
+	SAM_EXPORT void SAM_Windpower_Lifetime_ac_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set analysis_period: Analysis period [years]
+	 * options: None
+	 * constraints: None
+	 * required if: system_use_lifetime_output=1
+	 */
+	SAM_EXPORT void SAM_Windpower_Lifetime_analysis_period_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set system_use_lifetime_output: Run lifetime simulation [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Windpower_Lifetime_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err);
+
+
+	//
 	// AdjustmentFactors parameters
 	//
 
@@ -696,6 +725,17 @@ extern "C"
 	SAM_EXPORT double SAM_Windpower_Losses_wake_future_loss_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Windpower_Losses_wake_int_loss_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
+	 * Lifetime Getters
+	 */
+
+	SAM_EXPORT double* SAM_Windpower_Lifetime_ac_degradation_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Lifetime_analysis_period_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Windpower_Lifetime_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

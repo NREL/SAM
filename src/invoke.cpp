@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -354,6 +354,7 @@ static void fcall_dview_solar_data_file(lk::invoke_t& cxt)
         { "pres", "Pressure", "millibar" },
         { "snow", "Snow depth", "cm" },
         { "albedo", "Albedo", "fraction" },
+        { "pwater", "Precipitable water", "cm"},
         { 0, 0, 0 } };
 
     ssc_number_t start, step; // start & step in seconds, then convert to hours
@@ -599,9 +600,28 @@ static void fcall_addpage( lk::invoke_t &cxt )
 				for( size_t i=0;i<vec.length();i++ )
 				{
 					PageInfo pi;
-					pi.Name = vec.index(i)->as_string();
-					pi.Caption = pi.Name;
-					excl_header_pages.push_back( pi );
+                    lk::vardata_t& item = vec.index(i)->deref();
+                    if (item.type() == lk::vardata_t::HASH)
+                    {
+                        if (lk::vardata_t* name = item.lookup("name"))
+                            pi.Name = name->as_string();
+                        else
+                            continue; // skip if no name provided
+                        pi.Caption = pi.Name; // default caption is the name
+                        if (lk::vardata_t* capt = item.lookup("caption"))
+                            pi.Caption = capt->as_string();
+                        if (lk::vardata_t* is_collap = item.lookup("collapsible"))
+                            pi.Collapsible = is_collap->as_boolean();
+                        if (lk::vardata_t* var = item.lookup("collapsible_var"))
+                            pi.CollapsiblePageVar = var->as_string();
+                        if (lk::vardata_t* initial = item.lookup("collapsed_by_default"))
+                            pi.CollapsedByDefault = initial->as_boolean();
+                    }
+                    else {
+                        pi.Name = vec.index(i)->as_string();
+                        pi.Caption = pi.Name;
+                        excl_header_pages.push_back(pi);
+                    }
 				}
 			}
 
@@ -631,15 +651,39 @@ static void fcall_addpage( lk::invoke_t &cxt )
                 for (size_t i = 0; i < vec.length(); i++)
                 {
                     PageInfo pi;
-                    pi.Name = vec.index(i)->as_string();
-                    pi.Caption = pi.Name;
+                    lk::vardata_t& item = vec.index(i)->deref();
+                    if (item.type() == lk::vardata_t::HASH)
+                    {
+                        if (lk::vardata_t* name = item.lookup("name"))
+                            pi.Name = name->as_string();
+                        else
+                            continue; // skip if no name provided
+                        pi.Caption = pi.Name; // default caption is the name
+                        if (lk::vardata_t* capt = item.lookup("caption"))
+                            pi.Caption = capt->as_string();
+                        if (lk::vardata_t* is_collap = item.lookup("collapsible"))
+                            pi.Collapsible = is_collap->as_boolean();
+                        if (lk::vardata_t* var = item.lookup("collapsible_var"))
+                            pi.CollapsiblePageVar = var->as_string();
+                        if (lk::vardata_t* initial = item.lookup("collapsed_by_default"))
+                            pi.CollapsedByDefault = initial->as_boolean();
+                        
+                    }
+                    else {
+                        pi.Name = vec.index(i)->as_string();
+                        pi.Caption = pi.Name;
+                        pi.Collapsible = true;
+                        pi.CollapsedByDefault = true;
+                        
+                    }
                     excl_footer_pages.push_back(pi);
                 }
             }
+            
 
         }
 	}
-	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide, bin_name, exclusive_top);
+	SamApp::Config().AddInputPageGroup( pages, sidebar, help, exclusive_var, excl_header_pages, exclusive_tabs, exclusive_hide, bin_name, exclusive_top, excl_footer_pages);
 }
 
 
@@ -3009,7 +3053,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
             if (ok && (curls[i]->GetDataAsString().Length() < 1000))
                 ok = curls[i]->Get(urls[i]);
             if (!ok)
-                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NREL Hindcast Wave Data web service may be down.", "NREL Hindcast Wave Data Download Message", wxOK);
+                wxMessageBox("Download failed.\n\n" + urls[i] + "\n\nThere may be a problem with your internet connection,\nor the NLR Hindcast Wave Data web service may be down.", "NLR Hindcast Wave Data Download Message", wxOK);
             else if (curls[i]->GetDataAsString().Length() < 1000) {
                 wxMessageBox("Weather file not available.\n\n" + urls[i] + "\n\n" + curls[i]->GetDataAsString(), "Wave Resource Download Message", wxOK);
                 cxt.result().empty_hash();
@@ -3023,7 +3067,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                 file_list += filename_array[i] + "\n";
                 if (!curls[i]->WriteDataToFile(fn))
                 {
-                    wxMessageBox("Failed to write file.\n\n" + fn, "NREL Hindcast Wave Data Download Message", wxOK);
+                    wxMessageBox("Failed to write file.\n\n" + fn, "NLR Hindcast Wave Data Download Message", wxOK);
                     //break;
                 }
                 num_downloaded++;
@@ -3066,7 +3110,7 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
                     SamApp::Settings().Write("wave_data_paths", wxJoin(paths, ';'));
                 }
             }
-            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your resource library:\n\n" + file_list, "NREL Hindcast Wave Data Download Message", wxOK);
+            if (file_list != "") wxMessageBox("Download complete.\n\nThe following files have been downloaded and added to your resource library:\n\n" + file_list, "NLR Hindcast Wave Data Download Message", wxOK);
             //EndModal(wxID_OK);
         }
 
@@ -3109,10 +3153,10 @@ void fcall_wavetoolkit(lk::invoke_t& cxt)
 
 void fcall_windtoolkit(lk::invoke_t &cxt)
 {
-	LK_DOC("windtoolkit", "Creates the NREL WIND Toolkit Download dialog box, downloads weather file from WIND Toolkit API for requested location and parameters, and returns weather file name", "(none) : string");
+	LK_DOC("windtoolkit", "Creates the NLR WIND Toolkit Download dialog box, downloads weather file from WIND Toolkit API for requested location and parameters, and returns weather file name", "(none) : string");
 
 	//Create the wind data object
-	WindToolkitDialog spd(SamApp::Window(), "NREL WIND Toolkit Download");
+	WindToolkitDialog spd(SamApp::Window(), "NLR WIND Toolkit Download");
 	spd.CenterOnParent();
 	int code = spd.ShowModal(); //shows the dialog and makes it so you can't interact with other parts until window is closed
 
@@ -3134,7 +3178,7 @@ void fcall_windtoolkit(lk::invoke_t &cxt)
 	{
 		wxBusyInfo bid("Converting address to lat/lon.");
 
-		// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+		// use GeoTools::GeocodeGoogle for non-NLR builds and set google_api_key in private.h
         if (!GeoTools::GeocodeDeveloper(spd.GetAddress(), &lat, &lon, false))
 		{
 			wxMessageDialog* md = new wxMessageDialog(NULL, "Failed to convert address to lat/lon. This may be caused by a geocoding service outage or internet connection problem.", "WIND Toolkit Download Error", wxOK);
@@ -3830,7 +3874,7 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 void fcall_geocode(lk::invoke_t& cxt)
 {
   	LK_DOC("geocode",
-		"Given a street address or location name, returns latitude, longitude. Returns optional time zone if get_tz is true. Not designed to take latitude and longitude as input. Uses the MapQuest Geocoding API via a private NREL wrapper. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
+		"Given a street address or location name, returns latitude, longitude. Returns optional time zone if get_tz is true. Not designed to take latitude and longitude as input. Uses the MapQuest Geocoding API via a private NLR wrapper. Returned table fields are 'lat', 'lon', 'tz', 'ok'.",
 		"(string:location, [boolean:get_tz]):table");
 
 	double lat, lon, tz;
@@ -3884,7 +3928,7 @@ void fcall_geocode(lk::invoke_t& cxt)
 		get_tz = cxt.arg(1).as_boolean();
 	}
 
-	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+	// use GeoTools::GeocodeGoogle for non-NLR builds and set google_api_key in private.h
 	if (is_address) {
 		ok = GeoTools::GeocodeDeveloper(cxt.arg(0).as_string(), &lat, &lon);
 		if (!ok) {
@@ -4586,6 +4630,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
             wxLogStatus("error scanning '" + wf + "'");
             //cxt.error(err);
             cxt.result().assign(err);
+            has_more = dir.GetNext(&file);
             continue;
         }
         else
@@ -4594,9 +4639,9 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                 if (ssc_data_get_number(pdata, "location_id", &val))
                     csv(1, 0) = wxString::Format("%g", val);
 
-                
 
-                
+
+
 
                 if (ssc_data_get_number(pdata, "lat", &val)) {
                     csv(1, 4) = wxString::Format("%g", val);
@@ -4614,7 +4659,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                     year_max = year_arr[0];
                 }
 
-                
+
                 /*
                 if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
                 {
@@ -4633,13 +4678,13 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
 
                 if (ssc_data_get_number(pdata, "tz", &val))
                     csv(1, 10) = wxString::Format("%g", val);
-                
+
                 if ((str = ssc_data_get_string(pdata, "data_source")) != 0)
                     csv(1, 11) = wxString(str);
-                
-                
+
+
             }
-            
+
             if ((year_arr = ssc_data_get_array(pdata, "year", &nrows)) != 0)
             {
                 for (int i = 0; i < nrows; i++) {
@@ -4651,7 +4696,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
             {
                 for (int i = 0; i < nrows; i++) {
                     csv(nrows * file_count + i + 3, 1) = wxString::Format("%g", month_arr[i]);
-                    
+
                 }
             }
             if ((day_arr = ssc_data_get_array(pdata, "day", &nrows)) != 0)
@@ -4672,17 +4717,17 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                     csv(nrows * file_count + i + 3, 4) = wxString::Format("%g", min_arr[i]);
                 }
             }
-            
+
             if ((height_arr = ssc_data_get_array(pdata, "significant_wave_height", &nrows)) != 0)
             {
-               
+
                 for (int i = 0; i < nrows; i++) {
                     csv(nrows * file_count + i + 3, 5) = wxString::Format("%g", height_arr[i]);
                 }
             }
             if ((period_arr = ssc_data_get_array(pdata, "energy_period", &nrows)) != 0)
             {
-                
+
                 for (int i = 0; i < nrows; i++) {
                     csv(nrows * file_count + i + 3, 6) = wxString::Format("%g", period_arr[i]);
                 }
@@ -4697,10 +4742,10 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                             resource_matrix_jpd.at(r, c) = resource_matrix[r * matrix_cols + c];
                         }
                     }
-                    
+
                 }
                 else {
-                    for (int r = 0; r < matrix_rows ; r++) {
+                    for (int r = 0; r < matrix_rows; r++) {
                         for (int c = 0; c < matrix_cols; c++) {
                             if (c != 0 && r != 0) { //Do not sum headers
                                 //num = resource_matrix[i];
@@ -4733,7 +4778,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
                     if (r == 0 && c == 0) csv(2 + r, c) = "Hs/Te";
                 }
 
-                
+
             }
             csv(1, 12) = wxString::Format("%g", year_min);
             csv(1, 12) += "-" + wxString::Format("%g", year_max);
@@ -4749,7 +4794,7 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
             ssc_data_free(pdata);
 
         }
-        
+
     }
 
     //csv(1, 0) += "_" + wxString::Format("%g", year_min);
@@ -4796,7 +4841,14 @@ void fcall_make_jpd_multiyear(lk::invoke_t& cxt)
     //                lc->ReloadLibrary();
     //    }
     //}
-    cxt.result().assign("");
+    if (file_count == 0) {
+        wxLogStatus("No valid files in folder");
+        //cxt.error(err);
+        cxt.result().assign("No valid files in folder");
+    }
+    else {
+        cxt.result().assign("");
+    }
     return;
 }
 

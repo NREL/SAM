@@ -67,9 +67,17 @@ extern "C"
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_csky_beam_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_csky_diff_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_csky_glob_nget(SAM_table ptr, SAM_error *err);
+
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_diff_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_glob_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Wfreader_Outputs_annual_precipitation_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Wfreader_Outputs_annual_snow_nget(SAM_table ptr, SAM_error *err);
 
@@ -114,6 +122,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Wfreader_Outputs_poa_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Wfreader_Outputs_pres_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Wfreader_Outputs_pwater_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Wfreader_Outputs_rhum_aget(SAM_table ptr, int* length, SAM_error *err);
 

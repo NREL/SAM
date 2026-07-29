@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_6parsolve_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_eqns_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_pvsamv1_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_stateful_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battwatts_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_biomass_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_cashloan_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_communitysolar_test .cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_custom_generation_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_equpartflip_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_etes_etes_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_etes_ptes_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fresnel_physical_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fuelcell_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_costs_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_grid_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_host_developer_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_steps_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_lcoefcr_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_levpartflip_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_merchantplant_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_costs_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_tidal_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_wave_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvsamv1_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv5_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv7_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv8_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvyield_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_saleleaseback_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_sco2_csp_system_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_heat_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_swh_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_tcsmolten_salt_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_tcstrough_empirical_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_thirdpartyownership_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_trough_physical_iph_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_trough_physical_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_utilityrate5_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_wfreader_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_windpower_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\common_financial_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\save_as_JSON_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\solesca_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\sscapi_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\vartab_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\6par_solve_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\csp_solver_core_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_capacity_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_btm_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_fom_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_manual_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_pvsmoothing_fom_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_lmolto_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_nmc_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_powerflow_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_voltage_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_tes_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_trough_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_fuel_cell_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_geothermal_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_irradproc_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_ptes_chp_dispatch_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_resilience_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_shared_inverter_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_solar_thermal_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_time_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_util_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_utility_rate_equations_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_utility_rate_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_weatherfile_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windfile_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windwakemodel_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windwatts_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\csp_financial_defaults.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_common_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\shared_rate_data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\weather_inputs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\vartab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_windpower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_utilityrate5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_battery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_battwatts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_fuelcell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\common_financial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_eqns_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_pvsamv1_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_stateful_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battwatts_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_biomass_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_cashloan_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_communitysolar_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_custom_generation_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_equpartflip_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fresnel_physical_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fuelcell_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_costs_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_grid_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_host_developer_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_steps_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_json_comparison_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_lcoefcr_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_levpartflip_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_merchantplant_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_costs_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_tidal_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_wave_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvsamv1_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv5_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv7_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv8_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvyield_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_saleleaseback_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_heat_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_swh_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_tcsmolten_salt_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_thirdpartyownership_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_trough_physical_iph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_windpower_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\common_financial_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\csp_common_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\solesca_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\vartab_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_capacity_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_btm_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_fom_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_manual_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_pvsmoothing_fom_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_powerflow_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_properties.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_voltage_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_tes_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_trough_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_fuel_cell_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_geothermal_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_irradproc_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_resilience_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_solar_thermal_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_time_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windwakemodel_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\battery_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\battwatts_cases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\biomass_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\code_generator_utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\custom_generation_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\etes_etes_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\etes_ptes_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\fuelcell_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\geothermal_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\geothermal_costs_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\grid_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_battery_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_cases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvwatts_cases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvyield_cases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvyield_common_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\shared_rate_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\singleowner_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\sscapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\swh_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\tcsmolten_salt_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\tcstrough_empirical_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\trough_physical_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\trough_physical_iph_defaults.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\weather_inputs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\windpower_cases.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{C2742582-4DA7-38C8-8A82-B0C4D993583F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2D10E145-424C-34DB-9737-C6430B5D4915}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -7,8 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'System Advisor Model (SAM)'
-copyright = '2025, National Renewable Energy Laboratory'
-author = 'Paul Gilman'
+copyright = '2026, National Laboratory of the Rockies'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/co nfiguration.html#general-configuration

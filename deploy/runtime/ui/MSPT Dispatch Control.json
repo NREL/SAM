@@ -86,7 +86,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 65.0
+                    "Integer": 110.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -94,7 +94,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "The turbine output fraction scales the turbine thermal input relative to design for the corresponding time-of-delivery period."
+                    "String": "The target output fraction scales the plant control target selected on the System Design page (heat to cycle or net system electricity output) relative to design for the corresponding time-of-delivery period."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -140,7 +140,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 93.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 42.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -519,7 +519,7 @@
                 },
                 "ColLabels": {
                     "Type": 5.0,
-                    "String": "Turbine output fraction"
+                    "String": "Target output fraction"
                 },
                 "NumRowsLabel": {
                     "Type": 5.0,
@@ -576,7 +576,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use hourly turbine output fractions?"
+                    "String": "Use hourly target output fractions?"
                 },
                 "State": {
                     "Type": 2.0,
@@ -605,7 +605,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 311.0
+                    "Integer": 320.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -617,7 +617,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Use output fraction as maximum cycle output"
+                    "String": "Set output fraction as maximum timestep target output"
                 },
                 "State": {
                     "Type": 2.0,
@@ -792,7 +792,7 @@
         "f_turb_tou_periods": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Turbine output fraction",
+            "Label": "Target output fraction",
             "Units": " ",
             "Group": "System Control",
             "IndexLabels": "",
@@ -841,7 +841,7 @@
         "timestep_load_fractions": {
             "Version": 4.0,
             "Type": 2.0,
-            "Label": "Hourly turbine output fractions",
+            "Label": "Hourly target output fractions",
             "Units": "",
             "Group": "",
             "IndexLabels": "",

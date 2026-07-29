@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal OM Costs",
-    "Width": 551.0,
-    "Height": 206.0,
+    "Width": 553.0,
+    "Height": 124.0,
     "FormObjects": {
         "Button": {
             "Visible": 1.0,

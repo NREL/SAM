@@ -1,7 +1,7 @@
 {
     "Name": "Degradation AC Lifetime",
-    "Width": 794.0,
-    "Height": 134.0,
+    "Width": 788.0,
+    "Height": 162.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 128.0
+                    "Integer": 152.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -40,28 +40,81 @@
                 }
             }
         },
+        "SchedNumeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ac_degradation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 207.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 33.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 112.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Label": {
+                    "Type": 5.0,
+                    "String": "AC Degradation (%/yr)"
+                },
+                "UseSchedule": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ScheduleOnly": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FixedLength": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Description": {
+                    "Type": 5.0,
+                    "String": "Type a degradation rate (%) for each year. Each year's rate applies to the Year 1 annual output value. SAM ignores the degradation rate in Year 1 (Row 1 in the table)."
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                }
+            }
+        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "degrad_sched_warning"
+                    "String": "deg_mode"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 438.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 15.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 345.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 84.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -69,7 +122,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "There is a non-zero degradation value for Year 1. SAM only applies degradation to the system output in Years 2 and later."
+                    "String": "In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -102,81 +155,28 @@
                 }
             }
         },
-        "SchedNumeric": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "generic_degradation"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 207.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 33.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 112.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 21.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Label": {
-                    "Type": 5.0,
-                    "String": "AC Degreadation (%/yr)"
-                },
-                "UseSchedule": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "ScheduleOnly": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FixedLength": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                },
-                "Description": {
-                    "Type": 5.0,
-                    "String": "Type a degradation rate (%) for each year. Each year's rate applies to the Year 1 annual output value. SAM ignores the degradation rate in Year 1 (Row 1 in the table)."
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": 1.0
-                }
-            }
-        },
         "Label": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "object 7"
+                    "String": "degrad_sched_warning"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 111.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 762.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -184,7 +184,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "In Value mode, the degradation rate is compounded annually starting in Year 2. In Schedule mode, each year's rate applies to the Year 1 value. See Help for details."
+                    "String": "There is a non-zero degradation value for Year 1. SAM only applies degradation to the system output in Years 2 and later."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -281,6 +281,21 @@
         }
     },
     "VarDatabase": {
+        "ac_degradation": {
+            "Version": 4.0,
+            "Type": 2.0,
+            "Label": "Annual AC degradation rate",
+            "Units": "%/year",
+            "Group": "Degradation and Lifetime",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": [
+                0.0
+            ],
+            "UIObject": "SchedNumeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "degradation": {
             "Version": 4.0,
             "Type": 2.0,
@@ -293,21 +308,6 @@
                 0.0
             ],
             "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "generic_degradation": {
-            "Version": 4.0,
-            "Type": 2.0,
-            "Label": "Annual AC degradation rate",
-            "Units": "%/year",
-            "Group": "Degradation and Lifetime",
-            "IndexLabels": "",
-            "Flags": 2.0,
-            "DefaultValue": [
-                0.0
-            ],
-            "UIObject": "SchedNumeric",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -341,7 +341,7 @@
         "function display_warning()",
         "{",
         "\tdisplayflag = false;",
-        "\tdcd = value('generic_degradation');",
+        "\tdcd = value('ac_degradation');",
         "\tif (#dcd > 1 && dcd[0] != 0)",
         "\t{",
         "\t\tdisplayflag = true;",
@@ -352,11 +352,12 @@
         "",
         "on_load{'Degradation AC Lifetime'} = define()",
         "{",
-        "\tproperty('generic_degradation','FixedLength',value('analysis_period'));",
-        "\tdisplay_warning();",
+        "\tproperty('ac_degradation','FixedLength',value('analysis_period'));",
+        "\tdisplay_warning();\r",
+        "\t",
         "};",
         "",
-        "on_change{'generic_degradation'} = define()",
+        "on_change{'ac_degradation'} = define()",
         "{",
         "\tdisplay_warning();",
         "};"

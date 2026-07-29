@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\auglag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\bobyqa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\ccsa_quadratic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\cdirect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\cobyla.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\crs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\deprecated.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\DIRect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\direct_wrap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\DIRserial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\DIRsubrout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\esch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\general.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\hybrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\isres.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\mlsl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\mma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\mssubs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\mt19937ar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\newuoa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\nldrmd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\optimize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\options.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\plip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\plis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\pnet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\praxis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\pssubs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\qsort_r.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\redblack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\rescale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\sbplx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\slsqp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\sobolseq.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\stop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\sys\time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\nlopt\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2D10E145-424C-34DB-9737-C6430B5D4915}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

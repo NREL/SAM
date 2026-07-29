@@ -73,6 +73,33 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_beam_nget(SAM_table ptr, SAM_error
 	return result;
 }
 
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_csky_beam_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_csky_beam", &result))
+		make_access_error("SAM_Wfreader", "annual_csky_beam");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_csky_diff_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_csky_diff", &result))
+		make_access_error("SAM_Wfreader", "annual_csky_diff");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_csky_glob_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_csky_glob", &result))
+		make_access_error("SAM_Wfreader", "annual_csky_glob");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Wfreader_Outputs_annual_diff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -87,6 +114,15 @@ SAM_EXPORT double SAM_Wfreader_Outputs_annual_glob_nget(SAM_table ptr, SAM_error
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "annual_glob", &result))
 		make_access_error("SAM_Wfreader", "annual_glob");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Wfreader_Outputs_annual_precipitation_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "annual_precipitation", &result))
+		make_access_error("SAM_Wfreader", "annual_precipitation");
 	});
 	return result;
 }
@@ -299,6 +335,16 @@ SAM_EXPORT double* SAM_Wfreader_Outputs_pres_aget(SAM_table ptr, int* length, SA
 	result = ssc_data_get_array(ptr, "pres", length);
 	if (!result)
 		make_access_error("SAM_Wfreader", "pres");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Wfreader_Outputs_pwater_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "pwater", length);
+	if (!result)
+		make_access_error("SAM_Wfreader", "pwater");
 	});
 	return result;
 }

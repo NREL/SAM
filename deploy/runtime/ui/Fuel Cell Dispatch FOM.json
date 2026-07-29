@@ -1,7 +1,7 @@
 {
     "Name": "Fuel Cell Dispatch FOM",
-    "Width": 1076.0,
-    "Height": 174.0,
+    "Width": 1057.0,
+    "Height": 152.0,
     "FormObjects": {
         "Divider": {
             "Visible": 1.0,

@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -128,6 +128,7 @@ private:
 			CollapseCheck = 0;
 			Collapsible = false;
 			HeaderPage = false;
+			FooterPage = false;
 			ndxHybrid = 0;
 		}
 
@@ -137,6 +138,7 @@ private:
 		wxString CollapsibleVar;
 		CollapsePaneCtrl *CollapseCheck;
 		bool HeaderPage;
+		bool FooterPage;
 		size_t ndxHybrid;
 	};
 
@@ -148,7 +150,7 @@ private:
     wxMetroListBox *m_exclRadioButton;
 	wxMetroTabList *m_exclPageTabList;
 	void UpdatePageListForConfiguration( const std::vector<PageInfo> &pages, ConfigInfo *cfg, size_t ndxHybrid );
-	void LoadPageList( const std::vector<PageInfo> &list, bool header );
+	void LoadPageList( const std::vector<PageInfo> &list, bool header, bool footer = false );
 	void SetupActivePage();
 	void LayoutPage();
 	void DetachCurrentInputPage();

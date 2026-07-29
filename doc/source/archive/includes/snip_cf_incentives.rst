@@ -4,7 +4,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 **IBI (Investment Based Incentives)**
   Each IBI (federal, state, utility, other) applies in Year Zero of the project cash flow. 
 
-  Because you can specify each IBI on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page as either an amount or a percentage, SAM calculates the value of each IBI as the sum of two values:
+  Because you can specify each IBI on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page as either an amount or a percentage, SAM calculates the value of each IBI as the sum of two values:
 
 *IBI as Amount = Amount*
 
@@ -12,7 +12,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *IBI in Year 0 = IBI as Amount + IBI as Percentage*
 
-  Where *Amount*, *Percentage*   and *Maximum*   are the values   that you specify on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page, and *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page.
+  Where *Amount*, *Percentage*   and *Maximum*   are the values   that you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/index>`   page.
 
 *Total IBI*   is the sum of the four IBI values (federal, state, utility, other).
 
@@ -23,7 +23,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *CBI in Year 0 = System Capacity (W) × Amount ($/W), up to Maximum*
 
-  Where System Capacity is the rated capacity of the system, and *Amount*   and *Maximum*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page.
+  Where System Capacity is the rated capacity of the system, and *Amount*   and *Maximum*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
 
 *Total CBI*   is the sum of the four CBI values (federal, state, utility, other).
 
@@ -34,7 +34,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *PBI in Year n = Amount ($/kWh) × Energy in Year n (kWh) × (1 + Escalation)^(n-1), up to Term*
 
-  Where *Amount*, *Term*, and *Escalation*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page, and *Energy*   is the value displayed in Energy row of the cash flow table (described above).
+  Where *Amount*, *Term*, and *Escalation*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Energy*   is the value displayed in Energy row of the cash flow table (described above).
 
 .. note:: If you use an annual schedule to specify year-by-year PBI amounts, SAM ignores the escalation rate.
 
@@ -47,7 +47,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *PTC in Year n = Amount ($/kWh) × (1 + Escalation)^(n-1) × Energy in Year n (kWh)*
 
-  Where *Amount*, *Term*, and *Escalation*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page, and *Energy*   is the value displayed in the Energy row of the cash flow table (described above).
+  Where *Amount*, *Term*, and *Escalation*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Energy*   is the value displayed in the Energy row of the cash flow table (described above).
 
   SAM rounds the product *Amount ($/kWh) × (1 + Escalation)^(n-1)*   to the nearest multiple of 0.1 cent as described in Notice 2010-37 of `IRS Bulletin 2010-18 <https://www.irs.gov/irb/2010-18_IRB/ar11.html>`__  .
 
@@ -58,16 +58,16 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *ITC in Year One = Amount*
 
-  Where *Amount*   is the value you specify in the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page.
+  Where *Amount*   is the value you specify in the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
 
   For ITCs that you specify as a percentage of total installed costs:
 
 *ITC in Year One = ( Total Installed Cost ($) - ITC Basis Reduction ($) ) × Percentage (%), up to Maximum*
 
-  Where *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page, and *Percentage*   and *Maximum*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page.
+  Where *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/index>`   page, and *Percentage*   and *Maximum*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
 
-*ITC Basis Reduction*   applies only to the Commercial and PPA financial models, and depends on whether the project includes any investment-based incentives (IBI) or capacity-based incentives (CBI) specified on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page with checked boxes under **Reduces Depreciation and ITC Bases**. For each IBI or CBI with a check mark, SAM subtracts the incentive amount from the total installed cost to calculate the ITC.
+*ITC Basis Reduction*   applies only to the Commercial and PPA financial models, and depends on whether the project includes any investment-based incentives (IBI) or capacity-based incentives (CBI) specified on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page with checked boxes under **Reduces Depreciation and ITC Bases**. For each IBI or CBI with a check mark, SAM subtracts the incentive amount from the total installed cost to calculate the ITC.
 
 *ITC Basis Reduction = IBI + CBI*
 
-  Where *IBI*   and *CBI*   are the incentives that you have specified reduce the ITC basis on the :doc:`Incentives <../incentives-and-depreciation/incentives>`   page.
+  Where *IBI*   and *CBI*   are the incentives that you have specified reduce the ITC basis on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.

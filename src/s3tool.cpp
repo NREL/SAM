@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -207,7 +207,7 @@ void LocationSetup::OnAddressChange( wxCommandEvent & )
 	double lon = std::numeric_limits<double>::quiet_NaN();
 	double tz = std::numeric_limits<double>::quiet_NaN();
 	
-	// use GeoTools::GeocodeGoogle for non-NREL builds and set google_api_key in private.h
+	// use GeoTools::GeocodeGoogle for non-NLR builds and set google_api_key in private.h
 	if (GeoTools::GeocodeDeveloper(m_address->GetValue(), &lat, &lon))
 	{
 		m_lat->SetValue(lat);

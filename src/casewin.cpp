@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -1223,7 +1223,7 @@ bool CaseWindow::SwitchToPage( const wxString &name )
 	return true;
 }
 
-void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
+void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header, bool footer )
 {
 	for( size_t ii=0;ii<list.size();ii++ )
 	{
@@ -1244,6 +1244,7 @@ void CaseWindow::LoadPageList( const std::vector<PageInfo> &list, bool header )
 
 		pds->Collapsible = pi.Collapsible;
 		pds->HeaderPage = header;
+		pds->FooterPage = footer;
 
 		bool load_page = true;
 
@@ -1278,6 +1279,7 @@ void CaseWindow::SetupActivePage()
 	
 	std::vector<PageInfo> *active_headers = 0;
 	std::vector<PageInfo> *active_pages = 0;
+	std::vector<PageInfo> *active_footers = 0;
 	
 	if ( m_currentGroup->Pages.size() > 1 && !m_currentGroup->ExclusivePageVar.IsEmpty() )
 	{
@@ -1324,6 +1326,7 @@ void CaseWindow::SetupActivePage()
 
 			active_pages = &( m_currentGroup->Pages[excl_idx] );
 			active_headers = &( m_currentGroup->ExclusiveHeaderPages );
+			active_footers = &( m_currentGroup->ExclusiveFooterPages );
 		}
 		else
 		{
@@ -1343,8 +1346,9 @@ void CaseWindow::SetupActivePage()
 	}
 	
 	// setup active display states	
-	if ( active_headers ) LoadPageList( *active_headers, true );
-	if ( active_pages ) LoadPageList( *active_pages, false );
+	if ( active_headers ) LoadPageList( *active_headers, true, false );
+	if ( active_pages ) LoadPageList( *active_pages, false, false );
+	if ( active_footers ) LoadPageList( *active_footers, false, true );
 
 	LayoutPage();
 
@@ -1375,23 +1379,9 @@ void CaseWindow::LayoutPage()
 		}
 	}	
 
-	// input pages are stacked upon one another
-	for( size_t i=0;i<m_currentActivePages.size();i++ )
+	// positions a single PageDisplayState's controls at the current y offset
+	auto place_page = [&]( PageDisplayState &pds )
 	{
-		PageDisplayState &pds = *m_currentActivePages[i];
-
-		
-		if ( i==exclPanelPos && m_exclPanel->IsShown() )
-		{
-			wxSize excl_size( m_exclPanel->GetBestSize() );
-			m_exclPanel->SetSize( 0, y, 
-				available_size.x > 500 ? available_size.x : 500,
-				excl_size.y );
-			m_exclPanel->Layout();
-			y += excl_size.y;
-		}
-
-
 		if( pds.CollapseCheck != 0 )
 		{
 			wxSize szbest = pds.CollapseCheck->GetBestSize();
@@ -1421,6 +1411,34 @@ void CaseWindow::LayoutPage()
 			y += sz.y;
 			if ( sz.x > x ) x = sz.x;
 		}
+	};
+
+	// input pages are stacked upon one another: non-footer pages first
+	for( size_t i=0;i<m_currentActivePages.size();i++ )
+	{
+		PageDisplayState &pds = *m_currentActivePages[i];
+
+		if ( pds.FooterPage ) continue; // place footers after all other pages
+
+		if ( i==exclPanelPos && m_exclPanel->IsShown() )
+		{
+			wxSize excl_size( m_exclPanel->GetBestSize() );
+			m_exclPanel->SetSize( 0, y, 
+				available_size.x > 500 ? available_size.x : 500,
+				excl_size.y );
+			m_exclPanel->Layout();
+			y += excl_size.y;
+		}
+
+		place_page( pds );
+	}
+
+	// footer pages always render last, in their relative order
+	for( size_t i=0;i<m_currentActivePages.size();i++ )
+	{
+		PageDisplayState &pds = *m_currentActivePages[i];
+		if ( !pds.FooterPage ) continue;
+		place_page( pds );
 	}
 	
 	m_inputPageScrollWin->SetScrollbars(1, 1, x, y);
@@ -1495,6 +1513,7 @@ void CaseWindow::UpdateConfiguration()
 			UpdatePageListForConfiguration( group->Pages[kk], cfg, group->ndxHybrid );
 
 		UpdatePageListForConfiguration( group->ExclusiveHeaderPages, cfg, group->ndxHybrid );
+		UpdatePageListForConfiguration( group->ExclusiveFooterPages, cfg, group->ndxHybrid );
 
 		m_inputPageList->Add( m_pageGroups[i]->SideBarLabel, i == m_pageGroups.size()-1, m_pageGroups[i]->HelpContext );
 

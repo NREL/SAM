@@ -45,18 +45,18 @@
     "array_sizing_mode": 0.0,
     "assem_install_shown": 0.0,
     "assem_other_infras_shown": 0.0,
-    "assembly_and_install_cost": 3014260.0,
+    "assembly_and_install_cost": 3198809.6753344975,
     "assembly_and_install_cost_input": 0.0,
     "assembly_and_install_cost_method": 2.0,
-    "assembly_and_install_cost_modeled": 3014260.0,
+    "assembly_and_install_cost_modeled": 3198809.6753344975,
     "assembly_and_install_cost_rvalue": 0.0,
     "assembly_and_install_cost_total": 0.0,
     "assembly_and_install_override": 0.0,
     "assembly_areas_cost": 0.0,
     "balance_of_system_cost_input": 0.0,
     "balance_of_system_cost_override": 0.0,
-    "balance_of_system_cost_total": 8512660.0,
-    "balance_of_system_cost_total_mill": 8.51266,
+    "balance_of_system_cost_total": 8622726.905169387,
+    "balance_of_system_cost_total_mill": 8.622726905169387,
     "balance_of_system_scheduled_maintenance_cost": 0.0,
     "balance_of_system_unscheduled_maintenance_cost": 0.0,
     "ballast_system_cost": 0.0,
@@ -94,8 +94,8 @@
     "cable_protection_cost_total": 0.0,
     "cable_protection_cost_total_check": 0.0,
     "cable_system_overbuild": 10.0,
-    "capex_check": 12408700.0,
-    "capital_cost": 13860600.0,
+    "capex_check": 13905886.514283728,
+    "capital_cost": 16019581.264455,
     "carrying_cost_during_construction_cost": 0.0,
     "cathodic_protection_system_cost": 0.0,
     "civil_infrastructure_cost": 0.0,
@@ -164,19 +164,19 @@
     "detailed_cost_modeled_other_elec_infras": 1.0,
     "detailed_design_and_construction_eng_cost": 0.0,
     "detailed_design_and_construction_eng_cost_total": 0.0,
-    "development_cost": 3372780.0,
+    "development_cost": 3047295.7226722736,
     "development_cost_input": 0.0,
     "development_cost_method": 2.0,
-    "development_cost_modeled": 3372780.0,
+    "development_cost_modeled": 3047295.7226722736,
     "development_cost_rvalue": 0.0,
     "development_cost_total": 0.0,
     "development_override": 0.0,
     "development_shown": 0.0,
     "device_cost_input": 0.0,
     "device_cost_override": 0.0,
-    "device_costs_total": 4231120.0,
+    "device_costs_total": 5658618.545,
     "device_costs_total_display": 0.0,
-    "device_costs_total_mill": 4.23112,
+    "device_costs_total_mill": 5.6586185449999999,
     "device_foundation": "Bottom Fixed: Pile Foundation",
     "device_mass": 265.9,
     "device_material": "A36 Steel",
@@ -194,12 +194,12 @@
     "due_diligence_cost": 0.0,
     "e&m_shown": 0.0,
     "elec_infrac_shown": 0.0,
-    "elec_infras_cost": 885871.0,
+    "elec_infras_cost": 885870.798912528,
     "elec_infras_cost_input": 0.0,
     "elec_infras_cost_method": 2.0,
-    "elec_infras_cost_modeled": 885871.0,
+    "elec_infras_cost_modeled": 885870.798912528,
     "elec_infras_cost_rvalue": 0.0,
-    "elec_infras_cost_total": 885871.0,
+    "elec_infras_cost_total": 885870.798912528,
     "elec_infras_override": 0.0,
     "electrical_conversion_equipment_cost": 0.0,
     "electrical_equipment_onshore_substation_cost": 0.0,
@@ -207,10 +207,10 @@
     "electrical_generator_cost_rvalue": 0.0,
     "electrical_generator_cost_total": 0.0,
     "electrical_generator_cost_total_check": 0.0,
-    "eng_and_mgmt_cost": 904710.0,
+    "eng_and_mgmt_cost": 1115291.772364426,
     "eng_and_mgmt_cost_input": 0.0,
     "eng_and_mgmt_cost_method": 2.0,
-    "eng_and_mgmt_cost_modeled": 904710.0,
+    "eng_and_mgmt_cost_modeled": 1115291.772364426,
     "eng_and_mgmt_cost_rvalue": 0.0,
     "eng_and_mgmt_cost_total": 0.0,
     "eng_and_mgmt_override": 0.0,
@@ -231,10 +231,10 @@
     "export_cable_system_cost": 0.0,
     "export_cable_system_cost_input": 0.0,
     "export_cable_system_cost_method": 2.0,
-    "export_cable_system_cost_modeled": 166548.0,
+    "export_cable_system_cost_modeled": 166547.79891252804,
     "export_cable_system_cost_rvalue": 0.0,
     "export_cable_system_cost_total": 0.0,
-    "export_cable_system_cost_total_check": 166548.0,
+    "export_cable_system_cost_total_check": 166547.79891252804,
     "export_cable_system_transportation_cost": 0.0,
     "export_cable_type": 0.0,
     "export_cable_voltage": 7.2,
@@ -250,8 +250,8 @@
     "feed_cost": 0.0,
     "financial_cost_input": 0.0,
     "financial_cost_override": 0.0,
-    "financial_cost_total": 1116790.0,
-    "financial_cost_total_mill": 1.11679,
+    "financial_cost_total": 1738235.814285466,
+    "financial_cost_total_mill": 1.738235814285466,
     "financial_itemized_shown": 0.0,
     "financial_override_check": 0.0,
     "financing_and_incentives_cost": 0.0,
@@ -259,7 +259,7 @@
     "financing_and_incentives_cost_total": 0.0,
     "financing_and_incentives_cost_total_check": 0.0,
     "fixed_charge_rate": 0.108,
-    "fixed_operating_cost": 1362080.0,
+    "fixed_operating_cost": 3425094.545,
     "floating_array": 0.0,
     "foundation_assem_install_cost": 0.0,
     "foundation_onshore_substation_cost": 0.0,
@@ -291,11 +291,11 @@
     "initial_engineering_cost_rvalue": 0.0,
     "initial_engineering_cost_total": 0.0,
     "initial_engineering_cost_total_check": 0.0,
-    "insurance_during_construction_cost": 124087.0,
+    "insurance_during_construction_cost": 180776.52468568847,
     "insurance_during_construction_cost_input": 0.0,
     "insurance_during_construction_cost_method": 2.0,
-    "insurance_during_construction_cost_modeled": 0.0,
-    "insurance_during_construction_cost_modeled_ui": 124087.0,
+    "insurance_during_construction_cost_modeled": 180776.52468568847,
+    "insurance_during_construction_cost_modeled_ui": 139058.86514283729,
     "insurance_during_construction_cost_rvalue": 0.0,
     "insurance_operations_cost": 0.0,
     "integration_assembly_testing_checkout_cost": 0.0,
@@ -489,10 +489,10 @@
     "loss_transmission": 2.0,
     "lube_system_cost": 0.0,
     "lubrication_system_cost": 0.0,
-    "maintenance_cost": 447954.0,
+    "maintenance_cost": 2295474.49,
     "maintenance_cost_input": 0.0,
     "maintenance_cost_method": 2.0,
-    "maintenance_cost_modeled": 447954.0,
+    "maintenance_cost_modeled": 2295474.49,
     "maintenance_cost_rvalue": 0.0,
     "maintenance_cost_total": 0.0,
     "maintenance_override_check": 0.0,
@@ -515,10 +515,10 @@
     "marine_systems_cost_total": 0.0,
     "messenger_lines_and_buoys_cost": 0.0,
     "method_check": 2.0,
-    "mooring_found_substruc_cost": 920874.0,
+    "mooring_found_substruc_cost": 1261724.9649999999,
     "mooring_found_substruc_cost_input": 0.0,
     "mooring_found_substruc_cost_method": 2.0,
-    "mooring_found_substruc_cost_modeled": 920874.0,
+    "mooring_found_substruc_cost_modeled": 1261724.9649999999,
     "mooring_found_substruc_cost_rvalue": 0.0,
     "mooring_found_substruc_cost_total": 0.0,
     "mooring_lines_cost": 0.0,
@@ -552,7 +552,7 @@
     "om_cost_override": 0.0,
     "om_equipment_purchases_cost": 0.0,
     "om_fixed": [
-        1362080.0
+        3425094.545
     ],
     "onshore_electric_infrastructure_assem_install_cost": 0.0,
     "onshore_electrical_infrastructure_cost": 0.0,
@@ -580,10 +580,10 @@
     "operating_equipment_cost": 0.0,
     "operating_facilities_cost": 0.0,
     "operating_margin_cost": 0.0,
-    "operations_cost": 914126.0,
+    "operations_cost": 1129620.055,
     "operations_cost_input": 0.0,
     "operations_cost_method": 2.0,
-    "operations_cost_modeled": 914126.0,
+    "operations_cost_modeled": 1129620.055,
     "operations_cost_rvalue": 0.0,
     "operations_cost_total": 0.0,
     "operations_management_general_administration_cost": 0.0,
@@ -677,11 +677,11 @@
     "personnel_access_system_cost": 0.0,
     "personnel_access_system_mooring_cost": 0.0,
     "personnel_facilities_cost": 0.0,
-    "plant_commissioning_cost": 198540.0,
+    "plant_commissioning_cost": 222494.18422853965,
     "plant_commissioning_cost_input": 0.0,
     "plant_commissioning_cost_method": 2.0,
-    "plant_commissioning_cost_modeled": 213904.0,
-    "plant_commissioning_cost_modeled_ui": 198540.0,
+    "plant_commissioning_cost_modeled": 222494.18422853965,
+    "plant_commissioning_cost_modeled_ui": 222494.18422853965,
     "plant_commissioning_cost_rvalue": 0.0,
     "plumbing_fittings_cost": 0.0,
     "port_fees_cost": 0.0,
@@ -699,11 +699,11 @@
     "power_takeoff_enclosure_cost": 0.0,
     "power_takeoff_enclosure_cost_total": 0.0,
     "power_takeoff_system_assem_install_cost": 0.0,
-    "power_takeoff_system_cost": 2208170.0,
+    "power_takeoff_system_cost": 2772187.775,
     "power_takeoff_system_cost_input": 0.0,
     "power_takeoff_system_cost_input_label": 0.0,
     "power_takeoff_system_cost_method": 2.0,
-    "power_takeoff_system_cost_modeled": 2208170.0,
+    "power_takeoff_system_cost_modeled": 2772187.775,
     "power_takeoff_system_cost_rvalue": 0.0,
     "power_takeoff_system_cost_total": 0.0,
     "power_takeoff_system_total_label": 0.0,
@@ -714,7 +714,7 @@
     "prime_mover_cost_rvalue": 0.0,
     "prime_mover_cost_total": 0.0,
     "prime_mover_cost_total_check": 0.0,
-    "probability_sum": 1.0,
+    "probability_sum": 1.0000000000000003,
     "procurement_cost": 0.0,
     "procurement_management_cost": 0.0,
     "procurement_management_cost_total_display": 0.0,
@@ -724,11 +724,11 @@
     "profit_eng_cost": 0.0,
     "project_certification_cost": 0.0,
     "project_certification_cost_total_display": 0.0,
-    "project_contingency_cost": 0.0,
+    "project_contingency_cost": 1126376.807656982,
     "project_contingency_cost_input": 0.0,
     "project_contingency_cost_method": 2.0,
-    "project_contingency_cost_modeled": 0.0,
-    "project_contingency_cost_modeled_ui": 620437.0,
+    "project_contingency_cost_modeled": 1126376.807656982,
+    "project_contingency_cost_modeled_ui": 695294.3257141864,
     "project_contingency_cost_rvalue": 0.0,
     "project_management_during_development_cost": 0.0,
     "project_management_during_development_cost_rvalue": 0.0,
@@ -741,11 +741,11 @@
     "quayside_docking_fees_cost": 0.0,
     "railings_cost": 0.0,
     "rectifying_circuit_cost": 0.0,
-    "reserve_accounts_cost": 372262.0,
+    "reserve_accounts_cost": 431082.48194279559,
     "reserve_accounts_cost_input": 0.0,
     "reserve_accounts_cost_method": 2.0,
-    "reserve_accounts_cost_modeled": 0.0,
-    "reserve_accounts_cost_modeled_ui": 372262.0,
+    "reserve_accounts_cost_modeled": 431082.48194279559,
+    "reserve_accounts_cost_modeled_ui": 417176.5954285118,
     "reserve_accounts_cost_rvalue": 0.0,
     "reserve_accounts_cost_total": 0.0,
     "resource_and_metocean_assessment_cost": 0.0,
@@ -777,11 +777,11 @@
     "shortterm_energy_storage_cost": 0.0,
     "shortterm_energy_storage_cost_total": 0.0,
     "site_access_override": 0.0,
-    "site_access_port_staging_cost": 136496.0,
+    "site_access_port_staging_cost": 152964.751657121,
     "site_access_port_staging_cost_input": 0.0,
     "site_access_port_staging_cost_method": 2.0,
-    "site_access_port_staging_cost_modeled": 147059.0,
-    "site_access_port_staging_cost_modeled_ui": 136496.0,
+    "site_access_port_staging_cost_modeled": 152964.751657121,
+    "site_access_port_staging_cost_modeled_ui": 152964.751657121,
     "site_access_port_staging_cost_rvalue": 0.0,
     "site_access_port_staging_cost_total": 0.0,
     "site_access_shown": 0.0,
@@ -804,11 +804,11 @@
     "struct_override": 0.0,
     "struct_user_input_label": 0.0,
     "structural_assembly_assem_install_cost": 0.0,
-    "structural_assembly_cost": 1102070.0,
+    "structural_assembly_cost": 1624705.805,
     "structural_assembly_cost_input": 0.0,
     "structural_assembly_cost_method": 2.0,
-    "structural_assembly_cost_modeled": 1102070.0,
-    "structural_assembly_cost_modeled_formatted": 1102070.0,
+    "structural_assembly_cost_modeled": 1624705.805,
+    "structural_assembly_cost_modeled_formatted": 1624705.8,
     "structural_assembly_cost_rvalue": 0.0,
     "structural_assembly_cost_total": 0.0,
     "structure_foundations_cost": 0.0,
@@ -1110,47 +1110,47 @@
     "tidal_turbine_cut_out": 3.3,
     "tidal_turbine_cutin": 0.0,
     "tidal_turbine_hub_ht": 0.0,
-    "tidal_turbine_kw_rating": 8129.31,
-    "tidal_turbine_kw_rating_rotor": 4064.66,
+    "tidal_turbine_kw_rating": 8129.3141412780619,
+    "tidal_turbine_kw_rating_rotor": 4064.6570706390309,
     "tidal_turbine_max_cp": [
         0.42
     ],
     "tidal_turbine_number_rotors": 2.0,
     "tidal_turbine_powercurve_powerout": [
         0.0,
-        0.803021,
-        6.42416,
-        21.6816,
-        51.3933,
-        100.378,
-        173.452,
-        275.436,
-        411.147,
-        585.402,
-        803.021,
-        1068.82,
-        1387.62,
-        1764.24,
-        2203.49,
-        2710.19,
-        3289.17,
-        3945.24,
-        4683.22,
-        5507.92,
-        6424.16,
-        7436.77,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31,
-        8129.31
+        0.8030205346886785,
+        6.424164277509428,
+        21.681554436594316,
+        51.393314220075428,
+        100.37756683608481,
+        173.45243549275453,
+        275.43604339821658,
+        411.1465137606034,
+        585.4019697880467,
+        803.0205346886785,
+        1068.8203316706313,
+        1387.6194839420362,
+        1764.2361147110265,
+        2203.4883471857326,
+        2710.1943045742898,
+        3289.172110084827,
+        3945.2398869254768,
+        4683.215758304374,
+        5507.917847429644,
+        6424.164277509428,
+        7436.773171751852,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619,
+        8129.3141412780619
     ],
     "tidal_turbine_powercurve_tidalspeeds": [
         0.0,
@@ -1198,98 +1198,98 @@
     "tidal_vel_freq": [
         [
             0.1,
-            0.0710046
+            0.07100456621004535
         ],
         [
             0.2,
-            0.0376712
+            0.037671232876712309
         ],
         [
-            0.3,
-            0.0393836
+            0.30000000000000007,
+            0.03938356164383555
         ],
         [
             0.4,
-            0.0417808
+            0.041780821917808099
         ],
         [
             0.5,
-            0.0416667
+            0.041666666666666549
         ],
         [
-            0.6,
-            0.0480594
+            0.6000000000000001,
+            0.04805936073059333
         ],
         [
-            0.7,
-            0.0544521
+            0.7000000000000001,
+            0.054452054794520119
         ],
         [
             0.8,
-            0.0634703
+            0.06347031963470261
         ],
         [
             0.9,
-            0.0976027
+            0.09760273972602805
         ],
         [
             1.0,
-            0.142466
+            0.1424657534246598
         ],
         [
             1.1,
-            0.116096
+            0.11609589041096023
         ],
         [
-            1.2,
-            0.0805936
+            1.2000000000000002,
+            0.08059360730593611
         ],
         [
             1.3,
-            0.0523973
+            0.05239726027397222
         ],
         [
-            1.4,
-            0.0364155
+            1.4000000000000002,
+            0.03641552511415526
         ],
         [
             1.5,
-            0.0269406
+            0.0269406392694065
         ],
         [
             1.6,
-            0.0199772
+            0.019977168949771756
         ],
         [
-            1.7,
-            0.0116438
+            1.7000000000000002,
+            0.01164383561643837
         ],
         [
             1.8,
-            0.00958904
+            0.009589041095890414
         ],
         [
-            1.9,
-            0.00547945
+            1.9000000000000002,
+            0.005479452054794515
         ],
         [
             2.0,
-            0.00251142
+            0.0025114155251141549
         ],
         [
             2.1,
-            0.000799087
+            0.0007990867579908676
         ],
         [
             2.2,
             0.0
         ],
         [
-            2.3,
+            2.3000000000000004,
             0.0
         ],
         [
-            2.4,
+            2.4000000000000005,
             0.0
         ],
         [
@@ -1305,11 +1305,11 @@
             0.0
         ],
         [
-            2.8,
+            2.8000000000000004,
             0.0
         ],
         [
-            2.9,
+            2.9000000000000005,
             0.0
         ],
         [
@@ -10088,16 +10088,16 @@
     "total_device_cost_per_kwh": 4.24697,
     "total_financial_cost_lcoe": 5.90559,
     "total_financial_cost_per_kwh": 0.60996,
-    "total_installed_cost": 13860600.0,
+    "total_installed_cost": 16019581.264455,
     "total_installed_cost_lcoe": 73.2949,
-    "total_installed_cost_mill": 13.8606,
-    "total_installed_cost_structural": 1102070.0,
-    "total_operating_cost": 1362080.0,
-    "total_operating_cost_mill": 1.36208,
+    "total_installed_cost_mill": 16.019581264455,
+    "total_installed_cost_structural": 1624705.805,
+    "total_operating_cost": 3425094.545,
+    "total_operating_cost_mill": 3.425094545,
     "total_operations_cost_lcoe": 26.7051,
     "total_operations_cost_per_kwh": 0.29789,
     "total_rated_capacity": 1115.0,
-    "total_test": 13860600.0,
+    "total_test": 16019581.264454853,
     "transmission_charges_rights_cost": 0.0,
     "transmission_towers_cost": 0.0,
     "transport_power_conversion_chain_cost": 0.0,
@@ -10108,7 +10108,7 @@
     "turbine_bearings_cost": 0.0,
     "tz": 0.0,
     "ui_capital_cost_capacity": 0.0,
-    "ui_capital_cost_reference": 13860600.0,
+    "ui_capital_cost_reference": 16019581.264455,
     "ui_cfin": 0.0,
     "ui_crf": Infinity,
     "ui_fcr_input_option": 0.0,
@@ -10116,7 +10116,7 @@
     "ui_ireal": 0.0,
     "ui_lbl_cff_msg": "",
     "ui_operating_cost_capacity": 0.0,
-    "ui_operating_cost_fixed": 1362080.0,
+    "ui_operating_cost_fixed": 3425094.545,
     "ui_pfin": 1.0,
     "ui_step_minutes": 60.0,
     "ui_system_capacity": 1115.0,

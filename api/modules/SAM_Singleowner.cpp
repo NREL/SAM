@@ -716,6 +716,12 @@ SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nset(SAM_ta
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_Depreciation_depr_basis_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "depr_basis_mat", mat, nrows, ncols);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_fed_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "depr_bonus_fed", number);
@@ -815,6 +821,12 @@ SAM_EXPORT void SAM_Singleowner_Depreciation_depr_bonus_sta_sl_5_nset(SAM_table 
 SAM_EXPORT void SAM_Singleowner_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_Depreciation_depr_en_basis_mat_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_en_basis_mat", number);
 	});
 }
 
@@ -1988,6 +2000,66 @@ SAM_EXPORT void SAM_Singleowner_Monthly_monthly_energy_aset(SAM_table ptr, doubl
 	});
 }
 
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_energy_expenses_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "energy_expenses_ret", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_energy_revenue_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "energy_revenue_ret", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "non_energy_expenses", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ds_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "non_energy_expenses_ds", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "non_energy_expenses_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "non_energy_expenses_ret", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "non_energy_revenue", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ds_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "non_energy_revenue_ds", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_escal_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "non_energy_revenue_escal", number);
+	});
+}
+
+SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "non_energy_revenue_ret", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Singleowner_HybridCosts_degradation_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "degradation", arr, length);
@@ -3087,6 +3159,16 @@ SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nget(SAM_
 	return result;
 }
 
+SAM_EXPORT double* SAM_Singleowner_Depreciation_depr_basis_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_matrix(ptr, "depr_basis_mat", nrows, ncols);
+	if (!result)
+		make_access_error("SAM_Singleowner", "depr_basis_mat");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -3237,6 +3319,15 @@ SAM_EXPORT double* SAM_Singleowner_Depreciation_depr_custom_schedule_aget(SAM_ta
 	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "depr_custom_schedule");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_Depreciation_depr_en_basis_mat_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_en_basis_mat", &result))
+		make_access_error("SAM_Singleowner", "depr_en_basis_mat");
 	});
 	return result;
 }
@@ -5046,6 +5137,102 @@ SAM_EXPORT double* SAM_Singleowner_Monthly_monthly_energy_aget(SAM_table ptr, in
 	return result;
 }
 
+SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_energy_expenses_ret_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "energy_expenses_ret", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "energy_expenses_ret");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_energy_revenue_ret_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "energy_revenue_ret", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "energy_revenue_ret");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "non_energy_expenses", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "non_energy_expenses");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ds_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "non_energy_expenses_ds", &result))
+		make_access_error("SAM_Singleowner", "non_energy_expenses_ds");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "non_energy_expenses_escal", &result))
+		make_access_error("SAM_Singleowner", "non_energy_expenses_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ret_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "non_energy_expenses_ret", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "non_energy_expenses_ret");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "non_energy_revenue", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "non_energy_revenue");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ds_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "non_energy_revenue_ds", &result))
+		make_access_error("SAM_Singleowner", "non_energy_revenue_ds");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_escal_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "non_energy_revenue_escal", &result))
+		make_access_error("SAM_Singleowner", "non_energy_revenue_escal");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ret_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "non_energy_revenue_ret", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "non_energy_revenue_ret");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Singleowner_HybridCosts_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5405,6 +5592,26 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_curtailed_aget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_expenses_paid_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_expenses_paid", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_expenses_paid");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_expenses_paid_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_expenses_paid_percent", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_expenses_paid_percent");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -5421,6 +5628,36 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_purchases_aget(SAM_table pt
 	result = ssc_data_get_array(ptr, "cf_energy_purchases", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_energy_purchases");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_revenue", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_revenue");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_revenue_retained_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_revenue_retained", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_revenue_retained");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_revenue_retained_percent_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_energy_revenue_retained_percent", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_energy_revenue_retained_percent");
 	});
 	return result;
 }
@@ -6100,6 +6337,26 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_net_salvage_value_aget(SAM_table p
 	result = ssc_data_get_array(ptr, "cf_net_salvage_value", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_net_salvage_value");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_non_energy_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_non_energy_expenses", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_non_energy_expenses");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_non_energy_revenue_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_non_energy_revenue", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_non_energy_revenue");
 	});
 	return result;
 }
@@ -7200,6 +7457,16 @@ SAM_EXPORT double* SAM_Singleowner_Outputs_cf_thermal_value_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "cf_thermal_value", length);
 	if (!result)
 		make_access_error("SAM_Singleowner", "cf_thermal_value");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Singleowner_Outputs_cf_total_energy_expenses_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_total_energy_expenses", length);
+	if (!result)
+		make_access_error("SAM_Singleowner", "cf_total_energy_expenses");
 	});
 	return result;
 }

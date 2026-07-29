@@ -6,7 +6,8 @@
 		},
 		"Lifetime": {
 			"analysis_period": 25,
-			"system_use_lifetime_output": 0
+			"dc_degradation": [0.500000],
+			"system_use_lifetime_output": 1
 		},
 		"SystemDesign": {
 			"array_type": 2,
@@ -50,8 +51,10 @@
 			],
 			"adjust_timeindex": [0.000000]
 		},
+		"SpectralCorrection": {
+		},
 		"HybridCosts": {
-			"degradation": [0.500000],
+			"degradation": [0.000000],
 			"om_capacity": [22.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],

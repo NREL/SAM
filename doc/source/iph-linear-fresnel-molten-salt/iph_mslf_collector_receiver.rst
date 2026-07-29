@@ -35,7 +35,7 @@ Collector Geometry and Optical Performance
   Other optical loss not captured in the time-varying collector optical efficiency table/polynomials and fixed derates. This value multiplies the other fixed optical losses and the time-varying collector optical efficiency to determine the total optical efficiency.
 
 Optical characterization method
-...............................
+-------------------------------
 
 You can select one of three options for characterizing the optical performance of the solar field in addition to the fixed optical losses specified in the Collector Geometry and Optical Performance section. The three methods determine how the optical efficiency varies with sun position.
 
@@ -59,7 +59,7 @@ The optical efficiency is defined as follows:
   The incidence angle modifier option allows you to specify optical performance of the solar field collectors using polynomial equations (up to fourth order) in both the transversal and longitudinal incidence angle directions. Refer to the Collector incidence angle table input documentation (above) for descriptions of the transversal (|EQ_LF_PhiT|  ) and longitudinal (|EQ_LF_PhiL|  ) collector angles.
 
 Solar Position/Collector Incidence Angle Table
-..............................................
+----------------------------------------------
 
 **Import**
   Import a table from a text or data file. The file can contain values separated by comma, space, or tab characters, but must be formatted according to the following rules:
@@ -100,7 +100,7 @@ Solar Position/Collector Incidence Angle Table
   Specify the number of desired columns in the table.
 
 Incidence Angle Modifier Coefficients
-.....................................
+-------------------------------------
 
 This option allows you to specify the optical performance of the collector field as functions of the transversal and longitudinal incidence angles where the performance is expressed in polynomial form. 
 
@@ -133,7 +133,7 @@ Receiver Geometry and Heat Loss
 **Evacuated tube model** allows the use of a detailed evacuated tube receiver model. Select the model using the dropdown menu in this section.
 
 Polynomial fit heat loss model
-..............................
+------------------------------
 
 These inputs are active for the polynomial heat loss receiver model.
 
@@ -173,7 +173,7 @@ These inputs are active for the polynomial heat loss receiver model.
   The total pressure loss through a solar field loop at design. This calculated value is equal to the design-point pressure multiplied by the Number of collector modules in a loop that you specify on the Solar Field page. The pressure loss during simulation is scaled according to the Part-load pressure loss adjustment equation.
 
 Evacuated tube heat loss model
-..............................
+------------------------------
 
 These inputs are active for the evacuated tube receiver model.
 

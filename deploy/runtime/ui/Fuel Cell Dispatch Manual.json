@@ -690,7 +690,7 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "btn_copy_schedule"
+                    "String": "btn_copy_schedule_fc"
                 },
                 "X": {
                     "Type": 3.0,
@@ -759,7 +759,7 @@
                 },
                 "Max": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 6.0
                 },
                 "Min": {
                     "Type": 3.0,
@@ -804,7 +804,7 @@
                 },
                 "Max": {
                     "Type": 3.0,
-                    "Integer": 9.0
+                    "Integer": 6.0
                 },
                 "Min": {
                     "Type": 3.0,
@@ -3725,9 +3725,9 @@
         "\tenable('fc_discharge_units_6', (value('fc_p6_discharge')==1));\r",
         "}\r",
         "\r",
-        "on_change{'btn_copy_schedule'}=define()\r",
+        "on_change{'btn_copy_schedule_fc'}=define()\r",
         "{\r",
-        "\tif (value('batt_dispatch_choice_ui') == 3 && value('en_batt') == 1 ) {\r",
+        "\tif (value('batt_dispatch_choice_ui') == 3 && value('en_batt') ) {\r",
         "\t\tok = true;\r",
         "\t}\r",
         "\telse {\r",

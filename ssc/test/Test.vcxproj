@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E65A7A1E-FE4B-3E7D-B88F-8B7618F691B9}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>Test</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\test\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Test.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Testd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\test\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Test.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include\gtest;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\tcs_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\tcs;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\splinter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/eigen3" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/coin" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/highs" /bigobj /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4005;4018;4065;4068;4101;4146;4200;4244;4251;4267;4305;4307;4309;4334;4355;4477;4506;4715;4800;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;_MBCS;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;_MBCS;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include\gtest;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\tcs_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\tcs;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include\gtest;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\tcs_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\tcs;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>													</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/abseil_dll.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/bz2.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/highs.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libprotobuf-lite.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libprotobuf.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libprotoc.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libscip.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libsoplexshared.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libutf8_range.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libutf8_validity.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/ortools.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/ortools_flatzinc.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/re2.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/zlib1.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>C:\Users\bmirletz\source\repos\sam_dev\googletest\build\lib\Release\gtest.lib;..\ssc\Debug\sscd.lib;..\splinter\Debug\splinterd.lib;..\solarpilot\Debug\solarpilot_cored.lib;..\tcs\Debug\tcsd.lib;..\nlopt\Debug\nloptd.lib;..\shared\Debug\sharedd.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ortools.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\bz2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_parse.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_log_flags.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libprotobuf.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\re2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_reflection.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_private_handle_accessor.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_marshalling.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_config.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_program_name.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\abseil_dll.lib;-ignore:4221;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CbcSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiCbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cgl.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ClpSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiClp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Clp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Osi.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CoinUtils.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\zlib.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\highs.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libscip.lib;psapi.lib;ws2_32.lib;..\lpsolve\Debug\lpsolved.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /WHOLEARCHIVE:ortools</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug/Testd.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Debug/Testd.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include\gtest;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\tcs_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\tcs;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\splinter\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/eigen3" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/coin" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/highs" /bigobj /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4244;4005;4018;4065;4068;4101;4146;4200;4244;4251;4267;4305;4307;4309;4334;4355;4477;4506;4715;4800;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;_MBCS;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;_MBCS;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include\gtest;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\tcs_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\tcs;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include;C:\Users\bmirletz\source\repos\sam_dev\googletest\googletest\include\gtest;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\.;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\tcs_test;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\tcs;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\solarpilot;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\test\..\splinter\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>													</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/abseil_dll.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/bz2.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/highs.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libprotobuf-lite.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libprotobuf.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libprotoc.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libscip.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libsoplexshared.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libutf8_range.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/libutf8_validity.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/ortools.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/ortools_flatzinc.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/re2.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206/bin/zlib1.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>C:\Users\bmirletz\source\repos\sam_dev\googletest\build\lib\Release\gtest.lib;..\ssc\Release\ssc.lib;..\splinter\Release\splinter.lib;..\solarpilot\Release\solarpilot_core.lib;..\tcs\Release\tcs.lib;..\nlopt\Release\nlopt.lib;..\shared\Release\shared.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ortools.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\bz2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_parse.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_log_flags.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libprotobuf.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\re2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_reflection.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_private_handle_accessor.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_marshalling.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_config.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_program_name.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\abseil_dll.lib;-ignore:4221;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CbcSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiCbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cgl.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ClpSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiClp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Clp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Osi.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CoinUtils.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\zlib.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\highs.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libscip.lib;psapi.lib;ws2_32.lib;..\lpsolve\Release\lpsolve.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /WHOLEARCHIVE:ortools</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release/Test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/Release/Test.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_6parsolve_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_eqns_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_pvsamv1_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_stateful_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battwatts_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_biomass_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_cashloan_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_communitysolar_test .cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_custom_generation_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_equpartflip_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_etes_etes_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_etes_ptes_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fresnel_physical_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fuelcell_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_costs_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_grid_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_host_developer_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_steps_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_lcoefcr_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_levpartflip_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_merchantplant_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_costs_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_tidal_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_wave_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvsamv1_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv5_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv7_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv8_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvyield_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_saleleaseback_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_sco2_csp_system_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_heat_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_swh_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_tcsmolten_salt_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_tcstrough_empirical_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_thirdpartyownership_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_trough_physical_iph_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_trough_physical_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_utilityrate5_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_wfreader_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_windpower_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\common_financial_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\save_as_JSON_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\solesca_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\sscapi_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\vartab_test.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_eqns_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_pvsamv1_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_stateful_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battery_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_battwatts_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_biomass_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_cashloan_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_communitysolar_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_custom_generation_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_equpartflip_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fresnel_physical_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_fuelcell_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_costs_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_geothermal_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_grid_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_host_developer_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_steps_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_hybrid_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_json_comparison_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_lcoefcr_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_levpartflip_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_merchantplant_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_costs_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_tidal_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_mhk_wave_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvsamv1_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv5_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv7_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvwattsv8_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_pvyield_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_saleleaseback_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_heat_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_singleowner_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_swh_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_tcsmolten_salt_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_thirdpartyownership_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_trough_physical_iph.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\cmod_windpower_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\common_financial_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\csp_common_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\solesca_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\ssc_test\vartab_test.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\6par_solve_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\csp_solver_core_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_capacity_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_btm_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_fom_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_manual_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_pvsmoothing_fom_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_lmolto_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_nmc_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_powerflow_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_voltage_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_tes_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_trough_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_fuel_cell_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_geothermal_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_irradproc_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_ptes_chp_dispatch_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_resilience_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_shared_inverter_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_solar_thermal_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_time_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_util_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_utility_rate_equations_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_utility_rate_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_weatherfile_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windfile_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windwakemodel_test.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windwatts_test.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_capacity_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_btm_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_automatic_fom_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_manual_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_pvsmoothing_fom_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_dispatch_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_lifetime_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_powerflow_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_properties.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_battery_voltage_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_tes_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_csp_trough_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_fuel_cell_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_geothermal_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_irradproc_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_resilience_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_solar_thermal_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_time_test.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\shared_test\lib_windwakemodel_test.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\csp_financial_defaults.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_common_data.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\shared_rate_data.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\weather_inputs.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\battery_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\battwatts_cases.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\biomass_common.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\code_generator_utilities.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\custom_generation_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\etes_etes_defaults.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\etes_ptes_defaults.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\fuelcell_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\geothermal_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\geothermal_costs_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\grid_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_battery_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_cases.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvsamv1_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvwatts_cases.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvyield_cases.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\pvyield_common_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\shared_rate_data.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\singleowner_common.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\sscapi.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\swh_common.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\tcsmolten_salt_defaults.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\tcstrough_empirical_defaults.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\trough_physical_defaults.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\trough_physical_iph_defaults.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\weather_inputs.h" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\input_cases\windpower_cases.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\core.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\common.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\vartab.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_windpower.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_utilityrate5.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_battery.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_battwatts.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\cmod_fuelcell.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\ssc\common_financial.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\test\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\lpsolve\lpsolve.vcxproj">
+      <Project>{5ECF17E2-DD3F-3C6B-A563-7EEB9C9C6812}</Project>
+      <Name>lpsolve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\nlopt\nlopt.vcxproj">
+      <Project>{E41DF15E-4DE5-35F9-8DF1-F8085F6CC255}</Project>
+      <Name>nlopt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\shared\shared.vcxproj">
+      <Project>{9CF13BCD-318A-3994-9C52-552CE8CE2F04}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\solarpilot\solarpilot_core.vcxproj">
+      <Project>{02F881BA-5BC8-3121-A7F9-F723CD21CBBB}</Project>
+      <Name>solarpilot_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\splinter\splinter.vcxproj">
+      <Project>{4AD780AA-E177-3253-A21E-C747AD2EE9AB}</Project>
+      <Name>splinter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\ssc\ssc.vcxproj">
+      <Project>{829C1AB1-49E7-3A42-9DBB-F1B7D16FA679}</Project>
+      <Name>ssc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\tcs\tcs.vcxproj">
+      <Project>{F7E53ED7-676D-3E49-A77A-BD2002AF16C8}</Project>
+      <Name>tcs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

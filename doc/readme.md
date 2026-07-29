@@ -62,7 +62,7 @@ Tested on Windows with Python 3.12.10 and GNU Make 4.4.1.
    rm -rf build
    ```
 
-   As an alternative, run Make, assuming Make is installed and `Makefile` is in the `doc` folder.
+   As an alternative, run Make, assuming Make is installed (see below) and `Makefile` is in the `doc` folder.
 
    ```
    make html
@@ -78,17 +78,29 @@ Tested on Windows with Python 3.12.10 and GNU Make 4.4.1.
 
 To see Help, open the `../doc/html/index.html` file.
 
+### Make Installation Instructions (Optional)
+
+For Linux, Make comes with the operating system, so you do not need to install it.
+
+For macOS, Make is part of the Command Line Tools that are required to build SAM from source. See [Installing the command-line tools](https://developer.apple.com/documentation/xcode/installing-the-command-line-tools/) if you need to install them.
+
+For Windows:
+
+1. Download the "Complete package, except sources" from https://gnuwin32.sourceforge.net/packages/make.htm.
+
+2. Run the make installer (`make-3.81.exe`).
+
+3. Add the make installation folder `C:\Program Files (x86)\GnuWin32\bin` to the Windows `Path` user environment variable.
+
 ## Help Context IDs in SAM
 
 SAM uses Help Context IDs to open context-specific Help files from the SAM user interface.
 
-The Help context ID is a string "chapter-name/topic_name" that points to the folder and file name of the HTML for the Help topic.
+The Help context ID is a string "chapter-name/topic_name" that points to the folder and file name of the HTML for the Help topic. For example, the Help topic for the behind-the-meter Battery Dispatch input page is "battery-storage/battery_dispatch_btm".
+
+The Help context ID is the path to the HTML file without the `.html` extension. The extension is added by the `ShowHelp()` function in `SAM/main.cpp`.
 
 Help context IDs are defined in different places in the SAM code depending on the context.
-
-For example, the Help topic for the behind-the-meter Battery Dispatch input page is "battery-storage/battery_dispatch_btm".
-
-The Help ID is the path to the HTML file without the `.html` extension. The extension is added by the `ShowHelp()` function in `SAM/main.cpp`.
 
 ### SAM Input Pages
 
@@ -143,6 +155,18 @@ For the "Edit Losses" window (`SAM/lossadj.cpp`):
 ```
 
 To find all SAM window Help IDs, search the SAM project for "wxID_HELP", or more specifically "case wxID_HELP" and "if (evt.GetId() == wxID_HELP)".
+
+## Checking for Broken Links
+
+Use the [linkcheck builder](https://www.sphinx-doc.org/en/master/usage/builders/index.html#sphinx.builders.linkcheck.CheckExternalLinksBuilder) to check for broken external links. (Errors in the build process described above should find broken internal links.):
+
+From `/SAM/doc/source`, run
+
+```
+sphinx-build -b linkcheck . _build/linkcheck
+```
+
+This will generate a report of broken links in `/SAM/doc/source/_build/linkcheck/output.txt`.
 
 ## File Structure
 
@@ -221,13 +245,13 @@ To insert the content of `snip_system_availability.rst` from a file in a `../doc
 .. include:: ../includes/snip_system_availability.rst
 ```
 
-If possible, avoid using headings in snippet files to avoid inconsistencies between the heading level in the snippet file and the file it is being inserted to. 
+If possible, avoid using headings in snippet files to avoid inconsistencies between the heading level in the snippet file and the file it is being inserted to. *Check this: The Sphinx documentation suggests document structure is preserved if the heading order is the same as the document containing the `include` directive: "If an included document fragment contains section structure, the title adornments must match those of the master document" from https://docutils.sourceforge.io/docs/ref/rst/directives.html#include*.
 
 **Important note about snippets**: Do not include targets (`.. _target-name-in-snippet`), cross references, references to targets in other snippet files, or cross references to other snippet files in snippet files. Doing so results in duplicate target names which breaks the Sphinx build. You can include cross references in snippet files to topic files that are not in the `../doc/includes` folder.
 
 ## Headings
 
-Limit section headings to three levels, plus Level 4 for procedure titles.
+Limit section headings to three levels.
 
 In reStructuredText, headings are identified by underline characters (https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections). The character used to underline the text determines the heading level based on the "succession of headings" in each file. This means that each file can use different characters to represent heading levels.
 
@@ -259,9 +283,10 @@ The "~" character now represents Heading 2 because of the order above.
 
 Use `#` to automatically number lists. Use `*` for bulleted lists. Lines in a list can be separated by a blank line or not.
 
+For the title of step-by-step instructions, use **bold** text (`**bold**`) instead of a heading so that the format is consistent across all documents.
+
 ```
-Heading 4: Step-by-step instructions:
-.....................................
+**Step-by-step instructions:**
 
 #. This is Step 1 with automatically numbered lines.
 
@@ -272,6 +297,18 @@ Heading 4: Step-by-step instructions:
 #. This is Step 3.
 
 #. This is Step 4.
+```
+
+For multi-level lists, separate indented sections with blank lines:
+
+```
+* First item in bullet list.
+* Second item.
+
+  * First sub-item of second item.
+  * Second sub-item.
+
+* Third item.
 ```
 
 ## Variable Definitions
@@ -295,13 +332,13 @@ When creating and editing cross references, you may need to clean and rebuild th
 
 Use `:doc:` for a cross reference to a topic file to create a hyperlink that points to the beginning of the file.
 
-Use the file's title as the hyperlink text:
+To use the file's title as the hyperlink text:
 
 ```
 This is a reference to :doc:`path/to/filename`
 ```
 
-Use custom hyperlink text:
+To use custom hyperlink text:
 
 ```
 This is a reference to :doc:`hyperlink text <path/to/filename>`
@@ -449,3 +486,31 @@ You can also use `topic` to create a text box with a custom title. This can be u
   
    An AC degradation rate of 1% for a system with a net annual AC output of 100,000 kWh in Year one results in annual output values of 100,000 kWh in year 1, 99,000 kWh in year 2, 98,010 kWh in year 3, 97,029.9 kWh in year 4, etc.
 ```
+
+## Literal Blocks
+
+A literal or code block is indented and preceded by `::`.
+
+This results in "This is some code:" (colon is appended to end of line):
+
+```
+This is some code::
+
+	One line of code.
+	Another line of code.
+	And so on.
+```
+
+This is just a literal block:
+
+```
+::
+	First line.
+	Second line.
+	Third line.
+```
+
+## File Names and Paths
+
+Use backticks (\`) to enclose file names or paths like `C:\SAM\2025.4.16`.
+

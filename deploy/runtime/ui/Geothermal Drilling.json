@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Drilling",
-    "Width": 814.0,
-    "Height": 482.0,
+    "Width": 813.0,
+    "Height": 428.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 75.0
+                    "Integer": 99.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

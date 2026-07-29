@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 89.0
+                    "Integer": 128.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -209,7 +209,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 39.0
+                    "Integer": 69.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1097,7 +1097,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 217.0
+                    "Integer": 241.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1909,7 +1909,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 507.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3119,7 +3119,7 @@
         "REC_COPY_W_dot_rec_pump_tower_share_des": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": "Design HTF pump power due to tower height",
+            "Label": "Design HTF pump power due to tower ht.",
             "Units": "MWe",
             "Group": " ",
             "IndexLabels": "",

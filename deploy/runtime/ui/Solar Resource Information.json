@@ -1,7 +1,7 @@
 {
     "Name": "Solar Resource Information",
-    "Width": 883.0,
-    "Height": 443.0,
+    "Width": 884.0,
+    "Height": 466.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -340,6 +340,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "annual_precipitation"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 660.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 372.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 103.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "annual_snow"
                 },
                 "X": {
@@ -348,7 +431,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 333.0
+                    "Integer": 345.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1103,7 +1186,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 456.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1128,7 +1211,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 459.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1136,11 +1219,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 408.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 43.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1148,7 +1231,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Snow depth and albedo are optional (PV models only)."
+                    "String": "Snow depth, precipitable water, and albedo are optional (PV models only)."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1256,7 +1339,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1511,7 +1594,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Caption set by update_info()"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1738,6 +1821,45 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
+        "annual_csky_beam": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_csky_diffuse": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_csky_global": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "annual_diffuse": {
             "Version": 4.0,
             "Type": 1.0,
@@ -1761,6 +1883,19 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "annual_precipitation": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Total precipitation",
+            "Units": "cm",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -2026,7 +2161,6 @@
         "on_load{'Solar Resource Information'} = define() {",
         "\t//msgbox('Debug\\non_load Solar Resource Information');",
         "\tupdate_info( 'on_load Solar Resource Information');\r",
-        "\tdisplay_tech_message();\r",
         "};",
         "",
         "on_change{'btn_view_data'} = define() {",
@@ -2055,6 +2189,10 @@
         "\tvalue( 'annual_wspd', nan() );\r",
         "\tvalue( 'annual_snow', nan() );\r",
         "\tvalue( 'annual_albedo', nan() );\r",
+        "\tvalue( 'annual_precipitation', nan() );\r",
+        "\tvalue( 'annual_csky_beam', nan() );\r",
+        "\tvalue( 'annual_csky_diffuse', nan() );\r",
+        "\tvalue( 'annual_csky_global', nan() );\r",
         "\tvalue( 'wf_nrecords', nan() );\r",
         "}\r",
         "\r",
@@ -2083,6 +2221,7 @@
         "\tproperty( 'summary_caption' , 'Caption' , msg_caption );\r",
         "\tproperty( 'summary_caption' , 'TextColour' , msg_color );\r",
         "\tenable('annual_snow', is_pv );\r",
+        "\tenable('annual_precipitation',is_pv);\r",
         "\tenable('annual_albedo',is_pv );\r",
         "\r",
         "\t// calculate and display annual summary data\r",
@@ -2109,11 +2248,15 @@
         "\t\t\tvalue( 'annual_wspd', ssc_var(obj, 'annual_wspd') );\r",
         "\t\t\tvalue( 'annual_snow', ssc_var(obj, 'annual_snow') );\r",
         "\t\t\tvalue( 'annual_albedo', ssc_var(obj, 'annual_albedo') );\r",
+        "\t\t\tvalue( 'annual_precipitation', ssc_var(obj, 'annual_precipitation'));\r",
+        "\t\t\tvalue( 'annual_csky_global', ssc_var(obj, 'annual_csky_glob') );\r",
+        "\t\t\tvalue( 'annual_csky_beam', ssc_var(obj, 'annual_csky_beam') );\r",
+        "\t\t\tvalue( 'annual_csky_diffuse', ssc_var(obj, 'annual_csky_diff') );\r",
         "\t\t\tvalue( 'step', ssc_var(obj, 'step') );\r",
-        "\t\t\t\r",
+        "\r",
         "\t\t\trhum = ssc_var(obj, 'rhum');\r",
         "\t\t\trhum_ok = true;\r",
-        "\t\t\tif ( isnan( rhum[0] ) ) { rhum_ok = false; }\r",
+        "\t\t\t\r",
         "\t\t\t// used for timestep calculation in editscene3d\r",
         "\t\t\tvalue( 'wf_nrecords', ssc_var(obj, 'nrecords') );\r",
         "\t\t}\r",
@@ -2126,10 +2269,8 @@
         "\t\t}\r",
         "\t\tssc_free( obj );\r",
         "\t}\r",
-        "}\r",
-        "",
-        "function display_tech_message() \r",
-        "{\r",
+        "\r",
+        "\t// display tech-specific messages\r",
         "\tstr = '';\r",
         "\tstr_and = '';\r",
         "\ttech = technology();\r",
@@ -2143,6 +2284,9 @@
         "\t}\r",
         "\tif ( tech == 'Biopower' )\r",
         "\t{ \r",
+        "\r",
+        "\t\tif ( isnan( rhum[0] ) ) { rhum_ok = false; }\r",
+        "\t\r",
         "\t\tif ( isnan( value('annual_global') ) || !rhum_ok )\r",
         "\t\t{\r",
         "\t\t\tstr = 'The Biopower model requires ';\r",
@@ -2159,11 +2303,8 @@
         "\t}\r",
         "\tproperty( 'caption_techs' , 'Caption', str );\t\t\r",
         "\tproperty( 'caption_techs' , 'TextColour', 'red' );\r",
+        "\r",
         "}\r",
-        "\r",
-        "\r",
-        "\r",
-        "\r",
         "\r",
         ""
     ]

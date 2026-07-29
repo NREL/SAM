@@ -1,8 +1,57 @@
 {
     "Name": "Physical Trough Collector Type 2",
-    "Width": 803.0,
-    "Height": 342.0,
+    "Width": 809.0,
+    "Height": 727.0,
     "FormObjects": {
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "DISP_opt_model_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 81.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 360.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 294.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 66.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Solar position table|Field incidence table|Incidence angle modifier coefficients"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -114,7 +163,7 @@
                 }
             }
         },
-        "DataArray": {
+        "DataArrayTable": {
             "Visible": 1.0,
             "ObjectProperties": {
                 "Name": {
@@ -123,39 +172,212 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 270.0
+                    "Integer": 60.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 235.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 183.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
                     "String": ""
                 },
-                "Mode": {
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": "IAM Coefficients"
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
                     "Type": 3.0,
-                    "Integer": 2.0
+                    "Integer": 1.0
                 },
-                "Label": {
+                "Choices": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "Choice1,Choice2"
                 },
-                "Description": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TabOrder": {
+                "HideColumn": {
                     "Type": 3.0,
                     "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "DataMatrix": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "OpticalTable_2"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 435.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 769.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "PasteAppendRows": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "PasteAppendCols": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowButtons": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRows": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowRowLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "RowLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeR0C0": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "VerticalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "HorizontalLabel": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ShadeC0": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ShowCols": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ShowColLabels": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "ColLabels": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "NumRowsLabel": {
+                    "Type": 5.0,
+                    "String": "Rows:"
+                },
+                "NumColsLabel": {
+                    "Type": 5.0,
+                    "String": "Cols:"
+                },
+                "Layout": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "ChoiceColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "Choices": {
+                    "Type": 5.0,
+                    "String": "Choice1,Choice2"
+                },
+                "HideColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ShowColumn": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                },
+                "ColorMap": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
                 }
             }
         },
@@ -790,7 +1012,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 198.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1347,7 +1569,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1499,9 +1721,59 @@
                     "Integer": 4.0
                 }
             }
+        },
+        "GroupBox": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 4"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 6.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 342.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 792.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 375.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Solar Position/Collector Incidence Angles"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
         }
     },
     "VarDatabase": {
+        "DISP_opt_model_2": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Optical model type",
+            "Units": "",
+            "Group": "Physical Trough Collector Type 2",
+            "IndexLabels": "Solar position|Field incidence table|Incidence angle modifier coefficients",
+            "Flags": 3.0,
+            "DefaultValue": 2.0,
+            "UIObject": "RadioChoice",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "IAMs_2": {
             "Version": 4.0,
             "Type": 2.0,
@@ -1509,13 +1781,33 @@
             "Units": " ",
             "Group": "Physical Trough Collector Type 2",
             "IndexLabels": "",
-            "Flags": 2.0,
+            "Flags": 3.0,
             "DefaultValue": [
                 1.0,
                 0.0506,
                 -0.1763
             ],
-            "UIObject": "DataArray",
+            "UIObject": "DataArrayTable",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "OpticalTable_2": {
+            "Version": 4.0,
+            "Type": 3.0,
+            "Label": "",
+            "Units": "",
+            "Group": "Physical Trough Collector Type 2",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": [
+                [
+                    2.0,
+                    1.0,
+                    2.0,
+                    1.0
+                ]
+            ],
+            "UIObject": "DataMatrix",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -1823,6 +2115,10 @@
         "\treturn ${csp_dtr_sca_calc_iams}[0][1]; };"
     ],
     "Callbacks": [
+        "on_load{ 'Physical Trough Collector Type 2' } = define() {\r",
+        "\ton_change{ 'DISP_opt_model_2' }();\r",
+        "};\r",
+        "\r",
         "on_change{'apply_collector_library_2'} = define() {",
         "    ",
         "    value( 'csp_dtr_sca_notify_text_2', value('ui_collector_description') );",
@@ -1844,8 +2140,14 @@
         "\tiamF2 = value('ui_IamF2');",
         "\tiamF3 = value('ui_IamF3');",
         "\t",
-        "\tvalue( 'IAMs_2', [iamF0,iamF1,iamF2,iamF3] );",
+        "\tvalue( 'IAMs_2', [iamF0,iamF1,iamF2,iamF3] );\r",
+        "\tvalue( 'DISP_opt_model_2', 2 );",
         "};",
+        "\r",
+        "on_change{\"DISP_opt_model_2\"}=define(){\r",
+        "\tshow(\"OpticalTable_2\", ${DISP_opt_model_2} != 2);\r",
+        "\tshow(\"IAMs_2\", ${DISP_opt_model_2} == 2);\r",
+        "};\r",
         ""
     ]
 }

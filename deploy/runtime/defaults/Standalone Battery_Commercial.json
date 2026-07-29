@@ -8889,6 +8889,10 @@
     "batt_h_to_ambient": 7.5,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
+    "batt_itc_basis_cost": 464252.27552235,
+    "batt_itc_basis_cost_fed_include": 1.0,
+    "batt_itc_basis_cost_sta_include": 1.0,
+    "batt_itc_basis_percent": 100.0,
     "batt_life_excl": 0.0,
     "batt_life_model": 0.0,
     "batt_lifetime_matrix": [
@@ -36279,16 +36283,71 @@
     "degradation": [
         0.0
     ],
-    "depr_fed_custom": [
+    "depr_alloc_custom_percent": 0.0,
+    "depr_alloc_macrs_15_percent": 0.0,
+    "depr_alloc_macrs_5_percent": 100.0,
+    "depr_alloc_none": 0.0,
+    "depr_alloc_sl_15_percent": 0.0,
+    "depr_alloc_sl_20_percent": 0.0,
+    "depr_alloc_sl_39_percent": 0.0,
+    "depr_alloc_sl_5_percent": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            2.0,
+            464252.27552235,
+            100.0,
+            1.0,
+            1.0,
+            0.0
+        ]
+    ],
+    "depr_bonus_fed": 100.0,
+    "depr_bonus_fed_custom": 0.0,
+    "depr_bonus_fed_macrs_15": 1.0,
+    "depr_bonus_fed_macrs_5": 1.0,
+    "depr_bonus_fed_sl_15": 1.0,
+    "depr_bonus_fed_sl_20": 1.0,
+    "depr_bonus_fed_sl_39": 0.0,
+    "depr_bonus_fed_sl_5": 1.0,
+    "depr_bonus_sta": 100.0,
+    "depr_bonus_sta_custom": 0.0,
+    "depr_bonus_sta_macrs_15": 1.0,
+    "depr_bonus_sta_macrs_5": 1.0,
+    "depr_bonus_sta_sl_15": 1.0,
+    "depr_bonus_sta_sl_20": 1.0,
+    "depr_bonus_sta_sl_39": 0.0,
+    "depr_bonus_sta_sl_5": 1.0,
+    "depr_custom_schedule": [
         0.0
     ],
-    "depr_fed_sl_years": 7.0,
-    "depr_fed_type": 1.0,
-    "depr_sta_custom": [
-        0.0
-    ],
-    "depr_sta_sl_years": 7.0,
-    "depr_sta_type": 1.0,
+    "depr_en_basis_mat": 1.0,
+    "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
+    "depr_itc_fed_custom": 0.0,
+    "depr_itc_fed_macrs_15": 0.0,
+    "depr_itc_fed_macrs_5": 0.0,
+    "depr_itc_fed_sl_15": 0.0,
+    "depr_itc_fed_sl_20": 0.0,
+    "depr_itc_fed_sl_39": 0.0,
+    "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
+    "depr_itc_sta_custom": 0.0,
+    "depr_itc_sta_macrs_15": 0.0,
+    "depr_itc_sta_macrs_5": 0.0,
+    "depr_itc_sta_sl_15": 0.0,
+    "depr_itc_sta_sl_20": 0.0,
+    "depr_itc_sta_sl_39": 0.0,
+    "depr_itc_sta_sl_5": 0.0,
+    "depr_stabas_method": 1.0,
     "dispatch_manual_btm_discharge_to_grid": [
         0.0,
         0.0,
@@ -45801,6 +45860,13 @@
     "inflation_rate": 2.5,
     "insurance_rate": 0.0,
     "is_btm": 0.0,
+    "itc_basis_cost_capex_fed": 464252.27552235,
+    "itc_basis_cost_capex_sta": 464252.27552235,
+    "itc_basis_cost_percent_fed": 100.0,
+    "itc_basis_cost_percent_sta": 100.0,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 100.0,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
@@ -45814,6 +45880,7 @@
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -63379,6 +63446,8 @@
         184.05
     ],
     "nominal_discount_rate": 9.060000000000004,
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 0.0,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
         12.0
@@ -63450,12 +63519,12 @@
         0.0
     ],
     "ptc_fed_escal": 0.0,
-    "ptc_fed_term": 10.0,
+    "ptc_fed_term": 0.0,
     "ptc_sta_amount": [
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 0.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -63489,8 +63558,8 @@
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
     "scale_factor": 1.0,
-    "show_cash_incentives": 1.0,
-    "show_tax_credits": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "standalonebatt.cost.contingency": 21054.524967,
     "standalonebatt.cost.contingency_percent": 5.0,
     "standalonebatt.cost.epc.fixed": 0.0,
@@ -63505,12 +63574,16 @@
     "standalonebatt.cost.sales_tax.percent": 100.0,
     "standalonebatt.cost.sales_tax.total": 22107.25121535,
     "standalonebatt.cost.sales_tax.value": 5.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],
     "system_capacity": 288.1303487999999,
+    "system_itc_basis_cost": 0.0,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 0.0,
     "system_use_lifetime_output": 1.0,
     "timestep_minutes": 60.0,
     "timestep_minutes_ui": 0.0,
@@ -63525,6 +63598,13 @@
     "ui_copy_batt_discharge_percent_4": 25.0,
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 0.0,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_loan_amount": 278551.36531341,
     "ui_net_capital_cost": 464252.27552235,
     "ui_wacc": 6.709740000000002,
@@ -65305,7 +65385,7 @@
             1.0,
             1e38,
             0.0,
-            0.05,
+            0.1599999964237213,
             0.0
         ],
         [
@@ -65313,7 +65393,7 @@
             1.0,
             1e38,
             0.0,
-            0.075,
+            0.10000000149011612,
             0.0
         ],
         [
@@ -65321,7 +65401,7 @@
             1.0,
             1e38,
             0.0,
-            0.06,
+            0.15000000596046449,
             0.0
         ],
         [
@@ -65329,7 +65409,7 @@
             1.0,
             1e38,
             0.0,
-            0.05,
+            0.10000000149011612,
             0.0
         ]
     ],

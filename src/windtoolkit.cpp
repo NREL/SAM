@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 static const char *help_text =
 "Choose one or more measurement heights close to the turbine hub height, or choose no heights to download data at all available heights.\n\n"
-"NREL WIND Toolkit data is only available for locations in the continental United States. Each weather file contains wind resource data for a single year.\n\n"
+"NLR WIND Toolkit data is only available for locations in the continental United States. Each weather file contains wind resource data for a single year.\n\n"
 "See Help for details.";
 
 enum {
@@ -71,38 +71,32 @@ WindToolkitDialog::WindToolkitDialog(wxWindow *parent, const wxString &title)
 	txtLat = new wxTextCtrl(this, ID_txtLat, "40", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC) );
 	txtLon = new wxTextCtrl(this, ID_txtLon, "-116", wxDefaultPosition, wxDefaultSize, 0, ::wxTextValidator(wxFILTER_NUMERIC) );
 
+	// as of May 2026, WIND Toolkit HRRR MET data is available for 2015-2025
 	wxArrayString years;
-	years.Add("2007");
-	years.Add("2008");
-	years.Add("2009");
-	years.Add("2010");
-	years.Add("2011");
-	years.Add("2012");
-	years.Add("2013");
-	years.Add("2014");
+	int year_start = 2015;
+	int year_end = 2025;
+	for (int yr = year_start; yr <= year_end; ++yr)
+		years.Add(wxString::Format("%d", yr));
 
-	wxString InitialValue = "2014";
+	wxString InitialValue = "2025";
 	cboYears = new wxComboBox(this, ID_cboYears, InitialValue, wxDefaultPosition, wxDefaultSize, years, wxCB_READONLY);
 
 	wxArrayString intervals;
-	intervals.Add("5");
-	intervals.Add("15");
-	intervals.Add("30");
 	intervals.Add("60");
 
 	InitialValue = "60";
 	cboIntervals = new wxComboBox(this, ID_cboIntervals, InitialValue, wxDefaultPosition, wxDefaultSize, intervals, wxCB_READONLY);
 
+	int hub_height_start = 20;
+	int hub_height_end = 300;
+	int hub_height_step = 20;
 	wxArrayString hubheights;
 	hubheights.Add("10");
-	hubheights.Add("40");
-	hubheights.Add("60");
-	hubheights.Add("80");
-	hubheights.Add("100");
-	hubheights.Add("120");
-	hubheights.Add("140");
-	hubheights.Add("160");
-	hubheights.Add("200");
+	for (int hh = hub_height_start; hh <= hub_height_end; hh += hub_height_step){
+		hubheights.Add(wxString::Format("%d", hh));
+	}
+	hubheights.Add("400");
+	hubheights.Add("500");
 
 	lstHubheights = new wxListBox(this, ID_lsthubheights, wxDefaultPosition, wxDefaultSize, hubheights, wxLB_MULTIPLE);
 

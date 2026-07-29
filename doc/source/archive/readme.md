@@ -2,7 +2,7 @@
 
 The archive folder contains files for sections of Help that were in older versions of SAM. These files are not included in the current version of Help.
 
-The "Cash Flow Descriptions" section was removed after we implemented the Send to Excel With Equations feature and wrote the "Sample Spreadsheets" for the SAM website at https://sam.nrel.gov/financial-models.html.
+The "Cash Flow Descriptions" section was removed after we implemented the Send to Excel With Equations feature and wrote the "Sample Spreadsheets" for the SAM website at https://sam.nlr.gov/financial-models.html.
 
 The sections for Direct Steam Tower, ISCC, and Dish Stirling models were removed from Help when we retired those models from SAM.
 

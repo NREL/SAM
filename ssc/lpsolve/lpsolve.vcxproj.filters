@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\colamd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\commonlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\fortify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\ini.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_crash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_Hash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_lib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_LUSOL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_MDO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_mipbb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_MPS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_params.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_presolve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_price.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_pricePSE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_report.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_rlp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_scale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_simplex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_solve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_SOS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lp_wlp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\lusol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\mmio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\myblas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\yacc_read.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\lpsolve\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2D10E145-424C-34DB-9737-C6430B5D4915}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

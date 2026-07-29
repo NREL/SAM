@@ -1,4 +1,7 @@
 {
+    "ac_degradation": [
+        0.0
+    ],
     "adjust": 0.0,
     "adjust_constant": 0.0,
     "adjust_en_periods": 0.0,
@@ -21,6 +24,10 @@
     ],
     "analysis_period": 25.0,
     "analysis_period_warning": "No messages.",
+    "batt_itc_basis_cost": 0.0,
+    "batt_itc_basis_cost_fed_include": 0.0,
+    "batt_itc_basis_cost_sta_include": 0.0,
+    "batt_itc_basis_percent": 0.0,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "capacity_factor_calc": 86.39999999999999,
@@ -132,32 +139,53 @@
     ],
     "depr_alloc_custom_percent": 0.0,
     "depr_alloc_macrs_15_percent": 0.0,
-    "depr_alloc_macrs_5_percent": 0.0,
+    "depr_alloc_macrs_5_percent": 100.0,
     "depr_alloc_none": 0.0,
     "depr_alloc_sl_15_percent": 0.0,
-    "depr_alloc_sl_20_percent": 100.0,
+    "depr_alloc_sl_20_percent": 0.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
-    "depr_bonus_fed": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            1.0,
+            109200000.0,
+            100.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "depr_bonus_fed": 100.0,
     "depr_bonus_fed_custom": 0.0,
-    "depr_bonus_fed_macrs_15": 0.0,
-    "depr_bonus_fed_macrs_5": 0.0,
-    "depr_bonus_fed_sl_15": 0.0,
-    "depr_bonus_fed_sl_20": 0.0,
+    "depr_bonus_fed_macrs_15": 1.0,
+    "depr_bonus_fed_macrs_5": 1.0,
+    "depr_bonus_fed_sl_15": 1.0,
+    "depr_bonus_fed_sl_20": 1.0,
     "depr_bonus_fed_sl_39": 0.0,
-    "depr_bonus_fed_sl_5": 0.0,
-    "depr_bonus_sta": 0.0,
+    "depr_bonus_fed_sl_5": 1.0,
+    "depr_bonus_sta": 100.0,
     "depr_bonus_sta_custom": 0.0,
-    "depr_bonus_sta_macrs_15": 0.0,
-    "depr_bonus_sta_macrs_5": 0.0,
-    "depr_bonus_sta_sl_15": 0.0,
-    "depr_bonus_sta_sl_20": 0.0,
+    "depr_bonus_sta_macrs_15": 1.0,
+    "depr_bonus_sta_macrs_5": 1.0,
+    "depr_bonus_sta_sl_15": 1.0,
+    "depr_bonus_sta_sl_20": 1.0,
     "depr_bonus_sta_sl_39": 0.0,
-    "depr_bonus_sta_sl_5": 0.0,
+    "depr_bonus_sta_sl_5": 1.0,
     "depr_custom_schedule": [
         0.0
     ],
+    "depr_en_basis_mat": 1.0,
     "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
     "depr_itc_fed_custom": 0.0,
     "depr_itc_fed_macrs_15": 0.0,
     "depr_itc_fed_macrs_5": 0.0,
@@ -165,6 +193,7 @@
     "depr_itc_fed_sl_20": 0.0,
     "depr_itc_fed_sl_39": 0.0,
     "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
     "depr_itc_sta_custom": 0.0,
     "depr_itc_sta_macrs_15": 0.0,
     "depr_itc_sta_macrs_5": 0.0,
@@ -9584,8 +9613,17 @@
     "en_electricity_rates": 0.0,
     "en_wave_batt": 0.0,
     "enable_interconnection_limit": 0.0,
+    "energy_expenses_ret": [
+        100.0
+    ],
     "energy_output_array": [
         0.0
+    ],
+    "energy_output_array_lifetime": [
+        0.0
+    ],
+    "energy_revenue_ret": [
+        100.0
     ],
     "equip1_reserve_cost": 0.0,
     "equip1_reserve_freq": 12.0,
@@ -18419,6 +18457,13 @@
     "inflation_rate": 2.5,
     "insurance_rate": 0.5,
     "is_btm": 0.0,
+    "itc_basis_cost_capex_fed": 0.0,
+    "itc_basis_cost_capex_sta": 0.0,
+    "itc_basis_cost_percent_fed": 0.0,
+    "itc_basis_cost_percent_sta": 0.0,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 0.0,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
@@ -18432,6 +18477,7 @@
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -19092,7 +19138,26 @@
     "months_receivables_reserve": 0.0,
     "months_working_reserve": 6.0,
     "nameplate_capacity": 100000.0,
-    "nominal_discount_rate": 9.060000000000004,
+    "nominal_discount_rate": 9.060000000000003,
+    "non_energy_expenses": [
+        0.0
+    ],
+    "non_energy_expenses_ds": 1.0,
+    "non_energy_expenses_escal": 0.0,
+    "non_energy_expenses_ret": [
+        0.0
+    ],
+    "non_energy_revenue": [
+        0.0
+    ],
+    "non_energy_revenue_ds": 1.0,
+    "non_energy_revenue_escal": 0.0,
+    "non_energy_revenue_is_shown": 0.0,
+    "non_energy_revenue_ret": [
+        0.0
+    ],
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 100.0,
     "om_capacity": [
         25.0
     ],
@@ -19145,7 +19210,7 @@
     "ppa_escalation": 1.0,
     "ppa_multiplier_model": 0.0,
     "ppa_price_input": [
-        0.24
+        0.14000000059604646
     ],
     "ppa_soln_mode": 1.0,
     "prop_tax_assessed_decline": 0.0,
@@ -19156,12 +19221,12 @@
         0.0
     ],
     "ptc_fed_escal": 0.0,
-    "ptc_fed_term": 10.0,
+    "ptc_fed_term": 0.0,
     "ptc_sta_amount": [
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "rate_escalation": [
         0.0
     ],
@@ -19177,22 +19242,35 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "solution_mode_message": "",
     "spec_mode": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],
     "system_capacity": 100000.0,
     "system_capacity_combined": 0.0,
-    "system_use_lifetime_output": 0.0,
+    "system_itc_basis_cost": 109200000.0,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 100.0,
+    "system_use_lifetime_output": 1.0,
     "term_int_rate": 7.0,
     "term_tenor": 18.0,
     "tod_library": "Uniform Dispatch",
     "total_direct_cost": 105000000.0,
     "total_indirect_cost": 0.0,
     "total_installed_cost": 109200000.0,
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 0.0,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_electricity_rate_option": 0.0,
     "ui_step_minutes": 60.0,
     "ui_system_nameplate_standalone": 0.0,

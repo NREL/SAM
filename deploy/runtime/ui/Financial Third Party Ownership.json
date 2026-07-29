@@ -1,7 +1,7 @@
 {
     "Name": "Financial Third Party Ownership",
-    "Width": 712.0,
-    "Height": 236.0,
+    "Width": 704.0,
+    "Height": 220.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 138.0
+                    "Integer": 129.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -136,7 +136,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -434,7 +434,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -720,7 +720,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,

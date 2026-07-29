@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5891045A-DB91-368F-9E9E-5FA1033A93E7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>webupd</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM-private\build_windows\deploy\x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">webupd.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">webupdd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM-private\build_windows\deploy\x64\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">webupd.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">webupd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\src;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/wxWidgets-3.2.8.1/lib/vc_x64_lib/mswu" /external:I "C:/wxWidgets-3.2.8.1/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_MBCS;__WXMSW__;__64BIT__;LK_USE_WXWIDGETS;UNICODE;_UNICODE;_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_MBCS;__WXMSW__;__64BIT__;LK_USE_WXWIDGETS;UNICODE;_UNICODE;_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\src;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\src;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lk\Debug\lkd.lib;..\..\Debug\wexd.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_xrc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_webview.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_stc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_richtext.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_ribbon.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_propgrid.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_aui.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_gl.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_html.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_qa.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_adv.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_core.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_xml.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_net.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxscintilla.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxpng.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxtiff.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxjpeg.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxzlib.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxregexu.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxexpat.lib;opengl32.lib;glu32.lib;imm32.lib;winmm.lib;comctl32.lib;uuid.lib;oleacc.lib;uxtheme.lib;rpcrt4.lib;shlwapi.lib;version.lib;wsock32.lib;C:\Users\bmirletz\source\repos\sam_dev\wex\build_resources\libcurl_ssl_x64\lib\libcurl.lib;Winhttp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bmirletz/source/repos/sam_dev/SAM/SAM-private/webupd/Debug/webupdd.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bmirletz/source/repos/sam_dev/SAM-private/build_windows/deploy/x64/webupdd.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\src;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/wxWidgets-3.2.8.1/lib/vc_x64_lib/mswu" /external:I "C:/wxWidgets-3.2.8.1/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_MBCS;__WXMSW__;__64BIT__;LK_USE_WXWIDGETS;UNICODE;_UNICODE;_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_MBCS;__WXMSW__;__64BIT__;LK_USE_WXWIDGETS;UNICODE;_UNICODE;_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\src;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\src;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lk\Release\lk.lib;..\..\Release\wex.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_xrc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_webview.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_stc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_richtext.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_ribbon.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_propgrid.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_aui.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_gl.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_html.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_qa.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_adv.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_core.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_xml.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_net.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxscintilla.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxpng.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxtiff.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxjpeg.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxzlib.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxregexu.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxexpat.lib;opengl32.lib;glu32.lib;imm32.lib;winmm.lib;comctl32.lib;uuid.lib;oleacc.lib;uxtheme.lib;rpcrt4.lib;shlwapi.lib;version.lib;wsock32.lib;C:\Users\bmirletz\source\repos\sam_dev\wex\build_resources\libcurl_ssl_x64\lib\libcurl.lib;Winhttp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bmirletz/source/repos/sam_dev/SAM/SAM-private/webupd/Release/webupd.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bmirletz/source/repos/sam_dev/SAM-private/build_windows/deploy/x64/webupd.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/SAM-private/webupd/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/SAM-private/webupd/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindwxWidgets.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\UsewxWidgets.cmake;C:\Users\bmirletz\source\repos\sam_dev\SAM\CMakeFiles\3.29.3\CMakeCCompiler.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\SAM-private\webupd\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/SAM-private/webupd/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/SAM-private/webupd/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindwxWidgets.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\UsewxWidgets.cmake;C:\Users\bmirletz\source\repos\sam_dev\SAM\CMakeFiles\3.29.3\CMakeCCompiler.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\SAM-private\webupd\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\pkgdlg.cpp" />
+    <ClInclude Include="C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\pkgdlg.h" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\SAM-private\webupd\webupd.cpp" />
+    <ResourceCompile Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\build_resources\webupd.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\lk\lk.vcxproj">
+      <Project>{251C612F-F4B8-3FE5-950C-6D398EAC624A}</Project>
+      <Name>lk</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\wex\src\wex.vcxproj">
+      <Project>{33BEB79E-FF10-35DE-856B-8A412AC74B9E}</Project>
+      <Name>wex</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -195,7 +195,7 @@ bool GeoTools::coordinate_to_dms(wxString& coord, double* d, double* m, double* 
 
 }
 
-// Geocode using Google API for non-NREL builds of SAM
+// Geocode using Google API for non-NLR builds of SAM
 bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, double* tz, bool showprogress) {
     wxBusyCursor _curs;
 
@@ -315,7 +315,7 @@ bool GeoTools::GeocodeGoogle(const wxString& address, double* lat, double* lon, 
 
 }
 
-// Geocode using NREL Developer API (MapQuest) for NREL builds of SAM
+// Geocode using NLR Developer API (MapQuest) for NLR builds of SAM
 // submit address and no lat/lon to get lat/lon
 bool GeoTools::GeocodeDeveloper(const wxString& address, double* lat, double* lon, bool showprogress) {
     wxBusyCursor _curs;

@@ -948,7 +948,7 @@ extern "C"
 	 * Set depr_alloc_macrs_15_percent: 15-yr MACRS depreciation federal and state allocation [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?=1.5
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -956,7 +956,7 @@ extern "C"
 	 * Set depr_alloc_macrs_5_percent: 5-yr MACRS depreciation federal and state allocation [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?=89
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -964,7 +964,7 @@ extern "C"
 	 * Set depr_alloc_sl_15_percent: 15-yr straight line depreciation federal and state allocation [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?=3
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_15_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -972,7 +972,7 @@ extern "C"
 	 * Set depr_alloc_sl_20_percent: 20-yr straight line depreciation federal and state allocation [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?=3
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_20_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -980,7 +980,7 @@ extern "C"
 	 * Set depr_alloc_sl_39_percent: 39-yr straight line depreciation federal and state allocation [%]
 	 * options: None
 	 * constraints: MIN=0,MAX=100
-	 * required if: ?=0.5
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_39_percent_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -991,6 +991,14 @@ extern "C"
 	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set depr_basis_mat: Depreciation Basis Matrix
+	 * options: None
+	 * constraints: col 0=tech no, col 1=basis amount ($), col 2=% of total installed cost, col 3=fed itc qual 0/1, col 4=state itc qual 0/1, col 5=depreciation selection(0=macrs 5, 1=macrs 15, 2=sl 5, 3=sl 15, 4=sl 20, 5=sl 39, 6=custom)
+	 * required if: depr_en_basis_mat=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_basis_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
 	/**
 	 * Set depr_bonus_fed: Federal bonus depreciation [%]
@@ -1124,9 +1132,17 @@ extern "C"
 	 * Set depr_custom_schedule: Custom depreciation schedule [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set depr_en_basis_mat: Enable Depreciation Basis Matrix [0/1]
+	 * options: None
+	 * constraints: BOOLEAN
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_Depreciation_depr_en_basis_mat_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
 	 * Set depr_fedbas_method: Method of federal depreciation reduction
@@ -2755,6 +2771,91 @@ extern "C"
 
 
 	//
+	// NonEnergyRevenue parameters
+	//
+
+	/**
+	 * Set energy_expenses_ret: Energy expenses paid by energy owner [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_energy_expenses_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set energy_revenue_ret: Energy revenue retained by energy owner [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_energy_revenue_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set non_energy_expenses: Gross non-energy expenses [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set non_energy_expenses_ds: Non-energy expenses impact debt service [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ds_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set non_energy_expenses_escal: Non-energy expenses escalation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set non_energy_expenses_ret: Non-energy expenses paid by energy owner [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set non_energy_revenue: Gross non-energy revenue [$]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+	/**
+	 * Set non_energy_revenue_ds: Non-energy revenue available for debt service [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ds_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set non_energy_revenue_escal: Non-energy revenue escalation [%]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=0
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_escal_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
+	 * Set non_energy_revenue_ret: Non-energy revenue retained by energy owner [%]
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ret_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
+
+
+	//
 	// HybridCosts parameters
 	//
 
@@ -3038,6 +3139,8 @@ extern "C"
 
 	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Singleowner_Depreciation_depr_basis_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err);
+
 	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err);
@@ -3071,6 +3174,8 @@ extern "C"
 	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_en_basis_mat_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Singleowner_Depreciation_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err);
 
@@ -3529,6 +3634,31 @@ extern "C"
 
 
 	/**
+	 * NonEnergyRevenue Getters
+	 */
+
+	SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_energy_expenses_ret_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_energy_revenue_ret_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ds_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_expenses_ret_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ds_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_escal_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_NonEnergyRevenue_non_energy_revenue_ret_aget(SAM_table ptr, int* length, SAM_error *err);
+
+
+	/**
 	 * HybridCosts Getters
 	 */
 
@@ -3611,9 +3741,19 @@ extern "C"
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_curtailed_aget(SAM_table ptr, int* length, SAM_error *err);
 
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_expenses_paid_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_expenses_paid_percent_aget(SAM_table ptr, int* length, SAM_error *err);
+
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_net_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_purchases_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_revenue_retained_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_revenue_retained_percent_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_energy_sales_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3750,6 +3890,10 @@ extern "C"
 	SAM_EXPORT double SAM_Singleowner_Outputs_cf_length_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_net_salvage_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_non_energy_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_non_energy_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_om_batt_capacity_expense_aget(SAM_table ptr, int* length, SAM_error *err);
 
@@ -3970,6 +4114,8 @@ extern "C"
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_state_tax_frac_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_thermal_value_aget(SAM_table ptr, int* length, SAM_error *err);
+
+	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_total_energy_expenses_aget(SAM_table ptr, int* length, SAM_error *err);
 
 	SAM_EXPORT double* SAM_Singleowner_Outputs_cf_total_revenue_aget(SAM_table ptr, int* length, SAM_error *err);
 

@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - Financial Itemized",
-    "Width": 922.0,
-    "Height": 421.0,
+    "Width": 915.0,
+    "Height": 322.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 588.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 384.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -406,11 +406,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 495.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 381.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,7 +468,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 564.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -476,11 +476,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 342.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -530,11 +530,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 285.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -770,7 +770,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 357.0
+                    "Integer": 306.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -857,7 +857,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -919,7 +919,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -981,7 +981,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 18.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1043,7 +1043,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 21.0
                 },
                 "Y": {
                     "Type": 3.0,

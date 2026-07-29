@@ -1,7 +1,7 @@
 {
     "Name": "Hybrid Costs",
-    "Width": 861.0,
-    "Height": 403.0,
+    "Width": 863.0,
+    "Height": 386.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -1215,6 +1215,7 @@
         "\tvalue('total_installed_cost', value('total_installed_cost'));\r",
         "\trefresh('total_installed_cost');\r",
         "\trefresh();\r",
-        "};"
+        "};\r",
+        ""
     ]
 }

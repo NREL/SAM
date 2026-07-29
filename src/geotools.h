@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -41,12 +41,12 @@ public:
 
     // Use Google Geocoding API to return lat/lon from address
     // Requires a Google Cloud Project account with billing enabled
-    // This is an alternative to GeocodeDeveloper for non-NREL builds of SAM
+    // This is an alternative to GeocodeDeveloper for non-NLR builds of SAM
     // Google API key is defined in private.h
     static bool GeocodeGoogle(const wxString& address, double* lat, double* lon, double* tz = 0, bool showprogress = true);
 
-    // Use private NREL Developer API (MapQuest wrapper) to return lat/lon from address
-    // Requires a special private API key from NREL defined in private.h
+    // Use private NLR Developer API (MapQuest wrapper) to return lat/lon from address
+    // Requires a special private API key from NLR defined in private.h
     static bool GeocodeDeveloper(const wxString& address, double* lat, double* lon, bool showprogress = true);
 
     // Use Microsoft Azure API to return time zone from lat/lon

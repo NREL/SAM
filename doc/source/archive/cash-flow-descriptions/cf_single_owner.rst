@@ -16,7 +16,7 @@ Revenues
 Operating Expenses
 ~~~~~~~~~~~~~~~~~~
 
-The expense rows are for annual project costs calculated from assumptions you specify on the :doc:`Financing <../financial-parameters/fin_single_owner>`, :doc:`Installation costs <../installation-costs/installation_costs>`, and :doc:`Operating costs <../operating-costs/operating_costs>` pages.
+The expense rows are for annual project costs calculated from assumptions you specify on the :doc:`Financing <../financial-parameters/fin_single_owner>`, :doc:`Installation costs <../installation-costs/index>`, and :doc:`Operating costs <../operating-costs/operating_costs>` pages.
 
 The operating expenses are based on the first year or annual schedule costs you specify on the :doc:`Operating costs <../operating-costs/operating_costs>` page, and are adjusted by the inflation rate from the :doc:`Financial Parameters <../financial-parameters/fin_single_owner>` page and optional escalation rate from the Operating costs page.
 
@@ -42,7 +42,7 @@ Total Project Returns
 Incentives
 ~~~~~~~~~~
 
-:doc:`Incentives <../incentives-and-depreciation/incentives>` may consist of either cash incentives (IBI, CBI, PBI) or tax credits (ITC, PTC), and may either calculated based on project investment costs (IBI, CBI, ITC), or the project's energy production (PBI, PTC).
+:doc:`Incentives <../incentives-and-depreciation/cash_incentives>` may consist of either cash incentives (IBI, CBI, PBI) or tax credits (ITC, PTC), and may either calculated based on project investment costs (IBI, CBI, ITC), or the project's energy production (PBI, PTC).
 
 The values in the incentives rows of the cash flow table are shown for reference. Their impact on project cash flows are shown in the project cash flows described above:
 

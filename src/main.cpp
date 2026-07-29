@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 #define OR_PROTO_DLL
-
 
 #include <set>
 //#include <chrono>
@@ -1971,7 +1969,8 @@ void ConfigDatabase::SetHybridVariableDependencies(const std::vector<HybridVaria
 void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo> > &pages, const wxString &sidebar,
 	const wxString &hlpcxt, const wxString &exclvar,
 	const std::vector<PageInfo> &exclhdr_pages,
-	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top)
+	bool excl_tabs, bool excl_hide, wxString bin_name, bool excl_top,
+	const std::vector<PageInfo> &exclftr_pages)
 {
 	if ( m_curConfig == 0 ) return;
 
@@ -1982,6 +1981,7 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	ip->OrganizeAsExclusivePages = !exclvar.IsEmpty();
 	ip->ExclusivePageVar = exclvar;
 	ip->ExclusiveHeaderPages = exclhdr_pages;
+	ip->ExclusiveFooterPages = exclftr_pages;
 	ip->ExclusiveTabs = excl_tabs;
     ip->ExclusiveHide = excl_hide;
     ip->BinName = bin_name;
@@ -2017,6 +2017,9 @@ void ConfigDatabase::AddInputPageGroup( const std::vector< std::vector<PageInfo>
 	//exclusive header pages e.g. Utility Rate - Enable
 	for (size_t i = 0; i < ip->ExclusiveHeaderPages.size(); i++)
 			ip->ExclusiveHeaderPages[i].ndxHybrid = ndx;
+    //exclusive header pages e.g. Utility Rate - Enable
+    for (size_t i = 0; i < ip->ExclusiveFooterPages.size(); i++)
+        ip->ExclusiveFooterPages[i].ndxHybrid = ndx;
 
 }
 
@@ -2126,6 +2129,7 @@ void ConfigDatabase::RebuildCaches()
 				}
 
 				CachePagesInConfiguration(igrp->ExclusiveHeaderPages, ci, i);
+				CachePagesInConfiguration(igrp->ExclusiveFooterPages, ci, i);
 			}
 		}
 		// after variables are initially populated, add any hybrid dependencies, if necessary

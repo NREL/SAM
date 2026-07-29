@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FB56380B-D220-3E00-ACF6-54C701A1C17B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>SDKtool</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\sdktool\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SDKtool.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SDKtoold</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\sdktool\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SDKtool.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SDKtool</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\.;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\splinter;C:\Users\bmirletz\source\repos\sam_dev\ssc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/wxWidgets-3.2.8.1/lib/vc_x64_lib/mswu" /external:I "C:/wxWidgets-3.2.8.1/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/coin" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/highs" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/eigen3" /bigobj /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4005;4018;4065;4068;4101;4146;4200;4244;4251;4267;4305;4307;4309;4334;4355;4477;4506;4715;4800;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;LK_USE_WXWIDGETS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_NOPCH;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;UNICODE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;LK_USE_WXWIDGETS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_NOPCH;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;UNICODE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\.;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\splinter;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\.;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\splinter;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>							</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/dbghelp.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/libcurl.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/libeay32.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/libssh2.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/msvcp140.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/openssl.exe C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/ssleay32.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/vcruntime140.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\ssc\Debug\sscd.lib;..\..\Debug\wexd.lib;..\..\lk\Debug\lkd.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_xrc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_webview.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_stc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_richtext.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_ribbon.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_propgrid.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_aui.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_gl.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_html.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_qa.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_adv.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_core.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_xml.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_net.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxscintilla.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxpng.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxtiff.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxjpeg.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxzlib.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxregexu.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxexpat.lib;opengl32.lib;glu32.lib;imm32.lib;winmm.lib;comctl32.lib;uuid.lib;oleacc.lib;uxtheme.lib;rpcrt4.lib;shlwapi.lib;version.lib;wsock32.lib;C:\Users\bmirletz\source\repos\sam_dev\wex\build_resources\libcurl_ssl_x64\lib\libcurl.lib;Winhttp.lib;..\solarpilot\Debug\solarpilot_cored.lib;..\tcs\Debug\tcsd.lib;..\nlopt\Debug\nloptd.lib;..\shared\Debug\sharedd.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ortools.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\bz2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_parse.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_log_flags.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libprotobuf.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\re2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_reflection.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_private_handle_accessor.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_marshalling.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_config.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_program_name.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\abseil_dll.lib;-ignore:4221;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CbcSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiCbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cgl.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ClpSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiClp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Clp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Osi.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CoinUtils.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\zlib.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\highs.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libscip.lib;psapi.lib;ws2_32.lib;..\lpsolve\Debug\lpsolved.lib;..\splinter\Debug\splinterd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /WHOLEARCHIVE:ortools</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug/SDKtoold.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Debug/SDKtoold.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\.;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\splinter;C:\Users\bmirletz\source\repos\sam_dev\ssc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/wxWidgets-3.2.8.1/lib/vc_x64_lib/mswu" /external:I "C:/wxWidgets-3.2.8.1/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/coin" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/highs" /external:I "C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/include/eigen3" /bigobj /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4005;4018;4065;4068;4101;4146;4200;4244;4251;4267;4305;4307;4309;4334;4355;4477;4506;4715;4800;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;LK_USE_WXWIDGETS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_NOPCH;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;UNICODE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;__64BIT__;__WINDOWS__;_CRT_SECURE_NO_WARNINGS;LPWINAPP;LK_USE_WXWIDGETS;_CRT_SECURE_NO_DEPRECATE=1;_CRT_NON_CONFORMING_SWPRINTFS=1;_SCL_SECURE_NO_WARNINGS=1;__WXMSW__;_UNICODE;_NOPCH;NOMINMAX;WIN32_LEAN_AND_MEAN=1;_CRT_SECURE_NO_DEPRECATE;UNICODE;OR_BUILD_DLL;OR_PROTO_DLL=__declspec(dllimport);USE_MATH_OPT;USE_BOP;USE_CBC;USE_CLP;USE_GLOP;USE_HIGHS;USE_PDLP;USE_SCIP;__WIN32__;ABSL_CONSUME_DLL;PROTOBUF_USE_DLLS;HAVE_CONFIG_H;EIGEN_MPL2_ONLY;_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\.;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\splinter;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\.;C:\Users\bmirletz\source\repos\sam_dev\wex\include;C:\Users\bmirletz\source\repos\sam_dev\lk\include;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\ssc;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\shared;C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\..\splinter;C:\Users\bmirletz\source\repos\sam_dev\ssc;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\mswu;C:\wxWidgets-3.2.8.1\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\coin;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\highs;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\include\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>							</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/dbghelp.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/libcurl.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/libeay32.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/libssh2.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/msvcp140.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/openssl.exe C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/ssleay32.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy C:\Users\bmirletz\source\repos\sam_dev\wex/build_resources/libcurl_ssl_x64/bin/vcruntime140.dll C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\ssc\Release\ssc.lib;..\..\Release\wex.lib;..\..\lk\Release\lk.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_xrc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_webview.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_stc.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_richtext.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_ribbon.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_propgrid.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_aui.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_gl.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_html.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_qa.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_adv.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxmsw32u_core.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_xml.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u_net.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxbase32u.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxscintilla.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxpng.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxtiff.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxjpeg.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxzlib.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxregexu.lib;C:\wxWidgets-3.2.8.1\lib\vc_x64_lib\wxexpat.lib;opengl32.lib;glu32.lib;imm32.lib;winmm.lib;comctl32.lib;uuid.lib;oleacc.lib;uxtheme.lib;rpcrt4.lib;shlwapi.lib;version.lib;wsock32.lib;C:\Users\bmirletz\source\repos\sam_dev\wex\build_resources\libcurl_ssl_x64\lib\libcurl.lib;Winhttp.lib;..\solarpilot\Release\solarpilot_core.lib;..\tcs\Release\tcs.lib;..\nlopt\Release\nlopt.lib;..\shared\Release\shared.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ortools.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\bz2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_parse.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_usage_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_log_flags.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libprotobuf.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\re2.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_reflection.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_private_handle_accessor.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_marshalling.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_config.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_program_name.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\absl_flags_commandlineflag_internal.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\abseil_dll.lib;-ignore:4221;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CbcSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiCbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cbc.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Cgl.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\ClpSolver.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\OsiClp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Clp.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\Osi.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\CoinUtils.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\zlib.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\highs.lib;C:\Users\bmirletz\source\repos\sam_dev\or-tools_x64_VisualStudio2022_cpp_v9.14.6206\lib\libscip.lib;psapi.lib;ws2_32.lib;..\lpsolve\Release\lpsolve.lib;..\splinter\Release\splinter.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /WHOLEARCHIVE:ortools</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release/SDKtool.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/Release/SDKtool.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/sdktool/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindwxWidgets.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\UsewxWidgets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\sdktool\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/bmirletz/source/repos/sam_dev/ssc/sdktool/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/bmirletz/source/repos/sam_dev -BC:/Users/bmirletz/source/repos/sam_dev/SAM --check-stamp-file C:/Users/bmirletz/source/repos/sam_dev/SAM/ssc/sdktool/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindwxWidgets.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\UsewxWidgets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\sdktool\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\dataview.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\dllinvoke.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\editvariable.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\scripting.cpp" />
+    <ClCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\sdktool\sscdev.cpp" />
+    <ResourceCompile Include="C:\Users\bmirletz\source\repos\sam_dev\ssc\build_resources\app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ZERO_CHECK.vcxproj">
+      <Project>{37D78D6C-41A9-30DE-9CA1-369C09DFD45B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\lk\lk.vcxproj">
+      <Project>{251C612F-F4B8-3FE5-950C-6D398EAC624A}</Project>
+      <Name>lk</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\lpsolve\lpsolve.vcxproj">
+      <Project>{5ECF17E2-DD3F-3C6B-A563-7EEB9C9C6812}</Project>
+      <Name>lpsolve</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\nlopt\nlopt.vcxproj">
+      <Project>{E41DF15E-4DE5-35F9-8DF1-F8085F6CC255}</Project>
+      <Name>nlopt</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\shared\shared.vcxproj">
+      <Project>{9CF13BCD-318A-3994-9C52-552CE8CE2F04}</Project>
+      <Name>shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\solarpilot\solarpilot_core.vcxproj">
+      <Project>{02F881BA-5BC8-3121-A7F9-F723CD21CBBB}</Project>
+      <Name>solarpilot_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\splinter\splinter.vcxproj">
+      <Project>{4AD780AA-E177-3253-A21E-C747AD2EE9AB}</Project>
+      <Name>splinter</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\ssc\ssc.vcxproj">
+      <Project>{829C1AB1-49E7-3A42-9DBB-F1B7D16FA679}</Project>
+      <Name>ssc</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\ssc\tcs\tcs.vcxproj">
+      <Project>{F7E53ED7-676D-3E49-A77A-BD2002AF16C8}</Project>
+      <Name>tcs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\bmirletz\source\repos\sam_dev\SAM\wex\src\wex.vcxproj">
+      <Project>{33BEB79E-FF10-35DE-856B-8A412AC74B9E}</Project>
+      <Name>wex</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

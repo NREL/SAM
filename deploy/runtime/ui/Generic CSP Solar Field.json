@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 818.0
+                    "Integer": 820.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -94,7 +94,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 386.0
+                    "Integer": 388.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -131,7 +131,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 818.0
+                    "Integer": 820.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -201,15 +201,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 333.0
+                    "Integer": 336.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 617.0
+                    "Integer": 614.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 75.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -217,13 +217,13 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Notes: Optical performance is defined in a table of efficiencies at various azimuth/zenith angles.  The first row in the table specifies the azimuth angles, and the first column specifies the zenith angle.  The first cell (0,0) is unused.  Angles are specified in degrees, and the corresponding efficiencies in fraction (0...1)."
+                    "String": "Optical performance is defined in a table of efficiencies at various azimuth/zenith angles.  The first row in the table specifies the azimuth angles, and the first column specifies the zenith angle.  The first cell (0,0) is unused.  Angles are specified in degrees, and the corresponding efficiencies in fraction (0...1)."
                 },
                 "TextColour": {
                     "Type": 4.0,
                     "Color": {
-                        "Red": 255.0,
-                        "Green": 128.0,
+                        "Red": 0.0,
+                        "Green": 0.0,
                         "Blue": 0.0,
                         "Alpha": 255.0
                     }

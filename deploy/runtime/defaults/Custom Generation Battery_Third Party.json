@@ -6,6 +6,9 @@
     "LeadAcid_qn": 60.0,
     "LeadAcid_qn_computed": 6.75,
     "LeadAcid_tn": 1.0,
+    "ac_degradation": [
+        0.0
+    ],
     "adjust": 0.0,
     "adjust_constant": 0.0,
     "adjust_en_periods": 0.0,
@@ -32,7 +35,7 @@
     "batt_Qexp": 0.04000005,
     "batt_Qexp_percent": 1.77778,
     "batt_Qfull": 2.25,
-    "batt_Qfull_flow": 11.25,
+    "batt_Qfull_flow": 11.249999999999999,
     "batt_Qnom": 2.0000002500000004,
     "batt_Qnom_percent": 88.8889,
     "batt_Vcut": 2.706,
@@ -9830,10 +9833,10 @@
     "batt_minimum_modetime": 10.0,
     "batt_minimum_outage_SOC": 10.0,
     "batt_num_cells": 630.0,
-    "batt_power_charge_max_kwac": 2.938359375,
-    "batt_power_charge_max_kwdc": 2.820825,
+    "batt_power_charge_max_kwac": 2.9383593749999998,
+    "batt_power_charge_max_kwdc": 2.8208249999999999,
     "batt_power_discharge_max_kwac": 2.7079919999999997,
-    "batt_power_discharge_max_kwdc": 2.820825,
+    "batt_power_discharge_max_kwdc": 2.8208249999999999,
     "batt_pv_ac_forecast": [
         0.0
     ],
@@ -18670,7 +18673,7 @@
     "batt_ui_bank_voltage": 501.48,
     "batt_ui_cell_voltage": 3.98,
     "batt_ui_inverter_eff": 96.0,
-    "batt_ui_nominal_bank_power": 2.820825,
+    "batt_ui_nominal_bank_power": 2.8208249999999999,
     "batt_unit_capacity": 400.0,
     "batt_unit_surface_area": 30.0,
     "batt_user_specified_weather_file_peak_shaving": "",
@@ -36954,6 +36957,9 @@
     "energy_output_array": [
         0.0
     ],
+    "energy_output_array_lifetime": [
+        0.0
+    ],
     "escal_belpe": [
         0.0
     ],
@@ -36965,9 +36971,6 @@
     ],
     "first_year_output": 6727.679999999999,
     "first_year_output_peak": 3.84,
-    "generic_degradation": [
-        0.0
-    ],
     "grid_curtailment": [
         1e38,
         1e38,
@@ -63291,7 +63294,7 @@
         1.71415,
         1.87435
     ],
-    "nominal_discount_rate": 9.060000000000004,
+    "nominal_discount_rate": 9.060000000000003,
     "normalize_to_utility_bill": 0.0,
     "peak_1": 1.85407,
     "peak_10": 2.55071,
@@ -63339,8 +63342,8 @@
     "run_resiliency_calcs": 0.0,
     "scale_factor": 1.0,
     "spec_mode": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
     "system_capacity": 4.0,
     "system_capacity_combined": 0.0,
     "system_use_lifetime_output": 1.0,

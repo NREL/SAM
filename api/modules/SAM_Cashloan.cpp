@@ -320,39 +320,255 @@ SAM_EXPORT void SAM_Cashloan_LandLease_om_land_lease_escal_nset(SAM_table ptr, d
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_custom_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "depr_fed_custom", arr, length);
+		ssc_data_set_number(ptr, "depr_alloc_custom_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_sl_years_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_macrs_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_fed_sl_years", number);
+		ssc_data_set_number(ptr, "depr_alloc_macrs_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fed_type_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_macrs_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_fed_type", number);
+		ssc_data_set_number(ptr, "depr_alloc_macrs_5_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_custom_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_sl_15_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_array(ptr, "depr_sta_custom", arr, length);
+		ssc_data_set_number(ptr, "depr_alloc_sl_15_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_sl_years_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_sl_20_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_sta_sl_years", number);
+		ssc_data_set_number(ptr, "depr_alloc_sl_20_percent", number);
 	});
 }
 
-SAM_EXPORT void SAM_Cashloan_Depreciation_depr_sta_type_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_sl_39_percent_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "depr_sta_type", number);
+		ssc_data_set_number(ptr, "depr_alloc_sl_39_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_alloc_sl_5_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_alloc_sl_5_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_basis_mat_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_matrix(ptr, "depr_basis_mat", mat, nrows, ncols);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_fed_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_bonus_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_bonus_sta_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_custom_schedule_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "depr_custom_schedule", arr, length);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_en_basis_mat_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_en_basis_mat", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_fedbas_method_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_fedbas_method", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_fed_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_fed_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_custom_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_custom", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_macrs_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_macrs_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_macrs_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_macrs_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_sl_15_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_15", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_sl_20_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_20", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_sl_39_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_39", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_itc_sta_sl_5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_itc_sta_sl_5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Cashloan_Depreciation_depr_stabas_method_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "depr_stabas_method", number);
 	});
 }
 
@@ -1142,6 +1358,12 @@ SAM_EXPORT void SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aset(SAM_table pt
 	});
 }
 
+SAM_EXPORT void SAM_Cashloan_ChargesByMonth_utility_bill_wo_sys_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_array(ptr, "utility_bill_wo_sys", arr, length);
+	});
+}
+
 SAM_EXPORT void SAM_Cashloan_Battery_batt_capacity_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_array(ptr, "batt_capacity_percent", arr, length);
@@ -1801,58 +2023,382 @@ SAM_EXPORT double SAM_Cashloan_LandLease_om_land_lease_escal_nget(SAM_table ptr,
 	return result;
 }
 
-SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_fed_custom_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_custom_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_custom_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_custom_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_macrs_15_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_macrs_15_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_macrs_5_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_macrs_5_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_sl_15_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_15_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_sl_20_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_20_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_sl_39_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_39_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_alloc_sl_5_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_5_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_basis_mat_mget(SAM_table ptr, int* nrows, int* ncols, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "depr_fed_custom", length);
+	result = ssc_data_get_matrix(ptr, "depr_basis_mat", nrows, ncols);
 	if (!result)
-		make_access_error("SAM_Cashloan", "depr_fed_custom");
+		make_access_error("SAM_Cashloan", "depr_basis_mat");
 	});
 	return result;
 }
 
-SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_sl_years_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_fed_sl_years", &result))
-		make_access_error("SAM_Cashloan", "depr_fed_sl_years");
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed");
 	});
 	return result;
 }
 
-SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fed_type_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_custom_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_fed_type", &result))
-		make_access_error("SAM_Cashloan", "depr_fed_type");
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_custom");
 	});
 	return result;
 }
 
-SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_sta_custom_aget(SAM_table ptr, int* length, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_fed_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_fed_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_bonus_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_bonus_sta_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_bonus_sta_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Depreciation_depr_custom_schedule_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "depr_sta_custom", length);
+	result = ssc_data_get_array(ptr, "depr_custom_schedule", length);
 	if (!result)
-		make_access_error("SAM_Cashloan", "depr_sta_custom");
+		make_access_error("SAM_Cashloan", "depr_custom_schedule");
 	});
 	return result;
 }
 
-SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_sl_years_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_en_basis_mat_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_sta_sl_years", &result))
-		make_access_error("SAM_Cashloan", "depr_sta_sl_years");
+	if (!ssc_data_get_number(ptr, "depr_en_basis_mat", &result))
+		make_access_error("SAM_Cashloan", "depr_en_basis_mat");
 	});
 	return result;
 }
 
-SAM_EXPORT double SAM_Cashloan_Depreciation_depr_sta_type_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_fedbas_method_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "depr_sta_type", &result))
-		make_access_error("SAM_Cashloan", "depr_sta_type");
+	if (!ssc_data_get_number(ptr, "depr_fedbas_method", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_method");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_fed_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_fed_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_fed_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_itc_sta_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_itc_sta_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_itc_sta_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Depreciation_depr_stabas_method_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_method", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_method");
 	});
 	return result;
 }
@@ -3061,6 +3607,16 @@ SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_utility_bill_w_sys_aget(SAM_table
 	return result;
 }
 
+SAM_EXPORT double* SAM_Cashloan_ChargesByMonth_utility_bill_wo_sys_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "utility_bill_wo_sys", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "utility_bill_wo_sys");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Cashloan_Battery_batt_capacity_percent_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3690,26 +4246,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_energy_without_battery_aget(SAM_table
 	return result;
 }
 
-SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_fed_depr_sched", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "cf_fed_depr_sched");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_depreciation_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_fed_depreciation", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "cf_fed_depreciation");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -3746,6 +4282,116 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_fed_taxable_income_less_deductions_ag
 	result = ssc_data_get_array(ptr, "cf_fed_taxable_income_less_deductions", length);
 	if (!result)
 		make_access_error("SAM_Cashloan", "cf_fed_taxable_income_less_deductions");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_custom_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_custom", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_macrs_15", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_macrs_5", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_me1_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_me1", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_me1");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_me2_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_me2", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_me2");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_me3_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_me3", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_me3");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_sl_15", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_sl_20", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_sl_39", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_sl_5", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_feddepr_total_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_feddepr_total", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_feddepr_total");
 	});
 	return result;
 }
@@ -4209,26 +4855,6 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_and_fed_tax_savings_aget(SAM_tabl
 	return result;
 }
 
-SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depr_sched_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_sta_depr_sched", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "cf_sta_depr_sched");
-	});
-	return result;
-}
-
-SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_depreciation_aget(SAM_table ptr, int* length, SAM_error *err){
-	double* result = nullptr;
-	translateExceptions(err, [&]{
-	result = ssc_data_get_array(ptr, "cf_sta_depreciation", length);
-	if (!result)
-		make_access_error("SAM_Cashloan", "cf_sta_depreciation");
-	});
-	return result;
-}
-
 SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_incentive_income_less_deductions_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
@@ -4265,6 +4891,116 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_sta_taxable_income_less_deductions_ag
 	result = ssc_data_get_array(ptr, "cf_sta_taxable_income_less_deductions", length);
 	if (!result)
 		make_access_error("SAM_Cashloan", "cf_sta_taxable_income_less_deductions");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_custom_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_custom", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_macrs_15_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_macrs_15", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_macrs_5_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_macrs_5", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_me1_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_me1", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_me1");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_me2_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_me2", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_me2");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_me3_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_me3", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_me3");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_sl_15_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_sl_15", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_sl_20_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_sl_20", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_sl_39_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_sl_39", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_sl_5_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_sl_5", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double* SAM_Cashloan_Outputs_cf_stadepr_total_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "cf_stadepr_total", length);
+	if (!result)
+		make_access_error("SAM_Cashloan", "cf_stadepr_total");
 	});
 	return result;
 }
@@ -4315,6 +5051,1824 @@ SAM_EXPORT double* SAM_Cashloan_Outputs_cf_value_added_aget(SAM_table ptr, int* 
 	result = ssc_data_get_array(ptr, "cf_value_added", length);
 	if (!result)
 		make_access_error("SAM_Cashloan", "cf_value_added");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_none_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_none", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_none");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_none_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_none_percent", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_none_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_alloc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_alloc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_alloc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_after_itc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_after_itc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_after_itc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_cbi_reduc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_cbi_reduc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_first_year_bonus_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_first_year_bonus_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_fixed_amount_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_fixed_amount_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_ibi_reduc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_ibi_reduc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_fed_reduction_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_fed_reduction_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_itc_sta_reduction_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_itc_sta_reduction_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_amount_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_amount_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_amount_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_qual_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_qual_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_qual_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_percent_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_prior_itc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_prior_itc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_prior_itc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_fedbas_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_fedbas_total", &result))
+		make_access_error("SAM_Cashloan", "depr_fedbas_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_after_itc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_after_itc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_after_itc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_cbi_reduc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_cbi_reduc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_cbi_reduc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_first_year_bonus_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_first_year_bonus_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_first_year_bonus_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_fixed_amount_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_fixed_amount_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_fixed_amount_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_ibi_reduc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_ibi_reduc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_ibi_reduc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_fed_reduction_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_fed_reduction_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_fed_reduction_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_itc_sta_reduction_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_itc_sta_reduction_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_itc_sta_reduction_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_amount_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_amount_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_amount_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_qual_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_qual_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_qual_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_percent_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_custom", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_prior_itc_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_prior_itc_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_prior_itc_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_sl_15", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_sl_20", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_sl_39", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_sl_5", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_depr_stabas_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "depr_stabas_total", &result))
+		make_access_error("SAM_Cashloan", "depr_stabas_total");
 	});
 	return result;
 }
@@ -4414,6 +6968,474 @@ SAM_EXPORT double SAM_Cashloan_Outputs_irr_nget(SAM_table ptr, SAM_error *err){
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "irr", &result))
 		make_access_error("SAM_Cashloan", "irr");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_custom", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_20", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_39", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_sl_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_fixed_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_fixed_total", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_fixed_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_custom", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_20", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_39", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_sl_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_fed_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_fed_percent_total", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_fed_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_custom", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_20", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_39", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_sl_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_fixed_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_fixed_total", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_fixed_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_custom", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_15", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_20", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_39", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_sl_5", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_disallow_sta_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_disallow_sta_percent_total", &result))
+		make_access_error("SAM_Cashloan", "itc_disallow_sta_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_fixed_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_fixed_total", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_fixed_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_percent_total", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_custom", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_15", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_20", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_39", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_sl_5", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_fed_qual_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_fed_qual_total", &result))
+		make_access_error("SAM_Cashloan", "itc_fed_qual_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_fixed_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_fixed_total", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_fixed_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_percent_total", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_custom_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_custom", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_custom");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_macrs_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_macrs_15", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_macrs_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_macrs_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_macrs_5", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_macrs_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_sl_15_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_15", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_sl_15");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_sl_20_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_20", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_sl_20");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_sl_39_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_39", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_sl_39");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_sl_5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_sl_5", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_sl_5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_itc_sta_qual_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "itc_sta_qual_total", &result))
+		make_access_error("SAM_Cashloan", "itc_sta_qual_total");
 	});
 	return result;
 }
@@ -4594,6 +7616,24 @@ SAM_EXPORT double SAM_Cashloan_Outputs_payback_nget(SAM_table ptr, SAM_error *er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "payback", &result))
 		make_access_error("SAM_Cashloan", "payback");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_pre_depr_alloc_basis_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pre_depr_alloc_basis", &result))
+		make_access_error("SAM_Cashloan", "pre_depr_alloc_basis");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Cashloan_Outputs_pre_itc_qual_basis_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pre_itc_qual_basis", &result))
+		make_access_error("SAM_Cashloan", "pre_itc_qual_basis");
 	});
 	return result;
 }

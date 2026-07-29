@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -77,7 +77,7 @@ private:
 	Case* m_custom_generation_case;
 	wxString m_custom_generation_case_name;
 	CaseWindow* m_custom_generation_case_window;
-	std::vector<double> m_generic_degradation;
+	std::vector<double> m_ac_degradation;
     std::vector<CaseInfo> m_cases;
     wxCheckListBox* m_chlCases;
     wxCheckBox* m_chkOverwriteCapital;

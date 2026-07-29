@@ -1,0 +1,1940 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module &#8212; SAM Help</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2da3bde9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'detailed-photovoltaic-model/pv_module';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inverter" href="pv_inverter.html" />
+    <link rel="prev" title="Location and Resource" href="pv_location_and_resource.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/SAM-logo-horizontal.png" class="logo__image only-light" alt="SAM Help - Home"/>
+    <script>document.write(`<img src="../_static/SAM-logo-horizontal.png" class="logo__image only-dark" alt="SAM Help - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">About SAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/technology_options.html">Performance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/fin_overview.html">Financial Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/user_support.html">User Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/keep_up_to_date.html">SAM Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/component_models_databases.html">Models and Databases</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/welcome_page.html">Welcome Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/create_project.html">Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/choose_models.html">Choose Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/main_window.html">Main Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/input_pages.html">Input Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/costs.html">Costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/financial_model_inputs.html">Financial Model Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/run_simulations.html">Run Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/results_page.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/youtube_channel.html">Videos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_menu.html">File Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/case_menu.html">Case Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/manage_cases.html">Manage Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/export_data.html">Export Data and Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/inputs_browser.html">Inputs Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/time_series_viewer.html">Time Series Data Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/weekday_schedule.html">Weekday Weekend Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/notes.html">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/excel_exchange.html">Excel Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/macros.html">Macros and Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sdk.html">Software Development Kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_formats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/installation.html">Software Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/registration.html">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/configure_proxy_server.html">Web Access and Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/function_keys.html">Keyboard Shortcuts</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../window-reference/index.html">Window reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_combine_cases.html">Combine Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_array.html">Edit Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_lifetime.html">Edit Lifetime Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_losses.html">Edit Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_material_properties.html">Edit Material Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_monthly_values.html">Edit Monthly Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_column.html">Edit Data Table by Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_row.html">Edit Data Table by Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_parametric_variables.html">Edit Parametric Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_shading_data.html">Edit Shading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_parametric_quick_setup.html">Parametric Quick Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nohrsc_advanced_download.html">Advanced NOHRSC Download Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nsrdb_advanced_download.html">NSRDB Advanced Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_ptes_design_pt.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wave_download.html">Wave Resource Data Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wind_toolkit_download.html">WIND Toolkit Download</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../simulation-options/index.html">Simulation Options</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/simulation_options.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/parametrics.html">Parametric Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/stochastic.html">Stochastic Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/p50p90.html">P50/P90 Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/pvuncertainty.html">Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/release_notes.html">Release Notes</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weather Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-data/index.html">Weather Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data.html">Weather Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_manage_folders.html">Folders and Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data_elements.html">Weather Data Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_typical_single.html">Typical and Single Year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_time_convention.html">Time and Sun Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/accessing-weather-data-from-lk.html">Weather Data and LK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/irradiance_error_codes.html">Irradiance Error Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-file-formats/index.html">Weather File Formats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format.html">Weather File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_sam_csv_solar.html">SAM CSV Format for Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_wind.html">SAM CSV Format for Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_marine_energy.html">CSV Format for Marine Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_srw_wind.html">SRW Format for Wind</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Detailed Photovoltaic Model</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pv_overview.html">Getting Started with the Detailed Photovoltaic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_system_size.html">System Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_tracking_layout_land.html">Tracking Layout Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_soiling_shading_snow.html">Soiling Shading Snow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_electrical_losses.html">Electrical Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_sizing_instructions.html">PV Sizing Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pv_results.html">Detailed PV Model Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pvwatts/index.html">PVWatts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts.html">PVWatts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_results.html">PVWatts Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-concentration-photovoltaic/index.html">High Concentration Photovoltaic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_overview.html">High Concentration Photovoltaic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_results.html">Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../battery-storage/index.html">Battery Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_storage.html">Battery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_cell_and_system.html">Battery Cell and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_btm.html">Battery Dispatch BTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_fom.html">Battery Dispatch FOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_time_step.html">Battery Time Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_life.html">Battery Life</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_results.html">Battery Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hybrid-systems/index.html">Hybrid Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_systems.html">Hybrid Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system.html">Hybrid System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system_costs.html">Hybrid System costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../wind-power/index.html">Wind Power</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_power.html">Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_resource.html">Wind Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_turbine.html">Wind Turbine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_farm.html">Wind Farm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_uncertainties.html">Uncertainties</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-wave/index.html">Marine Energy Wave</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave.html">Marine Energy Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_resource.html">Wave Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_converter.html">Wave Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-tidal/index.html">Marine Energy Tidal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal.html">Marine Energy Tidal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_resource.html">Tidal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_converter.html">Tidal Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../solar-water-heating/index.html">Solar Water Heating</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_overview.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_system.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_results.html">Solar Water Heating Model Hourly Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fuel-cell/index.html">Fuel Cell</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_fuel_cell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_dispatch.html">Fuel Cell Dispatch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../biopower/index.html">Biomass Combustion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower.html">Biomass Combustion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_location_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock.html">Feedstock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_plant_specs.html">Plant Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_emissions.html">Emissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock_costs.html">Feedstock costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geothermal/index.html">Geothermal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_overview.html">Geothermal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_geothermal_resource.html">Geothermal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_plant_equipment.html">Plant and Equipment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_power_block.html">Power Block</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../custom-generation/index.html">Custom Generation Profile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation.html">Custom Generation Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation_profile.html">Generation Profile</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concentrating Solar-Thermal Power</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-empirical-trough-model/index.html">CSP Empirical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_overview.html">CSP Empirical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-physical-trough-model/index.html">CSP Physical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_overview.html">CSP Physical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_script_parameters.html">Script-only Parameters</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-power-tower-molten-salt/index.html">CSP Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_overview.html">CSP Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_tower_and_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_electric_htf_heater.html">Electric HTF Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/index.html">CSP Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_overview.html">CSP Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/index.html">CSP Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_overview.html">CSP Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-generic-solar/index.html">CSP Generic Solar</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_overview.html">CSP Generic Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_thermal_storage.html">Thermal Storage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-parabolic-trough/index.html">IPH Parabolic Trough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough.html">IPH Parabolic Trough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_collectors.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_receivers.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_tes.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/index.html">IPH Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds.html">IPH Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_collector_receiver.html">Collector and Receiver</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/index.html">IPH Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf.html">IPH Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_collector_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-power-tower-molten-salt/index.html">IPH Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt.html">IPH Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_tower_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electric-thermal-energy-storage/index.html">Electric Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes.html">Electric Thermal Energy Storage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_heater.html">Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pumped-thermal-energy-storage/index.html">Pumped Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_energy_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_heat_pump.html">Heat Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Degradation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../degradation/index.html">Degradation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation.html">Degradation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_ac.html">AC Degradation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_dc.html">DC Degradation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grid</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grid/index.html">Grid</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_limits.html">Grid Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_outage.html">Grid Outage</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Financial Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation-costs/index.html">Installation costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_pv.html">PV Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_standalone_battery.html">Battery Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_wind.html">Wind Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_geothermal.html">Geothermal Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_swh.html">SWH Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_fuel_cell.html">Fuel Cell Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_biopower.html">Biomass Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_custom_generation.html">Custom Generation Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_trough.html">Trough Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_tower.html">Tower Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_linear_fresnel.html">Fresnel Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_generic_solar.html">Generic Solar System (GSS) costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_etes.html">ETES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_ptes.html">PTES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_marine_energy.html">Marine Energy Installation costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../operating-costs/index.html">Operating costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/operating_costs.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_operating.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_battery.html">Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_pv-battery.html">PV Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_fuel_cell.html">Fuel Cell Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_marine_energy.html">Marine Energy Operating costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-parameters/index.html">Financial Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_overview.html">Financial Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_residential.html">Residential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_commercial.html">Commercial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host.html">Third Party Ownership - Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host_developer.html">Third Party Ownership - Host / Developer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_community_solar.html">Community Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_single_owner.html">Single Owner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_merchant_plant.html">Merchant Plant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_leveraged_partnership.html">Leveraged Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_all_equity_partnership.html">All Equity Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_sale_leaseback.html">Sale Leaseback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoefcr.html">LCOE Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoh.html">LCOH Calculator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../revenue/index.html">Revenue</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_ppa.html">PPA Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_merchant_plant.html">Merchant Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_tod_factors.html">Time of Delivery Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_iph.html">Industrial Process Heat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../incentives-and-depreciation/index.html">Incentives and Depreciation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/cash_incentives.html">Cash Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/tax_credits_depreciation.html">Tax Credits and Depreciation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electricity-rates-and-load/index.html">Electricity Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_load.html">Electric Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_rates.html">Electricity Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_purchases.html">Electricity Purchases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_bill_results.html">Electricity Bill Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../thermal-rates-and-load/index.html">Thermal Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_load.html">Thermal Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_rates.html">Thermal Rates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../results/index.html">Results Page</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../results/results.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/graphs.html">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/data.html">Data Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/cashflow.html">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/timeseries.html">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/profiles.html">Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/heatmap.html">Heat Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/pdfcdf.html">PDF / CDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/uncertainties.html">Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/spatial.html">Spatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/notices.html">Notices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-metrics/index.html">Financial Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_overview.html">Financial Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_debt_and_equity.html">Debt and Equity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_revenues.html">Electricity Bill and Savings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_indifference_point.html">Indifference Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_irr.html">Internal Rate of Return (IRR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_levelized.html">Levelized Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcoe.html">Levelized cost of Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcos.html">Levelized Cost of Storage (LCOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lppa.html">Levelized PPA price (LPPA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_npv.html">Net Present Value (NPV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_payback.html">Payback Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_price.html">PPA Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_escalation.html">PPA Price Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_costs.html">Net Capital Cost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance-metrics/index.html">Performance Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_overview.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_biomass_usage.html">Annual Biomass Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_energy.html">Annual Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_water_usage.html">Annual Water Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_aux_w_wo_solar.html">Aux with and without Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_capacity_factor.html">Capacity Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_kwhkwyear1.html">Energy Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_gross_to_net_conv_factor.html">Gross-to-net Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_heat_rate.html">Heat Rate and Thermal Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_pump_power.html">Pump Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_p90_energy.html">p90 Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_solar_fraction.html">Solar Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_system_performance_factor.html">Performance Ratio</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Shade Calculator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-reference/index.html">3D Shade Calculator Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-overview.html">3D Shade Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shade-data-description.html">Shade data description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-create.html">Active surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shading-objects.html">Shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-3d-scene.html">3D scene view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-birds-eye.html">Bird’s eye view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-elevations.html">Elevations view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-analyze.html">Analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-import_export.html">Import and Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-save-close.html">Save and Close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shortcuts.html">Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-file-types.html">File Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-howto/index.html">3D Shade Calculator How-To</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-define-location.html">Define the scene location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-underlay.html">Use an image underlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-add-shading-objects.html">Add shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-active-surface.html">Add active surface objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-change-view.html">Change the view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-zoom-pan.html">Zoom and pan the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-select.html">Select an object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-move.html">Move objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-resize.html">Resize objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-rotate.html">Rotate objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-delete.html">Delete and copy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-colors.html">Change object colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-generate-data.html">Generate shade data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-export.html">Export shade data</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/detailed-photovoltaic-model/pv_module.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-performance-model-with-module-database">CEC Performance Model with Module Database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-use-the-cec-performance-model-with-module-database">To use the CEC Performance Model with Module Database:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-characteristics-at-reference-conditions">Module Characteristics at Reference Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bifacial">Bifacial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-correction">Temperature Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noct-method-parameters">NOCT Method Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-transfer-method-parameters">Heat Transfer Method Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transient-thermal-model-correction">Transient Thermal Model Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-dimensions">Module Dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-diode-model-parameters">Single-diode Model Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-pv-array-performance-model-with-module-database">Sandia PV Array Performance Model with Module Database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Module Characteristics at Reference Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-characteristics">Physical Characteristics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-temperature-correction">Sandia Temperature Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines-for-choosing-the-module-structure-mounting-a-b-dt-parameters">Guidelines for choosing the Module Structure - Mounting (a, b, dT) parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-temperature-correction-method">Sandia Temperature Correction Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-temperature-correction-equations">Sandia Temperature Correction Equations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-efficiency-module-model">Simple Efficiency Module Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bifacial-specifications">Bifacial Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation-level-and-efficiency-table">Radiation Level and Efficiency Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-performance-model-with-user-entered-specifications">CEC Performance Model with User Entered Specifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-information">General Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-specifications">Electrical Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Bifacial Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mounting-configuration">Mounting Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-maximum-power-ratings-at-stc">Nominal Maximum Power Ratings at STC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-load-data">Save / Load Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iec-61853-single-diode-model">IEC 61853 Single Diode Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-behavior">Thermal Behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-and-spectral-behavior">Optical and Spectral Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-correction">Spectral Correction</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module">
+<h1>Module<a class="headerlink" href="#module" title="Link to this heading">#</a></h1>
+<p>The Module page allows you to choose a model to represent the photovoltaic module’s performance. The module converts solar radiation into DC electricity. For each time step of the simulation, the module model calculates the DC electrical output of a single module based on the design parameters and the incident solar radiation (plane-of-array irradiance) calculated from data in the weather file.</p>
+<p>SAM can only model an array with a single type of module. Specify the number of modules in the array on the doc:<cite>pv_system_size</cite> page.</p>
+<p>You can choose from five different module model options. SAM displays the name of the current option in the blue box at top of the Module page. Click the box to choose a different option:</p>
+<img alt="SS_PVModule-ChooseModel.png" class="align-center" src="../_images/SS_PVModule-ChooseModel.png" />
+<ul class="simple">
+<li><p><a class="reference internal" href="#module-spe"><span class="std std-ref">Simple Efficiency Module Model</span></a> is a simple representation of module performance that requires you to provide the module area, conversion efficiency data, and temperature correction parameters. The simple efficiency model is the least accurate of the three models for predicting the performance of specific modules, but is useful for exploring the relationship between module efficiency and the system’s performance and cost of energy.</p></li>
+<li><p><a class="reference internal" href="#module-cec-database"><span class="std std-ref">CEC Performance Model with Module Database</span></a> calculates module solar energy-to-electricity conversion efficiency from data stored in a library of module parameters for thousands of commercially available modules. It is a single-diode equivalent circuit model originally developed at the University of Wisconsin and used in the California Energy Commission New Solar Homes Partnership Calculator. This option has an up-to-date module library and is the best option for most analyses.</p></li>
+<li><p><a class="reference internal" href="#module-cec-user"><span class="std std-ref">CEC Performance Model with User Entered Specifications</span></a> uses the same algorithms as the CEC Performance Model with Module Database, but allows you to enter your own module specifications from a manufacturer’s data sheet. Use this option to model a module that is not in the CEC Performance Model with Module Database library.</p></li>
+<li><p><a class="reference internal" href="#module-sandia"><span class="std std-ref">Sandia PV Array Performance Model with Module Database</span></a> calculates module conversion efficiency based on data measured from modules and arrays in realistic outdoor operating conditions. It is an empirically-derived model developed by Sandia National Laboratories. The Sandia module library is out-of-date, so this option may not be suitable if you want to model specific modules available on the current market.</p></li>
+<li><p><a class="reference internal" href="#module-iec61853"><span class="std std-ref">IEC 61853 Single Diode Model</span></a> calculates the module conversion efficiency from a set of detailed parameters describing the module’s characteristics, consistent with the International Electrotechnical Commission (IEC) power and rating standard, <a class="reference external" href="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/">IEC 61853</a>, <em>Irradiance and Temperature Performance Measurements and Power Rating</em>. Use this option when you have IEC test data.</p></li>
+</ul>
+<p>For technical descriptions of the module model options, see Gilman, P.; Dobos, A.; DiOrio, N.; Freeman, J.; Janzou, S.; Ryberg, D. (2018) SAM Photovoltaic Model Technical Reference Update. 93 pp.; NREL/TP-6A20-67399 available along with other technical documentation from the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">SAM website</a>.</p>
+<section id="cec-performance-model-with-module-database">
+<span id="module-cec-database"></span><h2>CEC Performance Model with Module Database<a class="headerlink" href="#cec-performance-model-with-module-database" title="Link to this heading">#</a></h2>
+<p>The California Energy Commission (CEC) Performance Model uses a modified version of the University of Wisconsin-Madison Solar Energy Laboratory’s five-parameter single-diode model with a database of module parameters for modules from the database of eligible photovoltaic modules maintained by the California Energy Commission (CEC). The model calculates a module’s current and voltage under a range of solar resource conditions represented by an I-V curve using an equivalent electrical circuit whose electrical properties can be determined from the five parameters. These five parameters are determined from standard reference condition data provided by either the module manufacturer or an independent testing laboratory.</p>
+<p>The model is described in Gilman, P. (2015). SAM Photovoltaic Model Technical Reference. National Renewable Energy Laboratory. NREL/TP-6A20-64102. (<a class="reference external" href="https://docs.nlr.gov/docs/fy15osti/64102.pdf">PDF 840 KB</a>), and in De Soto 2004, <a class="reference external" href="https://minds.wisconsin.edu/handle/1793/7602">Improvement and Validation of a Model for Photovoltaic Array Performance</a>, Master of Science Thesis, University of Wisconsin-Madison.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SAM’s CEC module library contains data from the <a class="reference external" href="https://www.energy.ca.gov/programs-and-topics/programs/solar-equipment-lists">California Energy Commission (CEC) Solar Equipment Lists Program</a> as of the date of the SAM software release for the current version.</p>
+<p>For scripts and data NLR uses to generate the module library, see <a class="github reference external" href="https://github.com/NatLabRockies/SAM/tree/develop/samples/CEC%20Module%20and%20Inverter%20Libraries/CEC%20Modules">NatLabRockies/SAM</a>.</p>
+<p>If you represent a module manufacturer and would like to add your module to the CEC database, you should contact the CEC directly.</p>
+<p>To model a module that is not in the database, you can use the <a class="reference internal" href="#module-cec-user"><span class="std std-ref">CEC Performance Model with User Entered Specifications</span></a>.</p>
+<p>To modify library parameters, choose the module you want to model from the library, and then switch the model option at the top of the Module page from <strong>CEC Performance Model with Module Database</strong> to <strong>CEC Performance Model with User Entered Specifications</strong> and click <strong>Copy module specs from currently selected CEC database module</strong>. This will copy the parameter values from the library to inputs that you can edit.</p>
+</div>
+<p>SAM’s implementation of the model uses the <a class="reference external" href="https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/effective-irradiance/spectral-mismatch-models/">air mass model</a> for spectral mismatch from the Sandia Array Performance Model with “a” coefficients for polycrystalline modules from Table A1 of De Soto W.; Klein, S.; Beckman, W.; (2006) <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0038092X05002410">Improvement and validation of a model for photovoltaic array performance</a>. Solar Energy. Vol 80 Issue 1. pp 78-88.</p>
+<section id="to-use-the-cec-performance-model-with-module-database">
+<h3>To use the CEC Performance Model with Module Database:<a class="headerlink" href="#to-use-the-cec-performance-model-with-module-database" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>On the Module page, choose <strong>CEC Performance Model</strong>.</p></li>
+<li><p>Choose a module from the library. SAM displays the model’s characteristics and model coefficients.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The data for module library is stored in a CSV text file. See <a class="reference internal" href="../reference/libraries.html"><span class="doc">Libraries</span></a> for information about how SAM stores library data and how you can access the data directly.</p>
+</div>
+</section>
+<section id="module-characteristics-at-reference-conditions">
+<h3>Module Characteristics at Reference Conditions<a class="headerlink" href="#module-characteristics-at-reference-conditions" title="Link to this heading">#</a></h3>
+<p>The characteristics at reference conditions are module ratings, and as such are nominal values. During a simulation, SAM calculates module parameters under operating conditions, which you can see in the <a class="reference internal" href="pv_results.html"><span class="doc">Results</span></a>.</p>
+<p>When you choose a module from the library, SAM calculates and displays the module’s I-V curve from the parameters in the library. You can compare SAM’s I-V curve to the one on the manufacturer’s datasheet to verify that the library parameters are consistent with the datasheet parameters.</p>
+<dl>
+<dt><strong>Material</strong></dt><dd><p>A description of the semiconductor technology used in the photovoltaic cells.</p>
+</dd>
+<dt><strong>Number of cells</strong></dt><dd><p>The number of photovoltaic cells in series for the module.</p>
+</dd>
+<dt><strong>Reference conditions</strong></dt><dd><p>The total irradiance and cell temperature at which the rated module characteristics apply.</p>
+</dd>
+<dt><strong>Nominal efficiency, %</strong></dt><dd><p>The module’s rated efficiency at reference conditions. SAM displays this value for reference only. During a simulation, the model calculates an efficiency value for each hour, which you can see in the time series output data.</p>
+</dd>
+<dt><strong>Maximum power (Pmp), Wdc</strong></dt><dd><p>The module rated power. Equal to the product of the maximum power voltage and maximum power current.</p>
+</dd>
+<dt><strong>Max power voltage (Vmp), Vdc</strong></dt><dd><p>Reference maximum power voltage at the reference conditions.</p>
+</dd>
+<dt><strong>Max power current (Imp), Adc</strong></dt><dd><p>Reference maximum power current at the reference conditions.</p>
+</dd>
+<dt><strong>Open circuit voltage (Voc), Vdc</strong></dt><dd><p>Reference open circuit voltage at the reference conditions.</p>
+</dd>
+<dt><strong>Short circuit current (Isc), Adc</strong></dt><dd><p>Reference short circuit current at the reference conditions.</p>
+</dd>
+<dt><strong>Temperature coefficients</strong></dt><dd><p>The module temperature coefficients in %/°C and W/°C at maximum power, open circuit, and short circuit.</p>
+<p>The temperature coefficients are based on data collected from laboratory test results and may not match coefficients provided by the manufacturer on the module’s data sheet.</p>
+</dd>
+</dl>
+</section>
+<section id="bifacial">
+<h3>Bifacial<a class="headerlink" href="#bifacial" title="Link to this heading">#</a></h3>
+<p>SAM’s bifacial model is adapted from Marion, B, et. al (2017) A Practical Irradiance Model for Bifacial PV Modules, available for download from the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">SAM website</a>. The model’s open source implementation is available on the NLR GitHub website at <a class="github reference external" href="https://github.com/NatLabRockies/bifacialvf">NatLabRockies/bifacialvf</a>. The bifacial model calculates the plane-of-array irradiance on the rear side of the PV modules in the array assuming infinite rows. The rear-side plane-of-array irradiance is multiplied by the module bifaciality factor, and then added to the front-side plane-of-array irradiance, which is then sent to the module model to predict module DC power. Primary drivers of the rear-side POA irradiance include the ground albedo, row-to-row spacing (function of ground-coverage ratio), and ground clearance height.</p>
+<dl class="simple">
+<dt><strong>Module is bifacial</strong></dt><dd><p>Check this box to enable the bifacial model and its inputs.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you enable the bifacial model, SAM enables inputs for rear-side irradiance and bifacial electrical mismatch losses on the <a class="reference internal" href="pv_electrical_losses.html"><span class="doc">Losses</span></a> page, and provide an option for spatial albedo values on the Location and Resource page.</p>
+</div>
+<dl>
+<dt><strong>Transmission Fraction</strong></dt><dd><p>The ratio of area of each row that allows light to reach the surface behind the row to the area that blocks light, expressed as a fraction between 0 and 1. The row area is the total area occupied by the modules in a single row, including space between the modules. Light passes through space between modules, and, for modules made of glass or other transparent material, may also pass through the space between cells in each module.</p>
+<p>For an array of opaque modules:</p>
+</dd>
+</dl>
+<p><em>Transmission Factor = ( Total Row Area (m²) - Row Opaque Area (m²) ) ÷ Total Row Area (m²)</em></p>
+<blockquote>
+<div><p>For opaque modules, the row opaque area is the product of the number of modules in one row and the module area. For modules with transparent backs, the row opaque area is the total cell area in one row plus the area of the frame and other material that may block light.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The transmission fraction determines the amount of light that can pass around or through modules in a single row. The GCR (ground coverage ratio) on the System Design page and array geometry on the Shading and Layout page determine the spacing between rows.</p>
+</div>
+<dl class="simple">
+<dt><strong>Bifaciality</strong></dt><dd><p>The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet. This is to account for the fact that photovoltaic cells on the rear of the module are usually less efficient than the cells on the front of the module. The bifaciality does not affect the solar irradiance on the rear of the module.</p>
+</dd>
+<dt><strong>Ground clearance height</strong></dt><dd><p>The height from the ground to the bottom of the PV array. For systems with no tracking, it is the distance between the ground and the bottom edge of modules closest to the ground. For systems with tracking, it is the distance between the ground and back of modules when they are horizontal.</p>
+</dd>
+</dl>
+</section>
+<section id="temperature-correction">
+<span id="module-tempcorr-cec-options"></span><h3>Temperature Correction<a class="headerlink" href="#temperature-correction" title="Link to this heading">#</a></h3>
+<p>The CEC model provides two options for modeling the effect of cell temperature on module performance:</p>
+<p>The nominal operating cell temperature (NOCT) method determines the cell temperature based on the NOCT specified in the module parameters. In SAM 2010.11.9 and earlier versions, this was the only available temperature correction option for the CEC model. De Soto (2004) listed on the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">PV Publications</a> page of the SAM website.</p>
+<p>The heat transfer method uses a steady state heat transfer model to calculate cell temperatures described in Neises (2010). When the simulation time step is less than 20 minutes and you choose the gap mounting configuration for the heat transfer model, it applies the transient weighted average model for the back surface-temperature described in Prilliman (2020). References to both publications are available under “Module/Cell Temperature Models” on the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">PV Publications</a>   page of the SAM website.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cell temperature models use wind speed and ambient (dry-bulb) temperature data from the weather file, assumed to be measured at 2 meters above the ground.</p>
+<p>The heat transfer method also uses atmospheric pressure and wet-bulb temperature data, and generates a simulation error if that data is missing from the weather file.</p>
+<p>When you specify a vertical or horizontal mounting structure option, SAM also uses wind direction data in the cell temperature calculation.</p>
+</div>
+</section>
+<section id="noct-method-parameters">
+<span id="module-tempcorr-noct"></span><h3>NOCT Method Parameters<a class="headerlink" href="#noct-method-parameters" title="Link to this heading">#</a></h3>
+<p>The NOCT method parameters are enabled for the <strong>Nominal operating cell (NOCT) method</strong> option.</p>
+<dl>
+<dt><strong>Mounting standoff</strong></dt><dd><p>Choose the option that best describes how the module is mounted: Ground or rack mounted when there is a when there is a lot of space between the module back and the ground or roof surface; For roof-mounted modules, choose a distance between the module back and roof in inches; or choose building-integrated for a module that is part of the building structure.</p>
+<p>For standoff heights less than 0.5 inches, and between 0.5 inches and 3.5 inches, SAM increases the NOCT value by several degrees as the standoff height decreases to account for reduced airflow between the module and roof surface. This is the same approach as was used in the California Energy Commission’s New Solar Homes Partnership (NSHP) program’s “CECPV Calculator Spreadsheet”.</p>
+</dd>
+<dt><strong>Array height</strong></dt><dd><p>Choose the option that best describes the height of the array from the ground.</p>
+</dd>
+<dt><strong>T_noct</strong></dt><dd><p>The nominal operating cell temperature (NOCT) from the module library.</p>
+</dd>
+</dl>
+</section>
+<section id="heat-transfer-method-parameters">
+<span id="module-tempcorr-heat-transfer"></span><h3>Heat Transfer Method Parameters<a class="headerlink" href="#heat-transfer-method-parameters" title="Link to this heading">#</a></h3>
+<p>The heat transfer method parameters are enabled for the <strong>Heat transfer method</strong> option.</p>
+<dl>
+<dt><strong>Mounting configuration</strong></dt><dd><p>Choose the option that best describes how the modules are mounted: Rack when modules are mounted on open racks that allow ambient air to flow freely over the front and back of the modules; Flush when modules are in direct contact with a roof or wall, preventing air from flowing over the back of the module; Integrated when modules form part of the roof or wall so that the back of the module is in contact with the indoor air (when you specify integrated mounting, you must also specify the temperature behind the module); Gap for modules that are mounted with a space between the module and building surface that allows limited air flow over the back of each module (when you specify gap mounting, you must also specify the mounting structure orientation and gap spacing).</p>
+<p>The mounting configuration affects the movement of air around the module and the transfer of heat between the module and the building surface or ground. SAM assumes that all modules in the array use the same mounting configuration.</p>
+</dd>
+<dt><strong>Heat transfer dimensions</strong></dt><dd><p>Choose whether you want SAM to calculate the cell temperature based on the module or array dimensions. The Array Dimensions option assumes that modules in the array are in direct contact with each other and results in a higher calculated cell temperatures than the Module Dimensions option. Use the Array Dimensions option for more conservative array output estimates.</p>
+</dd>
+<dt><strong>Mounting structure orientation</strong></dt><dd><p>This option is only available for the gap mounting configuration only. Choose how the mounting structure interferes with airflow under the modules for the gap mounting configuration: None if the mounting structure does not impede air flow over the back of the modules; vertical supporting structures if the mounting structures on module back are perpendicular to the roof ridge and impede air flow parallel to the ridge; or horizontal supporting structures if the mounting structures are parallel to the roof ridge and impede air flow perpendicular to the ridge.</p>
+</dd>
+<dt><strong>Rows of modules in array</strong></dt><dd><p>Enabled when <strong>Heat transfer dimensions</strong> is <strong>Array Dimensions</strong>. Assuming a rectangular array, the number of rows of modules, where a row is parallel to the line defined by the Module Width variable.</p>
+</dd>
+<dt><strong>Columns of modules in array</strong></dt><dd><p>Enabled when <strong>Heat transfer dimensions</strong> is <strong>Array Dimensions</strong>. Assuming a rectangular array, the number of modules along the side perpendicular to the line defined by the module width variable.</p>
+</dd>
+<dt><strong>Temperature behind the module</strong></dt><dd><p>Enabled when <strong>Mounting configuration</strong> is <strong>Integrated</strong>. The indoor air temperature for the integrated mounting configuration option. SAM assumes a constant indoor air temperature regardless of the temperature data in the weather file..</p>
+</dd>
+<dt><strong>Spacing between module back and roof surface</strong></dt><dd><p>Enabled when <strong>Mounting configuratino</strong> is <strong>gap</strong>. The distance between the back of the modules and the roof or wall surface behind the module.</p>
+</dd>
+</dl>
+</section>
+<section id="transient-thermal-model-correction">
+<h3>Transient Thermal Model Correction<a class="headerlink" href="#transient-thermal-model-correction" title="Link to this heading">#</a></h3>
+<p>When the simulation time step determined by the number of records in the weather file is 20 minutes or less, SAM automatically applies a correction to account for temperature changes driven by wind speed and the mass of the module using the method described in Prilliman (2020) listed on the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">PV Publications</a> page of the SAM website..</p>
+<dl class="simple">
+<dt><strong>Module unit mass, kg/m²</strong></dt><dd><p>The mass of the module in kilograms per square meter of module area. The default value is 11 kg/m².</p>
+</dd>
+</dl>
+</section>
+<section id="module-dimensions">
+<h3>Module Dimensions<a class="headerlink" href="#module-dimensions" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>Module area</strong></dt><dd><p>The total area of the module, including spaces between cells and the frame. This value is from the “A_c” column in module library.</p>
+</dd>
+<dt><strong>Module aspect ratio</strong></dt><dd><p>The ratio of module length to module width.</p>
+<p>For modules with length and width data in the library, SAM disables the input and calculates the aspect ratio value from the length and width values from the library.</p>
+<p>For modules with only area data in the library, SAM enables the input so you can specify a value. You can calculate the module aspect ratio from the manufacturer’s datasheet, or use the default value of 2.01.</p>
+<p><em>Module Aspect Ratio = Module Length ÷ Module Width</em></p>
+</dd>
+<dt><strong>Module width</strong></dt><dd><p>The length of the module’s short side.</p>
+<p><em>Module Length = √ (Aspect Ratio × Module Area )</em></p>
+</dd>
+<dt><strong>Module length</strong></dt><dd><p>The length of the modules long side.</p>
+<p><em>Module Width = √ (Aspect Ratio ÷ Module Area )</em></p>
+</dd>
+</dl>
+</section>
+<section id="single-diode-model-parameters">
+<h3>Single-diode Model Parameters<a class="headerlink" href="#single-diode-model-parameters" title="Link to this heading">#</a></h3>
+<p>These are input parameters for the single-diode module model. They are calculated from the module characteristics at reference conditions in the process of generating data for the module library. For details, see <a class="github reference external" href="https://github.com/NatLabRockies/SAM/tree/develop/samples/CEC%20Module%20and%20Inverter%20Libraries/CEC%20Modules">NatLabRockies/SAM</a>.</p>
+<dl class="simple">
+<dt><strong>I_L_ref</strong></dt><dd><p>Photocurrent at reference conditions.</p>
+</dd>
+<dt><strong>I_o_ref</strong></dt><dd><p>Reverse saturation current at reference conditions.</p>
+</dd>
+<dt><strong>R_s</strong></dt><dd><p>Series resistance (constant).</p>
+</dd>
+<dt><strong>R_sh_ref</strong></dt><dd><p>Shunt resistance at reference conditions.</p>
+</dd>
+<dt><strong>a_ref</strong></dt><dd><p>Modified ideality factor at reference conditions.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="sandia-pv-array-performance-model-with-module-database">
+<span id="module-sandia"></span><h2>Sandia PV Array Performance Model with Module Database<a class="headerlink" href="#sandia-pv-array-performance-model-with-module-database" title="Link to this heading">#</a></h2>
+<p>The Sandia PV Array Performance model consists of a set of equations that provide values for five points on a module’s I-V curve and a database of coefficients for the equations whose values are stored in the Sandia Modules library. The coefficients have been empirically determined based on a set of manufacturer specifications and measurements taken from modules installed outdoors in real, operating photovoltaic systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SAM’s Sandia module library contains parameters for modules that were involved in Sandia’s Test and Evaluation program. The newest module in the library was tested in 2015. For information about the Sandia Photovoltaic Systems Evaluation Laboratory (PSEL), see <a class="reference external" href="https://energy.sandia.gov/facilities/photovoltaic-systems-evaluation-laboratory-psel/">https://energy.sandia.gov/facilities/photovoltaic-systems-evaluation-laboratory-psel/</a>.</p>
+</div>
+<p>The Sandia model is described in King et al, 2004. Photovoltaic Array Performance Model. Sandia National Laboratories. SAND2004-3535. (<a class="reference external" href="https://doi.org/10.2172/919131">PDF 1.8 MB</a>).</p>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p>To use the Sandia photovoltaic model:</p>
+<ol class="arabic simple">
+<li><p>On the Module page, choose <strong>Sandia PV Array Performance Model with Module Database</strong>.</p></li>
+<li><p>Choose a module from the list of available modules. Use the search box to filter the list. Click a column heading in the list to sort by name or parameter value.</p></li>
+</ol>
+<p>SAM displays the module’s characteristics and model coefficients.</p>
+<p>When you choose a module from the list, SAM displays the module characteristics at reference conditions on the Module page. Internally, the model applies a set of coefficients from the Sandia Modules <a class="reference internal" href="../reference/libraries.html"><span class="doc">library</span></a> to the simulation equations.</p>
+<ol class="arabic simple">
+<li><p>Choose a module structure from the three available options (displayed as front material / cell / back material). See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Temperature Correction</span></a> for details. Module manufacturers typically include a description of the front material, and frame or back material in a mechanical characteristics section of module specification sheets.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current version of the Sandia database contains a single low concentration photovoltaic module, listed as Entech 22X Concentrator [1994].</p>
+</div>
+</section>
+<section id="id1">
+<h3>Module Characteristics at Reference Conditions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>SAM displays the module characteristics so that you can compare modules in the database to manufacturer specifications or to different modules in the database. These are nominal ratings. SAM calculates the operating values of these parameters during a simulation and displays them in the <a class="reference internal" href="pv_results.html"><span class="doc">Results</span></a>.</p>
+<dl class="simple">
+<dt><strong>Reference conditions</strong></dt><dd><p>The reference conditions describe the incident solar radiation, air mass, ambient temperature, and wind speed that apply to the module characteristics. The module efficiency, power, current, voltage, and temperature coefficients values are those for the module operating at the reference conditions.</p>
+</dd>
+<dt><strong>Nominal efficiency (%)</strong></dt><dd><p>The module’s rated efficiency at reference conditions. SAM displays this value for reference only. During a simulation, the model calculates an efficiency value for each time step, which you can see in the time series output data on the <a class="reference internal" href="../results/data.html"><span class="doc">Data tables</span></a>   tab on the <a class="reference internal" href="../getting-started/results_page.html"><span class="doc">Results page</span></a>  .</p>
+</dd>
+<dt><strong>Maximum power (Pmp), Wdc</strong></dt><dd><p>The module rated power in DC Watts. Equal to the product of the maximum power voltage and maximum power current.</p>
+</dd>
+<dt><strong>Max power voltage (Vmp), Vdc</strong></dt><dd><p>Maximum power voltage in DC Volts under reference conditions.</p>
+</dd>
+<dt><strong>Max power current (Imp), Adc</strong></dt><dd><p>Maximum power current in DC Amps under reference conditions. Defines the maximum power point on the module’s I-V curve.</p>
+</dd>
+<dt><strong>Open circuit voltage (Voc), Vdc</strong></dt><dd><p>Open circuit voltage under reference conditions. Defines the open circuit point on the module’s I-V curve.</p>
+</dd>
+<dt><strong>Short circuit current (Isc), Adc</strong></dt><dd><p>Short circuit current under reference conditions. Defines the short circuit point on the module’s I-V curve.</p>
+</dd>
+<dt><strong>Temperature coefficients</strong></dt><dd><p>SAM displays the temperature coefficients in %/°C and W/°C at the different points on the power curve.</p>
+</dd>
+<dt><strong>Module structure and mounting</strong></dt><dd><p>This option determines the coefficients that SAM uses to calculate the cell temperature in each hour of the simulation. The default option is <strong>Use Database Values</strong>, which displays the coefficients from the measured data at reference conditions. See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Temperature Correction</span></a>   for details.</p>
+</dd>
+</dl>
+</section>
+<section id="physical-characteristics">
+<h3>Physical Characteristics<a class="headerlink" href="#physical-characteristics" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>Material</strong></dt><dd><p>A description of the semiconductor technology used in the photovoltaic cells.</p>
+<p>2-a-Si: dual-junction amorphous silicon</p>
+<p>3-a-Si: triple-junction amorphous silicon</p>
+<p>CdTe: cadmium telluride</p>
+<p>CIS: copper indium diselenide</p>
+<p>HIT-Si: amorphous silicon heterojunction</p>
+<p>c-Si: single-crystal silicon</p>
+<p>mc-Si: multi-crystalline silicon</p>
+</dd>
+<dt><strong>Vintage</strong></dt><dd><p>The year that module coefficients were added to the database.</p>
+<p>The letter “E” indicates that the coefficients were estimated from a combination of published manufacturer specifications and data from the outdoor testing of a similar module. Entries without an “E” are for modules whose coefficients were derived entirely from outdoor tests involving one more or more modules of that type.</p>
+<p>Because the tested modules (listed without an “E”) may have had different average power ratings than production versions of the same module, the database typically also includes an “E” entry for each of the tested modules that represents the average power rating specified by the manufacturer.</p>
+</dd>
+<dt><strong>Module area, m**</strong><sup>2</sup>**</dt><dd><p>The total area of the module, including spaces between cells and the frame.</p>
+</dd>
+<dt><strong>Number of cells</strong></dt><dd><p>Total number of cells in the module, equal to the product of the number of cells in series and number of cell strings in parallel.</p>
+</dd>
+<dt><strong>Number of cells in series</strong></dt><dd><p>Number of cells connected in series per cell string.</p>
+</dd>
+<dt><strong>Number of cell strings in parallel</strong></dt><dd><p>Number of cell strings connected in parallel per module.</p>
+</dd>
+</dl>
+</section>
+<section id="sandia-temperature-correction">
+<span id="module-tempcorr-sandia"></span><h3>Sandia Temperature Correction<a class="headerlink" href="#sandia-temperature-correction" title="Link to this heading">#</a></h3>
+<p>The Sandia temperature correction algorithm calculates a temperature correction factor that accounts for efficiency losses due to heating of the module during the day when the sun is shining. The algorithm calculates an hourly module temperature as a function of the solar radiation, ambient temperature, and wind speed in a given hour, and a set of properties describing the thermal characteristics of the cell and module.</p>
+<p>For more details about the algorithm, see King et al, 2004. <em>Photovoltaic Array Performance Model</em>. Sandia National Laboratories. SAND2004-3535. <a class="reference external" href="https://doi.org/10.2172/919131">https://doi.org/10.2172/919131</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The SAM temperature correction algorithms do not account for cooling strategies used in some innovative photovoltaic systems.</p>
+</div>
+</section>
+<section id="guidelines-for-choosing-the-module-structure-mounting-a-b-dt-parameters">
+<h3>Guidelines for choosing the Module Structure - Mounting (a, b, dT) parameters<a class="headerlink" href="#guidelines-for-choosing-the-module-structure-mounting-a-b-dt-parameters" title="Link to this heading">#</a></h3>
+<p>The <em>a</em>, <em>b</em>, and <em>dT</em> parameters determine the relationship between ambient temperature and module temperature. See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction Equations</span></a> for equation details.</p>
+<p>SAM allows you to choose from a set of pre-determined values of the parameters for different module mounting options, or specify your own values for the parameters. For the Concentrating PV model, you can assign a set values to the parameters, or specify your own.</p>
+<ul class="simple">
+<li><p>For most analyses involving flat-plate modules mounted on open racks, choose <strong>Use Database Values</strong>. These are the values determined empirically during testing of the module. Most of the modules in the database were tested on open racks.</p></li>
+<li><p>To see how a flat-plate module might perform under different mounting conditions, choose an appropriate option from the list. Be sure to choose an option that is consistent with the module you are modeling. You may need to refer to the module’s specification sheet for information about its structure.</p></li>
+<li><p>For the Concentrating PV model, use the default values (click <strong>Default Temperature Inputs</strong>) unless you have a set of <em>a</em>, <em>b</em>, and <em>dT</em> values for your module.</p></li>
+<li><p>If you understand the Sandia model well enough to generate your own temperature correction coefficients, choose <strong>User Defined</strong>, and type your own values for <em>a</em>, <em>b</em>, and <em>dT</em>.</p></li>
+</ul>
+<p>The table bleow describes the module structure and mounting options.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module Structure and Mounting</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Glass/Cell/Polymer Sheet Open Rack</p></td>
+<td><p>Solar cells are between a glass front and polymer back, and the module is mounted on an open rack allowing air to circulate freely around the module.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Glass/Cell/Glass  Open Rack</p></td>
+<td><p>Solar cells are between a glass front and glass back, and the module is mounted on an open rack allowing air to circulate freely around the module.</p></td>
+</tr>
+<tr class="row-even"><td><p>Polymer/Thin Film/Steel Open Rack</p></td>
+<td><p>Solar cells are between a transparent polymer front and steel back, and the module is mounted on an open rack allowing air to circulate freely around the module.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Glass/Cell/Polymer Sheet Insulated Back</p></td>
+<td><p>Solar cells are between a glass front and polymer back, and the module is mounted directly to a building surface in a building-integrated PV (BIPV) application preventing air from flowing over the module back.</p></td>
+</tr>
+<tr class="row-even"><td><p>Glass/Cell/Glass Close Roof Mount</p></td>
+<td><p>Solar cells are between a glass front and glass back, and the module is mounted on a rack with little clearance between the building surface and module back allowing little air to flow over the module back.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When the simulation time step determined by the number of records in the weather file is 20 minutes or less, SAM automatically applies a correction to account for temperature changes driven by wind speed and the mass of the module using the method described in Prilliman (2020) listed on the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">PV Publications</a> page of the SAM website..</p>
+<dl class="simple">
+<dt><strong>Module unit mass, kg/m²</strong></dt><dd><p>The mass of the module in kilograms per square meter of module area. The default value is 11 kg/m².</p>
+</dd>
+</dl>
+</section>
+<section id="sandia-temperature-correction-method">
+<h3>Sandia Temperature Correction Method<a class="headerlink" href="#sandia-temperature-correction-method" title="Link to this heading">#</a></h3>
+<p>SAM uses the Sandia temperature correction method to calculate a module and cell temperature and temperature correction factor for the Sandia, <a class="reference internal" href="#module-spe"><span class="std std-ref">Simple Efficiency Module Model</span></a> and <a class="reference internal" href="../high-concentration-photovoltaic/hcpv_module.html"><span class="doc">high concentration photovoltaic (HCPV)</span></a> models. The model uses the temperature correction factor to adjust each hour’s module efficiency value: The higher the module’s temperature in a given hour, the lower the module’s efficiency in that hour.</p>
+<p>You can explore temperature effects on the array’s performance in the time series output data. The data shows the hourly cell temperature, along with the solar radiation, wind speed, and ambient temperature.</p>
+<p>The temperature correction equations use the following input values from the Module page:</p>
+<ul class="simple">
+<li><p>Temperature coefficients. The Sandia model uses the four values listed in the Temperature Coefficients column. The Simple Efficiency and Concentrating PV models use the single temperature coefficient of power value.</p></li>
+<li><p>Temperature correction coefficients: <em>a</em>, <em>b</em>, and <em>dT</em>. For the Sandia and Simple Efficiency models, the three values appear under the Module Structure - Mounting option. For the Concentrating PV model, the values appear below the temperature coefficient variable.</p></li>
+</ul>
+<p>The equations use four hourly data sets from the weather file. You can see the hourly data by either viewing the weather data from the <a class="reference internal" href="pv_location_and_resource.html"><span class="doc">Location and Resource</span></a> page, or viewing the time series results data after running a simulation:</p>
+<ul class="simple">
+<li><p>Incident direct normal radiation</p></li>
+<li><p>Incident diffuse radiation</p></li>
+<li><p>Ambient temperature</p></li>
+<li><p>Wind speed</p></li>
+</ul>
+<p>The table below shows the empirically-determined coefficients from the Sandia database for each of the module structure and mounting options available on the Module page.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module Structure and Mounting</p></th>
+<th class="head"><p>a</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>dT ºC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Glass/Cell/Polymer Sheet Open Rack</p></td>
+<td><p>-3.56</p></td>
+<td><p>-0.0750</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Glass/Cell/Glass  Open Rack</p></td>
+<td><p>-3.47</p></td>
+<td><p>-0.0594</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>Polymer/Thin Film/Steel Open Rack</p></td>
+<td><p>-3.58</p></td>
+<td><p>-0.113</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Glass/Cell/Polymer Sheet Insulated Back</p></td>
+<td><p>-2.81</p></td>
+<td><p>-0.0455</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>Glass/Cell/Glass Close Roof Mount</p></td>
+<td><p>-2.98</p></td>
+<td><p>-0.0471</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Concentrating PV Module</p></td>
+<td><p>-3.2</p></td>
+<td><p>-0.09</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-even"><td><p>User Defined</p></td>
+<td><p>-99</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default values for the User Defined option effectively remove temperature correction from the model so that the cell temperature is equal to the ambient temperature.</p>
+</div>
+<p>The following table lists sample temperature coefficient values for different cell types based on an informal survey of manufacturer module specifications.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Cell Type</p></th>
+<th class="head"><p>Maximum Power Temperature Coefficient (%/°C)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Monocrystalline Silicon</p></td>
+<td><p>-0.49</p></td>
+</tr>
+<tr class="row-odd"><td><p>Polycrystalline Silicon</p></td>
+<td><p>-0.49</p></td>
+</tr>
+<tr class="row-even"><td><p>Amorphous Silicon</p></td>
+<td><p>-0.24</p></td>
+</tr>
+<tr class="row-odd"><td><p>Amorphous Silicon Triple Junction</p></td>
+<td><p>-0.21</p></td>
+</tr>
+<tr class="row-even"><td><p>Copper Indium Gallium DiSelenide (CIGS)</p></td>
+<td><p>-0.45</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cadmium Telluride (CdTe)</p></td>
+<td><p>-0.25</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="sandia-temperature-correction-equations">
+<h3>Sandia Temperature Correction Equations<a class="headerlink" href="#sandia-temperature-correction-equations" title="Link to this heading">#</a></h3>
+<p>The temperature correction algorithm first calculates the module back temperature based on the incident solar radiation, <em>a</em> and <em>b</em> coefficients, and the ambient temperature and wind speed:</p>
+<img alt="EQ_PVModule-TBack.png" class="align-center" src="../_images/EQ_PVModule-TBack.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SAM assumes that the ambient temperature and wind speed data in the weather file are mid-hour values and that the radiation values are end-of-hour values. SAM interpolates temperature and wind speed values by averaging the current hour value with the previous hour value.</p>
+</div>
+<p>Next, the cell temperature is calculated based on the module back temperature, incident radiation, and dT:</p>
+<img alt="EQ_PVModule-TCell.png" class="align-center" src="../_images/EQ_PVModule-TCell.png" />
+<p>The temperature correction factor <em>F</em><sub>TempCorr</sub> is:</p>
+<img alt="EQ_PVModule-FTempCorr.png" class="align-center" src="../_images/EQ_PVModule-FTempCorr.png" />
+<p>In general, the temperature corrected module power is the product of the power calculated by the module model and the temperature correction factor. Each module model (Sandia, Simple Efficiency, Concentrating PV) uses a different algorithm to calculate the module power before temperature correction:</p>
+<img alt="EQ_PVModule-PTempCorr.png" class="align-center" src="../_images/EQ_PVModule-PTempCorr.png" />
+<p>Where,</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<tbody>
+<tr class="row-odd"><td><p><em>E</em><sub>Incident</sub> (W/m<sup>2</sup>)</p></td>
+<td><p>The sum of the direct normal and diffuse radiation for the current hour in the weather data. SAM determines this value based on the data in the weather file.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>E</em><sub>0</sub> (W/m<sup>2</sup>)</p></td>
+<td><p>The reference total incident radiation, equal to 1000 W/m<sup>2</sup>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>T</em><sub>ref</sub> (°C)</p></td>
+<td><p>The reference temperature in degrees Celsius, equal to 25°C.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>gamma</em> (%/°C)</p></td>
+<td><p>The maximum power temperature coefficient from Module page.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>a, b</em></p></td>
+<td><p>Values from the Module page. They are empirically-determined coefficients accounting for the effect of wind on the module temperature: <em>a</em> defines the module temperature upper limit (at low wind speed and high solar radiation levels), and <em>b</em> defines the rate at which module temperature decreases as wind speed increases. The values depend on the module’s construction, which determines its ability to absorb and shed heat. See the table above for typical values.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>dT</em></p></td>
+<td><p>Value from the Module page. The temperature difference between the cell and module back surface at the reference incident radiation of 1000 W/m<sup>2</sup>. The value depends on how the module is mounted in the system, which determines how much air comes into contact with the module back surface. See the table above for typical values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>v</em><sub>Wind</sub> (m/s)</p></td>
+<td><p>Wind speed from the weather file in meters per second.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>T</em><sub>Ambient</sub> (°C)</p></td>
+<td><p>Ambient temperature from weather file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>F</em><sub>TempCorr</sub></p></td>
+<td><p>Temperature correction factor</p></td>
+</tr>
+<tr class="row-even"><td><p><em>P</em><sub>BeforeTempCorr</sub></p></td>
+<td><p>Module power before temperature correction</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>P</em><sub>TempCorr</sub></p></td>
+<td><p>Temperature-corrected module power</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="simple-efficiency-module-model">
+<span id="module-spe"></span><h2>Simple Efficiency Module Model<a class="headerlink" href="#simple-efficiency-module-model" title="Link to this heading">#</a></h2>
+<p>The flat-plate photovoltaic simple efficiency module model calculates the module’s hourly DC output assuming that the module efficiency varies with radiation incident on the module as defined by the radiation level and efficiency table. The model makes an adjustment for cell temperature using the <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction Model</span></a>.</p>
+<section id="id2">
+<h3>Overview<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>To use the simple efficiency module model:</p>
+<ol class="arabic simple">
+<li><p>On the Module page, choose <strong>Simple Efficiency Module Model</strong>.</p></li>
+<li><p>Enter a temperature coefficient. This is the number typically reported on manufacturer specification sheets as the maximum power coefficient. See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction Model</span></a> for suggested values.</p></li>
+<li><p>Enter the module’s total cell area in square meters, equivalent to the product of the cell area and number of cells.</p></li>
+<li><p>Type values for the module’s maximum power and open circuit voltages. SAM uses these values for array sizing on the <a class="reference internal" href="pv_system_size.html"><span class="doc">System Size</span></a> page.</p></li>
+<li><p>Choose a module structure from the three available options (displayed as front material / cell / back material). See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction</span></a> for details.</p></li>
+</ol>
+<p>Module manufacturers typically include a description of the front material, and frame or back material in a mechanical characteristics section of module specification sheets.</p>
+<ol class="arabic simple">
+<li><p>In the Radiation Level and Efficiency Table, enter an efficiency value for each of the five incident global radiation reference values in increasing order. If you are defining the efficiency curve with fewer than five efficiency values, <em>you must include five radiation values</em>, but you can assign the same efficiency value to more than one radiation value. For example, to represent a module with 13.5% constant efficiency, you would assign the value 13.5 to each of the five radiation values 200, 400, 600, 850, 1000.</p></li>
+<li><p>Choose the radiation level that represents the reference value, often 1000 W/m<sup>2</sup> for flat-plate modules.</p></li>
+</ol>
+<p>SAM uses the reference value to calculate the module’s rated power, displayed as the Power variable on the Module page.</p>
+</section>
+<section id="characteristics">
+<h3>Characteristics<a class="headerlink" href="#characteristics" title="Link to this heading">#</a></h3>
+<p>The module characteristics define the module’s capacity, efficiency, and thermal characteristics.</p>
+<dl class="simple">
+<dt><strong>Maximum power (Pmp), Wdc</strong></dt><dd><p>The module’s rated maximum DC power at the reference radiation indicated in the radiation level and efficiency table. SAM uses this value to calculate the costs on the Installation costs and Operating costs pages, but not in simulation calculations. The module power is the product of the reference radiation, reference efficiency, and area.</p>
+</dd>
+<dt><strong>Temperature coefficient (Pmp), %/C</strong></dt><dd><p>The rated maximum-power temperature coefficient as specified in the module’s technical specifications. See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction Model</span></a> for details.</p>
+</dd>
+<dt><strong>Area, m:sup:`2`</strong></dt><dd><p>The module collector area in square meters. To calculate the area for a given module power rating at a given reference radiation level, divide the power rating by the module efficiency and radiation level. For example, a module with a 100 W rating and 13.5% efficiency at 1000 W/m  <sup>2</sup>   would requires an area of 100 W / (0.135 × 1000 W/m  <sup>2</sup>  ) = 0.74074 m  <sup>2</sup>  .</p>
+</dd>
+<dt><strong>Maximum power voltage (Vmp)</strong></dt><dd><p>The voltage at the module’s maximum power point.</p>
+</dd>
+<dt><strong>Open circuit voltage (Voc)</strong></dt><dd><p>The module’s open circuit voltage.</p>
+</dd>
+<dt><strong>Module structure and mounting</strong></dt><dd><p>The module’s front and back materials (front material/cell/back material) used in the <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction Equations</span></a>.</p>
+</dd>
+</dl>
+</section>
+<section id="bifacial-specifications">
+<h3>Bifacial Specifications<a class="headerlink" href="#bifacial-specifications" title="Link to this heading">#</a></h3>
+<p>SAM’s bifacial model is adapted from Marion, B, et. al (2017) A Practical Irradiance Model for Bifacial PV Modules, available for download from the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">SAM website</a>. The model’s open source implementation is available on the NLR GitHub website at <a class="github reference external" href="https://github.com/NatLabRockies/bifacialvf">NatLabRockies/bifacialvf</a>. The bifacial model calculates the plane-of-array irradiance on the rear side of the PV modules in the array assuming infinite rows. The rear-side plane-of-array irradiance is multiplied by the module bifaciality factor, and then added to the front-side plane-of-array irradiance, which is then sent to the module model to predict module DC power. Primary drivers of the rear-side POA irradiance include the ground albedo, row-to-row spacing (function of ground-coverage ratio), and ground clearance height.</p>
+<dl class="simple">
+<dt><strong>Module is bifacial</strong></dt><dd><p>Check this box to enable the bifacial model and its inputs.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you enable the bifacial model, SAM enables inputs for rear-side irradiance and bifacial electrical mismatch losses on the <a class="reference internal" href="pv_electrical_losses.html"><span class="doc">Losses</span></a> page, and provide an option for spatial albedo values on the Location and Resource page.</p>
+</div>
+<dl>
+<dt><strong>Transmission Fraction</strong></dt><dd><p>The ratio of area of each row that allows light to reach the surface behind the row to the area that blocks light, expressed as a fraction between 0 and 1. The row area is the total area occupied by the modules in a single row, including space between the modules. Light passes through space between modules, and, for modules made of glass or other transparent material, may also pass through the space between cells in each module.</p>
+<p>For an array of opaque modules:</p>
+</dd>
+</dl>
+<p><em>Transmission Factor = ( Total Row Area (m²) - Row Opaque Area (m²) ) ÷ Total Row Area (m²)</em></p>
+<blockquote>
+<div><p>For opaque modules, the row opaque area is the product of the number of modules in one row and the module area. For modules with transparent backs, the row opaque area is the total cell area in one row plus the area of the frame and other material that may block light.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The transmission fraction determines the amount of light that can pass around or through modules in a single row. The GCR (ground coverage ratio) on the System Design page and array geometry on the Shading and Layout page determine the spacing between rows.</p>
+</div>
+<dl class="simple">
+<dt><strong>Bifaciality</strong></dt><dd><p>The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet. This is to account for the fact that photovoltaic cells on the rear of the module are usually less efficient than the cells on the front of the module. The bifaciality does not affect the solar irradiance on the rear of the module.</p>
+</dd>
+<dt><strong>Ground clearance height</strong></dt><dd><p>The height from the ground to the bottom of the PV array. For systems with no tracking, it is the distance between the ground and the bottom edge of modules closest to the ground. For systems with tracking, it is the distance between the ground and back of modules when they are horizontal.</p>
+</dd>
+</dl>
+</section>
+<section id="radiation-level-and-efficiency-table">
+<h3>Radiation Level and Efficiency Table<a class="headerlink" href="#radiation-level-and-efficiency-table" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><strong>Irradiance (W/m2)</strong></dt><dd><p>The plane-of-array total (beam and diffuse) irradiance level at which the given efficiency value applies.</p>
+</dd>
+<dt><strong>Efficiency (%)</strong></dt><dd><p>The module conversion efficiency at a given incident global radiation level. SAM calculates an efficiency value for each hour in the simulation using linear extrapolation to determine the value based on radiation data from the weather file. The efficiency values represent the efficiency of conversion from incident global radiation to DC electrical output.</p>
+</dd>
+<dt><strong>Reference Condition</strong></dt><dd><p>Indicates the value to use to calculate the nominal maximum power value.</p>
+</dd>
+<dt><strong>Diffuse utilization factor</strong></dt><dd><p>This advanced input allows you to adjust the diffuse component of the radiation incident on the module. For most applications, you should use the default value of 1. For modules that do not use all of the diffuse radiation, such as low-x concentrator, you can use a value less than one.</p>
+</dd>
+</dl>
+<p>During a simulation, the single-point efficiency model calculates the module DC output reported in the <a class="reference internal" href="pv_results.html"><span class="doc">Results</span></a> as the product of the total incident global radiation, module area, and temperature correction factor:</p>
+<img alt="EQ_PVModule-PmpModule.png" class="align-center" src="../_images/EQ_PVModule-PmpModule.png" />
+<p>Where,</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<tbody>
+<tr class="row-odd"><td><p><em>E</em><sub>TotalIncident</sub> (W/m<sup>2</sup>)</p></td>
+<td><p>Total incident radiation from the weather data processor.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>A</em><sub>Module</sub> (m<sup>2</sup>)</p></td>
+<td><p>The module area in square meters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>n</em><sub>Module</sub></p></td>
+<td><p>Module efficiency at a given incident global radiation level, calculated by extrapolating values from the Radiation Level and Efficiency Table.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>F</em><sub>TempCorr</sub></p></td>
+<td><p>Temperature correction factor. See <a class="reference internal" href="#module-tempcorr-sandia"><span class="std std-ref">Sandia Temperature Correction</span></a> for details.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="cec-performance-model-with-user-entered-specifications">
+<span id="module-cec-user"></span><h2>CEC Performance Model with User Entered Specifications<a class="headerlink" href="#cec-performance-model-with-user-entered-specifications" title="Link to this heading">#</a></h2>
+<p>The CEC Performance Model with User Entered Specifications allows you to run the CEC module model with module specifications from a module manufacturer’s data sheet.</p>
+<section id="id3">
+<h3>Overview<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>When you use the model, you first enter a set of specifications to generate a set of coefficients for the module on the Module page, and then run a simulation of the PV system after specifying the rest of the system on the <a class="reference internal" href="pv_system_size.html"><span class="doc">System Size</span></a>, <a class="reference internal" href="pv_inverter.html"><span class="doc">Inverter</span></a>, and other input pages.</p>
+<p>SAM uses the module specifications you provide to calculate a set of parameters at reference conditions for the CEC module model. During a simulation, the model adjusts temperature and incident irradiance coefficients to calculate the module efficiency at operating conditions other than STC. Note that the model does not account for all non-linear effects in the relationship of module power and irradiance.</p>
+<p>The calculations involve a combination of empirical regressions and heuristic methods to automatically solve a multidimensional set of non-linear equations. An error checking algorithm ensures that the model can find solutions for most modules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SAM stores the calculated parameters with the case in your .sam file. It does not store them in a library that you can use in other files or cases. To use a module in a different file or case, use the Save / Load Data buttons to save the parameters to a text file that you can use to load into another file or case.</p>
+</div>
+<p>If you use specifications from a manufacturer’s data sheet for a module that exists in the CEC Performance Model with Module Database, SAM may calculate a different set of parameters than those in the CEC library. That is because the specifications used to generate parameters in the CEC library are based on specifications provided by third party testing facilities, which may differ from data on the manufacturer data sheet.</p>
+<p>The CEC Module model uses the <a class="reference external" href="https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/effective-irradiance/spectral-mismatch-models/">air mass model</a> for spectral mismatch from the Sandia Array Performance Model with “a” coefficients for polycrystalline modules from Table A1 of De Soto W.; Klein, S.; Beckman, W.; (2006)` Improvement and validation of a model for photovoltaic array performance &lt;<a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0038092X05002410">https://www.sciencedirect.com/science/article/abs/pii/S0038092X05002410</a>&gt;`__. Solar Energy. Vol 80 Issue 1. pp 78-88.</p>
+<p>To use the CEC Performance Model with User Entered Specifications:</p>
+<ol class="arabic simple">
+<li><p>On the Module page, choose <strong>CEC Performance Model with User Entered Specifications</strong>.</p></li>
+<li><p>Enter the required module specifications.</p></li>
+</ol>
+<p><strong>Module description</strong> is an optional field you can use for the module name or other description.</p>
+<ol class="arabic simple">
+<li><p>Click <strong>Calculate and plot</strong>.</p></li>
+</ol>
+<p>After solving the module model equations, SAM displays a current-voltage (I-V) curve at STC.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In some rare cases, SAM may not be able to find a solution for the set of specifications you provide. (It performs a series of internal checks that should ensure that it finds a solution in most cases.) If SAM displays an error message, first verify that the specifications you entered are correct. If the specifications are correct, you may be able to generate an I-V curve by making small adjustments to the specifications, such as slightly increasing the Isc value.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Under <strong>Mounting Configuration</strong>, choose the standoff height and array’s height above ground.</p></li>
+</ol>
+</section>
+<section id="general-information">
+<h3>General Information<a class="headerlink" href="#general-information" title="Link to this heading">#</a></h3>
+<dl>
+<dt><strong>Module description</strong></dt><dd><p>An optional string describing the module.</p>
+</dd>
+<dt><strong>Cell type</strong></dt><dd><p>A description of the semiconductor technology used in the photovoltaic cells. This parameter is used to guide the solution of normalized module coefficients, but is not directly used for power calculations once the coefficients are determined.</p>
+<p>monoSi: Single-crystal silicon</p>
+<p>multiSi: Multi-crystalline silicon</p>
+<p>CdTe: Cadmium telluride</p>
+<p>CIS: Copper indium diselenide</p>
+<p>CIGS: Copper indium gallium sulfide</p>
+<p>amorphous: Amorphous silicon</p>
+</dd>
+<dt><strong>Module area, m²</strong></dt><dd><p>The surface area of the entire module.</p>
+</dd>
+<dt><strong>Nominal operating cell temperature, °C</strong></dt><dd><p>The nominal operating cell temperature (NOCT) of the module is the measured cell temperature of the module at NOCT test conditions: 800 W/m² incident irradiance, 20 degrees Celsius ambient temperature, and 1 m/s wind speed. The mounting configuration under test conditions is typically open rack, except building-integrated (BIPV) modules which are tested in a building-integrated configuration.</p>
+</dd>
+</dl>
+</section>
+<section id="electrical-specifications">
+<h3>Electrical Specifications<a class="headerlink" href="#electrical-specifications" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><strong>Maximum power point voltage (Vmp), V</strong></dt><dd><p>The reference maximum power point voltage at STC.</p>
+</dd>
+<dt><strong>Maximum power point current (Imp), A</strong></dt><dd><p>The reference maximum power point current at STC.</p>
+</dd>
+<dt><strong>Open circuit voltage (Voc), V</strong></dt><dd><p>The open circuit voltage at STC.</p>
+</dd>
+<dt><strong>Short circuit current (Isc), A</strong></dt><dd><p>The short circuit current at STC.</p>
+</dd>
+<dt><strong>Temperature dependence of Voc, V/°C or %/°C</strong></dt><dd><p>The absolute change in Voc per degree change in temperature, also called alpha.</p>
+</dd>
+<dt><strong>Temperature dependence of Isc, A/°C or %/°C</strong></dt><dd><p>The absolute change in Isc per degree change in temperature, also called beta.</p>
+</dd>
+<dt><strong>Temperature dependence of Pmp, %/°C</strong></dt><dd><p>The percentage change in the maximum power point Pmp per degree change in temperature, also called gamma. To convert units from W/ºC to %/ºC, divide the %/ºC value by Pmp.</p>
+</dd>
+<dt><strong>Number of cells in series</strong></dt><dd><p>The number of cells wired together in series inside the module.</p>
+</dd>
+<dt><strong>Copy module specs from currently selected CEC database module</strong></dt><dd><p>Use this button to overwrite inputs with values copied from the current selection in the module library for the CEC Performance Model with Module Database model option: Choose <strong>CEC Performance Model with Module Database</strong> from the list of model options at the top of the page, choose the module whose parameters you want to copy from the library list, and then switch back to <strong>CEC Performance Model with User Entered Specifications</strong> and click <strong>Copy module specs from currently selected CEC database module</strong>.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Bifacial Specifications<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>SAM’s bifacial model is adapted from Marion, B, et. al (2017) A Practical Irradiance Model for Bifacial PV Modules, available for download from the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">SAM website</a>. The model’s open source implementation is available on the NLR GitHub website at <a class="github reference external" href="https://github.com/NatLabRockies/bifacialvf">NatLabRockies/bifacialvf</a>. The bifacial model calculates the plane-of-array irradiance on the rear side of the PV modules in the array assuming infinite rows. The rear-side plane-of-array irradiance is multiplied by the module bifaciality factor, and then added to the front-side plane-of-array irradiance, which is then sent to the module model to predict module DC power. Primary drivers of the rear-side POA irradiance include the ground albedo, row-to-row spacing (function of ground-coverage ratio), and ground clearance height.</p>
+<dl class="simple">
+<dt><strong>Module is bifacial</strong></dt><dd><p>Check this box to enable the bifacial model and its inputs.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CEC module library indicates whether the module is bifacial. You can sort the library table by clicking the Bifacial column heading: Bifacial modules have a value of one.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you enable the bifacial model, SAM enables inputs for rear-side irradiance and bifacial electrical mismatch losses on the <a class="reference internal" href="pv_electrical_losses.html"><span class="doc">Losses</span></a> page, and provide an option for spatial albedo values on the Location and Resource page.</p>
+</div>
+<dl>
+<dt><strong>Transmission Fraction</strong></dt><dd><p>The ratio of area of each row that allows light to reach the surface behind the row to the area that blocks light, expressed as a fraction between 0 and 1. The row area is the total area occupied by the modules in a single row, including space between the modules. Light passes through space between modules, and, for modules made of glass or other transparent material, may also pass through the space between cells in each module.</p>
+<p>For an array of opaque modules:</p>
+</dd>
+</dl>
+<p><em>Transmission Factor = ( Total Row Area (m²) - Row Opaque Area (m²) ) ÷ Total Row Area (m²)</em></p>
+<blockquote>
+<div><p>For opaque modules, the row opaque area is the product of the number of modules in one row and the module area. For modules with transparent backs, the row opaque area is the total cell area in one row plus the area of the frame and other material that may block light.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The transmission fraction determines the amount of light that can pass around or through modules in a single row. The GCR (ground coverage ratio) on the System Design page and array geometry on the Shading and Layout page determine the spacing between rows.</p>
+</div>
+<dl class="simple">
+<dt><strong>Bifaciality</strong></dt><dd><p>The ratio of rear-side efficiency to front-side efficiency. Typically a value between 0.65 and 0.9 provided on the bifacial module datasheeet. This is to account for the fact that photovoltaic cells on the rear of the module are usually less efficient than the cells on the front of the module. The bifaciality does not affect the solar irradiance on the rear of the module.</p>
+</dd>
+<dt><strong>Ground clearance height</strong></dt><dd><p>The height from the ground to the bottom of the PV array. For systems with no tracking, it is the distance between the ground and the bottom edge of modules closest to the ground. For systems with tracking, it is the distance between the ground and back of modules when they are horizontal.</p>
+</dd>
+</dl>
+</section>
+<section id="mounting-configuration">
+<h3>Mounting Configuration<a class="headerlink" href="#mounting-configuration" title="Link to this heading">#</a></h3>
+<p>SAM’s CEC Performance Model with User Entered Specifications uses the <a class="reference internal" href="#module-tempcorr-noct"><span class="std std-ref">The NOCT Method</span></a> from the CEC Performance Model with Module Database model.</p>
+<dl class="simple">
+<dt><strong>Standoff height</strong></dt><dd><p>The standoff height is the distance between the back of the module and surface of the roof for roof-mounted modules. For modules integrated with the building (BIPV), or for ground mounted modules, choose the appropriate option.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SAM does not make NOCT adjustments for the <strong>Building integrated</strong>, <strong>Greater than 3.5 in</strong>, or <strong>Ground or rack mounted</strong> options. For these options, the <strong>Nominal operating cell temperature</strong> value you provide should be at conditions appropriate for those types of installations.</p>
+</div>
+<dl class="simple">
+<dt><strong>Approximate installation height</strong></dt><dd><p>SAM uses the installation height option to make an adjustment to the effect of wind speed on the cell temperature calculation. SAM assumes that an array with an installation height of one story or lower experiences lower wind speeds than those in the weather file because of the effect of nearby trees and structures. For the two story building or higher option, the wind is less impeded.</p>
+</dd>
+</dl>
+</section>
+<section id="nominal-maximum-power-ratings-at-stc">
+<h3>Nominal Maximum Power Ratings at STC<a class="headerlink" href="#nominal-maximum-power-ratings-at-stc" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><strong>Power, Wdc</strong></dt><dd><p>The module’s rated maximum power point power at STC. This is equal to the product of the maximum power point voltage and maximum power point current.</p>
+</dd>
+<dt><strong>Efficiency, %</strong></dt><dd><p>The module’s rated efficiency at STC 1000 W/m² irradiance. SAM displays this value for reference only. During a simulation, the model calculates an efficiency value for each hour, which you can see in the <a class="reference internal" href="../results/data.html"><span class="doc">Tables</span></a>   on the <a class="reference internal" href="../getting-started/results_page.html"><span class="doc">Results</span></a>   page.</p>
+</dd>
+</dl>
+<p>When the simulation time step determined by the number of records in the weather file is 20 minutes or less, SAM automatically applies a correction to account for temperature changes driven by wind speed and the mass of the module using the method described in Prilliman (2020) listed on the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">PV Publications</a> page of the SAM website..</p>
+<dl class="simple">
+<dt><strong>Module unit mass, kg/m²</strong></dt><dd><p>The mass of the module in kilograms per square meter of module area. The default value is 11 kg/m².</p>
+</dd>
+</dl>
+</section>
+<section id="save-load-data">
+<h3>Save / Load Data<a class="headerlink" href="#save-load-data" title="Link to this heading">#</a></h3>
+<p>Use the <strong>Save to file</strong> and <strong>Load from file</strong> buttons to save the module parameters to a text file that you can use to share data between different SAM files. SAM saves a list of variable name, values, and labels in a simple comma-separated format.</p>
+</section>
+</section>
+<section id="iec-61853-single-diode-model">
+<span id="module-iec61853"></span><h2>IEC 61853 Single Diode Model<a class="headerlink" href="#iec-61853-single-diode-model" title="Link to this heading">#</a></h2>
+<p>The IEC-61853 Single Diode model is a detailed method for predicting the performance of flat plate photovoltaic modules.</p>
+<section id="id5">
+<h3>Overview<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>The model uses data from modules tested according to the International Electrotechnical Commission (IEC) power and rating standard, <a class="reference external" href="http://www.solarabcs.org/about/publications/reports/pv-mod-power-rating/">IEC 61853</a>, <em>Irradiance and Temperature Performance Measurements and Power Rating</em>. The standard describes requirements for testing PV module performance at maximum power operation for a set of 23 operational conditions, denoted by an asterisk (*) in the table below.</p>
+<div class="pst-scrollable-table-container"><table class="table table-center" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Irradiance (W/m²)</p></th>
+<th class="head"><p>Tmodule = 15ºC</p></th>
+<th class="head"><p>Tmodule= 25ºC</p></th>
+<th class="head"><p>Tmodule = 50ºC</p></th>
+<th class="head"><p>Tmodule = 75ºC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1100</p></td>
+<td><p>N/A</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+</tr>
+<tr class="row-odd"><td><p>1000</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+</tr>
+<tr class="row-even"><td><p>800</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+</tr>
+<tr class="row-odd"><td><p>600</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+</tr>
+<tr class="row-even"><td><p>400</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>200</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>*</p></td>
+<td><p>*</p></td>
+<td><p>N/A</p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>At each test condition, the module’s Pmp, Vmp, Voc, and Isc are measured.  SAM uses this data to calibrate parameters for an extended single diode model that is used to predict the module’s performance at any operating condition.  The details of the underlying model and parameter extraction method are detailed in Dobos, A.; MacAlpine, S. (2014). <a class="reference external" href="https://ieeexplore.ieee.org/document/6925525">Procedure for Applying IEC-61853 Test Data to a Single Diode Model</a>. Proc. IEEE 40th PVSC Conf. Denver CO.</p>
+<p>In addition to the test data, the module area (m²), nominal operating cell temperature (NOCT) (°C), number of cells in series, and cell type are required inputs.</p>
+<p><strong>To use the IEC 61853 Single Diode model:</strong></p>
+<ol class="arabic simple">
+<li><p>Obtain test data for your PV module from a testing laboratory or a manufacturer. SAM does not include a library of test result parameters for this model.</p></li>
+<li><p>Enter the data into SAM’s input table.  The table structure is a little different from the matrix above.  Each row in SAM’s table corresponds to a test condition.  The columns are: irradiance (W/m2), module temperature (C), maximum power (W), maximum power voltage (V), open circuit voltage (V), and short circuit current (A).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some test labs are not able to test up to 75°C as defined by the standard, and may provide measurements only at 60°C or 65°C.  In other cases, some test conditions may be missing.  In this situation, enter all of the data that you have available, and SAM will do its best to extract model parameters.  Data at standard test conditions (1000 W/m², 25°C) is always required.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Enter the number of cells in series, and select a cell type.  The module area and NOCT cell temperature are also required.</p></li>
+<li><p>Click <strong>Calculate parameters</strong>.</p></li>
+</ol>
+<p>SAM displays a message details about how it determines the STC, Rsh, Rs, and temperature coefficient parameters for the model.</p>
+<ol class="arabic simple">
+<li><p>If the parameter estimation was successful, click <strong>OK</strong> and the model parameter inputs will be filled in automatically, along with the I-V curves on the graph.</p></li>
+<li><p>Choose a mounting configuration, including a standoff height and an approximate mounting height.</p></li>
+<li><p>Choose the type of module cover: standard glass, or anti-reflective coating (AR) glass.</p></li>
+<li><p>If you have data available, you can change the spectral response by adjusting the air mass modifier polynomial coefficients.</p></li>
+</ol>
+</section>
+<section id="thermal-behavior">
+<h3>Thermal Behavior<a class="headerlink" href="#thermal-behavior" title="Link to this heading">#</a></h3>
+<p>The thermal model is the same as the CEC module model’s <a class="reference external" href="https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/cell-temperature/noct-cell-temperature/">NOCT cell temperature option</a>, and is described in De Soto, W.L. (M.S. 2004). Improvement and Validation of a Model for Photovoltaic Array Performance. University of Wisconsin-Madison. (<a class="reference external" href="https://sel.me.wisc.edu/publications/theses/desoto04.zip">ZIP 1.8 MB</a>).</p>
+<dl class="simple">
+<dt><strong>Nominal operating cell temp, °C</strong></dt><dd><p>The nominal operating cell temperature (NOCT) of the module is the measured cell temperature of the module at NOCT test conditions: 800 W/m² incident irradiance, 20 degrees Celsius ambient temperature, and 1 m/s wind speed. The mounting configuration under test conditions is typically open rack, except building-integrated (BIPV) modules which are tested in a building-integrated configuration.</p>
+</dd>
+<dt><strong>Standoff height</strong></dt><dd><p>The standoff height is the distance between the back of the module and surface of the roof for roof-mounted modules. For modules integrated with the building (BIPV), or for ground mounted modules, choose the appropriate option.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SAM does not make NOCT adjustments for the <strong>Building integrated</strong>, <strong>Greater than 3.5 in</strong>, or <strong>Ground or rack mounted</strong> options. For these options, the <strong>Nominal operating cell temperature</strong> value you provide should be at conditions appropriate for those types of installations.</p>
+</div>
+<dl class="simple">
+<dt><strong>Approximate mounting height</strong></dt><dd><p>The thermal model uses the mounting height option to make an adjustment to the effect of wind speed on the cell temperature calculation. SAM assumes that an array with an installation height of one story or lower experiences lower wind speeds than those in the weather file because of the effect of nearby trees and structures. For the two story building or higher option, the wind is less impeded.</p>
+</dd>
+</dl>
+</section>
+<section id="optical-and-spectral-behavior">
+<h3>Optical and Spectral Behavior<a class="headerlink" href="#optical-and-spectral-behavior" title="Link to this heading">#</a></h3>
+<p>To account for reflection losses in the module cover, the IEC 61853 module model applies an angle-of-incidence correction to the direct normal irradiance. It uses the module cover model from PVWatts V5 described in Section 8 of Dobos, A. (2014). PVWatts Version 5 Manual. 20 pp.; NREL Report No. TP-6A20-62641. (<a class="reference external" href="https://docs.nlr.gov/docs/fy14osti/62641.pdf">PDF 714 KB</a>), which is adapted from the DeSoto <a class="reference external" href="https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/shading-soiling-and-reflection-losses/incident-angle-reflection-losses/physical-iam-model/">Physical IAM model</a>.</p>
+<p>It accounts for spectral effects by applying an air mass modifier to the plane-of-array (POA) irradiance from the <a class="reference external" href="https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/effective-irradiance/spectral-mismatch-models/">Sandia Array Performance Model air mass model</a> as described in King, D.L.; Boyson, W.E.; and Kratochvil, J.A. (2004). <a class="reference external" href="https://www.osti.gov/biblio/919131/">Photovoltaic Array Performance Model</a>. 41 pp.; Sandia Report No. 2004-3535.</p>
+<dl>
+<dt><strong>Module cover</strong></dt><dd><p>The <strong>Standard glass option</strong> uses the IAM model for a single slab of glass.</p>
+<p>The <strong>Anti-reflective (AR) coating</strong> option uses the IAM model twice, once for the AR coating and once for the glass.</p>
+</dd>
+<dt><strong>Air mass modifiers</strong></dt><dd><p>These are the five air mass modifier equation coefficients (a0…a4) from the equation for    from Page 14 of King (2004):</p>
+<p>The default values are from the Sandia module model’s library for the First Solar FS-267 module.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="spectral-correction">
+<h2>Spectral Correction<a class="headerlink" href="#spectral-correction" title="Link to this heading">#</a></h2>
+<p>Spectral correction factors adjust the effective irradiance on PV modules to account for different amounts of irradiance from each wavelength of light depending on the atmospheric conditions, and different cell technologies’ responses to different spectral content. Air mass is the relative measure of the optical atmosphere length and is alwas used in estimating the air mass impact on spectrum. For thin film modules especially, using models that account for other atmospheric conditions such as the amount of precipitable water and the clearsky index can lead to better estimates of effective irradiance. For more details about these methods, see the <a class="reference external" href="https://sam.nlr.gov/photovoltaic/pv-publications.html">SAM website</a>.</p>
+<dl class="simple">
+<dt><strong>Air mass only</strong></dt><dd><p>This is the default option, and is most useful for crystalline silicon module analysis. It accounts for the impact of air mass on the spectrum, but does not account for other atmospheric conditions. This is an implementation of the approach described in De Soto et al. (2006) <a class="reference external" href="https://doi.org/10.1016/j.solener.2005.06.010">Improvement and Validation of a Model for Photovoltaic Array Performance</a> and used in the <a class="reference external" href="https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/point-value-models/sandia-pv-array-performance-model/">Sandia PV Array Performance Model</a>.</p>
+</dd>
+<dt><strong>Air mass and precipitable water</strong></dt><dd><p>This option accounts for the impact of air mass and precipitable water on the spectrum, and has model coefficients for both silicon, thin film, and other cell types. This is an implementation of the approach described in Lee et al. (2016) <a class="reference external" href="https://doi.org/10.1109/PVSC.2016.7749836">Spectral correction for photovoltaic module performance based on air mass and precipitable water</a>.</p>
+</dd>
+<dt><strong>Air mass and clearsky index</strong></dt><dd><p>This option accounts for the impact of air mass and clearsky index on the spectrum, and has model coefficients for both silicon, thin film, and other cell types without requiring precipitable water in the weather data. This is an implementation of the approach described in Pelland et a. (2020) <a class="reference external" href="https://doi.org/10.1109/PVSC45281.2020.9300932">Development and Testing of the PVSPEC Model of Photovoltaic Spectral Mismatch Factor</a>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Spectral correction is implemented in SSC and PySAM as <cite>spectral_correction_model_choice</cite> with options 0=Air Mass Only (De Soto), 1=Air mass and precipitable water (Lee), 2=Air mass and clearsky index (Pelland).</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pv_location_and_resource.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Location and Resource</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pv_inverter.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Inverter</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-performance-model-with-module-database">CEC Performance Model with Module Database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-use-the-cec-performance-model-with-module-database">To use the CEC Performance Model with Module Database:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-characteristics-at-reference-conditions">Module Characteristics at Reference Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bifacial">Bifacial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-correction">Temperature Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noct-method-parameters">NOCT Method Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-transfer-method-parameters">Heat Transfer Method Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transient-thermal-model-correction">Transient Thermal Model Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-dimensions">Module Dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-diode-model-parameters">Single-diode Model Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-pv-array-performance-model-with-module-database">Sandia PV Array Performance Model with Module Database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Module Characteristics at Reference Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-characteristics">Physical Characteristics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-temperature-correction">Sandia Temperature Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#guidelines-for-choosing-the-module-structure-mounting-a-b-dt-parameters">Guidelines for choosing the Module Structure - Mounting (a, b, dT) parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-temperature-correction-method">Sandia Temperature Correction Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sandia-temperature-correction-equations">Sandia Temperature Correction Equations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-efficiency-module-model">Simple Efficiency Module Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bifacial-specifications">Bifacial Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation-level-and-efficiency-table">Radiation Level and Efficiency Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cec-performance-model-with-user-entered-specifications">CEC Performance Model with User Entered Specifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-information">General Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-specifications">Electrical Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Bifacial Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mounting-configuration">Mounting Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-maximum-power-ratings-at-stc">Nominal Maximum Power Ratings at STC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-load-data">Save / Load Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iec-61853-single-diode-model">IEC 61853 Single Diode Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-behavior">Thermal Behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-and-spectral-behavior">Optical and Spectral Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-correction">Spectral Correction</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, National Laboratory of the Rockies.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

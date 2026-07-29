@@ -1,0 +1,116 @@
+/*@
+
+<p>This macro downloads wind resource data from two WIND Toolkit API endpoints for locations in the continental United States:</p>
+
+<ol>
+<li>WIND Toolkit Data V2 (wtk-download): 5-, 15-, 30- and 60-minute data for 2007-2014.</li>
+<li>HRRR MET Toolkit (wtk-hrrr-met-toolkit-v1-0-0-download): Hourly data for 2015-2025</li>
+</ol>
+
+<p>Click <strong>Run macro</strong> above to start the macro.</p>
+
+<p>WIND Toolkit Data Downloads API documentation: <a href="https://developer.nlr.gov/docs/wind/wind-toolkit/">WIND Toolkit APIs on NLR Developer Network</a>.</p>
+
+@*/
+
+
+// return an item's index in an array
+function get_endpoint_index(arr, item) {
+	for (i=0; i<#arr; i++) {
+		if (arr[i] == item) {
+			return i;
+		}
+	}
+}
+
+json = '';
+available_attributes = json_read('{"available_heights":[[10,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,400,500],[10,40,60,80,100,120,140,160,200]],"available_intervals":[[60],[5,15,30,60]],"available_years":[[2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],[2007,2008,2009,2010,2011,2012,2013,2014]],"names":["wtk-hrrr-met-toolkit-v1-0-0-download","wtk-download"]}');
+
+endpoint_list = available_attributes{'names'};
+
+endpoint_name = choose_from_list(endpoint_list, 'Choose an endpoint', 'Choose a WIND Toolkit API endpoint', 0);
+
+endpoint_index = get_endpoint_index(endpoint_list, endpoint_name);
+
+choose_heights = false;
+
+arr = ['all data'];
+for (i=0;i<#available_attributes{'available_heights'}[endpoint_index];i++) {
+	arr[i+1] = available_attributes{'available_heights'}[endpoint_index][i];
+}
+
+height = choose_from_list(arr, 'Choose a measurement height for ' + available_attributes{'names'}[endpoint_index], 'Choose a Height');
+
+if (height == 'all data') {
+	attributes = '';
+}
+else {
+	attributes = 'temperature_' + height + 'm,' +
+	'winddirection_' + height + 'm,' +
+	'windspeed_' + height + 'm,';
+	 // pressure data available at different heights than other data, so get all pressure data for interpolation by wind power model
+	 // available pressure heights is different for different endpoints
+	if (endpoint_name == 'wtk-download') {
+		attributes += 'pressure_0m,pressure_100m,pressure_200m';
+	}
+	if (endpoint_name == 'wtk-hrrr-met-toolkit-v1-0-0-download') {
+		attributes += 'pressure_0m,pressure_100m,pressure_200m,pressure_300m';
+	}
+}
+
+time_step = choose_from_list(available_attributes{'available_intervals'}[endpoint_index], 'Choose a data time step for ' + available_attributes{'names'}[endpoint_index], 'Choose a Time Step');
+
+year = choose_from_list(available_attributes{'available_years'}[endpoint_index], 'Choose a year for ' + available_attributes{'names'}[endpoint_index], 'Choose a Year');
+
+//base_url = webapi('windtoolkit');
+base_url = 'https://developer.nlr.gov/api/wind-toolkit/v2/wind/<ENDPOINT>.csv?&api_key=<SAMAPIKEY>&email=<USEREMAIL>&full_name=SAM%20User&affiliation=none&reason=none&wkt=POINT(<LON>%20<LAT>)&utc=false&leap_day=false&names=<YEAR>&interval=<INTERVAL>&attributes=<ATTRS>';
+
+api_key = 'J9rjyBKwxH0RZ63WkHtqHo50RPs8JlZKeVKGRePX';
+email = 'sam.support@nrel.gov';
+lon = -104.9;
+lat = 41.0;
+
+url = replace(base_url, '<SAMAPIKEY>', api_key);
+url = replace(url, '<USEREMAIL>', email);
+url = replace(url, '<ENDPOINT>', endpoint_name);
+url = replace(url, '<LON>', lon);
+url = replace(url, '<LAT>', lat);
+url = replace(url, '<YEAR>', year);
+url = replace(url, '<INTERVAL>', time_step);
+url = replace(url, '<ATTRS>', attributes); // blank attributes parameter downloads data for all available measurement heights
+
+fname = wfdownloaddir() + '/' + endpoint_name + '_' + lat + '_' + lon + '_' + year + '_' + time_step + '.csv';
+
+outln('Downloading file...');
+ok = curl( url, {'file'=fname});
+
+outln('Checking download...');
+line = '';
+if (!ok) { outln('Download failed.'); }
+else {
+	results.api_error = '';
+	f = open(fname, 'r');
+	read_line(f, line);
+	// returned JSON instead of CSV file
+	if (strpos(line, '{')>-1) { 
+		data = read_json(fname);
+		outln('Download failed:');
+		outln(data.errors[0]);
+		remove_file(fname);
+	}
+	// returned file without wind data (assumes first line contains 'SiteID')
+	elseif (strpos(lower(line), 'site')<0) 
+	{
+		outln('Download failed:');
+		outln(line);
+		remove_file(fname);
+	}
+	// assume file is good
+	else
+	{
+		outln('Download complete!');
+		outln(fname);
+		browse(wfdownloaddir());
+	}
+	close(f);
+}

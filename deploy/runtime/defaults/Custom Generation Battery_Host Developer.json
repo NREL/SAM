@@ -6,6 +6,9 @@
     "LeadAcid_qn": 60.0,
     "LeadAcid_qn_computed": 1436.4,
     "LeadAcid_tn": 1.0,
+    "ac_degradation": [
+        0.0
+    ],
     "add_om_num_types": 1.0,
     "adjust": 0.0,
     "adjust_constant": 0.0,
@@ -8909,6 +8912,10 @@
     "batt_h_to_ambient": 7.5,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
+    "batt_itc_basis_cost": 419978.0747895943,
+    "batt_itc_basis_cost_fed_include": 1.0,
+    "batt_itc_basis_cost_sta_include": 1.0,
+    "batt_itc_basis_percent": 36.31382977948655,
     "batt_life_excl": 0.0,
     "batt_life_model": 0.0,
     "batt_lifetime_matrix": [
@@ -36367,33 +36374,54 @@
         0.0
     ],
     "depr_alloc_custom_percent": 0.0,
-    "depr_alloc_macrs_15_percent": 1.5,
-    "depr_alloc_macrs_5_percent": 90.0,
-    "depr_alloc_none": 3.0,
-    "depr_alloc_sl_15_percent": 2.5,
-    "depr_alloc_sl_20_percent": 3.0,
+    "depr_alloc_macrs_15_percent": 0.0,
+    "depr_alloc_macrs_5_percent": 100.0,
+    "depr_alloc_none": 0.0,
+    "depr_alloc_sl_15_percent": 0.0,
+    "depr_alloc_sl_20_percent": 0.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
-    "depr_bonus_fed": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            1.0,
+            736545.6995957702,
+            63.686170220513449,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            2.0,
+            419978.0747895943,
+            36.31382977948655,
+            1.0,
+            1.0,
+            0.0
+        ]
+    ],
+    "depr_bonus_fed": 100.0,
     "depr_bonus_fed_custom": 0.0,
     "depr_bonus_fed_macrs_15": 1.0,
     "depr_bonus_fed_macrs_5": 1.0,
-    "depr_bonus_fed_sl_15": 0.0,
-    "depr_bonus_fed_sl_20": 0.0,
+    "depr_bonus_fed_sl_15": 1.0,
+    "depr_bonus_fed_sl_20": 1.0,
     "depr_bonus_fed_sl_39": 0.0,
-    "depr_bonus_fed_sl_5": 0.0,
-    "depr_bonus_sta": 0.0,
+    "depr_bonus_fed_sl_5": 1.0,
+    "depr_bonus_sta": 100.0,
     "depr_bonus_sta_custom": 0.0,
     "depr_bonus_sta_macrs_15": 1.0,
     "depr_bonus_sta_macrs_5": 1.0,
-    "depr_bonus_sta_sl_15": 0.0,
-    "depr_bonus_sta_sl_20": 0.0,
+    "depr_bonus_sta_sl_15": 1.0,
+    "depr_bonus_sta_sl_20": 1.0,
     "depr_bonus_sta_sl_39": 0.0,
-    "depr_bonus_sta_sl_5": 0.0,
+    "depr_bonus_sta_sl_5": 1.0,
     "depr_custom_schedule": [
         0.0
     ],
+    "depr_en_basis_mat": 1.0,
     "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
     "depr_itc_fed_custom": 0.0,
     "depr_itc_fed_macrs_15": 0.0,
     "depr_itc_fed_macrs_5": 1.0,
@@ -36401,6 +36429,7 @@
     "depr_itc_fed_sl_20": 0.0,
     "depr_itc_fed_sl_39": 0.0,
     "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
     "depr_itc_sta_custom": 0.0,
     "depr_itc_sta_macrs_15": 0.0,
     "depr_itc_sta_macrs_5": 1.0,
@@ -46505,6 +46534,9 @@
     "energy_output_array": [
         0.0
     ],
+    "energy_output_array_lifetime": [
+        0.0
+    ],
     "equip1_reserve_cost": 0.0,
     "equip1_reserve_freq": 15.0,
     "equip2_reserve_cost": 0.0,
@@ -46530,9 +46562,6 @@
     "fixed_plant_input": 0.0,
     "flip_target_percent": 11.0,
     "flip_target_year": 20.0,
-    "generic_degradation": [
-        0.0
-    ],
     "grid_curtailment": [
         1e38,
         1e38,
@@ -55350,19 +55379,27 @@
     "inflation_rate": 2.5,
     "insurance_rate": 0.0,
     "is_btm": 1.0,
+    "itc_basis_cost_capex_fed": 419978.0747895943,
+    "itc_basis_cost_capex_sta": 419978.0747895943,
+    "itc_basis_cost_percent_fed": 36.31382977948655,
+    "itc_basis_cost_percent_sta": 36.31382977948655,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 36.31382977948655,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        0.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -73574,6 +73611,8 @@
     ],
     "nameplate_capacity": 215.0,
     "nominal_discount_rate": 9.060000000000004,
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 63.68617022051345,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
         5.25
@@ -73665,12 +73704,12 @@
         0.0
     ],
     "ptc_fed_escal": 0.0,
-    "ptc_fed_term": 10.0,
+    "ptc_fed_term": 0.0,
     "ptc_sta_amount": [
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 1.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -73709,16 +73748,22 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "solution_mode_message": "",
     "spec_mode": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],
     "system_capacity": 215.0,
     "system_capacity_combined": 0.0,
+    "system_itc_basis_cost": 736545.6995957702,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 63.686170220513449,
     "system_use_lifetime_output": 1.0,
     "term_int_rate": 7.0,
     "term_tenor": 18.0,
@@ -73728,6 +73773,7 @@
     "total_indirect_cost": 561644.4788179714,
     "total_installed_cost": 1156523.7743853646,
     "total_system_indirect_cost": 449315.5830543771,
+    "total_system_installed_cost": 736545.6995957702,
     "ui_annual_load": 0.0,
     "ui_batt_life_model": 0.0,
     "ui_copy_batt_discharge_percent_1": 25.0,
@@ -73736,6 +73782,13 @@
     "ui_copy_batt_discharge_percent_4": 25.0,
     "ui_copy_batt_discharge_percent_5": 25.0,
     "ui_copy_batt_discharge_percent_6": 25.0,
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 0.0,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_plant_capacity": 215.0,
     "ui_step_minutes": 60.0,
     "ui_wacc": 6.709740000000002,
@@ -75516,7 +75569,7 @@
             1.0,
             1e38,
             0.0,
-            0.05,
+            0.1599999964237213,
             0.0
         ],
         [
@@ -75524,7 +75577,7 @@
             1.0,
             1e38,
             0.0,
-            0.075,
+            0.10000000149011612,
             0.0
         ],
         [
@@ -75532,7 +75585,7 @@
             1.0,
             1e38,
             0.0,
-            0.06,
+            0.15000000596046449,
             0.0
         ],
         [
@@ -75540,7 +75593,7 @@
             1.0,
             1e38,
             0.0,
-            0.05,
+            0.10000000149011612,
             0.0
         ]
     ],

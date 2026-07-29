@@ -1,7 +1,7 @@
 {
     "Name": "Fuel Cell Costs Hybrid",
     "Width": 948.0,
-    "Height": 595.0,
+    "Height": 630.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 92.0
+                    "Integer": 116.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2763,7 +2763,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 87.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

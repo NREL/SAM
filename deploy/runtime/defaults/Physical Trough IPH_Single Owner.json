@@ -74,6 +74,10 @@
         8.0
     ],
     "DISCARD_UNUSED_latitude": 0.0,
+    "DISP_opt_model_1": 2.0,
+    "DISP_opt_model_2": 2.0,
+    "DISP_opt_model_3": 2.0,
+    "DISP_opt_model_4": 2.0,
     "D_2": [
         [
             0.076,
@@ -775,6 +779,38 @@
     "Min_rnr_xpans": 1.0,
     "N_hdr_per_xpan": 2.0,
     "N_max_hdr_diams": 10.0,
+    "OpticalTable_1": [
+        [
+            2.0,
+            1.0,
+            2.0,
+            1.0
+        ]
+    ],
+    "OpticalTable_2": [
+        [
+            2.0,
+            1.0,
+            2.0,
+            1.0
+        ]
+    ],
+    "OpticalTable_3": [
+        [
+            2.0,
+            1.0,
+            2.0,
+            1.0
+        ]
+    ],
+    "OpticalTable_4": [
+        [
+            2.0,
+            1.0,
+            2.0,
+            1.0
+        ]
+    ],
     "P_a": [
         [
             0.0001,
@@ -1038,7 +1074,7 @@
         6.0,
         6.0
     ],
-    "W_dot_pump_SS": 0.07485621857036887,
+    "W_dot_pump_SS": 0.07485403286362845,
     "accept_init": 0.0,
     "accept_loc": 1.0,
     "accept_mode": 0.0,
@@ -1112,8 +1148,12 @@
     "analysis_period_warning": "",
     "annual_albedo": 0.21716438274677489,
     "annual_beam": 7.364082191780821,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.3397808219178085,
     "annual_global": 5.838191780821918,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 18.126141552511418,
     "annual_twet": NaN,
@@ -1137,6 +1177,10 @@
     "aux_par_2": 0.0,
     "aux_par_f": 1.0,
     "azimuth": 0.0,
+    "batt_itc_basis_cost": 0.0,
+    "batt_itc_basis_cost_fed_include": 0.0,
+    "batt_itc_basis_cost_sta_include": 0.0,
+    "batt_itc_basis_percent": 0.0,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bop_array": [
@@ -1281,7 +1325,7 @@
     "csp.dtr.tes.htf_min_opt_temp": 238.0,
     "csp.dtr.tes.min_fluid_volume": 39.67439516694667,
     "csp.dtr.tes.thermal_capacity": 30.0,
-    "csp.pt.par.calc.aux": 0.12121,
+    "csp.pt.par.calc.aux": 0.12120999999999999,
     "csp.pt.par.calc.bop": 0.0,
     "csp.pt.tes.htf_density": 1872.488,
     "csp.pt.tes.tank_diameter": 7.107391202241459,
@@ -1518,7 +1562,7 @@
     "csp_dtr_hce_var4_rated_heat_loss_2": 0.0,
     "csp_dtr_hce_var4_rated_heat_loss_3": 0.0,
     "csp_dtr_hce_var4_rated_heat_loss_4": 0.0,
-    "csp_dtr_loop_hce_heat_loss": 0.9745454545454548,
+    "csp_dtr_loop_hce_heat_loss": 0.9745454545454547,
     "csp_dtr_sca_ap_length_1": 21.0,
     "csp_dtr_sca_ap_length_2": 14.375,
     "csp_dtr_sca_ap_length_3": 14.375,
@@ -1556,25 +1600,25 @@
             0.0
         ]
     ],
-    "csp_dtr_sca_calc_end_loss_1": 0.9996718942883744,
-    "csp_dtr_sca_calc_end_loss_2": 0.9996434127184016,
-    "csp_dtr_sca_calc_end_loss_3": 0.9996434127184016,
-    "csp_dtr_sca_calc_end_loss_4": 0.9996434127184016,
+    "csp_dtr_sca_calc_end_loss_1": 0.9996718942883743,
+    "csp_dtr_sca_calc_end_loss_2": 0.9996434127184017,
+    "csp_dtr_sca_calc_end_loss_3": 0.9996434127184017,
+    "csp_dtr_sca_calc_end_loss_4": 0.9996434127184017,
     "csp_dtr_sca_calc_end_losses": [
         [
-            0.9996718942883744,
-            0.9996434127184016,
-            0.9996434127184016,
-            0.9996434127184016
+            0.9996718942883743,
+            0.9996434127184017,
+            0.9996434127184017,
+            0.9996434127184017
         ]
     ],
-    "csp_dtr_sca_calc_iam_1": 0.9960610689663656,
+    "csp_dtr_sca_calc_iam_1": 0.9960610689663657,
     "csp_dtr_sca_calc_iam_2": 1.0018753305435045,
     "csp_dtr_sca_calc_iam_3": 1.0018753305435045,
     "csp_dtr_sca_calc_iam_4": 1.0018753305435045,
     "csp_dtr_sca_calc_iams": [
         [
-            0.9960610689663656,
+            0.9960610689663657,
             1.0018753305435045,
             1.0018753305435045,
             1.0018753305435045
@@ -1595,11 +1639,11 @@
         0.8484936096,
         0.8484936096
     ],
-    "csp_dtr_sca_calc_theta": 0.1514182598841343,
-    "csp_dtr_sca_calc_theta_1": 0.1514182598841343,
-    "csp_dtr_sca_calc_theta_2": 0.1514182598841343,
-    "csp_dtr_sca_calc_theta_3": 0.1514182598841343,
-    "csp_dtr_sca_calc_theta_4": 0.1514182598841343,
+    "csp_dtr_sca_calc_theta": 0.15141825988413427,
+    "csp_dtr_sca_calc_theta_1": 0.15141825988413427,
+    "csp_dtr_sca_calc_theta_2": 0.15141825988413427,
+    "csp_dtr_sca_calc_theta_3": 0.15141825988413427,
+    "csp_dtr_sca_calc_theta_4": 0.15141825988413427,
     "csp_dtr_sca_calc_zenith": 0.15062193308923828,
     "csp_dtr_sca_calc_zenith_1": 0.15062193308923828,
     "csp_dtr_sca_calc_zenith_2": 0.15062193308923828,
@@ -1649,7 +1693,7 @@
     "custom_sf_pipe_sizes": 0.0,
     "custom_tes_p_loss": 0.0,
     "custom_tes_pipe_sizes": 0.0,
-    "dP_sf_SS": 10.147474751286165,
+    "dP_sf_SS": 10.147350081133409,
     "d_tank_in": 0.0,
     "debt_message": "",
     "debt_option": 1.0,
@@ -1658,33 +1702,54 @@
         0.0
     ],
     "depr_alloc_custom_percent": 0.0,
-    "depr_alloc_macrs_15_percent": 1.5,
-    "depr_alloc_macrs_5_percent": 90.0,
-    "depr_alloc_none": 3.0,
-    "depr_alloc_sl_15_percent": 2.5,
-    "depr_alloc_sl_20_percent": 3.0,
+    "depr_alloc_macrs_15_percent": 0.0,
+    "depr_alloc_macrs_5_percent": 100.0,
+    "depr_alloc_none": 0.0,
+    "depr_alloc_sl_15_percent": 0.0,
+    "depr_alloc_sl_20_percent": 0.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
-    "depr_bonus_fed": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            1.0,
+            13674670.15317073,
+            100.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            2.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "depr_bonus_fed": 100.0,
     "depr_bonus_fed_custom": 0.0,
-    "depr_bonus_fed_macrs_15": 0.0,
+    "depr_bonus_fed_macrs_15": 1.0,
     "depr_bonus_fed_macrs_5": 1.0,
-    "depr_bonus_fed_sl_15": 0.0,
-    "depr_bonus_fed_sl_20": 0.0,
+    "depr_bonus_fed_sl_15": 1.0,
+    "depr_bonus_fed_sl_20": 1.0,
     "depr_bonus_fed_sl_39": 0.0,
-    "depr_bonus_fed_sl_5": 0.0,
-    "depr_bonus_sta": 0.0,
+    "depr_bonus_fed_sl_5": 1.0,
+    "depr_bonus_sta": 100.0,
     "depr_bonus_sta_custom": 0.0,
-    "depr_bonus_sta_macrs_15": 0.0,
-    "depr_bonus_sta_macrs_5": 0.0,
-    "depr_bonus_sta_sl_15": 0.0,
-    "depr_bonus_sta_sl_20": 0.0,
+    "depr_bonus_sta_macrs_15": 1.0,
+    "depr_bonus_sta_macrs_5": 1.0,
+    "depr_bonus_sta_sl_15": 1.0,
+    "depr_bonus_sta_sl_20": 1.0,
     "depr_bonus_sta_sl_39": 0.0,
-    "depr_bonus_sta_sl_5": 0.0,
+    "depr_bonus_sta_sl_5": 1.0,
     "depr_custom_schedule": [
         0.0
     ],
+    "depr_en_basis_mat": 1.0,
     "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
     "depr_itc_fed_custom": 0.0,
     "depr_itc_fed_macrs_15": 0.0,
     "depr_itc_fed_macrs_5": 1.0,
@@ -1692,6 +1757,7 @@
     "depr_itc_fed_sl_20": 0.0,
     "depr_itc_fed_sl_39": 0.0,
     "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
     "depr_itc_sta_custom": 0.0,
     "depr_itc_sta_macrs_15": 0.0,
     "depr_itc_sta_macrs_5": 1.0,
@@ -10730,7 +10796,7 @@
     "f_htfmax": 1.2,
     "f_htfmax_actual": 0.5460258809863511,
     "f_htfmin": 0.25,
-    "f_htfmin_actual": 0.04550215674886259,
+    "f_htfmin_actual": 0.045502156748862588,
     "f_tc_cold": 2.0,
     "f_turb_tou_periods": [
         1.0,
@@ -10847,7 +10913,7 @@
             941.0
         ]
     ],
-    "field_htf_cp_avg": 3.342903831348,
+    "field_htf_cp_avg": 2.4548932031999999,
     "field_htf_max_operating_temp": 400.0,
     "field_htf_min_operating_temp": 12.0,
     "field_thermal_output": 7.927156420127617,
@@ -10934,6 +11000,13 @@
     "is_hx": 1.0,
     "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 1.0,
+    "itc_basis_cost_capex_fed": 0.0,
+    "itc_basis_cost_capex_sta": 0.0,
+    "itc_basis_cost_percent_fed": 0.0,
+    "itc_basis_cost_percent_sta": 0.0,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 0.0,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
@@ -10947,6 +11020,7 @@
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -11727,7 +11801,7 @@
     "m_dot_htfmin": 1.0,
     "m_dot_htfmin_actual": 1.0,
     "max_collector_width": 6.0,
-    "max_field_flow_velocity": 6.613086278056593,
+    "max_field_flow_velocity": 3.744753926091646,
     "mc_bal_cold": 0.2,
     "mc_bal_hot": 0.2,
     "mc_bal_sca": 4.5,
@@ -11737,7 +11811,7 @@
     "mera_name1": "Replacement Reserve 1",
     "mera_name2": "Replacement Reserve 2",
     "mera_name3": "Replacement Reserve 3",
-    "min_field_flow_velocity": 0.4743214213819479,
+    "min_field_flow_velocity": 0.2685590647047778,
     "min_inner_diameter": 0.076,
     "months_receivables_reserve": 0.0,
     "months_working_reserve": 6.0,
@@ -11748,7 +11822,9 @@
     "nSCA": 4.0,
     "nameplate": 5.0,
     "nodes": 2000.0,
-    "nominal_discount_rate": 9.060000000000004,
+    "nominal_discount_rate": 9.060000000000003,
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 100.0,
     "non_solar_field_land_area_multiplier": 1.1,
     "northsouth_field_sep": 20.0,
     "object 11": 0.0,
@@ -11764,6 +11840,12 @@
     "om_production_escal": 0.0,
     "om_production_heat": [
         2.0
+    ],
+    "opt_model": [
+        3.0,
+        3.0,
+        3.0,
+        3.0
     ],
     "p_start": 0.021,
     "payment_option": 0.0,
@@ -11815,12 +11897,12 @@
         0.0
     ],
     "ptc_fed_escal": 0.0,
-    "ptc_fed_term": 10.0,
+    "ptc_fed_term": 0.0,
     "ptc_sta_amount_heat_btu": [
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "q_dot_tes_est": 0.0804725356372662,
     "q_pb_design": 5.0,
     "rate_escalation": [
@@ -11837,6 +11919,7 @@
     "sales_tax_rate": 5.0,
     "salvage_percentage": 0.0,
     "salvage_value": 0.0,
+    "sca_1_is_shown": 1.0,
     "sca_2_is_shown": 1.0,
     "sca_3_is_shown": 1.0,
     "sca_4_is_shown": 1.0,
@@ -11875,6 +11958,8 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "single_loop_aperture": 5280.0,
     "solar_data_file_name": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
@@ -11883,8 +11968,8 @@
     "solar_resource_file": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "specified_solar_multiple": 2.3,
     "specified_total_aperture": 20000.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0
@@ -11905,6 +11990,10 @@
     "store_fluid": 18.0,
     "system_capacity": 5000.0,
     "system_capacity_heat_btu": 17.060708175665377,
+    "system_itc_basis_cost": 13674670.15317073,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 100.0,
     "system_use_lifetime_output": 0.0,
     "t_ch_out_max": 500.0,
     "t_dis_out_min": 500.0,
@@ -20798,6 +20887,13 @@
     "ui_alpha_env_2": 0.02,
     "ui_alpha_env_3": 0.0,
     "ui_collector_description": " Solar Dynamics SunBeam MT",
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 0.0,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_disp_1_turbout": 1.0,
     "ui_disp_2_turbout": 1.0,
     "ui_disp_3_turbout": 1.0,

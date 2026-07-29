@@ -1451,6 +1451,15 @@ SAM_EXPORT double SAM_Geothermal_Outputs_bottom_hole_pressure_nget(SAM_table ptr
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_brine_effectiveness_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "brine_effectiveness", &result))
+		make_access_error("SAM_Geothermal", "brine_effectiveness");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_capacity_factor_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1492,6 +1501,15 @@ SAM_EXPORT double SAM_Geothermal_Outputs_cwflow_nget(SAM_table ptr, SAM_error *e
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "cwflow", &result))
 		make_access_error("SAM_Geothermal", "cwflow");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_dt_rock_well_head_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dt_rock_well_head", &result))
+		make_access_error("SAM_Geothermal", "dt_rock_well_head");
 	});
 	return result;
 }
@@ -1592,6 +1610,15 @@ SAM_EXPORT double SAM_Geothermal_Outputs_lp_flash_pressure_nget(SAM_table ptr, S
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "lp_flash_pressure", &result))
 		make_access_error("SAM_Geothermal", "lp_flash_pressure");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_max_brine_effectiveness_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "max_brine_effectiveness", &result))
+		make_access_error("SAM_Geothermal", "max_brine_effectiveness");
 	});
 	return result;
 }

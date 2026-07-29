@@ -1,0 +1,72 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CMakePushCheckState.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindBZip2.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindZLIB.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/SelectLibraryConfigurations.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cbc/CbcConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cbc/CbcConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cbc/CbcTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cbc/CbcTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cgl/CglConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cgl/CglConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cgl/CglTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Cgl/CglTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Clp/ClpConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Clp/ClpConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Clp/ClpTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Clp/ClpTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/CoinUtils/CoinUtilsConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/CoinUtils/CoinUtilsConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/CoinUtils/CoinUtilsTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/CoinUtils/CoinUtilsTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Osi/OsiConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Osi/OsiConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Osi/OsiTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/Osi/OsiTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/absl/abslConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/absl/abslConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/absl/abslTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/absl/abslTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/highs/highs-config-version.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/highs/highs-config.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/highs/highs-targets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/highs/highs-targets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/modules/FindCbc.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/modules/FindClp.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/modules/FindEigen3.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/modules/FindSCIP.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/modules/Findre2.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/ortoolsConfig.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/ortoolsConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/ortoolsTargets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/ortools/ortoolsTargets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/protobuf/protobuf-config-version.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/protobuf/protobuf-config.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/protobuf/protobuf-generate.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/protobuf/protobuf-options.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/protobuf/protobuf-targets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/protobuf/protobuf-targets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/re2/re2Config.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/re2/re2ConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/re2/re2Targets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/re2/re2Targets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/scip/scip-config-version.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/scip/scip-config.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/scip/scip-targets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/scip/scip-targets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/utf8_range/utf8_range-config.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/utf8_range/utf8_range-targets-release.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/lib/cmake/utf8_range/utf8_range-targets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/share/eigen3/cmake/Eigen3Config.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/share/eigen3/cmake/Eigen3ConfigVersion.cmake
+C:/Users/bmirletz/source/repos/sam_dev/or-tools_x64_VisualStudio2022_cpp_v9.14.6206/share/eigen3/cmake/Eigen3Targets.cmake
+C:/Users/bmirletz/source/repos/sam_dev/ssc/shared/CMakeLists.txt

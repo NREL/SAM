@@ -1,7 +1,7 @@
 {
     "Name": "MSPT System Design",
-    "Width": 871.0,
-    "Height": 1091.0,
+    "Width": 870.0,
+    "Height": 1256.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 192.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -95,11 +95,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 165.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -178,11 +178,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 507.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -261,11 +261,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 216.0
+                    "Integer": 483.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -344,11 +344,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 165.0
+                    "Integer": 216.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -427,7 +427,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 258.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -501,68 +501,6 @@
                 }
             }
         },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "heater_msg"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 408.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 393.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 300.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 54.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 255.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                }
-            }
-        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -572,11 +510,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 588.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -646,6 +584,55 @@
                 }
             }
         },
+        "RadioChoice": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_control_target_elec"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 588.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 288.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 250.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 48.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Selection": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Items": {
+                    "Type": 6.0,
+                    "StringList": "Heat to cycle|Net system electricity output (Beta)"
+                },
+                "ShowCaptions": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Horizontal": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
         "CheckBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -655,11 +642,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 306.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 372.0
+                    "Integer": 561.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -687,6 +674,56 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "label_system"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 444.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 276.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 22.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "System"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Numeric": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -696,11 +733,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 339.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -779,11 +816,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 354.0
+                    "Integer": 543.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -833,7 +870,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 483.0
+                    "Integer": 669.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -841,7 +878,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 556.0
+                    "Integer": 580.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -866,11 +903,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 444.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 273.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -916,11 +953,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 15.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 417.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -970,7 +1007,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 180.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1020,7 +1057,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 138.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1057,6 +1094,56 @@
                 }
             }
         },
+        "Divider": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 21217"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 12.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 405.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 16.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Orientation": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Colour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 120.0,
+                        "Green": 120.0,
+                        "Blue": 120.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Resource"
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -1070,7 +1157,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 27.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1078,7 +1165,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 636.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1107,7 +1194,69 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 159.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 414.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 201.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "The heliostat field layout does not automatically update when you change the design (for example, the solar multiple). We assume a field optical efficiency of 60% to estimate the solar multiple and thermal power achievable with the current field layout. If these estimated values are significantly different than the corresponding values in the Tower and Receiver section below, you may want to generate a new field layout. On the Heliostat Field page, you have options to generate a new layout from the user interface or generate a new layout when you run the model."
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 72"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 18.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 39.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1115,7 +1264,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 60.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1169,7 +1318,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 666.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1202,15 +1351,98 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 612.0
                 },
                 "Width": {
                     "Type": 3.0,
                     "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "q_dot_rec_abs_from_sf_est_des_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 99.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1285,11 +1517,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 189.0
+                    "Integer": 240.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1364,15 +1596,98 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "rec_sm_from_sf_est_des_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 261.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 363.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 2.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "solarm"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 435.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1451,11 +1766,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 294.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1534,11 +1849,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 261.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 447.0
+                    "Integer": 636.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1617,11 +1932,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 219.0
+                    "Integer": 714.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1696,7 +2011,69 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
-                    "String": "ui_msg"
+                    "String": "ui_net_power_control_msg"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 450.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 378.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 387.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 179.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 128.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "ui_sm_comp_msg"
                 },
                 "X": {
                     "Type": 3.0,
@@ -1704,15 +2081,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 570.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 405.0
+                    "Integer": 402.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 33.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1741,7 +2118,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -1749,7 +2126,7 @@
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 1.0
+                    "Boolean": 0.0
                 }
             }
         }
@@ -2418,6 +2795,32 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "is_control_target_elec": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Plant control target",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 0.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_hybrid": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "is_parallel_htr": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2665,6 +3068,19 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "q_dot_rec_abs_from_sf_est_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated thermal power delivered",
+            "Units": "MWt",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "q_dot_tes_est": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2715,6 +3131,19 @@
             "DefaultValue": -999.0,
             "UIObject": "Default",
             "sscVariableName": " ",
+            "sscVariableValue": ""
+        },
+        "rec_sm_from_sf_est_des_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Estimated solar multiple",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
             "sscVariableValue": ""
         },
         "receiver_cost_calc": {
@@ -2977,19 +3406,6 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
-        "ui_msg": {
-            "Version": 4.0,
-            "Type": 4.0,
-            "Label": "System design message",
-            "Units": " ",
-            "Group": "System Design",
-            "IndexLabels": "",
-            "Flags": 9.0,
-            "DefaultValue": "",
-            "UIObject": "Label",
-            "sscVariableName": " ",
-            "sscVariableValue": ""
-        },
         "vel_rec_htf_des_calc": {
             "Version": 4.0,
             "Type": 1.0,
@@ -3033,6 +3449,16 @@
         "\telse{",
         "\t\treturn -1;",
         "\t}",
+        "};\r",
+        "\r",
+        "equations{'is_hybrid'} = define() {\r",
+        "\ttech = technology();\r",
+        "\tif (strpos(tech, \"Hybrid\") > -1) {\r",
+        "\t\treturn 1;\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\treturn 0;\r",
+        "\t}\r",
         "};",
         "",
         "equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()",
@@ -3047,8 +3473,259 @@
         "\t\tmsgbox(\"dispatch_123 \" + ${is_dispatch123});\r",
         "\telse\r",
         "\t\tmsgbox(\"dispatch_123 does not exist\");\r",
-        "*/",
-        "\tret = ssc_exec(obj, 'tcsmolten_salt');",
+        "*/\r",
+        "\ttech = technology();\r",
+        "\tif (strpos(tech, \"Hybrid\") < 0) {\r",
+        "\t",
+        "\t\tret = ssc_exec(obj, 'tcsmolten_salt');\r",
+        "\t}\r",
+        "\telse {\r",
+        "\t\tssc_var(obj, \"is_hybrid\", ${is_hybrid});\r",
+        "\t\tssc_var(obj, \"solar_resource_file\",${solar_resource_file});\r",
+        "\t\t//ssc_var(obj, \"anc_elec_output\",${anc_elec_output});\r",
+        "\t\tssc_var(obj, \"is_dispatch\",${is_dispatch});\r",
+        "\t\tssc_var(obj, \"is_control_target_elec\",${is_control_target_elec});\r",
+        "\t\tssc_var(obj, \"csp_financial_model\",${csp_financial_model});\r",
+        "\t\tssc_var(obj, \"is_parallel_htr\",${is_parallel_htr});\r",
+        "\t\tssc_var(obj, \"T_htf_cold_des\",${T_htf_cold_des});\r",
+        "\t\tssc_var(obj, \"T_htf_hot_des\",${T_htf_hot_des});\r",
+        "\t\tssc_var(obj, \"P_ref\",${P_ref});\r",
+        "\t\tssc_var(obj, \"design_eff\",${design_eff});\r",
+        "\t\tssc_var(obj, \"tshours\",${tshours});\r",
+        "\t\tssc_var(obj, \"solarm\",${solarm});\r",
+        "\t\tssc_var(obj, \"dni_des\",${dni_des});\r",
+        "\t\tssc_var(obj, \"field_model_type\",${field_model_type});\r",
+        "\t\tssc_var(obj, \"helio_width\",${helio_width});\r",
+        "\t\tssc_var(obj, \"helio_height\",${helio_height});\r",
+        "\t\tssc_var(obj, \"helio_optical_error_mrad\",${helio_optical_error_mrad});\r",
+        "\t\tssc_var(obj, \"helio_active_fraction\",${helio_active_fraction});\r",
+        "\t\tssc_var(obj, \"dens_mirror\",${dens_mirror});\r",
+        "\t\tssc_var(obj, \"helio_reflectance\",${helio_reflectance});\r",
+        "\t\tssc_var(obj, \"rec_absorptance\",${rec_absorptance});\r",
+        "\t\tssc_var(obj, \"rec_hl_perm2\",${rec_hl_perm2});\r",
+        "\t\tssc_var(obj, \"land_max\",${land_max});\r",
+        "\t\tssc_var(obj, \"land_min\",${land_min});\r",
+        "\t\tssc_var(obj, \"p_start\",${p_start});\r",
+        "\t\tssc_var(obj, \"p_track\",${p_track});\r",
+        "\t\tssc_var(obj, \"hel_stow_deploy\",${hel_stow_deploy});\r",
+        "\t\tssc_var(obj, \"v_wind_max\",${v_wind_max});\r",
+        "\t\tssc_var(obj, \"c_atm_0\",${c_atm_0});\r",
+        "\t\tssc_var(obj, \"c_atm_1\",${c_atm_1});\r",
+        "\t\tssc_var(obj, \"c_atm_2\",${c_atm_2});\r",
+        "\t\tssc_var(obj, \"c_atm_3\",${c_atm_3});\r",
+        "\t\tssc_var(obj, \"n_facet_x\",${n_facet_x});\r",
+        "\t\tssc_var(obj, \"n_facet_y\",${n_facet_y});\r",
+        "\t\tssc_var(obj, \"focus_type\",${focus_type});\r",
+        "\t\tssc_var(obj, \"cant_type\",${cant_type});\r",
+        "\t\tssc_var(obj, \"n_flux_days\",${n_flux_days});\r",
+        "\t\tssc_var(obj, \"delta_flux_hrs\",${delta_flux_hrs});\r",
+        "\t\tssc_var(obj, \"water_usage_per_wash\",${water_usage_per_wash});\r",
+        "\t\tssc_var(obj, \"washing_frequency\",${washing_frequency});\r",
+        "\t\tssc_var(obj, \"check_max_flux\",${check_max_flux});\r",
+        "\t\tssc_var(obj, \"sf_excess\",${sf_excess});\r",
+        "\t\tssc_var(obj, \"flux_max\",${flux_max});\r",
+        "\t\tssc_var(obj, \"opt_init_step\",${opt_init_step});\r",
+        "\t\tssc_var(obj, \"opt_max_iter\",${opt_max_iter});\r",
+        "\t\tssc_var(obj, \"opt_conv_tol\",${opt_conv_tol});\r",
+        "\t\tssc_var(obj, \"opt_flux_penalty\",${opt_flux_penalty});\r",
+        "\t\tssc_var(obj, \"opt_algorithm\",${opt_algorithm});\r",
+        "\t\tssc_var(obj, \"receiver_type\",${receiver_type});\r",
+        "\t\tssc_var(obj, \"N_panels\",${N_panels});\r",
+        "\t\tssc_var(obj, \"d_tube_out\",${d_tube_out});\r",
+        "\t\tssc_var(obj, \"th_tube\",${th_tube});\r",
+        "\t\tssc_var(obj, \"mat_tube\",${mat_tube});\r",
+        "\t\tssc_var(obj, \"rec_htf\",${rec_htf});\r",
+        "\t\tssc_var(obj, \"field_fl_props\",${field_fl_props});\r",
+        "\t\tssc_var(obj, \"Flow_type\",${Flow_type});\r",
+        "\t\tssc_var(obj, \"epsilon\",${epsilon});\r",
+        "\t\tssc_var(obj, \"hl_ffact\",${hl_ffact});\r",
+        "\t\tssc_var(obj, \"f_rec_min\",${f_rec_min});\r",
+        "\t\tssc_var(obj, \"rec_su_delay\",${rec_su_delay});\r",
+        "\t\tssc_var(obj, \"rec_qf_delay\",${rec_qf_delay});\r",
+        "\t\tssc_var(obj, \"csp.pt.rec.max_oper_frac\",${csp.pt.rec.max_oper_frac});\r",
+        "\t\tssc_var(obj, \"eta_pump\",${eta_pump});\r",
+        "\t\tssc_var(obj, \"piping_length_mult\",${piping_length_mult});\r",
+        "\t\tssc_var(obj, \"piping_length_const\",${piping_length_const});\r",
+        "\t\tssc_var(obj, \"n_cav_rec_panels\",${n_cav_rec_panels});\r",
+        "\t\tssc_var(obj, \"cav_rec_span\",${cav_rec_span});\r",
+        "\t\tssc_var(obj, \"cav_rec_passive_abs\",${cav_rec_passive_abs});\r",
+        "\t\tssc_var(obj, \"cav_rec_passive_eps\",${cav_rec_passive_eps});\r",
+        "\t\tssc_var(obj, \"piping_loss_coefficient\",${piping_loss_coefficient});\r",
+        "\t\tssc_var(obj, \"is_rec_model_trans\",${is_rec_model_trans});\r",
+        "\t\tssc_var(obj, \"is_rec_startup_trans\",${is_rec_startup_trans});\r",
+        "\t\tssc_var(obj, \"rec_tm_mult\",${rec_tm_mult});\r",
+        "\t\tssc_var(obj, \"riser_tm_mult\",${riser_tm_mult});\r",
+        "\t\tssc_var(obj, \"downc_tm_mult\",${downc_tm_mult});\r",
+        "\t\tssc_var(obj, \"u_riser\",${u_riser});\r",
+        "\t\tssc_var(obj, \"th_riser\",${th_riser});\r",
+        "\t\tssc_var(obj, \"heat_trace_power\",${heat_trace_power});\r",
+        "\t\tssc_var(obj, \"preheat_flux\",${preheat_flux});\r",
+        "\t\tssc_var(obj, \"startup_ramp_time\",${startup_ramp_time});\r",
+        "\t\tssc_var(obj, \"startup_target_Tdiff\",${startup_target_Tdiff});\r",
+        "\t\tssc_var(obj, \"is_rec_startup_from_T_soln\",${is_rec_startup_from_T_soln});\r",
+        "\t\tssc_var(obj, \"is_rec_enforce_min_startup\",${is_rec_enforce_min_startup});\r",
+        "\t\tssc_var(obj, \"helio_positions\",${helio_positions});\r",
+        "\t\tssc_var(obj, \"rec_height\",${rec_height});\r",
+        "\t\tssc_var(obj, \"D_rec\",${D_rec});\r",
+        "\t\tssc_var(obj, \"h_tower\",${h_tower});\r",
+        "\t\tssc_var(obj, \"cav_rec_height\",${cav_rec_height});\r",
+        "\t\tssc_var(obj, \"cav_rec_width\",${cav_rec_width});\r",
+        "\t\tssc_var(obj, \"heater_mult\",${heater_mult});\r",
+        "\t\tssc_var(obj, \"heater_efficiency\",${heater_efficiency});\r",
+        "\t\tssc_var(obj, \"f_q_dot_des_allowable_su\",${f_q_dot_des_allowable_su});\r",
+        "\t\tssc_var(obj, \"hrs_startup_at_max_rate\",${hrs_startup_at_max_rate});\r",
+        "\t\tssc_var(obj, \"f_q_dot_heater_min\",${f_q_dot_heater_min});\r",
+        "\t\tssc_var(obj, \"disp_hsu_cost_rel\",${disp_hsu_cost_rel});\r",
+        "\t\tssc_var(obj, \"heater_spec_cost\",${heater_spec_cost});\r",
+        "\t\tssc_var(obj, \"tes_init_hot_htf_percent\",${tes_init_hot_htf_percent});\r",
+        "\t\tssc_var(obj, \"h_tank\",${h_tank});\r",
+        "\t\tssc_var(obj, \"cold_tank_max_heat\",${cold_tank_max_heat});\r",
+        "\t\tssc_var(obj, \"u_tank\",${u_tank});\r",
+        "\t\tssc_var(obj, \"tank_pairs\",${tank_pairs});\r",
+        "\t\tssc_var(obj, \"cold_tank_Thtr\",${cold_tank_Thtr});\r",
+        "\t\tssc_var(obj, \"h_tank_min\",${h_tank_min});\r",
+        "\t\tssc_var(obj, \"hot_tank_Thtr\",${hot_tank_Thtr});\r",
+        "\t\tssc_var(obj, \"hot_tank_max_heat\",${hot_tank_max_heat});\r",
+        "\t\tssc_var(obj, \"tanks_in_parallel\",${tanks_in_parallel});\r",
+        "\t\tssc_var(obj, \"h_ctes_tank_min\",${h_ctes_tank_min});\r",
+        "\t\tssc_var(obj, \"ctes_tshours\",${ctes_tshours});\r",
+        "\t\tssc_var(obj, \"ctes_field_fl\",${ctes_field_fl});\r",
+        "\t\tssc_var(obj, \"h_ctes_tank\",${h_ctes_tank});\r",
+        "\t\tssc_var(obj, \"u_ctes_tank\",${u_ctes_tank});\r",
+        "\t\tssc_var(obj, \"ctes_tankpairs\",${ctes_tankpairs});\r",
+        "\t\tssc_var(obj, \"T_ctes_cold_design\",${T_ctes_cold_design});\r",
+        "\t\tssc_var(obj, \"T_ctes_warm_design\",${T_ctes_warm_design});\r",
+        "\t\tssc_var(obj, \"T_ctes_warm_ini\",${T_ctes_warm_ini});\r",
+        "\t\tssc_var(obj, \"T_ctes_cold_ini\",${T_ctes_cold_ini});\r",
+        "\t\tssc_var(obj, \"f_ctes_warm_ini\",${f_ctes_warm_ini});\r",
+        "\t\tssc_var(obj, \"rad_multiplier\",${rad_multiplier});\r",
+        "\t\tssc_var(obj, \"m_dot_radpanel\",${m_dot_radpanel});\r",
+        "\t\tssc_var(obj, \"n_rad_tubes\",${n_rad_tubes});\r",
+        "\t\tssc_var(obj, \"W_rad_tubes\",${W_rad_tubes});\r",
+        "\t\tssc_var(obj, \"L_rad\",${L_rad});\r",
+        "\t\tssc_var(obj, \"th_rad_panel\",${th_rad_panel});\r",
+        "\t\tssc_var(obj, \"D_rad_tubes\",${D_rad_tubes});\r",
+        "\t\tssc_var(obj, \"k_panel\",${k_panel});\r",
+        "\t\tssc_var(obj, \"epsilon_radtop\",${epsilon_radtop});\r",
+        "\t\tssc_var(obj, \"epsilon_radbot\",${epsilon_radbot});\r",
+        "\t\tssc_var(obj, \"epsilon_radgrnd\",${epsilon_radgrnd});\r",
+        "\t\tssc_var(obj, \"L_rad_sections\",${L_rad_sections});\r",
+        "\t\tssc_var(obj, \"epsilon_radHX\",${epsilon_radHX});\r",
+        "\t\tssc_var(obj, \"ctes_type\",${ctes_type});\r",
+        "\t\tssc_var(obj, \"radiator_unitcost\",${radiator_unitcost});\r",
+        "\t\tssc_var(obj, \"radiator_installcost\",${radiator_installcost});\r",
+        "\t\tssc_var(obj, \"radiator_fluidcost\",${radiator_fluidcost});\r",
+        "\t\tssc_var(obj, \"radfluid_vol_ratio\",${radfluid_vol_ratio});\r",
+        "\t\tssc_var(obj, \"ctes_cost\",${ctes_cost});\r",
+        "\t\tssc_var(obj, \"rad_pressuredrop\",${rad_pressuredrop});\r",
+        "\t\tssc_var(obj, \"pc_config\",${pc_config});\r",
+        "\t\tssc_var(obj, \"pb_pump_coef\",${pb_pump_coef});\r",
+        "\t\tssc_var(obj, \"startup_time\",${startup_time});\r",
+        "\t\tssc_var(obj, \"startup_frac\",${startup_frac});\r",
+        "\t\tssc_var(obj, \"cycle_max_frac\",${cycle_max_frac});\r",
+        "\t\tssc_var(obj, \"cycle_cutoff_frac\",${cycle_cutoff_frac});\r",
+        "\t\tssc_var(obj, \"q_sby_frac\",${q_sby_frac});\r",
+        "\t\tssc_var(obj, \"dT_cw_ref\",${dT_cw_ref});\r",
+        "\t\tssc_var(obj, \"T_amb_des\",${T_amb_des});\r",
+        "\t\tssc_var(obj, \"CT\",${CT});\r",
+        "\t\tssc_var(obj, \"T_approach\",${T_approach});\r",
+        "\t\tssc_var(obj, \"T_ITD_des\",${T_ITD_des});\r",
+        "\t\tssc_var(obj, \"P_cond_ratio\",${P_cond_ratio});\r",
+        "\t\tssc_var(obj, \"pb_bd_frac\",${pb_bd_frac});\r",
+        "\t\tssc_var(obj, \"P_cond_min\",${P_cond_min});\r",
+        "\t\tssc_var(obj, \"n_pl_inc\",${n_pl_inc});\r",
+        "\t\tssc_var(obj, \"F_wc\",${F_wc});\r",
+        "\t\tssc_var(obj, \"tech_type\",${tech_type});\r",
+        "\t\tssc_var(obj, \"ud_f_W_dot_cool_des\",${ud_f_W_dot_cool_des});\r",
+        "\t\tssc_var(obj, \"ud_m_dot_water_cool_des\",${ud_m_dot_water_cool_des});\r",
+        "\t\tssc_var(obj, \"ud_is_sco2_regr\",${ud_is_sco2_regr});\r",
+        "\t\tssc_var(obj, \"ud_ind_od\",${ud_ind_od});\r",
+        "\t\tssc_var(obj, \"pb_fixed_par\",${pb_fixed_par});\r",
+        "\t\tssc_var(obj, \"aux_par\",${aux_par});\r",
+        "\t\tssc_var(obj, \"aux_par_f\",${aux_par_f});\r",
+        "\t\tssc_var(obj, \"aux_par_0\",${aux_par_0});\r",
+        "\t\tssc_var(obj, \"aux_par_1\",${aux_par_1});\r",
+        "\t\tssc_var(obj, \"aux_par_2\",${aux_par_2});\r",
+        "\t\tssc_var(obj, \"bop_par\",${bop_par});\r",
+        "\t\tssc_var(obj, \"bop_par_f\",${bop_par_f});\r",
+        "\t\tssc_var(obj, \"bop_par_0\",${bop_par_0});\r",
+        "\t\tssc_var(obj, \"bop_par_1\",${bop_par_1});\r",
+        "\t\tssc_var(obj, \"bop_par_2\",${bop_par_2});\r",
+        "\t\tssc_var(obj, \"timestep_load_fractions\",${timestep_load_fractions});\r",
+        "\t\tssc_var(obj, \"f_turb_tou_periods\",${f_turb_tou_periods});\r",
+        "\t\tssc_var(obj, \"weekday_schedule\",${weekday_schedule});\r",
+        "\t\tssc_var(obj, \"weekend_schedule\",${weekend_schedule});\r",
+        "\t\tssc_var(obj, \"is_tod_pc_target_also_pc_max\",${is_tod_pc_target_also_pc_max});\r",
+        "\t\tssc_var(obj, \"disp_horizon\",${disp_horizon});\r",
+        "\t\tssc_var(obj, \"disp_frequency\",${disp_frequency});\r",
+        "\t\tssc_var(obj, \"disp_max_iter\",${disp_max_iter});\r",
+        "\t\tssc_var(obj, \"disp_timeout\",${disp_timeout});\r",
+        "\t\tssc_var(obj, \"disp_mip_gap\",${disp_mip_gap});\r",
+        "\t\tssc_var(obj, \"disp_time_weighting\",${disp_time_weighting});\r",
+        "\t\tssc_var(obj, \"disp_rsu_cost_rel\",${disp_rsu_cost_rel});\r",
+        "\t\tssc_var(obj, \"disp_csu_cost_rel\",${disp_csu_cost_rel});\r",
+        "\t\tssc_var(obj, \"disp_pen_ramping\",${disp_pen_ramping});\r",
+        "\t\t//ssc_var(obj, \"start_day_of_year\",${start_day_of_year});\r",
+        "\t\tssc_var(obj, \"tower_fixed_cost\",${tower_fixed_cost});\r",
+        "\t\tssc_var(obj, \"tower_exp\",${tower_exp});\r",
+        "\t\tssc_var(obj, \"rec_ref_cost\",${rec_ref_cost});\r",
+        "\t\tssc_var(obj, \"rec_ref_area\",${rec_ref_area});\r",
+        "\t\tssc_var(obj, \"rec_cost_exp\",${rec_cost_exp});\r",
+        "\t\tssc_var(obj, \"site_spec_cost\",${site_spec_cost});\r",
+        "\t\tssc_var(obj, \"heliostat_spec_cost\",${heliostat_spec_cost});\r",
+        "\t\tssc_var(obj, \"plant_spec_cost\",${plant_spec_cost});\r",
+        "\t\tssc_var(obj, \"bop_spec_cost\",${bop_spec_cost});\r",
+        "\t\tssc_var(obj, \"tes_spec_cost\",${tes_spec_cost});\r",
+        "\t\tssc_var(obj, \"land_spec_cost\",${land_spec_cost});\r",
+        "\t\tssc_var(obj, \"contingency_rate\",${contingency_rate});\r",
+        "\t\tssc_var(obj, \"sales_tax_rate\",${sales_tax_rate});\r",
+        "\t\tssc_var(obj, \"sales_tax_frac\",${sales_tax_frac});\r",
+        "\t\tssc_var(obj, \"cost_sf_fixed\",${cost_sf_fixed});\r",
+        "\t\tssc_var(obj, \"fossil_spec_cost\",${fossil_spec_cost});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.epc.per_acre\",${csp.pt.cost.epc.per_acre});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.epc.percent\",${csp.pt.cost.epc.percent});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.epc.per_watt\",${csp.pt.cost.epc.per_watt});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.epc.fixed\",${csp.pt.cost.epc.fixed});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.plm.percent\",${csp.pt.cost.plm.percent});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.plm.per_watt\",${csp.pt.cost.plm.per_watt});\r",
+        "\t\tssc_var(obj, \"csp.pt.cost.plm.fixed\",${csp.pt.cost.plm.fixed});\r",
+        "\t\tssc_var(obj, \"csp.pt.sf.fixed_land_area\",${csp.pt.sf.fixed_land_area});\r",
+        "\t\tssc_var(obj, \"csp.pt.sf.land_overhead_factor\",${csp.pt.sf.land_overhead_factor});\r",
+        "\t\t/*\r",
+        "\t\tssc_var(obj, \"const_per_interest_rate1\",${const_per_interest_rate1});\r",
+        "\t\tssc_var(obj, \"const_per_interest_rate2\",${const_per_interest_rate2});\r",
+        "\t\tssc_var(obj, \"const_per_interest_rate3\",${const_per_interest_rate3});\r",
+        "\t\tssc_var(obj, \"const_per_interest_rate4\",${const_per_interest_rate4});\r",
+        "\t\tssc_var(obj, \"const_per_interest_rate5\",${const_per_interest_rate5});\r",
+        "\t\tssc_var(obj, \"const_per_months1\",${csptowermoltensalt_const_per_months1});\r",
+        "\t\tssc_var(obj, \"const_per_months2\",${const_per_months2});\r",
+        "\t\tssc_var(obj, \"const_per_months3\",${const_per_months3});\r",
+        "\t\tssc_var(obj, \"const_per_months4\",${const_per_months4});\r",
+        "\t\tssc_var(obj, \"const_per_months5\",${const_per_months5});\r",
+        "\t\tssc_var(obj, \"const_per_percent1\",${const_per_percent1});\r",
+        "\t\tssc_var(obj, \"const_per_percent2\",${const_per_percent2});\r",
+        "\t\tssc_var(obj, \"const_per_percent3\",${const_per_percent3});\r",
+        "\t\tssc_var(obj, \"const_per_percent4\",${const_per_percent4});\r",
+        "\t\tssc_var(obj, \"const_per_percent5\",${const_per_percent5});\r",
+        "\t\tssc_var(obj, \"const_per_upfront_rate1\",${const_per_upfront_rate1});\r",
+        "\t\tssc_var(obj, \"const_per_upfront_rate2\",${const_per_upfront_rate2});\r",
+        "\t\tssc_var(obj, \"const_per_upfront_rate3\",${const_per_upfront_rate3});\r",
+        "\t\tssc_var(obj, \"const_per_upfront_rate4\",${const_per_upfront_rate4});\r",
+        "\t\tssc_var(obj, \"const_per_upfront_rate5\",${const_per_upfront_rate5});\r",
+        "\t\t*/\r",
+        "\t\tssc_var(obj, \"adjust_constant\",${adjust_constant});\r",
+        "\t\tssc_var(obj, \"adjust_en_timeindex\",${adjust_en_timeindex});\r",
+        "\t\tssc_var(obj, \"adjust_en_periods\",${adjust_en_periods});\r",
+        "\t\tssc_var(obj, \"adjust_timeindex\",${adjust_timeindex});\r",
+        "\t\tssc_var(obj, \"adjust_periods\",${adjust_periods});\r",
+        "\t\tssc_var(obj, \"sf_adjust_constant\",${sf_adjust_constant});\r",
+        "\t\tssc_var(obj, \"sf_adjust_en_timeindex\",${sf_adjust_en_timeindex});\r",
+        "\t\tssc_var(obj, \"sf_adjust_en_periods\",${sf_adjust_en_periods});\r",
+        "\t\tssc_var(obj, \"sf_adjust_timeindex\",${sf_adjust_timeindex});\r",
+        "\t\tssc_var(obj, \"sf_adjust_periods\",${sf_adjust_periods});\r",
+        "\r",
+        "\t\tret = ssc_exec(obj, 'tcsmolten_salt');\r",
+        "\t}",
         "",
         "\tif(ret == 0){",
         "\t",
@@ -3064,6 +3741,8 @@
         "\t\t${land_area_base_calc} = ssc_var(obj, \"land_area_base_calc\");",
         "\t\t${total_land_area_before_rad_cooling_calc} = ssc_var(obj, \"total_land_area_before_rad_cooling_calc\");",
         "\t\t${W_dot_col_tracking_des_calc} = ssc_var(obj, \"W_dot_col_tracking_des\");",
+        "\t\t${q_dot_rec_abs_from_sf_est_des_calc} = ssc_var(obj, \"q_dot_rec_abs_from_sf_est_des\");\r",
+        "\t\t${rec_sm_from_sf_est_des_calc} = ssc_var(obj, \"rec_sm_from_sf_est_des\");\r",
         "\t",
         "\t\t${rec_height_calc} = ssc_var(obj, \"rec_height_calc\");",
         "\t\t${D_rec_calc} = ssc_var(obj, \"D_rec_calc\");",
@@ -3163,7 +3842,9 @@
         "\t\t${land_max_abs_calc} = fail;",
         "\t    ${land_area_base_calc} = fail;",
         "        ${total_land_area_before_rad_cooling_calc} = fail;",
-        "\t    ${W_dot_col_tracking_des_calc} = fail;",
+        "\t    ${W_dot_col_tracking_des_calc} = fail;\r",
+        "\t    ${q_dot_rec_abs_from_sf_est_des_calc} = fail;\r",
+        "\t    ${rec_sm_from_sf_est_des_calc} = fail;",
         "\t    ",
         "\t    ${rec_height_calc} = fail;",
         "\t\t${D_rec_calc} = fail;",
@@ -3252,57 +3933,44 @@
         ""
     ],
     "Callbacks": [
-        "function change_msg ( v ) {",
-        "\tmsg = '';",
-        "\tm = 'NOT DEFINED';",
-        "\tif ( v != '' ) {",
-        "\t\tif ( v == 'dni_des' || v == 'sf_excess' ) m = 'solar field size at the design point';",
-        "\t\telseif ( v == 'solarm' ||",
-        "\t\t         v == 'P_ref'  ||",
-        "\t\t         v == 'design_eff' ) m = 'receiver thermal power at the design point';",
-        "\t\tv_info = varinfo(v);",
-        "\t\tif ( value('field_model_type') != 0 )",
-        "\t\t\tmsg = 'You changed the value of ' + v_info.label + ', which changes the ' + m + '. You may want to optimize the field to ensure that the field layout and geometry are appropriate for the new value.';",
-        "\t}",
-        "\tproperty('ui_msg','Caption',msg);",
-        "}",
+        "function compare_solarmult (){\r",
+        "\tmsg = \"\";\r",
+        "\tif(${rec_sm_from_sf_est_des_calc} > ${solarm}*1.05)\r",
+        "\t{\r",
+        "\t\tperc_diff = ${rec_sm_from_sf_est_des_calc} / ${solarm} * 100.0 - 100.0;\r",
+        "\t\tmsg = \"The estimated solar multiple is \" + to_string(perc_diff) + \"% greater than the receiver solar multiple.\";\r",
+        "\t}\r",
+        "\telse if(${rec_sm_from_sf_est_des_calc} < ${solarm}*0.95)\r",
+        "\t{\r",
+        "\t\tperc_diff = 100.0 - ${rec_sm_from_sf_est_des_calc} / ${solarm} * 100.0;\r",
+        "\t\tmsg = \"The estimated solar multiple is \" + to_string(perc_diff) + \"% less than the receiver solar multiple.\";\r",
+        "\t}\r",
+        "\tproperty('ui_sm_comp_msg','Caption', msg);\r",
+        "}\r",
         "",
         "on_load{'MSPT System Design'} = define() ",
-        "\t{ change_msg('');",
-        "\t\ton_change{'is_parallel_htr'}();};",
-        "on_change{'dni_des'} = define()",
-        "\t{ change_msg('dni_des'); };",
-        "on_change{'solarm'} = define() ",
-        "\t{ change_msg('solarm'); };",
-        "on_change{'P_ref'} = define() ",
-        "\t{ change_msg('P_ref'); };",
-        "on_change{'design_eff'} = define() ",
-        "\t{ change_msg('design_eff'); };",
-        "//on_change{'tshours'} = define() { var_change_msg('tshours'); };",
-        "on_change{'sf_excess'} = define()",
-        "\t{ change_msg('sf_excess'); };",
-        "",
-        "",
-        "on_change{'is_parallel_htr'} = define()",
-        "{ \tis_htr = value('is_parallel_htr') == 1;",
-        "\tenable(\"heater_mult\", is_htr);",
-        "\tenable(\"tshours_heater\", is_htr);",
-        "\tenable(\"q_dot_heater_des_calc\", is_htr);",
-        "\tis_dispatch = value('is_dispatch') == 1;",
-        "\tmsg = \"\";",
-        "\tif(is_htr && !is_dispatch){",
-        "\t\tmsg  = \"Dispatch optimization is required when using the electric charger. \"",
-        "\t\t\"Please select dispatch optimization on the System Control page.\";",
-        "\t}",
-        "\tproperty('heater_msg','Caption',msg);",
-        "};",
-        "",
-        "",
-        "/*",
-        "",
-        "\"W_dot_rec_pump_tower_share_des\", ",
-        "\"W_dot_rec_pump_rec_share_des\",   ",
-        "",
-        "*/"
+        "\t{ on_change{'Q_rec_des'}();\r",
+        "\t  on_change{'is_parallel_htr'}();\r",
+        "\t  on_change{'is_control_target_elec'}();\r",
+        "\t  };",
+        "\r",
+        "on_change{'Q_rec_des'} = define()\r",
+        "\t{ compare_solarmult(); };\r",
+        "\r",
+        "on_change{'is_control_target_elec'} = define()\r",
+        "\t{msg = \"\";\r",
+        "\tif(${is_control_target_elec}){\r",
+        "\t\tmsg = \"The net power control model is currently in beta. To prevent unrealistic power spikes during short timesteps, heliostat and heater startup energy requirements are temporarily set to zero. While the control strategy has been tested and is being refined for future CSP hybrid models, some unexpected behavior may still occur. Users are encouraged to report bugs and provide feedback.\";\r",
+        "\t}\r",
+        "\tproperty('ui_net_power_control_msg','Caption', msg);\r",
+        "\t};\r",
+        "\t\r",
+        "on_change{'is_parallel_htr'} = define()\r",
+        "\t{ is_htr = value('is_parallel_htr') == 1;\r",
+        "\tenable(\"heater_mult\", is_htr);\r",
+        "\tenable(\"tshours_heater\", is_htr);\r",
+        "\tenable(\"q_dot_heater_des_calc\", is_htr);\r",
+        "\tis_dispatch = value('is_dispatch') == 1;\r",
+        "    };"
     ]
 }
