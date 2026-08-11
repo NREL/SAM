@@ -48957,7 +48957,7 @@
             ]
         ],
         "compute_as_cube": 1.0,
-        "en_batt": 0.0,
+        "en_batt": 1.0,
         "en_wave_batt": 0.0,
         "hybrid_system_capacity": 100505.77853481176,
         "om_batt_capacity_cost": [
