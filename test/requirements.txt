@@ -1,2 +1,2 @@
-NREL-PySAM==3.0.0
+NREL-PySAM==8.0.0
 requests
