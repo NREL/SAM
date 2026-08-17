@@ -69,6 +69,23 @@ print(f"Installed to {installations_dirs}")
 
 old_ssc = installations_dirs / "linux_64" / 'ssc.so'
 
+# update runpath of old ssc.so - should be done in the future by the SAM build system, but for now we need to do it manually
+# Set your target directory and new runpath
+target_dir = Path(installations_dirs / "linux_64")
+new_runpath = "$ORIGIN"  # Or an absolute path like '/usr/local/lib'
+
+# Loop through all .so files recursively
+for so_file in target_dir.glob("**/*.so"):
+  try:
+    # Run patchelf to set the rpath/runpath
+    subprocess.run(
+        ["patchelf", "--set-rpath", new_runpath, str(so_file)], check=True
+    )
+    print(f"Successfully updated: {so_file.name}")
+  except subprocess.CalledProcessError as e:
+    print(f"Failed to update {so_file.name}: {e}")
+
+
 ssc_dir = Path(os.environ.get("SSCDIR"))
 new_ssc = Path(glob.glob(str(ssc_dir / "build" / "ssc" / "*ssc.so"))[0])
 
