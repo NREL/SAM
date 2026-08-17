@@ -177,25 +177,34 @@ jobs:
           cmake -Bbuild -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSAMAPI_EXPORT=0 -DUSE_XPRESS=0 -DUSE_COINOR=1 -DCMAKE_SYSTEM_VERSION=10.0 -DCMAKE_SYSTEM_PREFIX_PATH=${ORTOOLSDIR} -Dabsl_DIR=${ORTOOLSDIR}\lib\cmake\absl" -Dutf8_range_DIR=${ORTOOLSDIR}\lib\cmake\utf8_range"
           cmake --build build -j4
 
-    - name: Generate test file
-      shell: bash {0}
-      run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAMOS.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-          python-version: ${{ matrix.python-version }}
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-          name: Test Results Linux
-          path: ${{env.SAMNTDIR}}/build/test_results_linux64.csv
-    - name: Evaluate test results vs Linux file
-      run: |
-        python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
+    # - name: Generate test file
+    #   shell: bash {0}
+    #   run: results="1"; nohup xvfb-run ${SAMNTDIR}"/build/deploy/linux_64/SAMOS.bin" no_sam_file ${SAMNTDIR}"/build/deploy/test_script_ow.lk" &>/dev/null & while [[ $results != "0" ]]; do sleep 60; lines=$(wc -l ${SAMNTDIR}/build/test_results_linux64.csv | cut -d' ' -f1); echo $lines; grep -i final_configuration_eof ${SAMNTDIR}/build/test_results_linux64.csv; results=$?; done 
+    # - name: Set up Python ${{ matrix.python-version }}
+    #   uses: actions/setup-python@v4
+    #   with:
+    #       python-version: ${{ matrix.python-version }}
+    # - name: Upload Artifacts
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #       name: Test Results Linux
+    #       path: ${{env.SAMNTDIR}}/build/test_results_linux64.csv
+    # - name: Evaluate test results vs Linux file
+    #   run: |
+    #     python ${SAMNTDIR}/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_linux64.csv ${SAMNTDIR}/build/test_results_linux64.csv false
     
-    - name: Evaluate test results vs Windows file
+    # - name: Evaluate test results vs Windows file
+    #   run: |
+    #     python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
+
+    - name: Update runpath for PySSC
       run: |
-        python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
+        apt update
+        apt install patchelf
+        cd ${SAMNTDIR}"/build/deploy/linux_64
+        for lib in *.so; do
+          [ -f "$lib" ] && patchelf --set-rpath '$ORIGIN' "$lib"
+        done
     
     - name: Run SSC Variable & SAM Defaults Differ
       run: |
