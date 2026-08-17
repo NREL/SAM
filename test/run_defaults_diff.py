@@ -69,7 +69,7 @@ print(f"Installed to {installations_dirs}")
 
 old_ssc = installations_dirs / "linux_64" / 'ssc.so'
 
-# update runpath of old ssc.so - should be done in the future by the SAM build system, but for now we need to do it manually
+# update runpath of old ssc.so (in release) - should be done in the future by the SAM build system, but for now we need to do it manually
 # Set your target directory and new runpath
 target_dir = Path(installations_dirs / "linux_64")
 new_runpath = "$ORIGIN"  # Or an absolute path like '/usr/local/lib'
