@@ -197,13 +197,13 @@ jobs:
     #   run: |
     #     python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
 
-    - name: Update runpath for PySSC
-      run: |
-        sudo apt-get install -y patchelf
-        cd ${SAMNTDIR}/build/deploy/linux_64
-        for lib in *.so; do
-          [ -f "$lib" ] && patchelf --set-rpath '$ORIGIN' "$lib"
-        done
+    # - name: Update runpath for PySSC
+    #   run: |
+    #     sudo apt-get install -y patchelf
+    #     cd ${SAMNTDIR}/build/deploy/linux_64
+    #     for lib in *.so; do
+    #       [ -f "$lib" ] && patchelf --set-rpath '$ORIGIN' "$lib"
+    #     done
     
     - name: Run SSC Variable & SAM Defaults Differ
       run: |
