@@ -199,8 +199,7 @@ jobs:
 
     - name: Update runpath for PySSC
       run: |
-        apt update
-        apt install patchelf
+        sudo apt-get install -y patchelf
         cd ${SAMNTDIR}"/build/deploy/linux_64
         for lib in *.so; do
           [ -f "$lib" ] && patchelf --set-rpath '$ORIGIN' "$lib"
