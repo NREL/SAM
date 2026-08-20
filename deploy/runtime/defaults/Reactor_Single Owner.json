@@ -60,12 +60,20 @@
     "analysis_period_warning": "",
     "annual_albedo": 0.2253945200002357,
     "annual_beam": 7.667331506849315,
-    "annual_diffuse": 1.2481643835616439,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
+    "annual_diffuse": 1.248164383561644,
     "annual_global": 5.8333945205479449,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 16.974657534246576,
     "annual_twet": NaN,
     "annual_wspd": 2.2621347039827408,
+    "batt_itc_basis_cost": 0.0,
+    "batt_itc_basis_cost_fed_include": 0.0,
+    "batt_itc_basis_cost_sta_include": 0.0,
+    "batt_itc_basis_percent": 0.0,
     "batt_salvage_percentage": 0.0,
     "batt_salvage_value": 0.0,
     "bop_par": 0.0,
@@ -82,7 +90,7 @@
     "cb_installed_per_capacity_cost_calc": 9087.154064014589,
     "cb_land_cost_calc": 0.0,
     "cb_reactor_cost_calc": 595238095.2380953,
-    "cb_sales_tax_cost_calc": 29927390.476190479,
+    "cb_sales_tax_cost_calc": 29927390.47619048,
     "cb_storage_cost_calc": 0.0,
     "cb_total_direct_cost": 748184761.9047619,
     "cb_total_indirect_cost": 127191409.52380954,
@@ -147,7 +155,7 @@
     "const_per_principal4": 0.0,
     "const_per_principal5": 0.0,
     "const_per_principal_total": 875376171.4285715,
-    "const_per_total1": 65653212.857142869,
+    "const_per_total1": 65653212.85714287,
     "const_per_total2": 0.0,
     "const_per_total3": 0.0,
     "const_per_total4": 0.0,
@@ -157,7 +165,7 @@
     "const_per_upfront_rate3": 0.0,
     "const_per_upfront_rate4": 0.0,
     "const_per_upfront_rate5": 0.0,
-    "construction_financing_cost": 65653212.857142869,
+    "construction_financing_cost": 65653212.85714287,
     "contingency_rate": 7.0,
     "cost_debt_closing": 0.0,
     "cost_debt_fee": 2.75,
@@ -193,6 +201,12 @@
     "depr_alloc_sl_20_percent": 3.0,
     "depr_alloc_sl_39_percent": 0.0,
     "depr_alloc_sl_5_percent": 0.0,
+    "depr_allocation_choice": 0.0,
+    "depr_basis_mat": [
+        [
+            8.39880241854e-312
+        ]
+    ],
     "depr_bonus_fed": 0.0,
     "depr_bonus_fed_custom": 0.0,
     "depr_bonus_fed_macrs_15": 1.0,
@@ -212,7 +226,9 @@
     "depr_custom_schedule": [
         0.0
     ],
+    "depr_en_basis_mat": 0.0,
     "depr_fedbas_method": 1.0,
+    "depr_itc_fed_capex": 0.0,
     "depr_itc_fed_custom": 0.0,
     "depr_itc_fed_macrs_15": 0.0,
     "depr_itc_fed_macrs_5": 1.0,
@@ -220,6 +236,7 @@
     "depr_itc_fed_sl_20": 0.0,
     "depr_itc_fed_sl_39": 0.0,
     "depr_itc_fed_sl_5": 0.0,
+    "depr_itc_sta_capex": 0.0,
     "depr_itc_sta_custom": 0.0,
     "depr_itc_sta_macrs_15": 0.0,
     "depr_itc_sta_macrs_5": 1.0,
@@ -9648,6 +9665,12 @@
     "dscr_reserve_months": 6.0,
     "elev": 561.0,
     "en_electricity_rates": 0.0,
+    "energy_expenses_ret": [
+        0.0
+    ],
+    "energy_revenue_ret": [
+        0.0
+    ],
     "epc_cost_fixed": 0.0,
     "epc_cost_per_watt": 0.0,
     "epc_cost_perc_of_direct": 13.0,
@@ -9742,6 +9765,13 @@
     "is_dispatch": 0.0,
     "is_timestep_load_fractions": 0.0,
     "is_tod_pc_target_also_pc_max": 0.0,
+    "itc_basis_cost_capex_fed": 0.0,
+    "itc_basis_cost_capex_sta": 0.0,
+    "itc_basis_cost_percent_fed": 0.0,
+    "itc_basis_cost_percent_sta": 0.0,
+    "itc_basis_depreciation_allocation": 0.0,
+    "itc_basis_percent_depr": 0.0,
+    "itc_basis_percent_input": 0.0,
     "itc_fed_amount": [
         0.0
     ],
@@ -9755,6 +9785,7 @@
     "itc_fed_percent_maxvalue": [
         1e38
     ],
+    "itc_qualification_choice": 0.0,
     "itc_sta_amount": [
         0.0
     ],
@@ -10430,7 +10461,26 @@
     "n_m_dot_pars_sysdes": -1.0,
     "n_pl_inc": 8.0,
     "nameplate": 96.33116873137304,
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.060000000000004,
+    "non_energy_expenses": [
+        0.0
+    ],
+    "non_energy_expenses_ds": 1.0,
+    "non_energy_expenses_escal": 0.0,
+    "non_energy_expenses_ret": [
+        0.0
+    ],
+    "non_energy_revenue": [
+        0.0
+    ],
+    "non_energy_revenue_ds": 1.0,
+    "non_energy_revenue_escal": 0.0,
+    "non_energy_revenue_is_shown": 0.0,
+    "non_energy_revenue_ret": [
+        0.0
+    ],
+    "non_itc_basis_depreciation_allocation": 0.0,
+    "non_itc_basis_percent_depr": 0.0,
     "om_capacity": [
         66.0
     ],
@@ -10525,6 +10575,8 @@
     "show_DebtConstDSCR": 1.0,
     "show_ReserveAccounts": 1.0,
     "show_construction_period": 1.0,
+    "show_depr_alloc": 1.0,
+    "show_itc_qualification": 1.0,
     "solar_data_file_name": "daggett_ca_34.865371_-116.783023_psmv3_60_tmy.csv",
     "solar_data_source": "NSRDB",
     "solar_resource": "daggett_ca_34.865371_-116.783023_psmv3_60_tmy",
@@ -10541,6 +10593,10 @@
     "station_id": "91486",
     "step": 3600.0,
     "system_capacity": 96331.16873137304,
+    "system_itc_basis_cost": 0.0,
+    "system_itc_basis_cost_fed_include": 0.0,
+    "system_itc_basis_cost_sta_include": 0.0,
+    "system_itc_basis_percent": 0.0,
     "system_use_lifetime_output": 0.0,
     "system_use_recapitalization": 0.0,
     "tank_pairs": 1.0,
@@ -12234,6 +12290,13 @@
     "ui_bop_cost_calc": 0.0,
     "ui_contingency_cost_calc": 48946666.66666667,
     "ui_cycle_cost_calc": 104000000.0,
+    "ui_depr_alloc_custom_percent": 0.0,
+    "ui_depr_alloc_macrs_15_percent": 0.0,
+    "ui_depr_alloc_macrs_5_percent": 0.0,
+    "ui_depr_alloc_sl_15_percent": 0.0,
+    "ui_depr_alloc_sl_20_percent": 0.0,
+    "ui_depr_alloc_sl_39_percent": 0.0,
+    "ui_depr_alloc_sl_5_percent": 0.0,
     "ui_direct_subtotal": 699238095.2380953,
     "ui_electricity_rate_option": 0.0,
     "ui_epc_cost_calc": 97264019.04761906,
@@ -12245,7 +12308,7 @@
     "ui_reactor_cost__nameplate": 96.33116873137304,
     "ui_reactor_cost__q_dot_reactor": 238.0952380952381,
     "ui_reactor_cost_calc": 595238095.2380953,
-    "ui_sales_tax_cost_calc": 29927390.476190479,
+    "ui_sales_tax_cost_calc": 29927390.47619048,
     "ui_step_minutes": 60.0,
     "ui_storage_cost_calc": 0.0,
     "ui_system_nameplate_standalone": 0.0,
