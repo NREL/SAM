@@ -118,8 +118,8 @@ else()
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(SAMAPI_EXPORT) # only on Unix
-        unset(SSCE_LIB CACHE AND UNIX)
+    if(SAMAPI_EXPORT AND UNIX) # only on Unix
+        unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
                 PATHS $ENV{SSCE_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/../build_linux_ssc/ssc )
