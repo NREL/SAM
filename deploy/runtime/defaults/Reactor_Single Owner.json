@@ -10489,6 +10489,10 @@
         0.0
     ],
     "om_fixed_escal": 0.0,
+    "om_fuel_cost": [
+        0.0
+    ],
+    "om_fuel_cost_escal": 0.0,
     "om_production": [
         3.5
     ],

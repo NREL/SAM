@@ -1142,7 +1142,7 @@ setmodules( ['reactor_tes_power', 'singleowner']);
 setup_reactor_pages();
 setup_lifetime_page(DEGRADATION_AC_SINGLE_YEAR);
 addpage([['Reactor Capital Costs']],{'sidebar'='System Costs','help'='cc_etes'});
-addpage([['Operating Costs']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
+addpage([['Operating Costs Fuel Reactor']], {'sidebar' = 'Operating Costs', 'help'='oc_operating'} );
 setup_single_owner_pages();
 setup_electricity_purchases();
 
