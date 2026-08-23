@@ -73,6 +73,7 @@ static SamApp::ver releases[] = {
 	//intermediate version numbers are required in this list in order for the version upgrade script (versions.lk) to work correctly
 	//please clarify the reason for the new version in a comment. Examples: public release, variable changes, internal release, public beta release, etc.
 	//the top version should always be the current working version
+			{ 2026, 8, 21 }, // 2026.8.21.ssc.309 Longview Beta
 			{ 2026, 7, 3 }, // 2026.7.3 public release
 			{ 2026, 5, 15 }, // Agrivoltaics beta testing version
 			{ 2026, 2, 19 }, // Placeholder for OR Tools version upgrade testing (replace with release version number)
