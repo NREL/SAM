@@ -1,7 +1,7 @@
 /*
 BSD 3-Clause License
 
-Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NREL/SAM/blob/develop/LICENSE
+Copyright (c) Alliance for Energy Innovation, LLC. See also https://github.com/NatLabRockies/SAM/blob/develop/LICENSE
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,7 @@ std::string module_doc(const std::string& tech_symbol){
             {"Pvsamv1", "Detailed photovoltaic system model with separate components for module and inverter"},
             {"Pvwattsv5", "PVWatts photovoltaic system model with simple inputs"},
             {"Pvwattsv5Lifetime", "PVWatts photovoltaic system model for multi-year lifetime analysis"},
-			{"Pvwattsv8", "Photovoltaic system using basic NREL PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
+			{"Pvwattsv8", "Photovoltaic system using basic NLR PVWatts V8 algorithm. Does not do detailed degradation or loss modeling. If those are important, please use pvsamv1."},
             {"Saleleaseback", "PPA sale leaseback partnership financial model"},
             {"Sco2AirCooler", "Supercritical CO2 Power Cycle Air Cooler"},
             {"Sco2CspSystem", "Supercritical CO2 Power Cycle Design and Off-Design Simulation"},
@@ -988,7 +988,7 @@ void builder_PySAM::create_PySAM_files(const std::string &cmod, const std::strin
     fx_file << "\t:members:\n\n";
 
     std::string cmod_doc = tech_symbol + " is a wrapper for the SSC compute module `cmod_" + cmod;
-    cmod_doc += ".cpp <https://github.com/NREL/ssc/blob/develop/ssc/cmod_" + util::lower_case(cmod) + ".cpp>`_\n\n";
+    cmod_doc += ".cpp <https://github.com/NatLabRockies/ssc/blob/develop/ssc/cmod_" + util::lower_case(cmod) + ".cpp>`_\n\n";
 
     fx_file << cmod_doc;
 
