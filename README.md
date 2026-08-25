@@ -23,8 +23,6 @@ The desktop version of SAM for Windows, Mac, or Linux builds from the following 
 
 * [jsoncpp](https://github.com/open-source-parsers/jsoncpp) is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings.
 
-* [Python](https://www.python.org)/[Miniconda](https://docs.conda.io/) is for integration of Python scripts with the SAM user interface.
-
 This repository, **SAM**, contains the code for SAM's user interface that assigns values to inputs of the SSC compute modules, runs the modules in the correct order, and displays simulation results. It also includes tools for editing LK scripts, viewing time series results, and generating shade data from a 3-dimensional representation of a photovoltaic array or solar hot water collector and nearby shading objects.
 
 The SAM repository also includes [two libraries](https://github.com/NatLabRockies/SAM/tree/develop/Sandia) from Sandia National Laboratories, [stepwise](https://dakota.sandia.gov/content/packages/stepwise), and [LHS](https://dakota.sandia.gov/content/packages/lhs), which are distributed as part of the Dakota platform, licensed under [LGPL](https://www.gnu.org/licenses/lgpl-3.0.en.html).

@@ -7,7 +7,7 @@ on:
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
-  DEFAULT_BRANCH: develop
+  DEFAULT_BRANCH: patch
   WX_VERSION: '3.2.8.1'
   ORTOOLS_VER: "9.14"
   ORTOOLS_RELEASE: "6206"
@@ -196,7 +196,7 @@ jobs:
     - name: Evaluate test results vs Windows file
       run: |
         python $SAMNTDIR/test/compare_lk_test_output.py ${SAMNTDIR}/test_results_win64.csv ${SAMNTDIR}/build/test_results_linux64.csv true
-    
+
     - name: Run SSC Variable & SAM Defaults Differ
       run: |
           python -m pip install --upgrade pip

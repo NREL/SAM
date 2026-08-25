@@ -110,7 +110,7 @@ else()
     find_library( SSC_LIB
             NAMES ssc.dylib ssc.lib ssc.so
             PATHS $ENV{SSC_LIB} $ENV{SSCDIR}/build/ssc $ENV{SSCDIR}/build/ssc/Release)
-    if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR MSVC)
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
         unset(SSCD_LIB CACHE)
         find_library( SSCD_LIB
                 NAMES sscd.dylib sscd.lib sscd.so
@@ -118,7 +118,7 @@ else()
         target_link_libraries(SAM_api debug ${SSCD_LIB})
     endif()
 
-    if(SAMAPI_EXPORT) # only on Unix
+    if(SAMAPI_EXPORT AND UNIX) # only on Unix
         unset(SSCE_LIB CACHE)
         find_library( SSCE_LIB
                 NAMES libssc.so
