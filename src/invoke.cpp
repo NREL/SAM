@@ -1950,12 +1950,13 @@ void fcall_var_exists(lk::invoke_t& cxt)
         c = SamApp::Window()->GetCurrentCase();
     if (c != nullptr) {
         wxString name = cxt.arg(0).as_string();
+		std::string strName = name.ToStdString();
         auto cfg = c->GetConfiguration();
         int ndxHybrid = 0;
         VarValue* vv = NULL;
         bool bfound = false;
         for (size_t ndx = 0; ndx < cfg->Technology.size(); ndx++) { // select ndxHybrid based on compute module position in
-            if (vv = c->Values(ndxHybrid).Get(name)) {
+            if (vv = c->Values(ndx).Get(name)) {
                 bfound = true;
                 ndxHybrid = ndx;
             }
