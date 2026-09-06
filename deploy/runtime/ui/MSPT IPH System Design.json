@@ -3166,7 +3166,7 @@
         "{",
         "\tobj = ssc_create();",
         "\r",
-        "\t//#ssc_auto_exec(obj, 'mspt_iph', 2);\r",
+        "\t//#ssc_auto_exec(obj, 'mspt_iph', 2,'');\r",
         "",
         "\t//ret_d = ssc_dump(obj, 'mspt_iph_system_des_mimo_ssc_auto_exec.lk');",
         "",

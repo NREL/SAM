@@ -2007,7 +2007,7 @@
         "\t\r",
         "\tobj = ssc_create();\r",
         "\r",
-        "\t//#ssc_auto_exec(obj, 'trough_physical', 2);\r",
+        "\t//#ssc_auto_exec(obj, 'trough_physical', 2,'');\r",
         "\t\r",
         "//\tret_d = ssc_dump(obj, 'physical_trough_v2_mimo_ssc_auto_exec.lk');\r",
         "\tret = ssc_exec(obj, 'trough_physical');\r",

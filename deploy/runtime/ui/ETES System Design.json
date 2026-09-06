@@ -1837,7 +1837,7 @@
         "{",
         "\tobj = ssc_create();",
         "",
-        "\t//#ssc_auto_exec(obj, 'etes_electric_resistance', 2);",
+        "\t//#ssc_auto_exec(obj, 'etes_electric_resistance', 2, '');",
         "",
         "\tif(financing() == \"Single Owner\"){",
         "\tssc_var(obj, \"ppa_multiplier_model\", ${ppa_multiplier_model});         ",

@@ -2822,7 +2822,7 @@
         "{",
         "\tobj = ssc_create();",
         "\t",
-        "\t//#ssc_auto_exec(obj, 'etes_ptes', 2);",
+        "\t//#ssc_auto_exec(obj, 'etes_ptes', 2,'');",
         "\t\t",
         "\tret = ssc_exec(obj, 'etes_ptes');",
         "",
