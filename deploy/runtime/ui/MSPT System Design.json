@@ -3480,7 +3480,7 @@
         "\tobj = ssc_create();",
         "//\tssc_var(obj, \"start_day_of_year\", 0);\r",
         "",
-        "\t//#ssc_auto_exec(obj, 'tcsmolten_salt', 2, CSPTowerMoltenSalt|Battery);\r",
+        "\t//#ssc_auto_exec(obj, 'tcsmolten_salt', 2, '');\r",
         "\t//ssc_auto_exec(obj, 'tcsmolten_salt', 2);\r",
         "",
         "\t//ret_d = ssc_dump(obj, 'mspt_system_des_mimo_ssc_auto_exec.lk');",

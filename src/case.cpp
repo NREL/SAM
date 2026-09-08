@@ -1498,6 +1498,16 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 	// SAM issue 1922
 	SamApp::Window()->SetEquationCase(this);
 
+	// TyHybridProject - test merging values from other hybrid technologies into the current one for calculations
+	auto& vals = m_vals[ndxHybrid];
+	if (m_config->Technology.size() > 1) { // hybrid
+		for (size_t ndx=0; ndx < m_config->Technology.size(); ndx++) {
+			if (ndx != ndxHybrid) {
+				vals.Merge(m_vals[ndx], false);
+			}
+		}
+	}
+
 	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( trigger, ndxHybrid);
 	if (n > 0) {

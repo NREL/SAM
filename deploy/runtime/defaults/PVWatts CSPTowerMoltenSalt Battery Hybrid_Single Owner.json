@@ -1066,6 +1066,7 @@
         "dni_des": 950.0,
         "dni_des_calc": 950.0,
         "downc_tm_mult": 1.0,
+        "en_batt": 0.0,
         "epc_total_cost_calc": 81990934.6922161,
         "epsilon": 0.88,
         "epsilon_radHX": 0.8,

@@ -3737,7 +3737,9 @@ sethybridvariabledependencies([
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'dispatch_tod_factors', 'DependentVartableIndex' = 1,'DependentVariableName' = 'dispatch_tod_factors'}, // mspt dispatch
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 0,'DependentVariableName' = 'sales_tax_rate'},
 { 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 1,'DependentVariableName' = 'sales_tax_rate'},
-{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'}
+{ 'IndependentVartableIndex' = 3,'IndependentVariableName' = 'sales_tax_rate', 'DependentVartableIndex' = 2,'DependentVariableName' = 'sales_tax_rate'},
+
+{ 'IndependentVartableIndex' = 2,'IndependentVariableName' = 'en_batt', 'DependentVartableIndex' = 1,'DependentVariableName' = 'en_batt'}
 
 ]);
 addpage( [[ 'Solar Resource Download', 'Solar Resource Library', 'Solar Resource Information' ]], { 'sidebar'='Location and Resource', 'help'='pvwatts_location_and_resource', 'top_page'=true} );
