@@ -468,7 +468,7 @@ void ActiveInputPage::OnNativeEvent( wxCommandEvent &evt )
 					// update dependent variable and equations 
 					if (VarValue* depVar = GetValues(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
 						depVar->Copy(*vval); // update dependent variable value
-						m_case->Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+						m_case->Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations and show first error
 					}
 				}
 			}

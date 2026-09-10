@@ -1975,7 +1975,7 @@
         "{\r",
         "\tobj = ssc_create();\r",
         "\r",
-        "\t//#ssc_auto_exec(obj, 'fresnel_physical', 2, '');\r",
+        "\t//#ssc_auto_exec(obj, 'fresnel_physical', 2);\r",
         "\t\r",
         "\t//ret_d = ssc_dump(obj, 'mslf_v2_mimo_ssc_auto_exec.lk');\r",
         "\tret = ssc_exec(obj, 'fresnel_physical');\r",

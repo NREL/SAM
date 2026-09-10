@@ -166,7 +166,7 @@ public:
 	// Note: if the 'trigger' variable is a library item (has the VF_LIBRARY flag)
 	// this will also apply all the library values and cause any affected variables
 	// to be subsequently updated
-	int Recalculate( const wxString &trigger, size_t ndxHybrid ); 
+	int Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_errors = true ); 
 	int Recalculate( const wxArrayString &triggers, size_t ndxHybrid);
 
 	// recalculate all equations in this case

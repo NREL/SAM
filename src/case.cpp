@@ -1488,7 +1488,7 @@ void Case::VariablesChanged( const wxArrayString &list, size_t ndxHybrid)
 	Recalculate( list, ndxHybrid);
 }
 
-int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
+int Case::Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_errors)
 {
 	if ( !m_config )
 	{
@@ -1498,17 +1498,24 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 	// SAM issue 1922
 	SamApp::Window()->SetEquationCase(this);
 
+
 	// TyHybridProject - test merging values from other hybrid technologies into the current one for calculations
 	auto& vals = m_vals[ndxHybrid];
-	if (m_config->Technology.size() > 1) { // hybrid
+//	VarTable vals;
+//	vals.Copy(m_vals[ndxHybrid]);
+	// specific to CSPTowerMoltenSalt = Technology[1] and Battery = Technology[2]
+	if ((m_config->Technology.size() > 1) && (m_config->Technology[ndxHybrid].Lower() == "csptowermoltensalt")) { // hybrid
 		for (size_t ndx=0; ndx < m_config->Technology.size(); ndx++) {
 			if (ndx != ndxHybrid) {
 				vals.Merge(m_vals[ndx], false);
 			}
+//		vals.Merge(m_vals[2], false);
 		}
 	}
+	
 
-	CaseEvaluator eval( this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
+	CaseEvaluator eval(this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
+//	CaseEvaluator eval(this, vals, m_config->Equations[ndxHybrid]);
 	int n = eval.Changed( trigger, ndxHybrid);
 	if (n > 0) {
 		SendEvent(CaseEvent(CaseEvent::VARS_CHANGED, eval.GetUpdated(), ndxHybrid));
@@ -1524,15 +1531,27 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid)
 					if (VarValue* depVar = Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
 						if (VarValue* vv = Values(ndxHybrid).Get(list[i])) {
 							depVar->Copy(*vv); // update dependent variable value
-							Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+							Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable, false); //recalculate equations
 						}
 					}
 				}
 			}
 		}
 	}
-	else if (n < 0) {
-		wxShowTextMessageDialog(wxJoin(eval.GetErrors(), wxChar('\n')));
+	else if ((n < 0) && (show_errors)) {
+//		wxShowTextMessageDialog(wxJoin(eval.GetErrors(), wxChar('\n')));
+// first message only and resize
+// 1. Create the dialog instance instead of using the global wrapper
+		wxMessageDialog dialog(wxGetActiveWindow(),
+			eval.GetErrors()[0],
+			"Case Recalculate Error",
+			wxOK | wxRESIZE_BORDER); // Allow resizing if desired
+		// 2. Force the exact size or minimum size you want
+		dialog.SetSize(wxSize(600, 400));
+		// 3. Alternatively, force a minimum size to prevent shrinking
+		dialog.SetMinSize(wxSize(400, 300));
+		// 4. Show it modally
+		dialog.ShowModal();
 	}
 	return n;
 
@@ -1562,7 +1581,7 @@ int Case::Recalculate( const wxArrayString &triggers, size_t ndxHybrid)
 					if (VarValue* depVar = Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
 						if (VarValue* vv = Values(ndxHybrid).Get(list[i])) {
 							depVar->Copy(*vv); // update dependent variable value
-							Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+							Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable, false); //recalculate equations
 						}
 					}
 				}
@@ -1589,7 +1608,7 @@ int Case::EvaluateEquations()
 				if (VarValue* depVar = Values(hvd.DependentVariableVarTable).Get(hvd.DependentVariableName)) {
 					if (VarValue* vv = Values(ndxHybrid).Get(hvd.IndependentVariableName)) {
 						depVar->Copy(*vv); // update dependent variable value
-						Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable); //recalculate equations
+						Recalculate(hvd.DependentVariableName, hvd.DependentVariableVarTable, false); //recalculate equations
 					}
 				}
 			}

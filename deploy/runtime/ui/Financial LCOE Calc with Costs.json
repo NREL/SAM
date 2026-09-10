@@ -2328,7 +2328,7 @@
         "{\r",
         "\tobj = ssc_create();\r",
         "\r",
-        "\t//#ssc_auto_exec(obj, 'lcoefcr_design', 2, '');\r",
+        "\t//#ssc_auto_exec(obj, 'lcoefcr_design', 2);\r",
         "\r",
         "\t//ret_d = ssc_dump(obj, 'lcoefcr_design_auto_exec.txt');\r",
         "\r",

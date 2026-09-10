@@ -152,15 +152,15 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 		e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2, 'etes');
 		*/
 
-		if (args.Count() != 4) {// specific to lookup function
+		if (args.Count() != 3) {// specific to lookup function
 			errors->Add("Check equations script: " + lookup + " statement does not have 4 arguments.");
 			return false;
 		}
 		// expand function for use in equations to parse inputs and outputs
 		wxString cm = args[1];
 		cm.Replace("'", "");
-		wxString short_name = args[3];
-		short_name.Replace("'", "");
+//		wxString short_name = args[3];
+//		short_name.Replace("'", "");
 		ssc_module_t p_mod = ssc_module_create((const char*)cm.ToUTF8());
 		if (!p_mod)	{
 			errors->Add("could not create ssc module: " + cm);
