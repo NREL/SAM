@@ -1434,6 +1434,7 @@
         "\t//check that the file downloaded in a valid format\r",
         "\tssc_var( obj, 'file_name', ${wind_resource_filename});\r",
         "\tssc_var(obj, 'scan_header_only', 0);\r",
+        "\tssc_var(obj, 'interpolate', 0);\r",
         "\t//hard code in a hub height of 80 just for checking the file\r",
         "\tssc_var(obj, 'requested_ht', 80);\r",
         "\terr = ssc_exec(obj, 'wind_file_reader');\r",

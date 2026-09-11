@@ -207,6 +207,10 @@ int CaseEvaluator::CalculateAll(size_t ndxHybrid)
 		}
 	}
 
+	// Ty's project
+	m_case->Recalculate(wxEmptyString, ndxHybrid);
+
+
 	int nevals = EqnEvaluator::CalculateAll();
 	if ( nevals >= 0 ) nevals += nlibchanges;
 
@@ -1498,7 +1502,7 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_erro
 	// SAM issue 1922
 	SamApp::Window()->SetEquationCase(this);
 
-/*
+
 	// TyHybridProject - test merging values from other hybrid technologies into the current one for calculations
 	auto& vals = m_vals[ndxHybrid];
 //	VarTable vals;
@@ -1512,7 +1516,7 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_erro
 //		vals.Merge(m_vals[2], false);
 		}
 	}
-*/	
+	
 
 	CaseEvaluator eval(this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 //	CaseEvaluator eval(this, vals, m_config->Equations[ndxHybrid]);
