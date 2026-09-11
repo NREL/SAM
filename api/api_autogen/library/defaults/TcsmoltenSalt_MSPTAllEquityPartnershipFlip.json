@@ -63,9 +63,6 @@
 				[1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000, 1.000000]
 			]
 		},
-		"FinancialModel": {
-			"csp_financial_model": 3
-		},
 		"SystemDesign": {
 			"P_ref": 115,
 			"T_htf_cold_des": 290,
@@ -75,6 +72,9 @@
 			"sf_excess": 1,
 			"solarm": 2.4,
 			"tshours": 10
+		},
+		"FinancialModel": {
+			"csp_financial_model": 3
 		},
 		"TowerAndReceiver": {
 			"D_rec": 16.922,
@@ -9868,6 +9868,16 @@
 				[0.000000, 0.000000, 0.000000]
 			],
 			"sf_adjust_timeindex": [0.000000]
+		},
+		"BatterySystem": {
+		},
+		"Lifetime": {
+			"analysis_period": 25,
+			"system_use_lifetime_output": 0
+		},
+		"BatteryCell": {
+		},
+		"Losses": {
 		}
 	}
 }

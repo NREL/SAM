@@ -47,6 +47,14 @@ extern "C"
 	SAM_EXPORT void SAM_BatteryStateful_Controls_dt_hr_nset(SAM_table ptr, double number, SAM_error *err);
 
 	/**
+	 * Set includes_battery: Whether battery is included in simulation [0/1]
+	 * options: None
+	 * constraints: None
+	 * required if: ?=1
+	 */
+	SAM_EXPORT void SAM_BatteryStateful_Controls_includes_battery_nset(SAM_table ptr, double number, SAM_error *err);
+
+	/**
 	 * Set input_current: Current at which to run battery [A]
 	 * options: None
 	 * constraints: None
@@ -71,7 +79,7 @@ extern "C"
 	 * Set C_rate: Rate at which voltage vs. capacity curve input
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_C_rate_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -79,7 +87,7 @@ extern "C"
 	 * Set Qexp: Cell capacity at end of exponential zone [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qexp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -87,7 +95,7 @@ extern "C"
 	 * Set Qfull: Fully charged cell capacity [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qfull_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -95,7 +103,7 @@ extern "C"
 	 * Set Qfull_flow: Fully charged flow battery capacity [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem=3
+	 * required if: includes_battery=1&voltage_choice=0&chem=3
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qfull_flow_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -103,7 +111,7 @@ extern "C"
 	 * Set Qnom: Cell capacity at end of nominal zone [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Qnom_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -111,7 +119,7 @@ extern "C"
 	 * Set Vcut: Cell cutoff voltage [V]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vcut_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -119,7 +127,7 @@ extern "C"
 	 * Set Vexp: Cell voltage at end of exponential zone [V]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vexp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -127,7 +135,7 @@ extern "C"
 	 * Set Vfull: Fully charged cell voltage [V]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vfull_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -135,7 +143,7 @@ extern "C"
 	 * Set Vnom: Cell voltage at end of nominal zone [V]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=0&chem~2
+	 * required if: includes_battery=1&voltage_choice=0&chem~2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vnom_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -143,7 +151,7 @@ extern "C"
 	 * Set Vnom_default: Default nominal cell voltage [V]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_Vnom_default_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -151,7 +159,7 @@ extern "C"
 	 * Set calendar_a: Calendar life model coefficient [1/sqrt(day)]
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0&calendar_choice=1
+	 * required if: includes_battery=1&life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_a_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -159,7 +167,7 @@ extern "C"
 	 * Set calendar_b: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0&calendar_choice=1
+	 * required if: includes_battery=1&life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_b_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -167,7 +175,7 @@ extern "C"
 	 * Set calendar_c: Calendar life model coefficient [K]
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0&calendar_choice=1
+	 * required if: includes_battery=1&life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_c_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -175,7 +183,7 @@ extern "C"
 	 * Set calendar_choice: Calendar life degradation input option [0/1/2]
 	 * options: 0=None,1=LithiumIonModel,2=InputLossTable
 	 * constraints: None
-	 * required if: life_model=0
+	 * required if: includes_battery=1&life_model=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_choice_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -183,7 +191,7 @@ extern "C"
 	 * Set calendar_matrix: Table with Day # and Capacity % columns [[[#, %]]]
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0&calendar_choice=2
+	 * required if: includes_battery=1&life_model=0&calendar_choice=2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -191,7 +199,7 @@ extern "C"
 	 * Set calendar_q0: Calendar life model initial capacity cofficient
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0&calendar_choice=1
+	 * required if: includes_battery=1&life_model=0&calendar_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_calendar_q0_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -199,7 +207,7 @@ extern "C"
 	 * Set chem: Lead Acid (0), Li Ion (1), Vanadium Redox (2), Iron Flow (3) [0/1/2/3]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_chem_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -207,7 +215,7 @@ extern "C"
 	 * Set cycling_matrix: Table with DOD %, Cycle #, and Capacity % columns [[[%, #, %]]]
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0
+	 * required if: includes_battery=1&life_model=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_cycling_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -215,7 +223,7 @@ extern "C"
 	 * Set initial_SOC: Initial state-of-charge [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_initial_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -223,7 +231,7 @@ extern "C"
 	 * Set leadacid_q10: Capacity at 10-hour discharge rate [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: chem=0
+	 * required if: includes_battery=1&chem=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_q10_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -231,7 +239,7 @@ extern "C"
 	 * Set leadacid_q20: Capacity at 20-hour discharge rate [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: chem=0
+	 * required if: includes_battery=1&chem=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_q20_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -239,7 +247,7 @@ extern "C"
 	 * Set leadacid_qn: Capacity at discharge rate for n-hour rate [Ah]
 	 * options: None
 	 * constraints: None
-	 * required if: chem=0
+	 * required if: includes_battery=1&chem=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_qn_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -247,7 +255,7 @@ extern "C"
 	 * Set leadacid_tn: Hours to discharge for qn rate [h]
 	 * options: None
 	 * constraints: None
-	 * required if: chem=0
+	 * required if: includes_battery=1&chem=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_leadacid_tn_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -255,7 +263,7 @@ extern "C"
 	 * Set life_model: Battery life model specifier [0/1/2]
 	 * options: 0=calendar/cycle,1=NMC,2=LMO/LTO
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_life_model_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -263,7 +271,7 @@ extern "C"
 	 * Set maximum_SOC: Maximum allowed state-of-charge [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_maximum_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -271,7 +279,7 @@ extern "C"
 	 * Set minimum_SOC: Minimum allowed state-of-charge [%]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_minimum_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -279,7 +287,7 @@ extern "C"
 	 * Set resistance: Internal resistance [Ohm]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_resistance_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -295,7 +303,7 @@ extern "C"
 	 * Set voltage_matrix: Table with depth-of-discharge % and Voltage as columns [[[%, V]]]
 	 * options: None
 	 * constraints: None
-	 * required if: voltage_choice=1
+	 * required if: includes_battery=1&voltage_choice=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsCell_voltage_matrix_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -308,7 +316,7 @@ extern "C"
 	 * Set Cp: Battery specific heat capacity [J/KgK]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_Cp_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -316,7 +324,7 @@ extern "C"
 	 * Set T_room_init: Temperature of storage room [C]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_T_room_init_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -332,7 +340,7 @@ extern "C"
 	 * Set cap_vs_temp: Table with Temperature and Capacity % as columns [[[C,%]]]
 	 * options: None
 	 * constraints: None
-	 * required if: life_model=0
+	 * required if: includes_battery=1&life_model=0
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_cap_vs_temp_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
 
@@ -340,7 +348,7 @@ extern "C"
 	 * Set h: Heat transfer between battery and environment [W/m2K]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_h_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -356,7 +364,7 @@ extern "C"
 	 * Set mass: Battery mass [kg]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_mass_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -388,7 +396,7 @@ extern "C"
 	 * Set nominal_energy: Nominal installed energy [kWh]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_nominal_energy_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -396,7 +404,7 @@ extern "C"
 	 * Set nominal_voltage: Nominal DC voltage [V]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_nominal_voltage_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -404,7 +412,7 @@ extern "C"
 	 * Set replacement_capacity: Capacity degradation at which to replace battery [%]
 	 * options: None
 	 * constraints: None
-	 * required if: replacement_option=1
+	 * required if: includes_battery=1&replacement_option=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_capacity_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -420,7 +428,7 @@ extern "C"
 	 * Set replacement_schedule_percent: Percentage of battery capacity to replace in each year [[%/year]]
 	 * options: length <= analysis_period
 	 * constraints: None
-	 * required if: replacement_option=2
+	 * required if: includes_battery=1&replacement_option=2
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_replacement_schedule_percent_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
@@ -436,7 +444,7 @@ extern "C"
 	 * Set surface_area: Battery surface area [m^2]
 	 * options: None
 	 * constraints: None
-	 * required if: *
+	 * required if: includes_battery=1
 	 */
 	SAM_EXPORT void SAM_BatteryStateful_ParamsPack_surface_area_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -1018,6 +1026,8 @@ extern "C"
 	SAM_EXPORT double SAM_BatteryStateful_Controls_control_mode_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_Controls_dt_hr_nget(SAM_table ptr, SAM_error *err);
+
+	SAM_EXPORT double SAM_BatteryStateful_Controls_includes_battery_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_BatteryStateful_Controls_input_current_nget(SAM_table ptr, SAM_error *err);
 

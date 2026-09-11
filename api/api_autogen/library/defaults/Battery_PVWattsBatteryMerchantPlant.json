@@ -180,9 +180,9 @@
 				[48.044326, 114.950386]
 			]
 		},
-		"Inverter": {
-		},
 		"Losses": {
+		},
+		"Inverter": {
 		},
 		"BatteryDispatch": {
 			"batt_custom_dispatch": [0.000000],

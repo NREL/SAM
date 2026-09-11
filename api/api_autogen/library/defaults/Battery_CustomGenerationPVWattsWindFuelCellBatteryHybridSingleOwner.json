@@ -267,9 +267,9 @@
 				[60.000000, 101.000000]
 			]
 		},
-		"Inverter": {
-		},
 		"Losses": {
+		},
+		"Inverter": {
 		},
 		"BatteryDispatch": {
 			"batt_custom_dispatch": [0.000000],

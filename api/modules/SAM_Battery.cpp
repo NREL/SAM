@@ -494,6 +494,12 @@ SAM_EXPORT void SAM_Battery_BatteryCell_cap_vs_temp_mset(SAM_table ptr, double* 
 	});
 }
 
+SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "dcoptimizer_loss", number);
+	});
+}
+
 SAM_EXPORT void SAM_Battery_Inverter_inv_cec_cg_eff_cec_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inv_cec_cg_eff_cec", number);
@@ -551,12 +557,6 @@ SAM_EXPORT void SAM_Battery_Inverter_inverter_count_nset(SAM_table ptr, double n
 SAM_EXPORT void SAM_Battery_Inverter_inverter_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "inverter_model", number);
-	});
-}
-
-SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "dcoptimizer_loss", number);
 	});
 }
 
@@ -2126,6 +2126,15 @@ SAM_EXPORT double* SAM_Battery_BatteryCell_cap_vs_temp_mget(SAM_table ptr, int* 
 	return result;
 }
 
+SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "dcoptimizer_loss", &result))
+		make_access_error("SAM_Battery", "dcoptimizer_loss");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Battery_Inverter_inv_cec_cg_eff_cec_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -2212,15 +2221,6 @@ SAM_EXPORT double SAM_Battery_Inverter_inverter_model_nget(SAM_table ptr, SAM_er
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inverter_model", &result))
 		make_access_error("SAM_Battery", "inverter_model");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "dcoptimizer_loss", &result))
-		make_access_error("SAM_Battery", "dcoptimizer_loss");
 	});
 	return result;
 }

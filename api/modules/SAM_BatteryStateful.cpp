@@ -26,6 +26,12 @@ SAM_EXPORT void SAM_BatteryStateful_Controls_dt_hr_nset(SAM_table ptr, double nu
 	});
 }
 
+SAM_EXPORT void SAM_BatteryStateful_Controls_includes_battery_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "includes_battery", number);
+	});
+}
+
 SAM_EXPORT void SAM_BatteryStateful_Controls_input_current_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "input_current", number);
@@ -748,6 +754,15 @@ SAM_EXPORT double SAM_BatteryStateful_Controls_dt_hr_nget(SAM_table ptr, SAM_err
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "dt_hr", &result))
 		make_access_error("SAM_BatteryStateful", "dt_hr");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_BatteryStateful_Controls_includes_battery_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "includes_battery", &result))
+		make_access_error("SAM_BatteryStateful", "includes_battery");
 	});
 	return result;
 }

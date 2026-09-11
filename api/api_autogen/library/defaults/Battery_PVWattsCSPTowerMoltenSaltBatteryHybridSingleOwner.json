@@ -1,0 +1,141 @@
+{
+	"defaults": {
+		"Simulation": {
+		},
+		"Lifetime": {
+			"analysis_period": 30
+		},
+		"BatterySystem": {
+			"batt_ac_dc_efficiency": 99,
+			"batt_ac_or_dc": 1,
+			"batt_computed_bank_capacity": 39998.9,
+			"batt_computed_series": 141,
+			"batt_computed_strings": 17730,
+			"batt_current_charge_max": 22162.5,
+			"batt_current_choice": 1,
+			"batt_current_discharge_max": 22162.5,
+			"batt_dc_ac_efficiency": 99,
+			"batt_dc_dc_efficiency": 99,
+			"batt_inverter_efficiency_cutoff": 90,
+			"batt_loss_choice": 0,
+			"batt_losses": [0.000000],
+			"batt_losses_charging": [0.000000],
+			"batt_losses_discharging": [0.000000],
+			"batt_losses_idle": [0.000000],
+			"batt_mass": 266659,
+			"batt_meter_position": 1,
+			"batt_power_charge_max_kwac": 10100.7,
+			"batt_power_charge_max_kwdc": 9999.72,
+			"batt_power_discharge_max_kwac": 9899.72,
+			"batt_power_discharge_max_kwdc": 9999.72,
+			"batt_replacement_capacity": 0,
+			"batt_replacement_option": 0,
+			"batt_replacement_schedule_percent": [0.000000],
+			"batt_surface_area": 156.592,
+			"en_batt": 1,
+			"en_wave_batt": 0
+		},
+		"SystemOutput": {
+		},
+		"Load": {
+		},
+		"BatteryCell": {
+			"LeadAcid_q10_computed": 82444.5,
+			"LeadAcid_q20_computed": 88650,
+			"LeadAcid_qn_computed": 53190,
+			"LeadAcid_tn": 1,
+			"batt_C_rate": 0.1,
+			"batt_Cp": 4183,
+			"batt_Qexp": 0.05,
+			"batt_Qfull": 5,
+			"batt_Qfull_flow": 88650,
+			"batt_Qnom": 4.75,
+			"batt_Vcut": 1.452,
+			"batt_Vexp": 2.05,
+			"batt_Vfull": 2.2,
+			"batt_Vnom": 2.04,
+			"batt_Vnom_default": 3.2,
+			"batt_calendar_a": 0.00266,
+			"batt_calendar_b": -7280,
+			"batt_calendar_c": 939,
+			"batt_calendar_choice": 0,
+			"batt_calendar_lifetime_matrix": [
+				[0.000000, 100.000000],
+				[3650.000000, 80.000000],
+				[7300.000000, 50.000000]
+			],
+			"batt_calendar_q0": 1.02,
+			"batt_chem": 0,
+			"batt_h_to_ambient": 5,
+			"batt_life_model": 0,
+			"batt_lifetime_matrix": [
+				[30.000000, 0.000000, 100.000000],
+				[30.000000, 1100.000000, 90.000000],
+				[30.000000, 1200.000000, 50.000000],
+				[50.000000, 0.000000, 100.000000],
+				[50.000000, 400.000000, 90.000000],
+				[50.000000, 500.000000, 50.000000],
+				[100.000000, 0.000000, 100.000000],
+				[100.000000, 100.000000, 90.000000],
+				[100.000000, 150.000000, 50.000000]
+			],
+			"batt_resistance": 0.1,
+			"batt_room_temperature_celsius": [20.000000],
+			"batt_voltage_choice": 0,
+			"batt_voltage_matrix": [
+				[0.000000, 1.200000],
+				[20.000000, 1.100000],
+				[40.000000, 1.050000],
+				[60.000000, 1.000000],
+				[80.000000, 0.950000],
+				[100.000000, 0.500000]
+			],
+			"cap_vs_temp": [
+				[-15.000000, 65.000000],
+				[0.000000, 85.000000],
+				[25.000000, 100.000000],
+				[40.000000, 104.000000]
+			]
+		},
+		"Losses": {
+		},
+		"Inverter": {
+		},
+		"BatteryDispatch": {
+		},
+		"SystemCosts": {
+			"om_batt_replacement_cost": [0.000000],
+			"om_batt_variable_cost": [0.000000],
+			"om_production_escal": 0,
+			"om_replacement_cost_escal": 0
+		},
+		"FuelCell": {
+		},
+		"PriceSignal": {
+		},
+		"Revenue": {
+		},
+		"AdjustmentFactors": {
+			"batt_adjust_constant": 0,
+			"batt_adjust_en_periods": 0,
+			"batt_adjust_en_timeindex": 0,
+			"batt_adjust_periods": [
+				[0.000000]
+			],
+			"batt_adjust_timeindex": [0.000000]
+		},
+		"ElectricityRates": {
+		},
+		"GridLimits": {
+		},
+		"HybridCosts": {
+			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [0.000000],
+			"om_batt_fixed_cost": [15.000000],
+			"om_batt_nameplate": 39998.9,
+			"om_capacity_escal": 0,
+			"om_fixed_escal": 0,
+			"total_installed_cost": 2.49993e+06
+		}
+	}
+}

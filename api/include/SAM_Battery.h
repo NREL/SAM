@@ -604,7 +604,7 @@ extern "C"
 	 * Set batt_initial_SOC: Initial state-of-charge [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=50
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_initial_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -628,7 +628,7 @@ extern "C"
 	 * Set batt_maximum_SOC: Maximum allowed state-of-charge [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=95
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_maximum_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -636,7 +636,7 @@ extern "C"
 	 * Set batt_minimum_SOC: Minimum allowed state-of-charge during nominal operation [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=15
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -644,7 +644,7 @@ extern "C"
 	 * Set batt_minimum_modetime: Minimum time at charge state [min]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=10
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_modetime_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -652,7 +652,7 @@ extern "C"
 	 * Set batt_minimum_outage_SOC: Minimum allowed state-of-charge during an outage [%]
 	 * options: None
 	 * constraints: None
-	 * required if: None
+	 * required if: ?=0
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_batt_minimum_outage_SOC_nset(SAM_table ptr, double number, SAM_error *err);
 
@@ -695,6 +695,19 @@ extern "C"
 	 * required if: None
 	 */
 	SAM_EXPORT void SAM_Battery_BatteryCell_cap_vs_temp_mset(SAM_table ptr, double* mat, int nrows, int ncols, SAM_error *err);
+
+
+	//
+	// Losses parameters
+	//
+
+	/**
+	 * Set dcoptimizer_loss: DC optimizer loss
+	 * options: None
+	 * constraints: None
+	 * required if: None
+	 */
+	SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_table ptr, double number, SAM_error *err);
 
 
 	//
@@ -783,19 +796,6 @@ extern "C"
 
 
 	//
-	// Losses parameters
-	//
-
-	/**
-	 * Set dcoptimizer_loss: DC optimizer loss
-	 * options: None
-	 * constraints: None
-	 * required if: None
-	 */
-	SAM_EXPORT void SAM_Battery_Losses_dcoptimizer_loss_nset(SAM_table ptr, double number, SAM_error *err);
-
-
-	//
 	// BatteryDispatch parameters
 	//
 
@@ -808,7 +808,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_custom_dispatch_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_cycle_cost: Input battery cycle degradaton penalty per year [$/cycle-kWh]
+	 * Set batt_cycle_cost: Input battery cycle degradation penalty per year [$/cycle-kWh]
 	 * options: length 1 or analysis_period, length 1 will be extended using inflation
 	 * constraints: None
 	 * required if: batt_cycle_cost_choice=1
@@ -816,7 +816,7 @@ extern "C"
 	SAM_EXPORT void SAM_Battery_BatteryDispatch_batt_cycle_cost_aset(SAM_table ptr, double* arr, int length, SAM_error *err);
 
 	/**
-	 * Set batt_cycle_cost_choice: Use SAM cost model for degradaton penalty or input custom via batt_cycle_cost [0/1]
+	 * Set batt_cycle_cost_choice: Use SAM cost model for degradation penalty or input custom via batt_cycle_cost [0/1]
 	 * options: 0=UseCostModel,1=InputCost
 	 * constraints: None
 	 * required if: ?=0
@@ -2135,6 +2135,13 @@ extern "C"
 
 
 	/**
+	 * Losses Getters
+	 */
+
+	SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err);
+
+
+	/**
 	 * Inverter Getters
 	 */
 
@@ -2157,13 +2164,6 @@ extern "C"
 	SAM_EXPORT double SAM_Battery_Inverter_inverter_count_nget(SAM_table ptr, SAM_error *err);
 
 	SAM_EXPORT double SAM_Battery_Inverter_inverter_model_nget(SAM_table ptr, SAM_error *err);
-
-
-	/**
-	 * Losses Getters
-	 */
-
-	SAM_EXPORT double SAM_Battery_Losses_dcoptimizer_loss_nget(SAM_table ptr, SAM_error *err);
 
 
 	/**

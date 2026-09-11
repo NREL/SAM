@@ -147,13 +147,12 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 		arg[0] = ssc_create() object name
 		arg[1] = compute module name
 		arg[2] = sim_type value
-		arg[3] = short_name of configopt in startup.lk
 
-		e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2, 'etes');
+		e.g. ssc_auto_exec(obj, 'etes_electric_resistance', 2);
 		*/
 
 		if (args.Count() != 3) {// specific to lookup function
-			errors->Add("Check equations script: " + lookup + " statement does not have 4 arguments.");
+			errors->Add("Check equations script: " + lookup + " statement does not have 3 arguments.");
 			return false;
 		}
 		// expand function for use in equations to parse inputs and outputs
@@ -205,7 +204,6 @@ bool EqnDatabase::PreProcessScript( wxString *text, wxArrayString* errors)
 					arg[0] = ssc_create() object name
 					arg[1] = compute module name
 					arg[2] = sim_type value
-					arg[3] = short_name of configopt in startup.lk
 					*/
 //					strReplace += "\tif (var_exists_hybrid(\"" + ssc_var_name + "\",\"" + short_name.Trim() + "\"))\n"; // SAM issue 1634
 					strReplace += "\tif (var_exists(\"" + ssc_var_name + "\"))\n"; // SAM issue 1634
