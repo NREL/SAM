@@ -207,6 +207,9 @@ int CaseEvaluator::CalculateAll(size_t ndxHybrid)
 		}
 	}
 
+	// Ty's project
+	m_case->HybridizeForEquations(ndxHybrid, *m_vt);
+
 	int nevals = EqnEvaluator::CalculateAll();
 	if ( nevals >= 0 ) nevals += nlibchanges;
 
@@ -1380,6 +1383,15 @@ bool Case::SetConfiguration(const wxString& tech, const wxString& fin, bool sile
 
 	} // end iterating over vartables
 
+	// after updating then update each vartable for ssc_auto_exec as necessary
+		// Ty's project 
+	for (size_t i_var = 0; i_var < m_config->Technology.size(); i_var++) {
+		HybridizeForEquations(i_var, m_vals[i_var]);
+	}
+
+
+
+
 	SendEvent(CaseEvent(CaseEvent::CONFIG_CHANGED, tech, fin));
 
 
@@ -1488,6 +1500,24 @@ void Case::VariablesChanged( const wxArrayString &list, size_t ndxHybrid)
 	Recalculate( list, ndxHybrid);
 }
 
+void Case::HybridizeForEquations(size_t ndxHybrid, VarTable& vt)
+{
+	// TyHybridProject - test merging values from other hybrid technologies into the current one for calculations
+	auto& vals = vt;
+	//	VarTable vals;
+	//	vals.Copy(m_vals[ndxHybrid]);
+		// specific to CSPTowerMoltenSalt = Technology[1] and Battery = Technology[2]
+	if ((m_config->Technology.size() > 1) && (m_config->Technology[ndxHybrid].Lower() == "csptowermoltensalt")) { // hybrid
+		for (size_t ndx = 0; ndx < m_config->Technology.size(); ndx++) {
+			if (ndx != ndxHybrid) {
+				vals.Merge(m_vals[ndx], false);
+			}
+			//		vals.Merge(m_vals[2], false);
+		}
+	}
+}
+
+
 int Case::Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_errors)
 {
 	if ( !m_config )
@@ -1498,21 +1528,8 @@ int Case::Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_erro
 	// SAM issue 1922
 	SamApp::Window()->SetEquationCase(this);
 
-
-	// TyHybridProject - test merging values from other hybrid technologies into the current one for calculations
-	auto& vals = m_vals[ndxHybrid];
-//	VarTable vals;
-//	vals.Copy(m_vals[ndxHybrid]);
-	// specific to CSPTowerMoltenSalt = Technology[1] and Battery = Technology[2]
-	if ((m_config->Technology.size() > 1) && (m_config->Technology[ndxHybrid].Lower() == "csptowermoltensalt")) { // hybrid
-		for (size_t ndx=0; ndx < m_config->Technology.size(); ndx++) {
-			if (ndx != ndxHybrid) {
-				vals.Merge(m_vals[ndx], false);
-			}
-//		vals.Merge(m_vals[2], false);
-		}
-	}
-	
+	// for ssc_auto_exec 
+	HybridizeForEquations(ndxHybrid, m_vals[ndxHybrid]);
 
 	CaseEvaluator eval(this, m_vals[ndxHybrid], m_config->Equations[ndxHybrid]);
 //	CaseEvaluator eval(this, vals, m_config->Equations[ndxHybrid]);

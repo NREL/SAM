@@ -569,9 +569,9 @@ bool Simulation::Setup()
 }
 
 bool Simulation::Prepare()
-{	
-	ConfigInfo *cfg = m_case->GetConfiguration();
-	if ( !cfg )
+{
+	ConfigInfo* cfg = m_case->GetConfiguration();
+	if (!cfg)
 	{
 		m_errors.Add("no valid configuration for this case");
 		return false;
@@ -594,7 +594,14 @@ bool Simulation::Prepare()
 			++it)
 			if (0 == m_inputs[ndx_hybrid].Get(it->first))
 				m_inputs[ndx_hybrid].Set(it->first, *(it->second));
+	}
+	for (size_t ndx_hybrid = 0; ndx_hybrid < nHybrids; ndx_hybrid++) {
+		// Ty's project
+		m_case->HybridizeForEquations(ndx_hybrid, m_inputs[ndx_hybrid]);
+	}
 
+	for (size_t ndx_hybrid = 0; ndx_hybrid < nHybrids; ndx_hybrid++) {
+	
 		// recalculate all the equations
 		CaseEvaluator eval(m_case, m_inputs[ndx_hybrid], m_case->Equations(ndx_hybrid));// update m_inputs for hybrids
 		int n = eval.CalculateAll(ndx_hybrid);

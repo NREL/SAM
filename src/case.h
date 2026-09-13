@@ -169,6 +169,9 @@ public:
 	int Recalculate( const wxString &trigger, size_t ndxHybrid, bool show_errors = true ); 
 	int Recalculate( const wxArrayString &triggers, size_t ndxHybrid);
 
+	// update Variables collections for hybrid configurations for ssc_auto_exec
+	void HybridizeForEquations(size_t ndxHybrid, VarTable &vt);
+
 	// recalculate all equations in this case
 	// CaseEvent is issued for all updated variables
 	// returns negative on error, or positive number indicating
