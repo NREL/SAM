@@ -1,0 +1,41 @@
+/*@
+
+<p>This macro uses the <a href="https://tough.lbl.gov/" target="_blank" rel="noopener noreferrer">TOUGH</a> code to simulate a geothermal reservoir and generate the "Goethermal Reservoir Model Input Table" on the "Geothermal Resource" page<br><br>
+
+For the desired reservoir:<br>
+<ul>
+<li>Enter the length in meters</li>
+<li>Enter the width in meters</li>
+<li>Enter the depth in meters</li>
+</ul>
+</p>
+<br><br>
+<i> Click "Run macro" to select the TOUGH executable and generate the Time, Temp, Pressure input table on the Geothermal Resource page. </i>
+
+@*/
+
+//@ name=length;type=number;label=Length(m):;value=900;
+//@ name=width;type=number;label=Width(m):;value=500;
+//@ name=depth;type=number;label=Depth(m):;value=3000;
+
+
+// controls user inputs and options, sets file as chosen weather file
+function main(){
+	// get input_file from pop-up window
+	input_file = choose_file( homedir(), 'Choose TOUGH executable file', '*.exe', false, false);
+	if (strlen(input_file) < 1){
+		outln("No file selected; exiting.");
+		exit;
+	}
+	hash = geothermal_reservoir_inputs();
+	if (hash{'success'}==1.0){
+		outln(hash{'results'});
+		set("reservoir_model_inputs", hash{'results'});
+		msgbox("Successfully set the Geothermal Reservoir Model Input Table on the Geothermal Resource page.");
+	}
+	else
+		outln("TOUGH simulation did not run and the Geothermal Reservoir Model Input Table on the Geothermal Resource page not updated.");
+}
+
+// turn off macro execution for import into test
+main();
