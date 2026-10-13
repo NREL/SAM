@@ -14,12 +14,6 @@ SAM_EXPORT int SAM_CbConstructionFinancing_execute(SAM_table data, int verbosity
 	return SAM_module_exec("cb_construction_financing", data, verbosity, err);
 }
 
-SAM_EXPORT void SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "total_installed_cost", number);
-	});
-}
-
 SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "const_per_interest_rate1", number);
@@ -140,13 +134,10 @@ SAM_EXPORT void SAM_CbConstructionFinancing_FinancialParameters_const_per_upfron
 	});
 }
 
-SAM_EXPORT double SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
-	double result;
+SAM_EXPORT void SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
-		make_access_error("SAM_CbConstructionFinancing", "total_installed_cost");
+		ssc_data_set_number(ptr, "total_installed_cost", number);
 	});
-	return result;
 }
 
 SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
@@ -325,6 +316,15 @@ SAM_EXPORT double SAM_CbConstructionFinancing_FinancialParameters_const_per_upfr
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "const_per_upfront_rate5", &result))
 		make_access_error("SAM_CbConstructionFinancing", "const_per_upfront_rate5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_CbConstructionFinancing_SystemCosts_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_CbConstructionFinancing", "total_installed_cost");
 	});
 	return result;
 }

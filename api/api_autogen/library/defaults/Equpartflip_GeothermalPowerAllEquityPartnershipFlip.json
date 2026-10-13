@@ -231,15 +231,13 @@
 			"pbi_uti_term": 0
 		},
 		"SystemOutput": {
-			"degradation": [0.000000],
+			"degradation": [0],
 			"gen": [0.000000],
 			"system_capacity": 32813.6
 		},
 		"ElectricityRates": {
 		},
 		"Recapitalization": {
-			"system_recapitalization_cost": 4.15803e+07,
-			"system_use_recapitalization": 1
 		},
 		"TimeOfDelivery": {
 			"system_use_lifetime_output": 1

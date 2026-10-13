@@ -46,8 +46,6 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"system_recapitalization_cost": 4.15803e+07,
-			"system_use_recapitalization": 1,
 			"total_installed_cost": 1.32084e+08
 		},
 		"LandLease": {
@@ -219266,7 +219264,7 @@
 		"ElectricityRates": {
 		},
 		"SystemOutput": {
-			"degradation": [0.000000],
+			"degradation": [0],
 			"gen": [0.000000],
 			"system_capacity": 32813.6
 		},

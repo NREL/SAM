@@ -1,7 +1,7 @@
 {
     "Name": "Geothermal Costs",
-    "Width": 883.0,
-    "Height": 2351.0,
+    "Width": 905.0,
+    "Height": 2582.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -283,7 +283,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 75.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -523,7 +523,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1081,7 +1081,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 624.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1143,7 +1143,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1577,7 +1577,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1825,7 +1825,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3650,6 +3650,89 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "geotherm.cost.expl_lump_sum"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 99.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 495.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "geotherm.cost.expl_multiplier"
                 },
                 "X": {
@@ -4648,11 +4731,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 192.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1704.0
+                    "Integer": 1707.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5730,7 +5813,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 624.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5771,7 +5854,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 624.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5812,7 +5895,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 624.0
+                    "Integer": 621.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -5853,7 +5936,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6268,7 +6351,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6351,7 +6434,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 684.0
+                    "Integer": 681.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6430,11 +6513,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 192.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1674.0
+                    "Integer": 1677.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6596,7 +6679,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 531.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -8089,7 +8172,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 573.0
+                    "Integer": 474.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -8172,11 +8255,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 234.0
+                    "Integer": 192.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1788.0
+                    "Integer": 1791.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8342,7 +8425,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 54.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8379,7 +8462,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 552.0
+                    "Integer": 549.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8564,7 +8647,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2307.0
+                    "Integer": 2301.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8601,7 +8684,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 2280.0
+                    "Integer": 2277.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -8717,7 +8800,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 588.0
+                    "Integer": 531.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -8800,7 +8883,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 768.0
+                    "Integer": 711.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -9086,7 +9169,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 693.0
+                    "Integer": 636.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -9214,7 +9297,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9404,7 +9487,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 102.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -9644,7 +9727,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -9706,7 +9789,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 738.0
+                    "Integer": 681.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -9768,11 +9851,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 348.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1788.0
+                    "Integer": 1791.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9830,11 +9913,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 390.0
+                    "Integer": 348.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1701.0
+                    "Integer": 1704.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -9954,11 +10037,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 399.0
+                    "Integer": 333.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1671.0
+                    "Integer": 1674.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -10268,7 +10351,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 603.0
+                    "Integer": 600.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -10346,7 +10429,7 @@
                 },
                 "Items": {
                     "Type": 6.0,
-                    "StringList": "1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024"
+                    "StringList": "1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022"
                 },
                 "Selection": {
                     "Type": 3.0,
@@ -10367,7 +10450,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 768.0
+                    "Integer": 711.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -10816,19 +10899,6 @@
         }
     },
     "VarDatabase": {
-        "baseline_cost": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Baseline cost",
-            "Units": "$/kW",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 10.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "construction_ppi": {
             "Version": 4.0,
             "Type": 1.0,
@@ -11128,19 +11198,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "geotherm.cost.epc.nonfixed": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "geotherm.cost.epc.percent": {
             "Version": 4.0,
             "Type": 1.0,
@@ -11177,6 +11234,19 @@
             "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "geotherm.cost.expl_lump_sum": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Expl Lump Sum",
+            "Units": "$",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.0,
+            "UIObject": "Default",
             "sscVariableName": "",
             "sscVariableValue": ""
         },
@@ -11401,19 +11471,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "geotherm.cost.num_pumps": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "# of Pumps Required",
-            "Units": " ",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "geotherm.cost.other_per_pump": {
             "Version": 4.0,
             "Type": 1.0,
@@ -11578,19 +11635,6 @@
             "Group": "Geothermal Capital Costs",
             "IndexLabels": "",
             "Flags": 0.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Numeric",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "geotherm.cost.plm.nonfixed": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 8.0,
             "DefaultValue": 0.0,
             "UIObject": "Numeric",
             "sscVariableName": "",
@@ -12168,19 +12212,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "geotherm.cost.total_installed_millions": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": "Total Installed Cost",
-            "Units": "$M",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "geotherm.cost.total_surface_equipment_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -12265,7 +12296,7 @@
             "Label": "PPI Base Year",
             "Units": " ",
             "Group": "Geothermal Capital Costs",
-            "IndexLabels": "1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024",
+            "IndexLabels": "1995|1996|1997|1998|1999|2000|2001|2002|2003|2004|2005|2006|2007|2008|2009|2010|2011|2012|2013|2014|2015|2016|2017|2018|2019|2020|2021|2022",
             "Flags": 3.0,
             "DefaultValue": 0.0,
             "UIObject": "Choice",
@@ -12363,32 +12394,6 @@
             "sscVariableName": "",
             "sscVariableValue": ""
         },
-        "system_recapitalization_cost": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 0.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
-        "system_use_recapitalization": {
-            "Version": 4.0,
-            "Type": 1.0,
-            "Label": " ",
-            "Units": " ",
-            "Group": "Geothermal Capital Costs",
-            "IndexLabels": "",
-            "Flags": 8.0,
-            "DefaultValue": 1.0,
-            "UIObject": "Default",
-            "sscVariableName": "",
-            "sscVariableValue": ""
-        },
         "total_direct_cost": {
             "Version": 4.0,
             "Type": 1.0,
@@ -12443,466 +12448,170 @@
         }
     },
     "Equations": [
-        "equations{ 'geotherm.cost.plm.total' } = define() {",
-        "\treturn ${geotherm.cost.plm.fixed}+${geotherm.cost.plm.nonfixed}; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.prod_req' } = define() {",
-        "\treturn ${num_wells_getem}; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.pumping.amount' } = define() {",
-        "\treturn  ?${geotherm.cost.pumping.calc}[",
-        "\t\t${geotherm.cost.pumping.amount_specified},\r",
-        "\t\t${geotherm.cost.pumps_total}+${geotherm.cost.surf_total}+${indirect_pump_cost}\r",
-        "\t]; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.prod_inj_drill' } = define() {",
-        "\treturn  ${geotherm.cost.prod_drill} + ${geotherm.cost.inj_drill}; \r",
-        "};",
-        "",
-        "/*",
-        "equations{ 'geotherm.cost.prod_wells_drilled' } = define() {",
-        "\tnum_wells = ${geotherm.cost.prod_req} - ${geotherm.cost.confirm_wells_num};\r",
-        "\tif (num_wells < 0) num_wells = 0;\r",
-        "\treturn num_wells;\r",
-        "};",
-        "*/",
-        "",
-        "equations{ 'total_indirect_cost' } = define() {",
-        "\treturn  ?${geotherm.cost.indirect.calc}[",
-        "\t\t${geotherm.cost.indirect.amount_specified},\r",
-        "\t\t${geotherm.cost.epc.total}+${geotherm.cost.plm.total}+${geotherm.cost.sales_tax.total}\r",
-        "\t]; \r",
-        "};",
-        "/*",
-        "equations{ 'geotherm.cost.pumps_total' } = define() {",
-        "\treturn ${geotherm.cost.pump_total_per_pump} * ${geotherm.cost.num_pumps} + ${geotherm.cost.pump_fixed}",
-        "\t\t+ ${prod_pump_cost} + ${inj_pump_cost}; };\r",
-        "*/\r",
-        "",
-        "equations{ 'total_direct_cost' } = define() {",
-        "\treturn ${geotherm.cost.contingency}+${geotherm.cost.capital_total}; };",
-        "",
-        "equations{ 'geotherm.cost.drilling.amount' } = define() {",
-        "\treturn  ?${geotherm.cost.drilling.calc}[",
-        "\t\t${geotherm.cost.drilling.amount_specified}, /* =0 user specified */",
-        "\t\t${geotherm.cost.drilling.amount_calc}]; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.prod_inj_total' } = define() {",
-        "\treturn  ${geotherm.cost.prod_inj_drill} + ${geotherm.cost.prod_inj_non_drill}; };",
-        "",
-        "equations{ 'geotherm.cost.recap' } = define() {",
-        "\treturn  ?${geotherm.cost.recap_use_calc}[",
-        "\t\t${geotherm.cost.recap_specified}, /* =0 user specified */",
-        "\t\t${geotherm.cost.conf_drill} /* =1 use calculated */",
-        "\t\t+ ${geotherm.cost.prod_inj_drill}",
-        "\t\t+ ${geotherm.cost.surf_total}",
-        "\t\t+ ${geotherm.cost.pumps_total}]; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.prod_num_wells' } = define() {",
-        "//\treturn  ${geotherm.cost.confirm_wells_num} / (1 - (1 - ${stim_success_rate}/100) * (1 - ${drilling_success_rate}/100)); };\r",
-        "\t//return  ${geotherm.cost.prod_wells_drilled} / (1 - (1 - ${stim_success_rate}/100) * (1 - ${drilling_success_rate}/100)); \r",
-        "\treturn  ${geotherm.cost.prod_wells_drilled};\r",
+        "// -- Set display values from outputs of ssc auto exec\r",
+        "equations{ '$MIMO$ cmod_geothermal_costs'} = define() {\r",
+        "\r",
+        "\t${geotherm.cost.plant_per_kW} = ${baseline_cost_calc};\r",
+        "\t${geotherm.cost.pumps_total} = ${total_pump_cost_calc};\r",
+        "\r",
+        "\t${geotherm.cost.surf_total} = ${total_gathering_cost_calc};\r",
+        "\t${geotherm.cost.pump_cost_install} = ${pump_cost_install_calc};\r",
+        "\t${geotherm.cost.pump_only_cost} = ${pump_only_cost_calc};\r",
+        "\t${geotherm.cost.prod_pump_cost_per_well} = ${prod_pump_cost_per_well_calc};\r",
+        "\t${geotherm.cost.inj_pump_cost_per_pump} = ${inj_pump_cost_per_pump_calc};\r",
+        "\t${inj_num_pumps} = ${inj_num_pumps_calc};\r",
+        "\r",
+        "\t${prod_pump_cost} = ${prod_pump_cost_calc};\r",
+        "\t${inj_pump_cost} = ${inj_pump_cost_calc};\r",
+        "\t${indirect_pump_cost} = ${indirect_pump_cost_calc};\r",
+        "\t${geotherm.cost.total_surface_equipment_cost} = ${total_surface_equipment_cost_calc};\r",
+        "\r",
+        "\t${geotherm.cost.surf_per_well} = ${piping_cost_per_well_calc};\r",
+        "\t${geotherm.cost.surf_num_wells} = ${field_gathering_num_wells_calc};\r",
+        "\t${geotherm.cost.stim_per_well} = ${stim_cost_per_well_calc};\r",
+        "\t${geotherm.cost.stim_total} = ${stim_total_cost_calc};\r",
+        "\t\r",
+        "\t${geotherm.cost.expl_total} = ${expl_total_cost_calc};\r",
+        "\t${geotherm.cost.expl_drill} = ${expl_drilling_cost_calc};\r",
+        "\t${geotherm.cost.conf_total} = ${conf_total_cost_calc};\r",
+        "\t${geotherm.cost.conf_drill} = ${conf_drilling_cost_calc};\r",
+        "\r",
+        "\t${geotherm.cost.prod_per_well} = ${prod_well_cost_calc};\r",
+        "\t${geotherm.cost.prod_drill} = ${prod_total_cost_calc};\r",
+        "\t${geotherm.cost.inj_per_well} = ${inj_well_cost_calc};\t\r",
+        "\t${geotherm.cost.inj_drill} = ${inj_total_cost_calc};\r",
+        "\t${geotherm.cost.drilling.amount_calc} = ${total_drilling_cost_calc};\r",
         "};\r",
-        "",
-        "equations{ 'geotherm.cost.plm.nonfixed' } = define() {",
-        "\treturn ${total_direct_cost}*${geotherm.cost.plm.percent}/100; };",
-        "",
-        "equations{ 'geotherm.cost.num_pumps' } = define() {",
-        "\tif (${conversion_type} == 1) {\r",
-        "\t\treturn 0;\r",
-        "\t}\r",
-        "\telse {\r",
-        "\t\treturn ${geotherm.cost.prod_req}; \r",
-        "\t}\r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.pump_size' } = define() {",
-        "\treturn ${pump_size_hp}; };",
-        "",
-        "equations{ 'geotherm.cost.sales_tax.total' } = define() {",
-        "\treturn ${geotherm.cost.sales_tax.value}/100*${total_direct_cost}*${geotherm.cost.sales_tax.percent}/100; };",
-        "",
-        "equations{ 'geotherm.cost.stim_num_wells' } = define() {",
-        "\treturn ${geotherm.cost.inj_num_wells}; };",
-        "/*",
-        "equations{ 'geotherm.cost.surf_total' } = define() {",
-        "\treturn  ${geotherm.cost.surf_non_drill}; };",
-        "*/",
-        "equations{ 'geotherm.cost.installed_per_capacity' } = define() {",
-        "\treturn ${total_installed_cost}/${geotherm.net_output}/1000; };",
-        "",
-        "equations{ 'geotherm.cost.plant_total' } = define() ",
-        "{",
-        "\tif (${geotherm.cost.plant_auto_estimate} == 0){",
-        "\t\treturn  ${geotherm.cost.plant_per_kW_input} * ${geotherm.cost.plant_size}; ",
-        "\t}",
-        "\telse {",
-        "\t\treturn  ${geotherm.cost.plant_per_kW} * ${geotherm.cost.plant_size}; ",
-        "\t}",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.epc.total' } = define() {",
-        "\treturn ${geotherm.cost.epc.fixed}+${geotherm.cost.epc.nonfixed}; };",
-        "",
-        "equations{ 'geotherm.cost.plant_size' } = define() {",
-        "\treturn  ${gross_output} * 1000; };",
-        "",
-        "equations{ 'geotherm.cost.inj_num_wells' } = define() {",
-        "\treturn  ${geotherm.cost.inj_wells_drilled}; \r",
-        "\t/*\r",
-        "\tif (${resource_type} == 0) ",
-        "\t    return ${num_wells_getem_inj} / (${drilling_success_rate}/100);\r",
-        "\telse \r",
-        "\t\treturn ${num_wells_getem_inj} / (1 - (1 - ${drilling_success_rate}/100) * (1 - ${stim_success_rate}/100));",
-        "\t*/\r",
-        "};\t",
-        "",
-        "equations{ 'geotherm.cost.contingency' } = define() {",
-        "\treturn ${geotherm.cost.contingency_percent}/100*(${geotherm.cost.capital_total}-",
-        "\t\t${geotherm.cost.prod_inj_drill}); };",
-        "",
-        "equations{ 'geotherm.cost.pump_depth' } = define() {",
-        "\treturn ${pump_depth}; };",
-        "",
-        "equations{ 'geotherm.cost.expl_per_well' } = define() {",
-        "\treturn  ${geotherm.cost.expl_multiplier} * ${geotherm.cost.prod_per_well}; };",
-        "",
-        "equations{ 'geotherm.cost.confirm_wells_num' } = define() {",
-        "\treturn  ${geotherm.cost.conf_num_wells} * (${geotherm.cost.confirm_wells_percent}/100); };",
-        "",
-        "equations{ 'geotherm.cost.epc.nonfixed' } = define() {",
-        "\treturn ${total_direct_cost}*${geotherm.cost.epc.percent}/100; };",
-        "",
+        "\r",
+        "equations{ 'geotherm.cost.prod_req' } = define() {\r",
+        "\treturn ${num_wells_calc}; \r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.prod_num_wells' } = define() {\r",
+        "\treturn  ${num_wells_getem_prod_drilled_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.prod_inj_drill' } = define() {\r",
+        "\treturn ${sum_prod_inj_total_cost_calc};\t//  ${geotherm.cost.prod_drill} + ${geotherm.cost.inj_drill}; \r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.prod_inj_total' } = define() {\r",
+        "\treturn ${prod_inj_total_cost_calc};\t//  ${geotherm.cost.prod_inj_drill} + ${geotherm.cost.prod_inj_non_drill}; };\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.pump_size' } = define() {\r",
+        "\treturn ${pump_size_hp_calc}; };\r",
+        "\r",
+        "equations{ 'geotherm.cost.inj_num_wells' } = define() {\r",
+        "\treturn  ${num_wells_getem_inj_drilled_calc}; \r",
+        "};\t\r",
+        "\r",
+        "equations{ 'geotherm.cost.stim_num_wells' } = define() {\r",
+        "\treturn ${num_wells_getem_inj_drilled_calc}; };\r",
+        "\r",
+        "equations{ 'geotherm.cost.pump_depth' } = define() {\r",
+        "\treturn ${pump_depth_ft_calc}; };\r",
+        "\r",
+        "equations{ 'geotherm.cost.prod_inj_num_wells' } = define() {\r",
+        "\treturn ${num_wells_getem_prod_inj_sum_calc};\t\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.expl_per_well' } = define() {\r",
+        "\treturn ${expl_cost_per_well_calc}; \t//  ${geotherm.cost.expl_multiplier} * ${geotherm.cost.prod_per_well}; };\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.plant_total' } = define() {\r",
+        "\treturn ${total_plant_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.plant_size' } = define() {\r",
+        "\treturn  ${gross_cost_output_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.confirm_wells_num' } = define() {\r",
+        "\treturn ${num_confirm_wells_to_production_calc}; \r",
+        "}; \r",
+        "\r",
+        "equations{'exploration_wells_production'} = define() {\r",
+        "\treturn ${num_confirm_wells_to_production_calc};\r",
+        "};\r",
+        "\r",
         "equations{ 'geotherm.cost.plant_total.amount' } = define() {",
-        "\treturn  ?${geotherm.cost.plant_total.calc}[",
-        "\t\t${geotherm.cost.plant_total.amount_specified},\r",
-        "\t\t${geotherm.cost.plant_total}]; \r",
-        "};",
-        "",
-        "",
-        "equations{ 'total_installed_cost' } = define() {",
-        "\treturn ${total_direct_cost}+${total_indirect_cost}; \r",
-        "};",
-        "",
-        "",
-        "equations{ 'geotherm.cost.capital_total' } = define() {",
-        "\treturn  ${geotherm.cost.drilling.amount} + ${geotherm.cost.plant_total.amount} + ${geotherm.cost.pumping.amount}; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.prod_inj_num_wells' } = define() {",
-        "\treturn  ${geotherm.cost.prod_num_wells} + ${geotherm.cost.inj_num_wells}; \r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.sales_tax.value' } = define() {",
+        "\treturn ${total_plant_cost_used_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.drilling.amount' } = define() {\r",
+        "\treturn ${total_drilling_cost_used_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.pumping.amount' } = define() {\r",
+        "\treturn ${total_pump_gathering_cost_used_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.recap' } = define() {\r",
+        "\treturn ${system_recapitalization_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.capital_total' } = define() {\r",
+        "\treturn ${total_capital_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.contingency' } = define() {\r",
+        "\treturn ${contingency_cost_calc}; \r",
+        "};\r",
+        "\r",
+        "equations{ 'total_direct_cost' } = define() {\r",
+        "\treturn ${total_direct_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.epc.total' } = define() {\r",
+        "\treturn ${epc_total_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.plm.total' } = define() {\r",
+        "\treturn ${plm_total_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.sales_tax.total' } = define() {\r",
+        "\treturn ${sales_tax_cost_calc};\r",
+        "};\r",
+        "\r",
+        "// sales tax value is only a UI indicator\r",
+        "// the sales tax rate is calculated in the geo cost cmod\r",
+        "// using geo_financial_model\r",
+        "equations{ 'geotherm.cost.sales_tax.value' } = define() {\r",
         "\tif (financing() != \"LCOE Calculator\") {\r",
         "\t\treturn ${sales_tax_rate}; \r",
         "\t}\r",
         "\telse {\r",
         "\t\treturn 0;\r",
         "\t}\r",
-        "};",
-        "",
-        "equations{ 'geotherm.cost.total_installed_millions' } = define() {",
-        "\treturn ${total_installed_cost}/1000000; \r",
-        "};",
-        "",
-        "equations{ 'system_recapitalization_cost' } = define() {",
-        "\treturn ${geotherm.cost.recap}; \r",
-        "};",
-        "\t",
-        "equations{ '$MIMO$ cmod_geothermal_costs'} = define() {",
-        "\t\tgeothermal = ssc_create();\t",
-        "\t\tssc_var( geothermal, 'ui_calculations_only', 0);",
-        "\t\tssc_var( geothermal, 'adjust_constant', 0.0);",
-        "\t\tssc_var( geothermal, 'file_name', ${file_name});",
-        "\t\tssc_var( geothermal, 'resource_potential', ${resource_potential});",
-        "\t\tssc_var( geothermal, 'resource_type', ${resource_type} );   // INTEGER",
-        "\t\tif (${resource_temp} < 374) {\r",
-        "\t\t\tssc_var( geothermal, 'resource_temp', ${resource_temp} );\r",
-        "\t\t}\r",
-        "\t\telse {\r",
-        "\t\t\tssc_var( geothermal, 'resource_temp', ${resource_temp_old} );\r",
-        "\t\t}",
-        "\t\tssc_var( geothermal, 'resource_depth', ${resource_depth} );",
-        "\t\tssc_var( geothermal, 'dt_prod_well', ${dt_prod_well} );\t",
-        "\t\tssc_var( geothermal, 'prod_well_choice', ${prod_well_choice} );\t\t\t\t\t\t\t\t\t\t\t\t",
-        "\t\t// Other inputs\t\t\t\t\t\t\t    ",
-        "\t\tssc_var( geothermal, 'geothermal_analysis_period', ${geothermal_analysis_period} ); // INTEGER",
-        "\t\tssc_var( geothermal, 'model_choice', ${model_choice} );    // INTEGER",
-        "\t\tssc_var( geothermal, 'geotherm.cost.inj_prod_well_ratio', ${geotherm.cost.inj_prod_well_ratio});",
-        "\t\tssc_var( geothermal, 'drilling_success_rate', ${drilling_success_rate});\r",
-        "\t\tssc_var( geothermal, 'stim_success_rate', ${stim_success_rate});\r",
-        "\t\tssc_var( geothermal, 'failed_prod_flow_ratio', ${failed_prod_flow_ratio});\r",
-        "\t\tssc_var( geothermal, 'stimulation_type', ${stimulation_type});\r",
-        "\t\t// geothermal plant and equipment\t\t    ",
-        "\t\tssc_var( geothermal, 'nameplate', ${nameplate} );",
-        "\t\tssc_var( geothermal, 'analysis_type', ${analysis_type} );   //INTEGER",
-        "\t\tssc_var( geothermal, 'num_wells', ${num_wells} );",
-        "\t\tssc_var( geothermal, 'num_wells_getem', ${num_wells_getem});",
-        "\t\tssc_var( geothermal, 'conversion_type', ${conversion_type} ); // INTEGER",
-        "\t\tssc_var( geothermal, 'ppi_base_year', ${ppi_base_year} );",
-        "\t\tssc_var( geothermal, 'plant_efficiency_input', ${plant_efficiency_input} );",
-        "\t\tssc_var( geothermal, 'conversion_subtype', ${conversion_subtype} ); // INTEGER",
-        "\t\tif (${resource_type} == 0)",
-        "\t\t\tssc_var( geothermal, 'decline_type', 0 );       // INTEGER",
-        "\t\telse if (${conversion_type} == 0) ",
-        "\t\t\tssc_var( geothermal, 'decline_type', ${decline_type});",
-        "\t\telse ",
-        "\t\t\tssc_var( geothermal, 'decline_type', 0);",
-        "\t\tssc_var( geothermal, 'temp_decline_rate', ${temp_decline_rate} );",
-        "\t\tssc_var( geothermal, 'temp_decline_max', ${temp_decline_max} );",
-        "\t\tssc_var( geothermal, 'wet_bulb_temp', ${wet_bulb_temp} );\r",
-        "\t\tssc_var( geothermal, 'use_weather_file_conditions', ${use_weather_file_conditions} );",
-        "\t\tssc_var( geothermal, 'ambient_pressure', ${ambient_pressure} );",
-        "\t\tssc_var( geothermal, 'well_flow_rate', ${well_flow_rate} );",
-        "\t\tssc_var( geothermal, 'pump_efficiency', ${pump_efficiency} );",
-        "\t\tssc_var( geothermal, 'delta_pressure_equip', ${delta_pressure_equip} );",
-        "\t\tssc_var( geothermal, 'excess_pressure_pump', ${excess_pressure_pump} );",
-        "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welltype', ${geotherm.cost.inj_cost_curve_welltype} );",
-        "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welltype', ${geotherm.cost.prod_cost_curve_welltype} );",
-        "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve_welldiam', ${geotherm.cost.inj_cost_curve_welldiam} );\r",
-        "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve_welldiam', ${geotherm.cost.prod_cost_curve_welldiam} );\r",
-        "\t\tssc_var( geothermal, 'geotherm.cost.inj_cost_curve', ${geotherm.cost.inj_cost_curve});\r",
-        "\t\tssc_var( geothermal, 'geotherm.cost.prod_cost_curve', ${geotherm.cost.prod_cost_curve});",
-        "\t\tssc_var( geothermal, 'design_temp', ${design_temp} );",
-        "\t\tssc_var( geothermal, 'specify_pump_work', ${specify_pump_work} ); // INTEGER",
-        "\t\tssc_var( geothermal, 'specified_pump_work_amount', ${specified_pump_work_amount} );",
-        "\t\t\r",
-        "\t\tssc_var( geothermal, 'allow_reservoir_replacements', ${allow_reservoir_replacements});",
-        "\t\t// detailed geothermal inputs",
-        "\t\tssc_var( geothermal, 'rock_thermal_conductivity', ${rock_thermal_conductivity} );",
-        "\t\tssc_var( geothermal, 'rock_specific_heat', ${rock_specific_heat} );",
-        "\t\tssc_var( geothermal, 'rock_density', ${rock_density} );",
-        "\t\tif (${resource_type} != 1 && ${reservoir_pressure_change_type} == 1) {",
-        "\t\t\tssc_var( geothermal, 'reservoir_pressure_change_type', 0 ); // INTEGER",
-        "\t\t\tmsgbox('Fracture flow calculations can only be used with EGS resource. Please check the inputs on the Geothermal Resource page. The enter change in reservoir option is being used currently.');",
-        "\t\t}",
-        "\t\telse ",
-        "\t\t\tssc_var( geothermal, 'reservoir_pressure_change_type', ${reservoir_pressure_change_type} ); // INTEGER",
-        "\t\t\r",
-        "\t\tssc_var( geothermal, 'reservoir_pressure_change', ${reservoir_pressure_change} );",
-        "\t\tssc_var( geothermal, 'injectivity_index', ${injectivity_index} );\r",
-        "\t\tssc_var( geothermal, 'exploration_wells_production', ${geotherm.cost.confirm_wells_num} );\r",
-        "\t\tssc_var( geothermal, 'reservoir_width', ${reservoir_width} );",
-        "\t\tssc_var( geothermal, 'reservoir_height', ${reservoir_height} );",
-        "\t\tssc_var( geothermal, 'reservoir_permeability', ${reservoir_permeability} );\t\t",
-        "\t\tssc_var( geothermal, 'inj_prod_well_distance', ${inj_prod_well_distance} );\t\t",
-        "\t\tssc_var( geothermal, 'subsurface_water_loss', ${subsurface_water_loss} ); \t\t",
-        "\t\tssc_var( geothermal, 'fracture_aperature', ${fracture_aperature} );",
-        "\t\tssc_var( geothermal, 'fracture_width', ${fracture_width} );",
-        "\t\tssc_var( geothermal, 'fracture_length', ${fracture_length} );",
-        "\t\tssc_var( geothermal, 'fracture_spacing', ${fracture_spacing} );",
-        "\t\tssc_var( geothermal, 'num_fractures', ${num_fractures} ); // INTEGER",
-        "\t\tssc_var( geothermal, 'fracture_angle', ${fracture_angle} );",
-        "\t\tssc_var( geothermal, 'reservoir_model_inputs', ${reservoir_model_inputs} );",
-        "",
-        "\t\t// temp input for testing",
-        "\t\tssc_var( geothermal, 'hr_pl_nlev', ${hr_pl_nlev} ); // INTEGER",
-        "\t\t",
-        "\t\t//power block parameters needed but not on power block SAM input page",
-        "\t\tssc_var( geothermal, 'T_htf_cold_ref', ${T_htf_cold_ref});",
-        "\t\tssc_var( geothermal, 'T_htf_hot_ref', ${T_htf_hot_ref});",
-        "\t\tssc_var( geothermal, 'HTF', ${HTF});",
-        "\t\t",
-        "\t\t//power block input parameters",
-        "\t\tssc_var( geothermal, 'P_boil', ${P_boil});",
-        "\t\tssc_var( geothermal, 'eta_ref', ${eta_ref});",
-        "\t\tssc_var( geothermal, 'q_sby_frac', ${q_sby_frac});",
-        "\t\tssc_var( geothermal, 'startup_frac', ${startup_frac});",
-        "\t\tssc_var( geothermal, 'startup_time', ${startup_time});",
-        "\t\tssc_var( geothermal, 'pb_bd_frac', ${pb_bd_frac});",
-        "\t\tssc_var( geothermal, 'T_amb_des', ${T_amb_des});",
-        "\t\tssc_var( geothermal, 'CT', ${CT});",
-        "\t\tssc_var( geothermal, 'dT_cw_ref', ${dT_cw_ref});",
-        "\t\tssc_var( geothermal, 'T_approach', ${T_approach});",
-        "\t\tssc_var( geothermal, 'T_ITD_des', ${T_ITD_des});",
-        "\t\tssc_var( geothermal, 'P_cond_ratio', ${P_cond_ratio});",
-        "\t\tssc_var( geothermal, 'P_cond_min', ${P_cond_min});",
-        "\t\tssc_var( geothermal, 'hc_ctl1', ${hc_ctl1});",
-        "\t\tssc_var( geothermal, 'hc_ctl2', ${hc_ctl2});",
-        "\t\tssc_var( geothermal, 'hc_ctl3', ${hc_ctl3});",
-        "\t\tssc_var( geothermal, 'hc_ctl4', ${hc_ctl4});",
-        "\t\tssc_var( geothermal, 'hc_ctl5', ${hc_ctl5});",
-        "\t\tssc_var( geothermal, 'hc_ctl6', ${hc_ctl6});",
-        "\t\tssc_var( geothermal, 'hc_ctl7', ${hc_ctl7});",
-        "\t\tssc_var( geothermal, 'hc_ctl8', ${hc_ctl8});",
-        "\t\tssc_var( geothermal, 'hc_ctl9', ${hc_ctl9});",
-        "\t\tssc_var( geothermal, 'hybrid_dispatch_schedule', ${hybrid_dispatch_schedule});",
-        "\t\tresult = ssc_exec(geothermal, 'geothermal');",
-        "\t\tif ( typeof(result) != 'number' && result != 0 )\r",
-        "\t\t{\r",
-        "\t\t\tmsgbox('geothermal mimo error, result =' + result); \r",
-        "\t\t}",
-        "\t\tif (ssc_exec(geothermal, 'geothermal') == 0) ",
-        "\t\t{",
-        "\t\t\t//geothermal = ssc_create('geothermal_geothermals');\r",
-        "\t\t\t",
-        "\t\t\tconversion_type = ${conversion_type};",
-        "\t\t\tppi_base_year = ${ppi_base_year};",
-        "\t\t\t//gross_output = ${geotherm.cost.plant_size};",
-        "\t\t\tdesign_temp = ssc_var(geothermal, \"design_temp\");",
-        "\t\t\tsecond_law_eff = ssc_var(geothermal, \"eff_secondlaw\");\r",
-        "\t\t\tprod_wells_failed = ssc_var(geothermal, 'num_wells_getem_prod_failed');",
-        "\t\t\t//ssc_var(geothermal,'gross_output', gross_output);",
-        "\t\t\tssc_var(geothermal,'design_temp', design_temp);",
-        "\t\t\tssc_var(geothermal,'eff_secondlaw', second_law_eff);",
-        "\t\t\tssc_var(geothermal, \"conversion_type\", conversion_type);\r",
-        "\t\t\tssc_var(geothermal, 'calc_drill_costs', 1.0); //Always set to 1\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.pump_fixed', ${geotherm.cost.pump_fixed});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.pump_per_foot', ${geotherm.cost.pump_per_foot});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.pump_depth', ${geotherm.cost.pump_depth});\r",
-        "\t\t\t//ssc_var(geothermal, 'geotherm.cost.prod_req', ${geotherm.cost.prod_req});\r",
-        "\t\t\tssc_var(geothermal, 'pump_size_hp', ${pump_size_hp});\r",
-        "\t\t\tssc_var(geothermal, 'inj_pump_hp', ${inj_pump_hp});\r",
-        "\t\t\t\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.stim_non_drill', ${geotherm.cost.stim_non_drill});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.expl_non_drill', ${geotherm.cost.expl_non_drill});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.conf_non_drill', ${geotherm.cost.conf_non_drill});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.expl_multiplier', ${geotherm.cost.expl_multiplier});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.conf_multiplier', ${geotherm.cost.conf_multiplier});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.expl_num_wells', ${geotherm.cost.expl_num_wells});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.conf_num_wells', ${geotherm.cost.conf_num_wells});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.expl_lump_sum', 0);\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.pump_fixed', ${geotherm.cost.pump_fixed});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.pump_per_foot', ${geotherm.cost.pump_per_foot});\r",
-        "\t\t\tssc_var(geothermal, 'geotherm.cost.pump_casing_cost', ${geotherm.cost.pump_casing_cost});\r",
-        "\t\t\t\r",
-        "\t\t\tssc_var(geothermal, 'pump_depth_ft', ${pump_depth});\r",
-        "\t\t\t//ssc_var(geothermal, 'geotherm.cost.prod_wells_drilled', ${geotherm.cost.prod_wells_drilled});\r",
-        "\t\t\t//ssc_var(geothermal, 'geotherm.cost.inj_wells_drilled', ${geotherm.cost.inj_wells_drilled});\r",
-        "\t\t\t//ssc_var(geothermal, 'geotherm.cost.prod_wells_failed', prod_wells_failed);",
-        "\t\t\t",
-        "\t\t\t//Flash",
-        "\t\t\tif (${conversion_type})",
-        "\t\t\t{",
-        "\t\t\t\tqRejectTotal = ssc_var(geothermal, \"qRejectTotal\");",
-        "\t\t\t\tqCondenser = ssc_var(geothermal, \"qCondenser\");",
-        "\t\t\t\tv_stage_1 = ssc_var(geothermal, \"v_stage_1\");",
-        "\t\t\t\tv_stage_2 = ssc_var(geothermal, \"v_stage_2\");",
-        "\t\t\t\tv_stage_3 = ssc_var(geothermal, \"v_stage_3\");",
-        "\t\t\t\tGF_flowrate = ssc_var(geothermal, \"GF_flowrate\");",
-        "\t\t\t\tqRejectByStage_1 = ssc_var(geothermal, \"qRejectByStage_1\");",
-        "\t\t\t\tqRejectByStage_2 = ssc_var(geothermal, \"qRejectByStage_2\");",
-        "\t\t\t\tqRejectByStage_3 = ssc_var(geothermal, \"qRejectByStage_3\");",
-        "\t\t\t\tncg_condensate_pump = ssc_var(geothermal, \"ncg_condensate_pump\");",
-        "\t\t\t\tcw_pump_work = ssc_var(geothermal, \"cw_pump_work\");",
-        "\t\t\t\tpressure_ratio_1 = ssc_var(geothermal, \"pressure_ratio_1\");",
-        "\t\t\t\tpressure_ratio_2 = ssc_var(geothermal, \"pressure_ratio_2\");",
-        "\t\t\t\tpressure_ratio_3 = ssc_var(geothermal, \"pressure_ratio_3\");",
-        "\t\t\t\tcondensate_pump_power = ssc_var(geothermal, \"condensate_pump_power\");",
-        "\t\t\t\tcwflow = ssc_var(geothermal, \"cwflow\");",
-        "\t\t\t\tcw_pump_head = ssc_var(geothermal, \"cw_pump_head\");",
-        "\t\t\t\tspec_vol = ssc_var(geothermal, \"spec_vol\");",
-        "\t\t\t\tx_hp = ssc_var(geothermal, \"x_hp\");",
-        "\t\t\t\thp_flash_pressure = ssc_var(geothermal, \"hp_flash_pressure\");",
-        "\t\t\t\tspec_vol_lp = ssc_var(geothermal, \"spec_vol_lp\");",
-        "\t\t\t\tx_lp = ssc_var(geothermal, \"x_lp\");\t\t\t",
-        "\t\t\t\tlp_flash_pressure = ssc_var(geothermal, \"lp_flash_pressure\");",
-        "\t\t\t\tflash_count = ssc_var(geothermal, \"flash_count\"); ",
-        "\t\t\t\t/*",
-        "\t\t\t\tssc_var(cost,'qRejectTotal', qRejectTotal);",
-        "\t\t\t\tssc_var(cost,'qCondenser', qCondenser);",
-        "\t\t\t\tssc_var(cost,'v_stage_1', v_stage_1);",
-        "\t\t\t\tssc_var(cost,'v_stage_2', v_stage_2);",
-        "\t\t\t\tssc_var(cost,'v_stage_3', v_stage_3);",
-        "\t\t\t\tssc_var(cost,'GF_flowrate', GF_flowrate);",
-        "\t\t\t\tssc_var(cost,'qRejectByStage_1', qRejectByStage_1);",
-        "\t\t\t\tssc_var(cost,'qRejectByStage_2', qRejectByStage_2);",
-        "\t\t\t\tssc_var(cost,'qRejectByStage_3', qRejectByStage_3);",
-        "\t\t\t\tssc_var(cost,\"ncg_condensate_pump\", ncg_condensate_pump);",
-        "\t\t\t\tssc_var(cost,\"cw_pump_work\", cw_pump_work);",
-        "\t\t\t\tssc_var(cost,\"pressure_ratio_1\", pressure_ratio_1);",
-        "\t\t\t\tssc_var(cost,\"pressure_ratio_2\", pressure_ratio_2);",
-        "\t\t\t\tssc_var(cost,\"pressure_ratio_3\", pressure_ratio_3);",
-        "\t\t\t\tssc_var(cost,\"condensate_pump_power\",condensate_pump_power);",
-        "\t\t\t\tssc_var(cost,\"cwflow\", cwflow);",
-        "\t\t\t\tssc_var(cost,\"cw_pump_head\", cw_pump_head);",
-        "\t\t\t\tssc_var(cost,'spec_vol', spec_vol);",
-        "\t\t\t\tssc_var(cost,'x_hp', x_hp);",
-        "\t\t\t\tssc_var(cost,'hp_flash_pressure', hp_flash_pressure);",
-        "\t\t\t\tssc_var(cost,'spec_vol_lp', spec_vol_lp);",
-        "\t\t\t\tssc_var(cost,'x_lp', x_lp);",
-        "\t\t\t\tssc_var(cost,'lp_flash_pressure', lp_flash_pressure);",
-        "\t\t\t\tssc_var(cost,'flash_count', flash_count);",
-        "\t\t\t\t*/",
-        "\t\t\t}",
-        "\t\t\t",
-        "\t\t\tif (ssc_exec(geothermal, 'geothermal_costs') == 0) {\t",
-        "\t\t\t\t${geotherm.cost.plant_per_kW} = ssc_var(geothermal, 'baseline_cost');\t",
-        "\t\t\t\t${geotherm.cost.pumps_total} = ssc_var(geothermal, \"total_pump_cost\");\r",
-        "\t\t\t\t${geotherm.cost.surf_total} = ssc_var(geothermal, \"total_gathering_cost\");\r",
-        "\t\t\t\t${geotherm.cost.pump_cost_install} = ssc_var(geothermal, \"pump_cost_install\");\r",
-        "\t\t\t\t${geotherm.cost.pump_only_cost} = ssc_var(geothermal, \"pump_only_cost\");\r",
-        "\t\t\t\t${geotherm.cost.prod_pump_cost_per_well} = ssc_var(geothermal, \"prod_pump_cost_per_well\");\r",
-        "\t\t\t\t${geotherm.cost.inj_pump_cost_per_pump} = ssc_var(geothermal, \"inj_pump_cost_per_pump\");\r",
-        "\t\t\t\t${inj_num_pumps} = ssc_var(geothermal, \"inj_num_pumps\");\r",
-        "\t\t\t\t${prod_pump_cost} = ssc_var(geothermal, \"prod_pump_cost\");\r",
-        "\t\t\t\t${inj_pump_cost} = ssc_var(geothermal, \"inj_pump_cost\");\r",
-        "\t\t\t\t${indirect_pump_cost} = ssc_var(geothermal, \"indirect_pump_gathering_cost\");\r",
-        "\t\t\t\t${geotherm.cost.total_surface_equipment_cost} = ssc_var(geothermal, \"total_surface_equipment_cost\");\r",
-        "\t\t\t\t${geotherm.cost.surf_per_well} = ssc_var(geothermal, \"piping_cost_per_well\");\r",
-        "\t\t\t\t${geotherm.cost.surf_num_wells} = ssc_var(geothermal, \"field_gathering_num_wells\");\r",
-        "\t\t\t\t\r",
-        "\t\t\t\t//Stimulation costs\r",
-        "\t\t\t\t${geotherm.cost.stim_per_well} = ssc_var(geothermal, \"stim_cost_per_well\");\r",
-        "\t\t\t\t${geotherm.cost.stim_total} = ssc_var(geothermal, \"stim_total_cost\");\r",
-        "\t\t\t\t\r",
-        "\t\t\t\t//Exploratin and Confirmation drilling \r",
-        "\t\t\t\t${geotherm.cost.expl_total} = ssc_var(geothermal, \"expl_total_cost\");\r",
-        "\t\t\t\t${geotherm.cost.expl_drill} = ssc_var(geothermal, \"expl_drilling_cost\");\r",
-        "\t\t\t\t${geotherm.cost.conf_total} = ssc_var(geothermal, \"conf_total_cost\");\r",
-        "\t\t\t\t${geotherm.cost.conf_drill} = ssc_var(geothermal, \"conf_drilling_cost\");\r",
-        "\t\t\t\t\r",
-        "\t\t\t\t//Drilling costs\r",
-        "\t\t\t\t${geotherm.cost.prod_per_well} = ssc_var(geothermal, \"prod_well_cost\");\r",
-        "\t\t\t\t${geotherm.cost.prod_drill} = ssc_var(geothermal, \"prod_total_cost\");\r",
-        "\t\t\t\t${geotherm.cost.inj_per_well} = ssc_var(geothermal, \"inj_well_cost\");\r",
-        "\t\t\t\t${geotherm.cost.inj_drill} = ssc_var(geothermal, \"inj_total_cost\");\r",
-        "\t\t\t\t\r",
-        "\t\t\t\t//Total Drilling cost\r",
-        "\t\t\t\t${geotherm.cost.drilling.amount_calc} = ssc_var(geothermal, \"total_drilling_cost\");\r",
-        "\t\t\t\t\r",
-        "\t\t\t\tssc_free(geothermal);\r",
-        "\t\t\t\treturn 0;",
-        "\t\t\t\t//return plant_per_kW;",
-        "\t\t\t}",
-        "\t\t\telse {\r",
-        "\t\t\t\tmsgbox(\"Geothermal Costs error \" + result);",
-        "\t\t\t\tssc_free(geothermal);\r",
-        "\t\t\t\treturn 0;",
-        "\t\t\t\t//return 300;",
-        "\t\t\t}",
-        "\t\t}",
-        "\t\telse {",
-        "\t\t\tssc_free(geothermal);\r",
-        "\t\t\treturn 0;",
-        "\t\t\t//return 500;",
-        "\t\t}",
-        "\t\t//ssc_free(geothermal);",
-        "};",
-        "",
-        "equations{'baseline_cost'} = define() {",
-        "\treturn ${geotherm.cost.plant_per_kW};",
-        "};",
-        "",
-        "equations{ 'system_use_recapitalization' } = define() {",
-        "\treturn 1; };",
-        "\t",
-        "",
+        "};\r",
+        "\r",
+        "equations{ 'total_indirect_cost' } = define() {\r",
+        "\treturn ${indirect_cost_calc}; \r",
+        "};\r",
+        "\r",
+        "equations{ 'total_installed_cost' } = define() {\r",
+        "\treturn ${total_installed_cost_calc};\r",
+        "};\r",
+        "\r",
+        "equations{ 'geotherm.cost.installed_per_capacity' } = define() {\r",
+        "\treturn ${installed_cost_per_kW_calc};\r",
+        "};\r",
+        "\r",
+        "// -----------------------------------------------\r",
+        "\r",
+        "/*",
         "equations{ '$MIMO$ ppi' } = define() {",
-        "\tppis = [[0.89055794,0.919504053,0.938721984,0.956747735,0.963614688,0.972293753,0.983166428,1,0.998426323,1.066285169,1.226514068,1.332856462,1.377682403,1.438149738,1.414735336,1.423366714,1.463996185,1.512970911,1.534763948,1.554792561,1.604464797,1.643961076,1.657698912,1.742987979,1.797,1.831855031,1.997587983,2.272575844,2.416319405,2.589564969],",
-        "\t\t[1.129319793,1.103090524,1.1087163,1.074084898,0.999853876,1.022283919,0.961569372,1,1.06517133,1.423905896,1.500474903,1.63534741,1.76276759,2.160444217,1.613209615,1.959815884,2.220208957,2.110396727,1.984949222,2.03492365,1.714285714,1.638913234,1.858019281,2.084136722,1.947,1.825966245,3.12752612,3.334864154,2.919009641,2.70942156],",
-        "\t\t[0.884018929,0.907470403,0.926181264,0.942518082,0.956851458,0.967823396,0.985395348,1,1.014829443,1.077774928,1.155295495,1.222766901,1.304818202,1.382893406,1.40355926,1.411450935,1.455548144,1.509649784,1.533757048,1.639031617,1.656479161,1.65317208,1.679672296,1.740780754,1.794,1.832151402,1.899909387,2.184450409,2.368629761,2.433393545],",
-        "\t\t[0.77985529,0.810695609,0.859015689,0.888566516,0.913317573,0.954043986,0.975857869,1,1.048105165,1.081631922,1.102335411,1.135826349,1.209434773,1.274983881,1.329751415,1.39193352,1.362346873,1.364746758,1.388351601,1.433483774,1.486242476,1.503869304,1.558039553,1.602,1.611,1.646034816,1.700479977,1.780739467,1.851246776,1.922184007],",
-        "\t\t[0.853374525,0.872338403,0.899382129,0.92404943,0.936264259,0.9503327,0.975903042,1,1.010646388,1.039876426,1.093203422,1.14168251,1.212975285,1.277851711,1.31411597,1.324192015,1.324572243,1.34871673,1.339163498,1.366539924,1.391899601,1.411294923,1.438106104,1.489446663,1.553,1.553,1.553,1.553,1.553,1.553],",
-        "\t\t[0.882749597,0.895883655,0.917874396,0.93458132,0.960396538,0.969303543,0.980072464,1,1.013285024,1.018820451,1.017562399,1.050221417,1.10668277,1.24511876,1.350392512,1.3403281,1.359752415,1.349889291,1.376811594,1.411835749,1.399154589,1.403046162,1.346947738,1.332125604,1.408,1.452294686,1.49086252,1.540966184,1.611654589,1.686461353],",
-        "\t\t[0.788589981,0.814564007,0.840955473,0.870640074,0.907606679,0.932560297,0.956864564,1,1.038450835,1.066280148,1.086827458,1.1283859,1.1682282,1.222402597,1.278710575,1.319851577,1.357374768,1.362152134,1.376994434,1.429313544,1.475,1.528333333,1.594444444,1.653,1.676,1.709230056,1.752272727,1.858333333,2.003333333,2.093888889],\r",
-        "\t\t[0.319286373,0.352814519,0.44078745,0.474007998,0.408182098,0.425099969,0.540449093,0.471239619,0.470624423,0.517379268,0.807751461,1.179637035,1.120885881,1.141802522,1.014764688,1,1.11319594,1.207320824,1.343586589,1.402952938,1.151953245,0.959704706,0.988926484,1.016302676,1.03,0.959092657,0.976696655,1.154758536,1.230655183,1.232054752]];",
+        "\tppis = [[0.890669720,0.919862622,0.938752147,0.957069262,0.963938180,0.972524327,0.983400114,1.000000000,0.998855180,1.066399542,1.226674299,1.333142530,1.377790498,1.438465942,1.414997138,1.423583286,1.464224385,1.513451631,1.535203205,1.555237550,1.604464797,1.643961076,1.657698912, 1.743,1.797,1.832,1.998,2.273],",
+        "\t\t[1.128834356,1.102541630,1.108676599,1.073619632,0.999123576,1.021910605,0.961437336,1.000000000,1.064855390,1.423312883,1.499561788,1.634531113,1.762489045,2.159509202,1.612620508,1.958808063,2.219106047,2.109553024,1.984224365,2.034180543,1.714285714,1.638913234,1.858019281,2.084,1.947,1.826,3.127,3.335],",
+        "\t\t[0.884044412,0.907406542,0.926150373,0.942470679,0.956807105,0.967657025,0.985381166,1.000000000,1.014742613,1.077732637,1.155135271,1.222672817,1.304587248,1.382668341,1.403383400,1.411178107,1.455344223,1.509492085,1.533628545,1.638936512,1.656479161,1.653172080,1.679672296,1.741, 1.794,1.832,1.900,2.184],",
+        "\t\t[0.779879622,0.810834050,0.859415305,0.888650043,0.913585555,0.954428203,0.975924334,1.000000000,1.048581255,1.081685297,1.102751505,1.136285469,1.210232158,1.275150473,1.329750645,1.392089424,1.362424764,1.365004299,1.388650043,1.433791917,1.486242476,1.503869304,1.558039553,1.602,1.611,1.647,1.701,1.781],",
+        "\t\t[0.853394181,0.872219053,0.899600685,0.924130063,0.936679977,0.950370793,0.976041072,1.000000000,1.010838562,1.039931546,1.093553908,1.142042213,1.213348545,1.278379920,1.314318311,1.324586423,1.324586423,1.349115801,1.339418140,1.366799772,1.391899601,1.411294923,1.438106104,1.489,1.553, 1.553, 1.553, 1.553],",
+        "\t\t[0.882850242,0.896135266,0.917874396,0.934782609,0.960144928,0.969202899,0.980072464,1.000000000,1.013285024,1.018719807,1.017512077,1.050120773,1.106884058,1.245169082,1.350241546,1.340579710,1.359903382,1.349637681,1.376811594,1.411835749,1.399154589,1.403046162,1.346947738,1.327974034,1.408,1.452,1.491,1.541],",
+        "\t\t[0.790555556,0.816666667,0.842222222,0.872777778,0.909444444,0.933333333,0.957777778,1.000000000,1.039444444,1.067222222,1.088888889,1.129444444,1.170000000,1.221666667,1.277777778,1.320000000,1.357777778,1.361666667,1.374444444,1.426666667,1.475000000,1.528333333,1.594444444,1.653,1.676,1.708,1.753,1.858],\r",
+        "\t\t[0.319,0.353,0.441,0.474,0.408,0.425,0.540,0.471,0.471,0.517,0.808,1.180,1.121,1.142,1.015,1.000,1.113,1.207,1.344,1.403,1.152,0.960,0.989,1.016,1.030,0.959,0.977,1.155]];",
         "\tppi_index = ${ppi_base_year};",
         "\t${hx_ppi} = ppis[0][ppi_index];\t",
         "\t${steel_ppi} = ppis[1][ppi_index];\t",
@@ -12913,11 +12622,8 @@
         "\t${construction_ppi} = ppis[6][ppi_index];\r",
         "\t${drilling_ppi} = ppis[7][ppi_index];\t",
         "};\r",
-        "\r",
-        "equations{'exploration_wells_production'} = define() \r",
-        "{\r",
-        "\treturn ${geotherm.cost.confirm_wells_num};\r",
-        "};",
+        "*/\r",
+        "",
         "",
         "",
         "\t\t",

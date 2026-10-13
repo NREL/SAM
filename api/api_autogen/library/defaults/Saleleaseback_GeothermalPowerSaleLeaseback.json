@@ -226,7 +226,7 @@
 			"pbi_uti_term": 0
 		},
 		"SystemOutput": {
-			"degradation": [0.000000],
+			"degradation": [0],
 			"gen": [0.000000],
 			"system_capacity": 32813.6
 		},
@@ -244,9 +244,7 @@
 			"salvage_percentage": 0,
 			"sponsor_operating_margin": 20,
 			"sponsor_operating_margin_escalation": 2,
-			"system_recapitalization_cost": 4.15803e+07,
 			"system_use_lifetime_output": 1,
-			"system_use_recapitalization": 1,
 			"tax_investor_required_lease_reserve": 6,
 			"total_installed_cost": 1.32084e+08
 		},

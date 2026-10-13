@@ -3551,6 +3551,9 @@
         }
     },
     "Equations": [
+        "// ---------------------------------\r",
+        "// only use these variables as UI displays\r",
+        "// do NOT use them as cmod inputs\r",
         "equations{ 'geotherm.delta_pressure_reservoirBar' } = define() {",
         "\treturn ${geotherm.delta_pressure_reservoir}/14.50377373066; };",
         "",
@@ -3559,7 +3562,8 @@
         "",
         "equations{ 'geotherm.avg_reservoir_tempF' } = define() {",
         "\treturn (${geotherm.avg_reservoir_temp}*9/5)+32; };",
-        "",
+        "// ------------------------------------\r",
+        "// ------------------------------------",
         ""
     ],
     "Callbacks": [
