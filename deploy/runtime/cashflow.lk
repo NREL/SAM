@@ -104,7 +104,8 @@ function is_fuel_tech()
 		  tech == 'DSLF' ||
 		  tech == 'MSLF' ||
 		  tech == 'Generic CSP System' ||
-		  tech == 'Empirical Trough' );
+		  tech == 'Empirical Trough' ||
+		  tech == 'Reactor' );
      return x;
 }
 
