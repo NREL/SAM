@@ -16,6 +16,8 @@
 #include "rapidjson/prettywriter.h"
 #include "geothermaltough.h"
 #include "object.h"
+// SamApp
+#include "main.h"
 
 // Progress bar updating
 wxDEFINE_EVENT(wxEVT_PYTHON_PROGRESS, wxThreadEvent);
@@ -25,7 +27,7 @@ wxDEFINE_EVENT(wxEVT_PYTHON_THREAD_COMPLETED, wxThreadEvent);
 
 // --- The Core Worker Function ---
 // [Identical to prior solution, but returns string payload]
-std::string CallPyInstallerWithProgressAndJSON(const std::wstring& exePath, const std::string& inputJsonStr, wxEvtHandler* eventSink) {
+std::string CallPyInstallerWithProgressAndJSON(const std::string& exePath, const std::string& inputJsonStr, wxEvtHandler* eventSink) {
 // ---- FIXED: ASYNCHRONOUS HIGH-CAPACITY PIPE STREAM BALANCER ----
     SECURITY_ATTRIBUTES saAttr = { sizeof(SECURITY_ATTRIBUTES), NULL, TRUE };
     HANDLE hChildStd_IN_Rd, hChildStd_IN_Wr, hChildStd_OUT_Rd, hChildStd_OUT_Wr;
@@ -35,9 +37,9 @@ std::string CallPyInstallerWithProgressAndJSON(const std::wstring& exePath, cons
     
 // .... (Inside CallPyInstallerWithProgress in main.cpp) ....
 
-    PROCESS_INFORMATION piProcInfo; STARTUPINFOW siStartInfo; 
-    ZeroMemory(&piProcInfo, sizeof(PROCESS_INFORMATION)); ZeroMemory(&siStartInfo, sizeof(STARTUPINFOW));
-    siStartInfo.cb = sizeof(STARTUPINFOW); 
+    PROCESS_INFORMATION piProcInfo; STARTUPINFOA siStartInfo; 
+    ZeroMemory(&piProcInfo, sizeof(PROCESS_INFORMATION)); ZeroMemory(&siStartInfo, sizeof(STARTUPINFOA));
+    siStartInfo.cb = sizeof(STARTUPINFOA); 
     siStartInfo.hStdOutput = hChildStd_OUT_Wr; 
     siStartInfo.hStdError = hChildStd_OUT_Wr;
     siStartInfo.dwFlags |= STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW; 
@@ -47,18 +49,17 @@ std::string CallPyInstallerWithProgressAndJSON(const std::wstring& exePath, cons
     // Force the path mapping to point explicitly inside the PyInstaller onedir subdirectory,
     // ensuring the Windows loader successfully locates the true compiled binary artifact!
            // Strip the executable filename to get the directory path
-    size_t lastSlash = exePath.find_last_of(L"\\/");
-    std::wstring appDir = (lastSlash != std::wstring::npos) ? exePath.substr(0, lastSlash) : L"";
+    size_t lastSlash = exePath.find_last_of("\\/");
+    std::string appDir = (lastSlash != std::string::npos) ? exePath.substr(0, lastSlash) : "";
 
 
-    std::wstring sexePath = exePath;
-    std::wstring workingDir = appDir;
+    std::string workingDir = appDir;
     
-    std::wstring cmdLine = L"\"" + sexePath + L"\""; 
-    std::vector<wchar_t> cmdLineBuf(cmdLine.begin(), cmdLine.end()); 
-    cmdLineBuf.push_back(L'\0');
+    std::string cmdLine = "\"" + exePath + "\""; 
+    std::vector<char> cmdLineBuf(cmdLine.begin(), cmdLine.end()); 
+    cmdLineBuf.push_back('\0');
     
-    if (!CreateProcessW(
+    if (!CreateProcessA(
             NULL, 
             cmdLineBuf.data(), 
             NULL, 
@@ -176,7 +177,7 @@ geothermaltough::geothermaltough(wxWindow* parent, const wxString& title,const w
     }
 
 
-void geothermaltough::TestData(std::wstring absoluteJsonPath)
+void geothermaltough::TestData(const std::string &absoluteJsonPath)
     {
 
         // Simulate an MxN matrix (e.g., 500 time-steps x 4 reservoir depths)
@@ -237,7 +238,7 @@ void geothermaltough::TestData(std::wstring absoluteJsonPath)
     }
 
 
-void geothermaltough::RunExample7Simulation(std::wstring absoluteJsonPath)
+void geothermaltough::RunExample7Simulation(const std::string &absoluteJsonPath)
     {
         // Create an active RapidJSON memory allocator node frame
         rapidjson::Document doc;
@@ -306,6 +307,9 @@ void geothermaltough::RunExample7Simulation(std::wstring absoluteJsonPath)
         
         // Retain hydrostatic single-phase safety floor
         doc.AddMember("pressure", 4200.0, allocator); 
+        // TODO this is read in by the macro 
+        doc.AddMember("TOUGH2 Executable Path", rapidjson::Value("C:\\Users\\janzo\\xt2_eos1.exe", allocator).Move(), allocator);
+
 
         // --- 6. SERIALIZATION AND WRITER STREAM PIPELINE ---
         rapidjson::StringBuffer buffer;
@@ -328,25 +332,13 @@ void geothermaltough::OnRunTask(wxCommandEvent& event) {
         m_outputText->AppendText("Serializing outbound JSON and launching worker thread...\n");
 
 
-        // 1. Programmatically retrieve the absolute path of the running C++ executable
-        wchar_t exePathBuffer[MAX_PATH];
-        GetModuleFileNameW(NULL, exePathBuffer, MAX_PATH);
-        std::wstring exeFullPath(exePathBuffer);
-        
-        // Strip the executable filename to get the directory path
-        size_t lastSlash = exeFullPath.find_last_of(L"\\/");
-        std::wstring appDir = (lastSlash != std::wstring::npos) ? exeFullPath.substr(0, lastSlash) : L"";
-
-		// bypassing until part of SAM build process, we can hardcode the paths for now
-        appDir = L"C:\\Projects\\Github\\NREL\\GeoSAM\\wxWidgetsTOUGHExample\\build\\Release";
-
-
         // 2. Define the strict, absolute file targets
-        std::wstring absoluteJsonPath = appDir + L"\\dist\\cpp_request.json";
-        std::wstring absolutePyExePath = appDir + L"\\dist\\myscript_v2.exe";
+        wxString absoluteJsonPath = SamApp::GetRuntimePath() + "bin\\dist\\cpp_request.json";
+        wxString absolutePyExePath = SamApp::GetRuntimePath() + "bin\\dist\\myscript_v2.exe";
+
 
 //        TestData(absoluteJsonPath);
-        RunExample7Simulation(absoluteJsonPath);
+        RunExample7Simulation(absoluteJsonPath.ToStdString());
 
 //        m_outputText->AppendText(wxString::Format(L"--- matrix(250,2) sent ---\n%lg\n---------------------------\n", matrixData[249+rows*1]));
 //        m_outputText->AppendText(wxString::Format(L"--- RAW INPUT SENT ---\n%s\n---------------------------\n", wxString::FromUTF8(serializedJson)));
@@ -362,7 +354,7 @@ void geothermaltough::OnRunTask(wxCommandEvent& event) {
 */
         std::thread worker([this, absolutePyExePath]() {
             // Pass a dummy or empty string since we are transferring data via file now
-            std::string rawResult = CallPyInstallerWithProgressAndJSON(absolutePyExePath, "", this);
+            std::string rawResult = CallPyInstallerWithProgressAndJSON(absolutePyExePath.ToStdString(), "", this);
 
             // Create a safe event container to carry the raw string response to the main thread
             wxThreadEvent threadEvt(wxEVT_PYTHON_THREAD_COMPLETED);
@@ -398,14 +390,16 @@ void geothermaltough::OnThreadCompletion(wxThreadEvent& event) {
         std::string jsonStr = std::string(rawResult.mb_str(wxConvUTF8));
 
 		//TODO : Adjust after PYInstaller added to SAM build process, for now we can hardcode the path to the output file
-        std::string targetFilePath = "C:\\Projects\\Github\\NREL\\GeoSAM\\wxWidgetsTOUGHExample\\build\\Release\\dist\\py_response.json";
-        
-        // ---- FIXED: MULTI-PASS COMPRESSION FILE VERIFICATION LOOP ----
+        //std::string targetFilePath = "C:\\Projects\\Github\\NREL\\GeoSAM\\wxWidgetsTOUGHExample\\build\\Release\\dist\\py_response.json";
+        wxString targetFilePath = SamApp::GetRuntimePath() + "bin\\dist\\py_response.json";
+
+
+
         // On Windows, give the operating system a split second to clear background 
         // thread write locks before attempting to open the payload file.
         bool fileReadSuccess = false;
         for (int retry = 0; retry < 5; ++retry) {
-            std::ifstream resFile(targetFilePath);
+            std::ifstream resFile(targetFilePath.ToStdString());
             if (resFile.is_open()) {
                 std::string fileContent((std::istreambuf_iterator<char>(resFile)), std::istreambuf_iterator<char>());
                 resFile.close();
@@ -490,7 +484,7 @@ void geothermaltough::OnThreadCompletion(wxThreadEvent& event) {
        m_outputText->AppendText(L"\nPipeline transaction completed smoothly.\n");    
     
     // Auto-dump spreadsheet record to disk
-        std::wstring reportPath = L"Simulation_Report.csv";
+        std::string reportPath = "Simulation_Report.csv";
         ExportSimulationReport(reportPath, timeSteps, temperatures, pressures);
 
 		// setup a matrix_t<double> to hold the results for further processing if needed
@@ -504,7 +498,7 @@ void geothermaltough::OnThreadCompletion(wxThreadEvent& event) {
 
     }
 
-void geothermaltough::ExportSimulationReport(const std::wstring& filename,
+void geothermaltough::ExportSimulationReport(const std::string& filename,
                                                 const std::vector<double>& timeSteps, 
                                                 const std::vector<double>& temperatures, 
                                                 const std::vector<double>& pressures) {

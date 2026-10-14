@@ -21,12 +21,12 @@ public:
 
 private:
 
-    void TestData(std::wstring absoluteJsonPath);
-    void RunExample7Simulation(std::wstring absoluteJsonPath);
+    void TestData(const std::string &absoluteJsonPath);
+    void RunExample7Simulation(const std::string &absoluteJsonPath);
     void OnRunTask(wxCommandEvent& event);
     void OnProgressTick(wxThreadEvent& event);
     void OnThreadCompletion(wxThreadEvent& event);
-    void ExportSimulationReport(const std::wstring& filename,
+    void ExportSimulationReport(const std::string& filename,
                                                 const std::vector<double>& timeSteps, 
                                                 const std::vector<double>& temperatures, 
                                                 const std::vector<double>& pressures);
