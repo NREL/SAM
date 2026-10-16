@@ -1784,7 +1784,7 @@
         "\tenable('ur_ts_sell_rate', !is_fom_bool() && !is_merchant_plant() && !is_iph());",
         "\tshow('lbl_metering_option',is_fom_bool() && !is_merchant_plant() && is_iph());",
         "\tenable( 'ur_nm_yearend_sell_rate', eme==0 );",
-        "\tenable( 'ur_nm_credit_rollover', eme==0 );",
+        "\tenable( 'ur_nm_credit_rollover', eme==0 || eme==1 );",
         "\tenable( 'ur_nm_credit_month', eme==0 || eme==1 || eme==3 );\r",
         "\tenable( 'ur_nb_credit_expire', eme==3 );\r",
         "\tenable( 'ur_nb_apply_credit_current_month', eme==3 );",
