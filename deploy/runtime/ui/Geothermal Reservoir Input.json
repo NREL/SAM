@@ -1,45 +1,8 @@
 {
     "Name": "Geothermal Reservoir Input",
-    "Width": 892.0,
-    "Height": 457.0,
+    "Width": 897.0,
+    "Height": 403.0,
     "FormObjects": {
-        "Button": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "btn_TOUGHSimulation"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 66.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 375.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 202.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "Generate Inputs using TOUGH"
-                },
-                "TabOrder": {
-                    "Type": 3.0,
-                    "Integer": -1.0
-                }
-            }
-        },
         "GroupBox": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -61,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 420.0
+                    "Integer": 358.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -211,13 +174,5 @@
         }
     },
     "Equations": [],
-    "Callbacks": [
-        "on_change{'btn_TOUGHSimulation'} = define() {\r",
-        "\thash = geothermal_reservoir_inputs();\r",
-        "\tif (hash{'success'}==1.0)\r",
-        "\t\tvalue(\"reservoir_model_inputs\", hash{'results'});\r",
-        "};\r",
-        "\r",
-        ""
-    ]
+    "Callbacks": []
 }

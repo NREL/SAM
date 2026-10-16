@@ -648,6 +648,7 @@ extern void fcall_group_write(lk::invoke_t &);
 extern void fcall_calculated_list(lk::invoke_t &);
 extern void fcall_urdb_read(lk::invoke_t &);
 extern void fcall_urdb_write(lk::invoke_t &);
+static void fcall_geothermal_reservoir_inputs(lk::invoke_t& cxt);
 extern void fcall_geocode(lk::invoke_t&);
 extern void fcall_urdb_get(lk::invoke_t &);
 extern void fcall_urdb_list_utilities(lk::invoke_t &);

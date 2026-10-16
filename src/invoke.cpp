@@ -3876,11 +3876,63 @@ static bool copy_mat(lk::invoke_t &cxt, wxString sched_name, matrix_t<double> &m
 
 static void fcall_geothermal_reservoir_inputs(lk::invoke_t& cxt)
 {
-	LK_DOC("geothermal_reservoir_inputs", "Calculate GEOPHIRES/TOUGH reservoir pressure and temperature in a frame.", "(string:none):matrix");
+	LK_DOC("geothermal_reservoir_inputs", "Calculate GEOPHIRES/TOUGH reservoir pressure and temperature in a frame.", "(table:TOUGH parameters):matrix");
+
+	double length = 0.0, width = 0.0, depth = 0.0, porosity = 0.0, permeability = 0.0, temperature = 0.0, pressure = 0.0;
+	wxString tough_exe = "";
+	cxt.result().empty_hash();
+
+	lk::vardata_t& opts = cxt.arg(0).deref();
+	
+	if (lk::vardata_t* x = opts.lookup("width")) {
+		width = x->as_number();
+	}
+
+	if (lk::vardata_t* x = opts.lookup("depth")) {
+		depth = x->as_number();
+	}
+
+	if (lk::vardata_t* x = opts.lookup("length")) {
+		length = x->as_number();
+	}
+
+	/* Add other parameters as needed 
+	if (lk::vardata_t* x = opts.lookup("porosity")) {
+		porosity = x->as_number();
+	}
+
+	if (lk::vardata_t* x = opts.lookup("permeability")) {
+		permeability = x->as_number();
+	}
+
+	if (lk::vardata_t* x = opts.lookup("temperature")) {
+		temperature = x->as_number();
+	}
+
+	if (lk::vardata_t* x = opts.lookup("pressure")) {
+		pressure = x->as_number();
+	}
+	*/
+
+	if (lk::vardata_t* x = opts.lookup("tough_exe")) {
+		tough_exe = x->as_string();
+	}
+
+	if (tough_exe.IsEmpty() || !wxFileExists(tough_exe)) {
+		cxt.result().hash_item("success", 0.0);
+		cxt.result().hash_item("error", "Path to TOUGH executable is required.");
+		return;
+	}
+
+	if (length <= 0 || width <= 0 || depth <= 0) {
+		cxt.result().hash_item("success", 0.0);
+		cxt.result().hash_item("error", "All dimensions must be greater than zero.");
+		return;
+	}
 
 	geothermaltough* dlg = new geothermaltough(SamApp::Window(), "Geothermal Reservoir Inputs", wxDefaultPosition, wxScaleSize(1000, 700), (wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN | wxRESIZE_BORDER));
 
-	cxt.result().empty_hash();
+	dlg->SetParameters(length, width, depth, porosity, permeability, temperature, pressure, tough_exe);
 
 	if (dlg->ShowModal() == wxID_OK) {
 		//return matrix

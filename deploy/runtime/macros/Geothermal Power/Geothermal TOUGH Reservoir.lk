@@ -21,13 +21,19 @@ For the desired reservoir:<br>
 
 // controls user inputs and options, sets file as chosen weather file
 function main(){
+	if ( typeof(macro) == 'unknown' ) {
+		msgbox('This macro must be run from within a case.');
+		exit;
+	}
+
 	// get input_file from pop-up window
 	input_file = choose_file( homedir(), 'Choose TOUGH executable file', '*.exe', false, false);
 	if (strlen(input_file) < 1){
 		outln("No file selected; exiting.");
 		exit;
 	}
-	hash = geothermal_reservoir_inputs();
+	params = {'length':to_real(macro.length), 'width':to_real(macro.width), 'depth':to_real(macro.depth), 'tough_exe':to_string(input_file)};
+	hash = geothermal_reservoir_inputs(params);
 	if (hash{'success'}==1.0){
 		outln(hash{'results'});
 		set("reservoir_model_inputs", hash{'results'});
