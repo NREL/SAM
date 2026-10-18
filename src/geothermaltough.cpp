@@ -690,7 +690,7 @@ void geothermaltough::SetParameters(const double& length, const double& width, c
 {
     m_length = length;
     m_width = width;
-    m_depth = depth;
+	m_depth = depth / 1000.0; // m to km conversion for TOUGH input
     m_porosity = porosity;
     m_permeability = permeability;
     m_temperature = temperature;
