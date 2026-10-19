@@ -3181,7 +3181,20 @@
         "\t enable(\"disp_time_weighting\", en==1);\r",
         "     enable(\"disp_max_iter\", en==1);\r",
         "     enable(\"disp_mip_gap\", en==1);\r",
-        "     enable(\"disp_timeout\", en==1);",
+        "     enable(\"disp_timeout\", en==1);\r",
+        "     \r",
+        "     tech = technology();\r",
+        "     is_hybrid = strpos(tech, \"Hybrid\") != -1;\r",
+        "     batt_show = false;\r",
+        "     if (is_hybrid) {\r",
+        "\t\tbatt_show = value('includes_battery');\r",
+        "\t}\r",
+        "\t\r",
+        "\tshow(\"disp_batt_charge_cost\", batt_show);\r",
+        "\tshow(\"disp_batt_discharge_cost\", batt_show);\r",
+        "\tshow(\"disp_batt_lifecycle_cost\", batt_show);\r",
+        "\t\r",
+        "\trefresh();",
         "};"
     ]
 }
