@@ -1350,15 +1350,264 @@
             "ObjectProperties": {
                 "Name": {
                     "Type": 5.0,
+                    "String": "disp_batt_charge_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 372.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_batt_discharge_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 399.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "disp_batt_lifecycle_cost"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 270.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 426.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 100.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
                     "String": "disp_csu_cost_rel"
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1437,7 +1686,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1520,7 +1769,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 756.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1603,11 +1852,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 342.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1690,7 +1939,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 372.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1773,7 +2022,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 399.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1852,11 +2101,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 396.0
+                    "Integer": 315.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1935,11 +2184,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 270.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 369.0
+                    "Integer": 288.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2022,7 +2271,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 343.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2105,7 +2354,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 342.0
+                    "Integer": 427.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2184,7 +2433,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 351.0
+                    "Integer": 831.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2677,6 +2926,45 @@
             "sscVariableName": " ",
             "sscVariableValue": ""
         },
+        "disp_batt_charge_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery charging cost penalty",
+            "Units": "$/MWhe",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.9,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "disp_batt_discharge_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery discharging cost penalty",
+            "Units": "$/MWhe",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 0.9,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "disp_batt_lifecycle_cost": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Battery lifecycle cost per equivalent full cycle",
+            "Units": "$/MWhdc-cycle",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 2.0,
+            "DefaultValue": 26.5,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
         "disp_csu_cost_rel": {
             "Version": 4.0,
             "Type": 1.0,
@@ -2880,17 +3168,20 @@
         "     en = value(\"is_dispatch\");",
         "     en_htr = en && value(\"is_parallel_htr\");",
         "     ",
-        "     enable(\"disp_horizon\", en==1);",
-        "     enable(\"disp_frequency\", en==1);",
-        "     enable(\"disp_max_iter\", en==1);",
-        "     enable(\"disp_timeout\", en==1);",
-        "     enable(\"disp_mip_gap\", en==1);",
         "     enable(\"disp_csu_cost_rel\", en==1);",
-        "     enable(\"disp_rsu_cost_rel\", en==1);",
-        "     enable(\"disp_pen_ramping\", en==1);",
-        "     enable(\"disp_time_weighting\", en==1);",
-        "     ",
+        "     enable(\"disp_rsu_cost_rel\", en==1);\r",
         "     enable(\"disp_hsu_cost_rel\", en_htr);",
+        "     enable(\"disp_pen_ramping\", en==1);",
+        "     enable(\"disp_batt_charge_cost\", en==1);\r",
+        "     enable(\"disp_batt_discharge_cost\", en==1);\r",
+        "     enable(\"disp_batt_lifecycle_cost\", en==1);\r",
+        "     \r",
+        "\t enable(\"disp_horizon\", en==1);\r",
+        "     enable(\"disp_frequency\", en==1);\r",
+        "\t enable(\"disp_time_weighting\", en==1);\r",
+        "     enable(\"disp_max_iter\", en==1);\r",
+        "     enable(\"disp_mip_gap\", en==1);\r",
+        "     enable(\"disp_timeout\", en==1);",
         "};"
     ]
 }
