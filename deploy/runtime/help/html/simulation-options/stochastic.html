@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Stochastic Simulations &#8212; SAM Help</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2da3bde9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'simulation-options/stochastic';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P50/P90 Simulations" href="p50p90.html" />
+    <link rel="prev" title="Parametric Simulations" href="parametrics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/SAM-logo-horizontal.png" class="logo__image only-light" alt="SAM Help - Home"/>
+    <script>document.write(`<img src="../_static/SAM-logo-horizontal.png" class="logo__image only-dark" alt="SAM Help - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">About SAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/technology_options.html">Performance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/fin_overview.html">Financial Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/user_support.html">User Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/keep_up_to_date.html">SAM Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/component_models_databases.html">Models and Databases</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/welcome_page.html">Welcome Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/create_project.html">Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/choose_models.html">Choose Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/main_window.html">Main Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/input_pages.html">Input Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/costs.html">Costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/financial_model_inputs.html">Financial Model Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/run_simulations.html">Run Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/results_page.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/youtube_channel.html">Videos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_menu.html">File Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/case_menu.html">Case Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/manage_cases.html">Manage Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/export_data.html">Export Data and Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/inputs_browser.html">Inputs Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/time_series_viewer.html">Time Series Data Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/weekday_schedule.html">Weekday Weekend Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/notes.html">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/excel_exchange.html">Excel Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/macros.html">Macros and Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sdk.html">Software Development Kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_formats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/installation.html">Software Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/registration.html">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/configure_proxy_server.html">Web Access and Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/function_keys.html">Keyboard Shortcuts</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../window-reference/index.html">Window reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_combine_cases.html">Combine Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_array.html">Edit Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_lifetime.html">Edit Lifetime Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_losses.html">Edit Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_material_properties.html">Edit Material Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_monthly_values.html">Edit Monthly Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_column.html">Edit Data Table by Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_row.html">Edit Data Table by Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_parametric_variables.html">Edit Parametric Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_shading_data.html">Edit Shading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_parametric_quick_setup.html">Parametric Quick Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nohrsc_advanced_download.html">Advanced NOHRSC Download Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nsrdb_advanced_download.html">NSRDB Advanced Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_ptes_design_pt.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wave_download.html">Wave Resource Data Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wind_toolkit_download.html">WIND Toolkit Download</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Simulation Options</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simulation_options.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parametrics.html">Parametric Simulations</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stochastic Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p50p90.html">P50/P90 Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pvuncertainty.html">Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/release_notes.html">Release Notes</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weather Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-data/index.html">Weather Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data.html">Weather Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_manage_folders.html">Folders and Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data_elements.html">Weather Data Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_typical_single.html">Typical and Single Year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_time_convention.html">Time and Sun Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/accessing-weather-data-from-lk.html">Weather Data and LK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/irradiance_error_codes.html">Irradiance Error Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-file-formats/index.html">Weather File Formats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format.html">Weather File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_sam_csv_solar.html">SAM CSV Format for Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_wind.html">SAM CSV Format for Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_marine_energy.html">CSV Format for Marine Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_srw_wind.html">SRW Format for Wind</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../detailed-photovoltaic-model/index.html">Detailed Photovoltaic Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_overview.html">Getting Started with the Detailed Photovoltaic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_system_size.html">System Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_tracking_layout_land.html">Tracking Layout Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_soiling_shading_snow.html">Soiling Shading Snow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_electrical_losses.html">Electrical Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_sizing_instructions.html">PV Sizing Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_results.html">Detailed PV Model Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pvwatts/index.html">PVWatts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts.html">PVWatts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_results.html">PVWatts Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-concentration-photovoltaic/index.html">High Concentration Photovoltaic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_overview.html">High Concentration Photovoltaic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_results.html">Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../battery-storage/index.html">Battery Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_storage.html">Battery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_cell_and_system.html">Battery Cell and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_btm.html">Battery Dispatch BTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_fom.html">Battery Dispatch FOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_time_step.html">Battery Time Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_life.html">Battery Life</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_results.html">Battery Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hybrid-systems/index.html">Hybrid Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_systems.html">Hybrid Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system.html">Hybrid System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system_costs.html">Hybrid System costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../wind-power/index.html">Wind Power</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_power.html">Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_resource.html">Wind Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_turbine.html">Wind Turbine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_farm.html">Wind Farm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_uncertainties.html">Uncertainties</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-wave/index.html">Marine Energy Wave</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave.html">Marine Energy Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_resource.html">Wave Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_converter.html">Wave Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-tidal/index.html">Marine Energy Tidal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal.html">Marine Energy Tidal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_resource.html">Tidal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_converter.html">Tidal Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../solar-water-heating/index.html">Solar Water Heating</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_overview.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_system.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_results.html">Solar Water Heating Model Hourly Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fuel-cell/index.html">Fuel Cell</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_fuel_cell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_dispatch.html">Fuel Cell Dispatch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../biopower/index.html">Biomass Combustion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower.html">Biomass Combustion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_location_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock.html">Feedstock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_plant_specs.html">Plant Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_emissions.html">Emissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock_costs.html">Feedstock costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geothermal/index.html">Geothermal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_overview.html">Geothermal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_geothermal_resource.html">Geothermal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_plant_equipment.html">Plant and Equipment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_power_block.html">Power Block</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../custom-generation/index.html">Custom Generation Profile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation.html">Custom Generation Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation_profile.html">Generation Profile</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concentrating Solar-Thermal Power</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-empirical-trough-model/index.html">CSP Empirical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_overview.html">CSP Empirical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-physical-trough-model/index.html">CSP Physical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_overview.html">CSP Physical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_script_parameters.html">Script-only Parameters</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-power-tower-molten-salt/index.html">CSP Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_overview.html">CSP Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_tower_and_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_electric_htf_heater.html">Electric HTF Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/index.html">CSP Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_overview.html">CSP Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/index.html">CSP Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_overview.html">CSP Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-generic-solar/index.html">CSP Generic Solar</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_overview.html">CSP Generic Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_thermal_storage.html">Thermal Storage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-parabolic-trough/index.html">IPH Parabolic Trough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough.html">IPH Parabolic Trough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_collectors.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_receivers.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_tes.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/index.html">IPH Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds.html">IPH Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_collector_receiver.html">Collector and Receiver</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/index.html">IPH Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf.html">IPH Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_collector_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-power-tower-molten-salt/index.html">IPH Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt.html">IPH Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_tower_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electric-thermal-energy-storage/index.html">Electric Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes.html">Electric Thermal Energy Storage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_heater.html">Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pumped-thermal-energy-storage/index.html">Pumped Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_energy_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_heat_pump.html">Heat Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Degradation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../degradation/index.html">Degradation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation.html">Degradation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_ac.html">AC Degradation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_dc.html">DC Degradation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grid</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grid/index.html">Grid</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_limits.html">Grid Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_outage.html">Grid Outage</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Financial Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation-costs/index.html">Installation costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_pv.html">PV Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_standalone_battery.html">Battery Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_wind.html">Wind Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_geothermal.html">Geothermal Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_swh.html">SWH Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_fuel_cell.html">Fuel Cell Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_biopower.html">Biomass Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_custom_generation.html">Custom Generation Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_trough.html">Trough Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_tower.html">Tower Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_linear_fresnel.html">Fresnel Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_generic_solar.html">Generic Solar System (GSS) costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_etes.html">ETES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_ptes.html">PTES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_marine_energy.html">Marine Energy Installation costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../operating-costs/index.html">Operating costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/operating_costs.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_operating.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_battery.html">Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_pv-battery.html">PV Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_fuel_cell.html">Fuel Cell Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_marine_energy.html">Marine Energy Operating costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-parameters/index.html">Financial Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_overview.html">Financial Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_residential.html">Residential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_commercial.html">Commercial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host.html">Third Party Ownership - Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host_developer.html">Third Party Ownership - Host / Developer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_community_solar.html">Community Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_single_owner.html">Single Owner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_merchant_plant.html">Merchant Plant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_leveraged_partnership.html">Leveraged Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_all_equity_partnership.html">All Equity Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_sale_leaseback.html">Sale Leaseback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoefcr.html">LCOE Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoh.html">LCOH Calculator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../revenue/index.html">Revenue</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_ppa.html">PPA Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_merchant_plant.html">Merchant Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_tod_factors.html">Time of Delivery Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_iph.html">Industrial Process Heat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../incentives-and-depreciation/index.html">Incentives and Depreciation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/cash_incentives.html">Cash Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/tax_credits_depreciation.html">Tax Credits and Depreciation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electricity-rates-and-load/index.html">Electricity Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_load.html">Electric Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_rates.html">Electricity Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_purchases.html">Electricity Purchases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electricity-rates-and-load/electricity_bill_results.html">Electricity Bill Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../thermal-rates-and-load/index.html">Thermal Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_load.html">Thermal Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_rates.html">Thermal Rates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../results/index.html">Results Page</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../results/results.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/graphs.html">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/data.html">Data Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/cashflow.html">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/timeseries.html">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/profiles.html">Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/heatmap.html">Heat Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/pdfcdf.html">PDF / CDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/uncertainties.html">Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/spatial.html">Spatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/notices.html">Notices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-metrics/index.html">Financial Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_overview.html">Financial Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_debt_and_equity.html">Debt and Equity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_revenues.html">Electricity Bill and Savings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_indifference_point.html">Indifference Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_irr.html">Internal Rate of Return (IRR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_levelized.html">Levelized Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcoe.html">Levelized cost of Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcos.html">Levelized Cost of Storage (LCOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lppa.html">Levelized PPA price (LPPA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_npv.html">Net Present Value (NPV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_payback.html">Payback Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_price.html">PPA Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_escalation.html">PPA Price Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_costs.html">Net Capital Cost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance-metrics/index.html">Performance Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_overview.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_biomass_usage.html">Annual Biomass Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_energy.html">Annual Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_water_usage.html">Annual Water Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_aux_w_wo_solar.html">Aux with and without Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_capacity_factor.html">Capacity Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_kwhkwyear1.html">Energy Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_gross_to_net_conv_factor.html">Gross-to-net Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_heat_rate.html">Heat Rate and Thermal Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_pump_power.html">Pump Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_p90_energy.html">p90 Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_solar_fraction.html">Solar Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_system_performance_factor.html">Performance Ratio</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Shade Calculator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-reference/index.html">3D Shade Calculator Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-overview.html">3D Shade Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shade-data-description.html">Shade data description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-create.html">Active surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shading-objects.html">Shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-3d-scene.html">3D scene view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-birds-eye.html">Bird’s eye view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-elevations.html">Elevations view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-analyze.html">Analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-import_export.html">Import and Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-save-close.html">Save and Close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shortcuts.html">Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-file-types.html">File Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-howto/index.html">3D Shade Calculator How-To</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-define-location.html">Define the scene location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-underlay.html">Use an image underlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-add-shading-objects.html">Add shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-active-surface.html">Add active surface objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-change-view.html">Change the view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-zoom-pan.html">Zoom and pan the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-select.html">Select an object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-move.html">Move objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-resize.html">Resize objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-rotate.html">Rotate objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-delete.html">Delete and copy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-colors.html">Change object colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-generate-data.html">Generate shade data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-export.html">Export shade data</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/simulation-options/stochastic.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stochastic Simulations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-exporting-stochastic-simulation-data">Tips for Exporting Stochastic Simulation Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions-for-solar-resource-data">Distributions for Solar Resource Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlations">Correlations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-tornado-chart-macro">Create a Tornado Chart Macro</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="stochastic-simulations">
+<h1>Stochastic Simulations<a class="headerlink" href="#stochastic-simulations" title="Link to this heading">#</a></h1>
+<p>The Stochastic Simulations page provides tools you can use to generate distributions of input values for statistical and sensitivity analysis. For example, you could explore how uncertainty in the installation cost of one or more system components might affect a project’s net present value and levelized cost of energy (LCOE) over the project life.</p>
+<p>Click <strong>Stochastic</strong> in the lower left corner of the main window to display the Stochastic Simulations page:</p>
+<img alt="SS_MainWindow-StochasticButton.png" class="align-center" src="../_images/SS_MainWindow-StochasticButton.png" />
+<p>SAM uses the Latin Hypercube Sampling (LHS) and STEPWISE packages from Sandia National Laboratories to generate distributions for stochastic simulations. For information about these packages, see:</p>
+<ul class="simple">
+<li><p>Wyss, G; Jorgensen, K. (1998). “A User’s Guide To LHS: Sandia’s Latin Hypercube Sampling Software.” Sandia National Laboratories. SAND98-0210. 140 pp. (<a class="reference external" href="https://doi.org/10.2172/573301">PDF 15 MB</a>)</p></li>
+<li><p>Helton, J.; Davis, F.; (2000). “Sampling-Based Methods for Uncertainty and Sensitivity Analysis.” SAND99-2240. 121 pp. (<a class="reference external" href="https://doi.org/10.2172/760743">PDF 5 MB</a>)</p></li>
+<li><p>SAM’s LHS implementation is here: <a class="github reference external" href="https://github.com/NatLabRockies/lhs">NatLabRockies/lhs</a>.</p></li>
+<li><p>For the stochastic simulation regression results, SAM uses the STEPWISE package, <a class="github reference external" href="https://github.com/sandialabs/stepwise/">sandialabs/stepwise</a>.</p></li>
+</ul>
+<p>SAM’s <a class="reference internal" href="../reference/macros.html"><span class="doc">LK scripting language</span></a> includes LHS functions so you can create input distributions from your LK scripts. See the <a class="reference external" href="https://github.com/NatLabRockies/SAM/tree/develop/samples/LK%20Scripts%20for%20SAM">LK samples on the SAM GitHub.com</a> repository for an example.</p>
+<p>For a video demonstration of stochastic simulations in SAM, see <a class="reference external" href="https://sam.nlr.gov/simulation-options.html">Parametric and Statistical Analysis in SAM</a>.</p>
+<p>To run stochastic simulations:</p>
+<ol class="arabic simple">
+<li><p>For <strong>Input variables</strong>, click <strong>Add</strong> to display a list of available input variables.</p></li>
+<li><p>Check the variables in the list that you want to assign a distribution of values and click <strong>OK</strong>. You can choose one or more variables.</p></li>
+<li><p>For each variable in the list of stochastic input variables, either double-click the variable name, or click the variable and then click <strong>Edit</strong>.</p></li>
+<li><p>Choose a <a class="reference internal" href="#distributions"><span class="std std-ref">distribution</span></a>, enter parameter values for the distribution and click <strong>OK</strong>.</p></li>
+</ol>
+<p>For example, if you choose a Normal distribution, enter a mean value for the input and a standard deviation. SAM shows the variable’s name and its value from the SAM inputs for reference.</p>
+<ol class="arabic simple">
+<li><p>If you chose more than one variable and want to assign a <a class="reference internal" href="#correlations"><span class="std std-ref">correlation</span></a> between two of those variables, click <strong>Add</strong> under <strong>Correlations</strong> and choose a pair of variables to correlate with a correlation value between -1 and 1.</p></li>
+<li><p>Under <strong>Outputs</strong>, click <strong>Add</strong> to choose the output variables for the stochastic simulations. For example, if you want to see how the net present value varies for a given distribution of installation costs, choose the net present value output variable.</p></li>
+<li><p>Click <strong>Run simulations</strong> to generate a table of input values based on the distributions you defined and a table of results corresponding to the inputs along with the coefficient of determination R² and Beta coefficient ß for each output.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you click <strong>Run simulations</strong> after changing inputs, correlations, or outputs, SAM automatically generates a new set of samples and displays them in the Stochastic Input Vectors window.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can click <strong>Compute samples</strong> to generate a new set of samples based on the same inputs and correlations. When you click <strong>Run simulations</strong> after generating samples, SAM runs the simulations without regenerating the samples so the results will match the samples you generated.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you run stochastic simulations after closing the Stochastic Input Vectors window without changing the inputs, correlations, or outputs, the results are based on the samples that were in the closed window. SAM only generates new samples when you change the inputs, correlations, or outputs or generate a new set of samples.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stochastic simulation inputs, simulations and results are separate from the case simulation and results that you get by clicking the Simulate button.</p>
+</div>
+<section id="tips-for-exporting-stochastic-simulation-data">
+<h2>Tips for Exporting Stochastic Simulation Data<a class="headerlink" href="#tips-for-exporting-stochastic-simulation-data" title="Link to this heading">#</a></h2>
+<p>SAM displays stochastic simulation inputs and outputs in separate tables, which makes it difficult to interpret the results. There are two ways to work around this limitation. You can use Show Inputs to see all of the inputs for a given row in the outputs table, or you can copy and paste data from the inputs and outputs table to a spreadsheet or text file.</p>
+<p>To use Show Inputs to display all inputs for a row in the outputs table:</p>
+<ol class="arabic simple">
+<li><p>Click <strong>Run simulations</strong> to generate a table of outputs.</p></li>
+<li><p>Right-click the row heading for the row whose inputs you want to see, and click <strong>Show inputs</strong>. For example, here we right-clicked the row heading “4” to show inputs corresponding to the results in Row 4:</p></li>
+</ol>
+<img alt="SS_Stochastic-ShowInputs.png" class="align-center" src="../_images/SS_Stochastic-ShowInputs.png" />
+<p>This opens the inputs browser so you can see all of the inputs used to generate the results. You can use the Export functions of the inputs browser to export the data to a CSV file or Excel (Windows only).</p>
+<p>To copy and paste data from the inputs and outputs table to a spreadsheet or text file:</p>
+<ol class="arabic simple">
+<li><p>Click <strong>Run simulations</strong> to generate tables of stochastic inputs and outputs.</p></li>
+<li><p>Click the cell above the row headers and to the left of the column headers to select the entire table. (You can click a column or row header to select a single column or row instead of the entire table. (Selecting more than one column or row header only selects a single column or row in spite of the highlighted cells.)</p></li>
+</ol>
+<img alt="SS_Stochastic-SelectInputs.png" class="align-center" src="../_images/SS_Stochastic-SelectInputs.png" />
+<ol class="arabic simple">
+<li><p>Press Ctrl-C (Command-C on a Mac) to copy the selected table</p></li>
+<li><p>In your spreadsheet or text file, press Ctrl-V (Command-V) to paste the table. SAM omits column headings, so you will have to type those by hand.</p></li>
+<li><p>Repeat this process with the stochastic results table to copy and paste the data.</p></li>
+</ol>
+<section id="distributions">
+<span id="id1"></span><h3>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h3>
+<p>The distributions available in SAM correspond to the distributions described in Section 4.2 of Wyss (1998).</p>
+<img alt="SS_Stochastic-Distributions.png" class="align-center" src="../_images/SS_Stochastic-Distributions.png" />
+<p>To define the distribution for an input variable, either double-click the variable’s name in the list of input variables, or click the name and then click <strong>Edit</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to define a distribution that results in invalid input values, so be careful to choose parameters that result in a valid range of values. For example, if the example shown in the graph below for the Normal distribution was for a cost input, the negative cost values would cause simulation errors.</p>
+</div>
+<dl>
+<dt><strong>Normal</strong></dt><dd><p>The normal distribution is defined by the mean (μ) and standard deviation (σ), where μ is any real number and σ &gt; 0. The distribution is not bounded or truncated.</p>
+<img alt="IMG_Stochastic-normal.png" class="align-center" src="../_images/IMG_Stochastic-normal.png" />
+</dd>
+<dt><strong>Uniform</strong></dt><dd><p>Uniform samples values uniformly between a minimum value A and maximum value B where A and B are real numbers and B &gt; A.</p>
+<img alt="IMG_Stochastic-uniform.png" class="align-center" src="../_images/IMG_Stochastic-uniform.png" />
+</dd>
+<dt><strong>Lognormal</strong></dt><dd><p>The logarithm of the lognormal distribution is a normal distribution defined by an input mean and error factor, where input mean &gt; 0 and error factor &gt; 1. The mean (μ) and standard deviation (σ) of the underlying normal distribution are related to the parameters of the lognormal distribution as follows:</p>
+</dd>
+</dl>
+<p><em>σ = ln( error factor ) / 1.65</em></p>
+<p><em>μ = ln( input mean ) - 0.5 σ²</em></p>
+<blockquote>
+<div><img alt="IMG_Stochastic-lognormal.png" class="align-center" src="../_images/IMG_Stochastic-lognormal.png" />
+</div></blockquote>
+<dl>
+<dt><strong>Lognormal-N</strong></dt><dd><p>A Lognormal-N option results in the same distribution as the Lognormal option, but instead of specifying the input mean and error factor, you provide the mean (μ) and standard deviation (σ) of the underlying normal distribution, where μ is any real number and σ &gt; 0.</p>
+</dd>
+<dt><strong>Triangular</strong></dt><dd><p>The triangular distribution has a probability density function in the shape of a triangle with a distribution minimum at A, maximum at C, and the most likely value at the apex B, where A, B, and C are real numbers, and A ≤ B and B ≤ C.</p>
+<img alt="IMG_Stochastic-triangular.png" class="align-center" src="../_images/IMG_Stochastic-triangular.png" />
+</dd>
+<dt><strong>Gamma</strong></dt><dd><blockquote>
+<div><p>The gamma distribution is defined by the parameter α and the scaling factor β with a resulting mean of α/β, where both parameters are real numbers.</p>
+</div></blockquote>
+<img alt="IMG_Stochastic-gamma.png" class="align-center" src="../_images/IMG_Stochastic-gamma.png" />
+</dd>
+<dt><strong>Poisson</strong></dt><dd><p>The Poisson distribution is a discrete distribution of integer values defined by the frequency Lambda λ, a positive real number.</p>
+<img alt="IMG_Stochastic-poisson.png" class="align-center" src="../_images/IMG_Stochastic-poisson.png" />
+</dd>
+<dt><strong>Binomial</strong></dt><dd><p>The binomial distribution is a discrete distribution defined by the failure probability P, where 0 &lt; P &lt; 1, and the number of tests N, where N &gt; 1.</p>
+<img alt="IMG_Stochastic-binomial.png" class="align-center" src="../_images/IMG_Stochastic-binomial.png" />
+</dd>
+<dt><strong>Exponential</strong></dt><dd><p>The exponential distribution is a discrete distribution defined by the parameter Lambda (λ), where λ &gt; 0.</p>
+<img alt="IMG_Stochastic-exponential.png" class="align-center" src="../_images/IMG_Stochastic-exponential.png" />
+</dd>
+<dt><strong>Weibull</strong></dt><dd><p>The Weibull distribution is defined by the shape parameter α and scale parameter β, where both parameters are greater than zero.</p>
+</dd>
+<dt><strong>UserCDF</strong></dt><dd><p>The UserCDF option is for input variables that cannot be represented as one of the above distributions. For example, variables that are a choice such as photovoltaic array tracking, or variables that are arraysdoes not work.</p>
+</dd>
+</dl>
+</section>
+<section id="distributions-for-solar-resource-data">
+<h3>Distributions for Solar Resource Data<a class="headerlink" href="#distributions-for-solar-resource-data" title="Link to this heading">#</a></h3>
+<p>The solar resource data in a weather file consists of hourly or subhourly values for several different parameters. For example, an hourly weather file has 8,760 values for DHI (diffuse horizontal irradiance), DNI (direct normal irradiance), ambient temperature and ambient wind speed data. Because the data in the weather file is not represented as a single number, it is not possible to define distributions for weather data using the <a class="reference internal" href="#distributions"><span class="std std-ref">distributions</span></a> described below.</p>
+<p>If you have a set of weather files spanning multiple years, you can use the <strong>Include normal distribution of weather files</strong> option to have SAM select files from different years using a normal distribution based on the sum of average annual DNI or DHI for each file divided by the number of weather files. These weather files should be single-year weather files rather than typical-year files that combine data from different years: Each file should contain data for a specific year.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The weather file distribution option is only available for the solar performance models. It does not work for the wind power or other performance models.</p>
+</div>
+<p>To include weather files in stochastic simulations:</p>
+<ol class="arabic simple">
+<li><p>Set up distributions and correlations for the input variables you want to include in the stochastic simulations, if any.</p></li>
+<li><p>If you do not have a set of weather files, use the <strong>Choose year</strong> option on the Location and Resource page to download weather files.</p></li>
+<li><p>Click <strong>Choose folder</strong> to choose the folder that contains the weather files. The folder must contain only valid weather files.</p></li>
+<li><p>Check <strong>Include weather file normal distribution based on DNI or DHI</strong>.</p></li>
+<li><p>Click <strong>Show CDF</strong> to see the cumulative distribution function (CDF) of annual average DNI. Click the top left corner of the table to select the data to copy and paste into a spreadsheet or text file.</p></li>
+<li><p>Choose <strong>DNI</strong> or <strong>DHI</strong> to determine whether the distribution is based on the annual avearage direct normal irradiance (DNI) or diffuse horizontal irradiance (DHI) in each weather file. The DNI option is appropriate for most solar analysis.</p></li>
+<li><p>Click <strong>Compute samples</strong> to show a list of inputs for the stochastic simulations. The Stochastic Inputs table shows the weather files that will be used for each simulation along with either the average annual DHI or DNI for each file.</p></li>
+<li><p>Click <strong>Run simulations</strong> to generate a table of results. Remember not to compute samples after running simulations if you want the input and output tables to match.</p></li>
+</ol>
+</section>
+<section id="correlations">
+<span id="id2"></span><h3>Correlations<a class="headerlink" href="#correlations" title="Link to this heading">#</a></h3>
+<p>When you choose more than one input variable for stochastic simulations, SAM assumes by default that the variables are not related and assigns values to each variable independently. If you want to create a relationship between a pair of inputs, you can define a correlation.</p>
+<p>The LHS correlation function SAM uses is described in Chapter 2 and Section 4.4.3 of Wys (1998).</p>
+<p>A correlation can only be defined between one pair of variables at a time. To correlate more than two variables, define a correlation between all of the variables in pairs. For example, to define a correlation between three variables A, B, and C, you could first define a correlation between A and B, and then a separate correlation between B and C.</p>
+<p>To define a correlation between two variables:</p>
+<ol class="arabic simple">
+<li><p>Under <strong>Correlations</strong>, click <strong>Add</strong> to display a list of stochastic input variables.</p></li>
+<li><p>Check the two variables in the list that you want to correlate and click <strong>OK</strong>.</p></li>
+<li><p>Type the correlation between -1 and 1 and click <strong>OK</strong>:</p></li>
+<li><p>Values near the absolute value of one result in closer correlation than values near zero.</p></li>
+</ol>
+<p>Zero is equivalent to no correlation between the values in the two variables.</p>
+<p>Negative correlation values cause small values of one variable to be paired with large values of the other variable.</p>
+<p>Positive correlation causes larger values of both variables to be paired, and smaller values of both variables to be paired.</p>
+<p>The following graphs are of samples generated by SAM for two inputs with normal distributions to show how correlations work. The example correlations are -0.999 (very close negative correlation), 0 (no correlation), and 0.999 (very close positive correlation)</p>
+<img alt="IMG_Stochastic-correlation.png" class="align-center" src="../_images/IMG_Stochastic-correlation.png" />
+</section>
+<section id="create-a-tornado-chart-macro">
+<h3>Create a Tornado Chart Macro<a class="headerlink" href="#create-a-tornado-chart-macro" title="Link to this heading">#</a></h3>
+<p>SAM’s Create Tornado Chart macro in an LK script that you can use to generate a tornado graph given a set of statistical distributions and input variables. See the <a class="reference external" href="https://sam.nlr.gov/simulation-options.html">Parametric and Statistical Analysis videos</a> for a video demonstration.</p>
+<p>To run the Create Tornado Chart Macro:</p>
+<ol class="arabic simple">
+<li><p>Start SAM and open a project file or create a new case.</p></li>
+<li><p>Click <strong>Macros</strong> in the lower left corner of the Main window.</p></li>
+<li><p>Click <strong>Create Tornado Chart</strong> in the list of Macros available for the case.</p></li>
+<li><p>Follow the instructions to create the chart.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="parametrics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Parametric Simulations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="p50p90.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P50/P90 Simulations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-exporting-stochastic-simulation-data">Tips for Exporting Stochastic Simulation Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions-for-solar-resource-data">Distributions for Solar Resource Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlations">Correlations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-tornado-chart-macro">Create a Tornado Chart Macro</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, National Laboratory of the Rockies.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -6,7 +6,7 @@ The following keyboard and mouse shortcuts make it easier to zoom and pan the sc
 . The scene must have focus for these shortcuts to work. Be sure to click somewhere in the scene before using the shortcuts.
 
 Open and save files
-...................
+-------------------
 
 **Ctrl-O**
   open file
@@ -15,7 +15,7 @@ Open and save files
   save file
 
 Zoom and pan the scene
-......................
+----------------------
 
 **Arrow keys (left, right, up, down)**
   move the scene

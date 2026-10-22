@@ -179,7 +179,7 @@ For a description of the equations for the design point variables, see   See :re
 .. _mslf-sf-calcvalues:
 
 Equations for Calculated Values
-...............................
+-------------------------------
 
 The following table shows the equations SAM uses to calculate the values for the variables above that you cannot edit. (In Windows, the calculated values appear in blue.)
 

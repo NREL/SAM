@@ -22,7 +22,7 @@ Debt
 For projects with term debt, debt is the amount borrowed by the project. How SAM calculates the debt amount depends on the financial model.
 
 Residential and Commercial
-..........................
+--------------------------
 
 For the residential and commercial financial models, size of debt depends on the debt percent and :doc:`net capital cost <mtf_costs>`:
 
@@ -31,7 +31,7 @@ For the residential and commercial financial models, size of debt depends on the
 Where the debt percent is from the Financial Parameters page, and the net capital cost is the total installed cost less cash incentives.
 
 Single Owner, Leveraged Partnership Flip, Community Solar
-.........................................................
+---------------------------------------------------------
 
 For the single owner and leveraged partnership flip financial models, on the :doc:`Financial Parameters <../financial-parameters/fin_overview>` page, you can either specify the debt size as a fraction of :doc:`net capital cost <mtf_costs>`, or specify a debt-service coverage ratio (DSCR).
 

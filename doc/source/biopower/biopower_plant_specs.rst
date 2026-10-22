@@ -36,7 +36,7 @@ SAM can model three common combustion systems encountered in biomass power plant
 .. note:: SAM does not automatically change the cost assumptions on the Installation costs page when you change the combustion system option. Be sure to use costs appropriate for the type of plant you specify.
 
 Boiler Parameters
-.................
+-----------------
 
 You can specify the main parameters that determine boiler and furnace efficiency. 
 
@@ -64,7 +64,7 @@ You can specify the main parameters that determine boiler and furnace efficiency
   Boilers are generally oversized to accommodate fluctuations in steam production and to allow for additional capacity. However, highly oversized boilers can result in increased efficiency loss and capital cost. The boiler overdesign factor input will directly adjust the design capacity of each boiler metric.
 
 Estimated Efficiency Losses (HHV)
-.................................
+---------------------------------
 
 **Dry flue gas losses, %**
   Combustion air enters the furnace at ambient temperature, where it is immediately subject to preheating by waste process heat. Regardless of how the air is preheated, a significant loss of enthalpy occurs when the combustion gas exits the plant at a much higher temperature than the temperature at which it was fed. The Dry Flue Gas Loss is largely determined by the input percent excess fed air. Combustion air from the atmosphere is only 21% oxygen by volume (and the balance nitrogen). Thus, much of the enthalpy losses result from heating up the nitrogen that accompanies the combustion oxygen.
@@ -121,7 +121,7 @@ Steam produced in the boiler at the specified grade drives a steam turbine and e
   Typically, air-cooled systems require more capital, are less thermodynamically efficient, and use more energy. However, evaporative cooling demands more water and might not be suitable in some regions.
 
 System Availability
-...................
+-------------------
 
 .. include:: ../includes/snip_system_availability.rst
 

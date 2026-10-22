@@ -1,7 +1,7 @@
 {
     "Name": "Financial ITC Depreciation Allocation",
-    "Width": 860.0,
-    "Height": 196.0,
+    "Width": 861.0,
+    "Height": 182.0,
     "FormObjects": {
         "RadioChoice": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 33.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 81.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -61,11 +61,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -102,11 +102,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 582.0
+                    "Integer": 585.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 132.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -142,7 +142,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "%"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -176,6 +176,68 @@
                 }
             }
         },
+        "Label": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "lbl_system_components"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 21.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 825.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 36.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Caption": {
+                    "Type": 5.0,
+                    "String": "Text determined by set_itc_basis_choice() on Financial ITC Qualification form"
+                },
+                "TextColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "Bold": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "FontSize": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "WordWrap": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "AlignRight": {
+                    "Type": 2.0,
+                    "Boolean": 0.0
+                },
+                "AlignTop": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                }
+            }
+        },
         "Choice": {
             "Visible": 1.0,
             "ObjectProperties": {
@@ -185,11 +247,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 318.0
+                    "Integer": 321.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -226,11 +288,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 582.0
+                    "Integer": 585.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -266,7 +328,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "%"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -321,7 +383,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 168.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -346,19 +408,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 582.0
+                    "Integer": 585.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 105.0
+                    "Integer": 78.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 93.0
+                    "Integer": 138.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -366,7 +428,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Allocation"
+                    "String": "Allocation by ITC Qualification"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -380,68 +442,6 @@
                 "Bold": {
                     "Type": 2.0,
                     "Boolean": 1.0
-                },
-                "FontSize": {
-                    "Type": 3.0,
-                    "Integer": 0.0
-                },
-                "WordWrap": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignRight": {
-                    "Type": 2.0,
-                    "Boolean": 1.0
-                },
-                "AlignTop": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
-                }
-            }
-        },
-        "Label": {
-            "Visible": 1.0,
-            "ObjectProperties": {
-                "Name": {
-                    "Type": 5.0,
-                    "String": "object 77"
-                },
-                "X": {
-                    "Type": 3.0,
-                    "Integer": 15.0
-                },
-                "Y": {
-                    "Type": 3.0,
-                    "Integer": 24.0
-                },
-                "Width": {
-                    "Type": 3.0,
-                    "Integer": 825.0
-                },
-                "Height": {
-                    "Type": 3.0,
-                    "Integer": 54.0
-                },
-                "Tool Tip": {
-                    "Type": 5.0,
-                    "String": ""
-                },
-                "Caption": {
-                    "Type": 5.0,
-                    "String": "These inputs are available for the \"Determine ITC basis from system components\" option above. This option allows for only two depreciation classes: One for ITC qualifying costs and another for costs that do not qualify for the ITC. Choose whether the depreciation basis is the federal ITC qualifying cost or the state ITC qualifying cost, and then choose the depreciation classes that apply to those costs."
-                },
-                "TextColour": {
-                    "Type": 4.0,
-                    "Color": {
-                        "Red": 0.0,
-                        "Green": 0.0,
-                        "Blue": 0.0,
-                        "Alpha": 255.0
-                    }
-                },
-                "Bold": {
-                    "Type": 2.0,
-                    "Boolean": 0.0
                 },
                 "FontSize": {
                     "Type": 3.0,
@@ -614,10 +614,12 @@
         "\r",
         "on_change{'itc_basis_depreciation_allocation'} = define() {\r",
         "\titc_basis_depreciation_choice();\r",
+        "\tset_itc_basis_choice();\r",
         "};\r",
         "\r",
         "on_change{'non_itc_basis_depreciation_allocation'} = define() {\r",
         "\titc_basis_depreciation_choice();\r",
+        "\tset_itc_basis_choice();\r",
         "};\r",
         "\r",
         "\r",

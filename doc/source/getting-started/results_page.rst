@@ -30,7 +30,7 @@ If you do not see all of the tabs because of the width of your computer's screen
    :alt: SS_Results-Ellipses.png
 
 Performance Model Results
-.........................
+-------------------------
 
 * :doc:`Summary <../results/summary>` displays the :doc:`Metrics table <../results/summary>` with key metrics and graphs that summarize the performance model results, such as total annual electrical output, capacity factor, etc.
 
@@ -49,7 +49,7 @@ Performance Model Results
 * :doc:`Heat map <../results/heatmap>` displays one year's worth of time series data set in a single two-dimensional graphical representation using colors to indicate magnitude.
 
 Financial Model Results
-.......................
+-----------------------
 
 SAM's financial model uses the sum of the performance model's 8,760 hourly output values in kWh as an input representing the system's total annual electrical output in kWh. The financial model then calculates the project's cash flow based on the inputs you specify on the Installation Costs, Operating Costs, and Financial Parameters pages. SAM displays financial model results in the following places:
 

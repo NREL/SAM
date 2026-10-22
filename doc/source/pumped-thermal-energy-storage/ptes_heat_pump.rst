@@ -36,7 +36,7 @@ Component Parameters
 The properties of the HTF that transfers heat from the heater to the TES.
 
 Startup and Operation
-.....................
+---------------------
 
 **Fraction of design power allowed during startup**
   Fraction of the design heat pump thermal power output allowed to bring the system to operating temperature after a period of non-operation.
@@ -53,7 +53,7 @@ Startup and Operation
   The minimum heat pump thermal power output allowed as a fraction of the design point.
 
 Heat Pump Parasitics
-....................
+--------------------
 
 **Parasitics (non-pumping) as fraction of thermodynamic power**
   Electrical consumption of heat pump parasitics, not including HTF pumping power, defined as a fraction of the design heat pump net thermodynamic power input. Examples of potentially relevant parasitics include electric motor inefficiencies and heat rejection parasitics. At off-design this value is calculated by scaling by the ratio of off-design thermodynamic power to design thermodynamic power.
@@ -62,7 +62,7 @@ Heat Pump Parasitics
   Calculated electrical consumption of heat pump parasitics at design conditions, not including HTF pumping power
 
 Hot HTF Pumping Power
-.....................
+---------------------
 
 **Pumping power rate through hot heat exchanger, kWe/kg/s**
   Electrical power required to move 1 kg/s of hot HTF through the hot side heat exchanger.
@@ -74,7 +74,7 @@ Hot HTF Pumping Power
   Electrical power required to pump hot HTF at design conditions.
 
 Cold HTF Pumping Power
-......................
+----------------------
 
 **Pumping power rate through cold heat exchanger, kWe/kg/s**
   Electrical power required to move 1 kg/s of cold HTF through the cold side heat exchanger.
@@ -86,7 +86,7 @@ Cold HTF Pumping Power
   Electrical power required to pump cold HTF at design conditions.
 
 Net Metrics
-...........
+-----------
 
 **Total heat pump power in, MWe**
   Total heat pump power consumption calculated by adding electrical parasitics to the heat pump thermodynamic power.

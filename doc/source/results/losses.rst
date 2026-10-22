@@ -14,7 +14,7 @@ To view the loss diagram:
 .. note:: SAM does not display an energy loss diagram for all of the performance models. If you do not see the Losses tab on the Results page, the diagram is not available.
 
 Using the Loss Diagram in your Documents
-........................................
+----------------------------------------
 
 SAM includes a copy of the energy loss diagram in :doc:`reports <../reference/reports>`.
 

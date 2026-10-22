@@ -105,7 +105,7 @@ Time of Delivery Factors in Results
 SAM reports hourly, monthly, and annual TOD-related results. You can view these results on the :doc:`Data <../results/data>` and  :doc:`Graphs <../results/graphs>` pages.
 
 Single Values
-.............
+-------------
 
 The single value results are available .
 
@@ -119,7 +119,7 @@ The single value results are available .
   The dollar value of electricity sold by the project in Year one for each of the nine TOD periods, in dollars per year.
 
 Monthly Data
-............
+------------
 
 The monthly variables are available on the Results page in :doc:`Graphs <../results/graphs>` and :doc:`Tables <../results/data>`.
 
@@ -130,7 +130,7 @@ The monthly variables are available on the Results page in :doc:`Graphs <../resu
   Total dollar value of electricity sold by the project in Year one for each month.
 
 Annual Data (All Years)
-.......................
+-----------------------
 
 .. note:: The first row in the annual data table is equivalent to Year zero in the project :doc:`cash flow <../results/cashflow>`, before the system starts generating electricity.
 

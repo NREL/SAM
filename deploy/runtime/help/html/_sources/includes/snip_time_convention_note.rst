@@ -1,0 +1,2 @@
+
+.. note:: SAM :doc:`omits leap years <../weather-data/weather_time_convention>` from the simulation, so it assumes there are *24 hours/day ×  365 days/year = 8,760 hours/year*, regardless of the year. It also does not account for daylight savings, so all times are in local standard time throughout the year. See :doc:`Time and Sun Position <../weather-data/weather_time_convention>` for more details.

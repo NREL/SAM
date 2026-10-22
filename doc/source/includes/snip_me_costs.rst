@@ -16,7 +16,7 @@ SAM's marine energy models are based on the U.S Department of Energy (DOE) Refer
 * Mirko Previsic (2012). `Cost Breakdown Structure for WEC Rated at 286 kW <https://energy.sandia.gov/download/23667/>`__
 
 Marine Energy Cost Structure
-............................
+----------------------------
 
 The cost structure has several levels, so you can specify each cost as a single value, or break it down into more detailed categories and subcategories.
 

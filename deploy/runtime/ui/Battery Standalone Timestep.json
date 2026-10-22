@@ -1,7 +1,7 @@
 {
     "Name": "Battery Standalone Timestep",
-    "Width": 1052.0,
-    "Height": 95.0,
+    "Width": 1050.0,
+    "Height": 129.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 117.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 51.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -115,7 +115,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 60.0
+                    "Integer": 81.0
                 },
                 "Width": {
                     "Type": 3.0,

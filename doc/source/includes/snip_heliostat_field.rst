@@ -25,7 +25,7 @@ The heliostat field inputs determine the position of heliostats in the field and
   The total number of individual heliostats in the field, equal to the number of rows in the heliostat layout table. SAM automatically populates the field when you import heliostat position data from a file or when the field layout is automatically generated or optimized.
 
 Field and tower model type (during simulation)
-..............................................
+----------------------------------------------
 
 These options determine what happens when you click **Simulate** to run a simulation.
 
@@ -67,7 +67,7 @@ Depending on the option you choose, the simulation may used optimized values for
      :alt: MSPT_generate-heliostat-layout.png
 
 Field and Tower Design Macros
-.............................
+-----------------------------
 
 Use the field and tower design macros to run SolarPILOT without running a simulation. You can run the appropriate macro to ensure that the heliostat position table, tower height, and receiver dimension inputs on the Heliostat Field page and Tower and Receiver page are the same as the data used for the simulation, or if you want to optimize the field without running a simulation.
 
@@ -78,7 +78,7 @@ Use the field and tower design macros to run SolarPILOT without running a simula
   Run SolarPILOT now to generate both values for the table of heliostat x-y positions and calculate optimal tower height, receiver height, and receiver diameter/aperture width values. This option uses the inputs under **Optimization Settings** in addition to considering the location and other design parameters and system costs. This changes values in the heliostat position table and the tower height and receiver dimensions on the Tower and Receiver page.
 
 Optimization Settings
-.....................
+---------------------
 
 The optimization settings allow you to control aspects of the SolarPILOT optimization algorithm. The local derivative free (DFO) algorithm used in SAM is implemented in the `NLopt package <https://nlopt.readthedocs.io>`__, provided for free online by MIT. This open-source code is implemented in C++, and can be readily incorporated into existing simulation frameworks such as SAM. A number of algorithms are provided in the NLOpt package, and gradient-based, global, and local derivative-free algorithms are all represented. Because this application is particularly interested in DFO without specified upper or lower bounds on variables and with a maximum flux constraint, only a one algorithm is used. The Bounded Optimization BY Quadratic Approximation (BOBYQA) routine optimizes the objective by iteratively constructing an objective function model based on a quadratic surface approximation (M. Powell, 2009). The stopping criteria for this algorithm was modified for the NLopt library. As described in the reference, most iterative changes to the variable set represent a solution to the quadratic problem within the current trust region, which can change from iteration to iteration. This algorithm (along with its predecessor NEWUOA) is somewhat unique among the NLopt library in its application of a quadratic response surface model. 
 
@@ -284,7 +284,7 @@ The heliostat positions in the field are determined by the table of x-y coordina
 .. note:: You can also paste data into the table from your computer's clipboard as rows of tab-delimited values.
 
 Using the Layout Table with External Data
-.........................................
+-----------------------------------------
 
 SAM can model a wide variety of heliostat field layouts originating from any kind of layout method. You can model field layouts generated outside of SAM by importing the heliostat positions into the table on the Heliostat Field page. You can either import a text file of x-y heliostat coordinates or copy and paste the data into the table from a spreadsheet program or text editor.
 
@@ -360,7 +360,7 @@ The `DELSOL3 <https://www.osti.gov/biblio/1231208>`__ code from Sandia National 
 
 To use SolarPILOT for optimization:
 
-#. On the :doc:`Installation Costs <../installation-costs/installation_costs>` page, enter values for the capital costs.
+#. On the :doc:`Installation Costs <../installation-costs/index>` page, enter values for the capital costs.
 
 #. On the :doc:`Heliostat Field <../csp-power-tower-molten-salt/mspt_heliostat_field>`, :doc:`Power Cycle <../csp-power-tower-molten-salt/mspt_power_cycle>`, and :doc:`Tower and Receiver <../csp-power-tower-molten-salt/mspt_tower_and_receiver>` pages, enter values defining geometry and optical parameters.  The optimization algorithm works by exploring the design near the initial guess values, so be sure to enter your best guess for tower height, receiver diameter, and receiver height based on the system you are simulating.
 
@@ -484,7 +484,7 @@ Finding an optimal set of input parameters is often an iterative process that ma
 Keep in mind that because the algorithm uses capital costs from the Installation Costs page in the optimization process, unreasonable cost values may also prevent the algorithm from finding an optimal field layout. 
 
 Guidelines for Choosing Variable Ranges for Optimization
-........................................................
+--------------------------------------------------------
 
 The optimization algorithm does its best to find parameter values for an optimal system within the search ranges you specify on the SolarPILOT input tabs. Because the algorithm searches a discrete number of values within the range for each parameter, defining too broad of a range increases the chances that the optimal value lies between the values included in the search. On the other hand, defining too narrow a range increases the chances that the optimal value lies outside of the search range.
 

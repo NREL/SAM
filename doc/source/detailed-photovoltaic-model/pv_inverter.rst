@@ -1,5 +1,5 @@
 Inverter 
-========
+=========
 
 The Inverter page allows you to choose a model to represent the inverter's performance. The inverter converts DC electricity from the photovoltaic array into AC electricity. The inverter model calculates the DC to AC conversion efficiency in each simulation time step.
 
@@ -34,7 +34,7 @@ The Sandia inverter model is described in the following documents:
 
 * On the `PV Performance Modeling Collaborative website <http://pvpmc.org/modeling-steps/dc-to-ac-conversion-2/inverter-efficiency/sandia-inverter-model/>`__
 
-* Gilman, P. et al (2018). SAM Photovoltaic Model Technical Reference. National Renewable Energy Laboratory Update. 59 pp.; NREL/TP-6A20-67399. (Available on the `SAM website <https://sam.nlr.gov/photovoltaic/pv-publications.html>`__.)
+* Gilman, P. et al (2018). SAM Photovoltaic Model Technical Reference. National Renewable Energy Laboratory Update. NREL/TP-6A20-67399. (Available on the `SAM website <https://sam.nlr.gov/photovoltaic/pv-publications.html>`__.)
 
 The CEC inverter test protocol is described in:
 
@@ -636,7 +636,7 @@ To model a system with using microinverters in the Detailed Photovoltaic model:
 
 #. For Subarray 1, for **Modules per String in subarray**, enter 1.
 
-#. To calculate **Strings in Parallel in subarray** for Subarray 1, divide the system's nameplate capacity by the module maximum power rating (Pmp) from the :doc:`Module <pv_module>` page, and round up or down as appropriate:
+#. To subarray 1's **Strings in Parallel in subarray**, divide the system's nameplate capacity by the module maximum power rating (Pmp) from the :doc:`Module <pv_module>` page, and round up or down as appropriate:
 
    *Strings in Parallel = System Nameplate Capacity (Wdc) / Module Maximum Power (Wdc)*
 
@@ -644,8 +644,8 @@ To model a system with using microinverters in the Detailed Photovoltaic model:
 
    *Number of Inverters = Strings in Parallel*
 
-#. On the :doc:`pv_electrical_losses` page, for **Module Mismatch**, enter zero. You can also click **Microinverters** to apply default loss values.
+#. On the :doc:`Electrical Losses <pv_electrical_losses>` page, for **Module Mismatch**, enter zero. You can also click **Microinverters** to apply default loss values.
 
-#. On the :doc:`../installation-costs/cc_pv` page, be sure that the inverter cost is appropriate for the microinverter.
+#. On the :doc:`Installation costs <../installation-costs/cc_pv>` page, be sure that the inverter cost is appropriate for the microinverter.
 
 #. On the :doc:`pv_soiling_shading_snow` page, be sure that **Self shading** is set to **None**. 

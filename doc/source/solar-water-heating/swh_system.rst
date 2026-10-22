@@ -69,7 +69,7 @@ System
   DiOrio, N.; Christensen, C.; Burch, J.; Dobos, A. (DRAFT 2014). Technical Manual for the SAM Solar Water Heating Model. (`PDF 150 KB) <https://sam.nlr.gov/images/web_page_files/diorio-2014-draft-swh-sam-technical-manual.pdf>`__
 
 Shading
-.......
+-------
 
 External shading losses are matrices of loss values that represent reduction in incident irradiance caused by shadows from nearby objects on the array.
 
@@ -98,7 +98,7 @@ The Collector inputs describe the collector's physical characteristics. You can 
   The collector library contains parameters for collectors certified by the `Solar Rating and Certification Corporation (SRCC) <http://www.solar-rating.org>`__  .
 
 Collector Parameters
-....................
+--------------------
 
 **SRCC# (library only)**
   The collector's SRCC number. SAM does not use this value.

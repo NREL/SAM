@@ -9,7 +9,7 @@ For some analyses, it may be appropriate to use single year data instead of typi
 
 * To model a system's performance (ignoring the :doc:`financial model <../introduction/fin_overview>` inputs and results).
 
-* To explore :doc:`savings and revenue <../electricity-rates-and-load/electricity_rates_load>` when electricity prices are weather dependent, for example, in a location with hot summers and electricity prices that increase with demand to meet summer cooling loads.
+* To explore :doc:`savings and revenue <../electricity-rates-and-load/electricity_rates>` when electricity prices are weather dependent, for example, in a location with hot summers and electricity prices that increase with demand to meet summer cooling loads.
 
 * For statistical studies involving single year data for many years, such as for :doc:`P50/P90 analysis <../simulation-options/p50p90>`.
 

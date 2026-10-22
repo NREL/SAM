@@ -12,7 +12,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *IBI in Year 0 = IBI as Amount + IBI as Percentage*
 
-  Where *Amount*, *Percentage*   and *Maximum*   are the values   that you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page.
+  Where *Amount*, *Percentage*   and *Maximum*   are the values   that you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/index>`   page.
 
 *Total IBI*   is the sum of the four IBI values (federal, state, utility, other).
 
@@ -64,7 +64,7 @@ The incentive cash flow rows show the value of cash incentives and tax credits, 
 
 *ITC in Year One = ( Total Installed Cost ($) - ITC Basis Reduction ($) ) × Percentage (%), up to Maximum*
 
-  Where *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page, and *Percentage*   and *Maximum*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
+  Where *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/index>`   page, and *Percentage*   and *Maximum*   are the values you specify on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
 
 *ITC Basis Reduction*   applies only to the Commercial and PPA financial models, and depends on whether the project includes any investment-based incentives (IBI) or capacity-based incentives (CBI) specified on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page with checked boxes under **Reduces Depreciation and ITC Bases**. For each IBI or CBI with a check mark, SAM subtracts the incentive amount from the total installed cost to calculate the ITC.
 

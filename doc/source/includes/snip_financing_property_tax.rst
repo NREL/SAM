@@ -8,7 +8,7 @@ SAM determines the annual property tax payment by calculating an assessed value 
 For residential projects, the property tax amount is the only operating cost that can be deducted from state and federal income tax.
 
 **Assessed Percent**
-  The assessed value of property subject to property taxes as a percentage of the system total installed cost specified on the :doc:`Installation Costs <../installation-costs/installation_costs>`   page. SAM uses this value to calculate the assessed property value in year one of the project cash flow.
+  The assessed value of property subject to property taxes as a percentage of the system total installed cost specified on the :doc:`Installation Costs <../installation-costs/index>`   page. SAM uses this value to calculate the assessed property value in year one of the project cash flow.
 
 **Assessed Value**
   The assessed property value in Year One of the project cash flow:

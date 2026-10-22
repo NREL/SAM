@@ -53,7 +53,7 @@ External Shading
 
 External shading is shading of the photovoltaic subarray by trees, buildings, roof protrusions and other nearby objects. SAM represents a shadow on the subarray in a given time step by a single **beam irradiance shading loss** for that time step, which it determines from data you provide in the beam shade loss tables in the :doc:`Edit Shading Data window <../window-reference/win_edit_shading_data>`. SAM reduces the plane-of-array beam irradiance by the shading loss percentage. For example, if a shadow occupies 25% of the subarray's surface area at 11 am, the beam shading loss for 11 am would be 25%. A shading loss of 0 means there is no shade on the subarray, and a loss of 100% means that no beam irradiance reaches the subarray.
 
-When you specify beam irradiance shading losses by time step, you can use SAM's partial shading model to estimate the impact of partial shading on the array's electrical output. The partial shading model does not work with the month-by-hour or solar azimuth-by-altitude beam shade loss tables. For more information about the partial shading model, see MacAlpine, S.; Deline, C. (2015) Simplified Method for Modeling the Impact of Arbitrary Partial Shading Conditions on PV Array Performance. National Renewable Energy Laboratory. 8 pp.; NREL/CP-5J00-64570. (`PDF 699 KB <https://docs.nlr.gov/docs/fy15osti/64570.pdf>`__)
+When you specify beam irradiance shading losses by time step, you can use SAM's partial shading model to estimate the impact of partial shading on the array's electrical output. The partial shading model does not work with the month-by-hour or solar azimuth-by-altitude beam shade loss tables. For more information about the partial shading model, see MacAlpine, S.; Deline, C. (2015) Simplified Method for Modeling the Impact of Arbitrary Partial Shading Conditions on PV Array Performance. National Renewable Energy Laboratory. NREL/CP-5J00-64570. (`PDF 699 KB <https://docs.nlr.gov/docs/fy15osti/64570.pdf>`__)
 
 SAM accounts for the effect of external shading on the plane-of-array diffuse irradiance using a single **sky diffuse shading loss** for the entire year.
 
@@ -145,7 +145,7 @@ SAM's snow model estimates the loss in system output during time steps when the 
 
 * Gilman, P.; Dobos, A.; DiOrio, N.; Freeman, J.; Janzou, S.; Ryberg, D. (2018) SAM Photovoltaic Model Technical Reference Update. 93 pp.; NREL/TP-6A20-67399
 
-* Ryberg, D.; Freeman, J. (2017).  Integration, Validation and Application of a PV Snow Coverage Model in SAM. National Renewable Energy Laboratory. 33 pp. TP-6A20-68705 available along with other technical documentation from the `SAM website <https://sam.nlr.gov/photovoltaic/pv-publications.html>`__.
+* Ryberg, D.; Freeman, J. (2017).  Integration, Validation and Application of a PV Snow Coverage Model in SAM. National Renewable Energy Laboratory. TP-6A20-68705 available along with other technical documentation from the `SAM website <https://sam.nlr.gov/photovoltaic/pv-publications.html>`__.
 
 .. note:: The Ryberg (2017) paper includes a United States map of annual average snow loss values that could be used to estimate snow loss using inputs on the Losses page instead of the snow model when snow depth data is not available.
 

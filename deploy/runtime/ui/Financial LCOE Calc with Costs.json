@@ -2316,8 +2316,13 @@
         }
     },
     "Equations": [
-        "equations{ 'ui_system_capacity' } = define() {",
-        "  return ${nameplate}*1.E3; ",
+        "equations{ 'ui_system_capacity' } = define() {\r",
+        "\tif(technology() == 'Geothermal Power'){\r",
+        "\t\treturn ${nameplate};\r",
+        "\t}\r",
+        "\telse{",
+        "\t\treturn ${nameplate}*1.E3; \r",
+        "\t}",
         "};",
         "",
         "equations{ 'ui_capital_cost_reference' } =define() {",

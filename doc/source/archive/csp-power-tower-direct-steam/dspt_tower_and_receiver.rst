@@ -30,7 +30,7 @@ The configuration of multiple receiver sections on the tower requires a strategy
 * Once the superheater outlet temperature is resolved, SAM determines the reheater performance using the remaining un-apportioned flux. If the calculated outlet temperature does not match the target, then the portion of total flux assigned to the boiler and superheater is readjusted, and the process is repeated until the target reheater outlet temperature is met.
 
 Direct Steam Receiver
-.....................
+---------------------
 
 **Receiver diameter, m**
   Total diameter in meters of the receiver. The distance from center of the receiver to center of a receiver panel. The width of a single panel is the circumference of receiver divided by number of panels.
@@ -51,7 +51,7 @@ Direct Steam Receiver
   Solar-weighted absorptance of coatings on boiler, superheater, and reheater tubes: The fraction of incident radiation absorbed by the receiver in the solar spectrum.
 
 Boiler
-......
+------
 
 **Boiler height, m**
   Height in meters of the boiler section of the receiver.
@@ -75,7 +75,7 @@ Boiler
   Estimate of the thermal efficiency of the boiler at design conditions. Note that this value is not used in the annual hourly performance calculation but is only used to help size the boiler during design.
 
 Superheater
-...........
+-----------
 
 **Superheater height, m**
   Height in meters of the superheater section of the receiver.
@@ -99,7 +99,7 @@ Superheater
   Estimate of the thermal efficiency of the superheater at design conditions. Note that this value is not used in the annual hourly performance calculation but is only used to help size the superheater during design.
 
 Reheater
-........
+--------
 
 **Reheater height, m**
   Height in meters of the reheater section of the receiver.
@@ -123,19 +123,19 @@ Reheater
   Estimate of the thermal efficiency of the reheater at design conditions.
 
 Flow
-....
+----
 
 **Flow Pattern**
   The direction of flow of steam through the receiver. Choose Option 1 if steam flows through the receiver from north to south. Choose Option 2 if the steam flows in the opposite direction, from south to north.
 
 Tower
-.....
+-----
 
 **Tower height, m**
   The optical height in meters of the tower structure from the heliostat pivot point to the vertical center of the receiver.
 
 Thermal Design and Operation
-............................
+----------------------------
 
 **Solar multiple**
   The solar multiple represents the ratio of the thermal power produced by the solar field at design conditions to the thermal power required by the power cycle at design. The optimal solar multiple will typically be higher for molten salt tower systems with thermal storage, though direct steam systems without storage may also have an optimal solar multiple greater than one.

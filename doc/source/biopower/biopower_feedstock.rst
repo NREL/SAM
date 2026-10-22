@@ -43,7 +43,7 @@ Describes the amount of biomass available as an energy resource within a certain
 *Mdb = Mwb ÷ (1 - Mwb)*
 
 Traditional Residues
-....................
+--------------------
 
 Traditional residues generally fall into two categories: field residue and process residue. 
 
@@ -58,7 +58,7 @@ Traditional residues generally fall into two categories: field residue and proce
 * Urban wood waste includes prunings from residential areas, as well as woody construction materials and used pallets.
 
 Dedicated Energy Crops
-......................
+----------------------
 
 Dedicated energy crops are grown specifically for use as a fuel. These crops typically have high yields and densities per acre.
 

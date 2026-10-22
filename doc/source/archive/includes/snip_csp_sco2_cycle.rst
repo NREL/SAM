@@ -2,7 +2,7 @@
 The supercritical carbon dioxide power cycle model requires that you provide high level cycle design data
 
 Input Value
-...........
+-----------
 
 The variables under **Input Value** are design parameters that you specify.
 
@@ -25,7 +25,7 @@ The variables under **Input Value** are design parameters that you specify.
   Percent of the design power cycle gross output consumed by the air cooler fan(s) at design. Smaller values will increase the annual plant generation but results in more expensive air coolers, which you should capture in the power cycle cost. For the partial cooling cycle, this value is split evenly between the two air coolers.
 
 Value Used for Calculation
-..........................
+--------------------------
 
 The variables under **Value used for Calculation** are design solution outputs.
 

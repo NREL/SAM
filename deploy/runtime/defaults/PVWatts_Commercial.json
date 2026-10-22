@@ -33,9 +33,13 @@
     "annual_albedo": 0.1839506853933204,
     "annual_beam": 7.335643835616439,
     "annual_crit": 0.0,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.3484328767123289,
     "annual_global": 5.794761643835617,
     "annual_peak": 274.231,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 21.938470319634705,
     "annual_twet": NaN,
@@ -26813,7 +26817,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv_capex_cost_choice": 0.0,
     "pv_land_area_is_shown": 0.0,
     "pvwatts.advanced.is_shown": 0.0,
@@ -26875,8 +26879,8 @@
     "solar_data_source": "NSRDB",
     "solar_resource": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy",
     "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0

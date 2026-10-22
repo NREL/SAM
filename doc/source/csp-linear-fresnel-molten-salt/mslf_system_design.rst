@@ -6,7 +6,7 @@ The System Design page shows inputs for design point parameters that determine t
 .. note:: All of the system design inputs are nominal values, or values at the system's design point. SAM calculates actual values during simulation and reports them in the :doc:`results <../getting-started/results_page>`.
 
 Solar Field
-...........
+-----------
 
 The solar field design parameters determine the size of the solar field. See the :doc:`Solar Field <mslf_solar_field>`, and :doc:`Collector and Receiver <mslf_collector_and_receiver>` pages to set detailed parameters for the field.
 
@@ -44,7 +44,7 @@ The solar field design parameters determine the size of the solar field. See the
   The number of loops in the field, equal to the solar multiple times the required number of loops at a solar multiple of 1.0. The required number of loops is rounded to the nearest integer to represent a realistic field layout.
 
 Power Cycle
-...........
+-----------
 
 The power cycle design parameters determine the capacity of the power cycle, and the nameplate capacity of the system. See the :doc:`Power Cycle <mslf_power_cycle>` page for more detailed power cycle options and detailed parameters.
 
@@ -68,7 +68,7 @@ The power cycle design parameters determine the capacity of the power cycle, and
 *Cycle Thermal Power, MWt = Design Turbine Gross Output (MWe) ÷ Cycle Thermal Efficiency*
 
 Thermal Storage
-...............
+---------------
 
 The thermal storage design parameters determine the size of the thermal energy storage system (TES). See the :doc:`Thermal Storage <mslf_thermal_storage>` page for detailed TES parameters.
 

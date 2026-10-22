@@ -62,7 +62,7 @@ Tested on Windows with Python 3.12.10 and GNU Make 4.4.1.
    rm -rf build
    ```
 
-   As an alternative, run Make, assuming Make is installed and `Makefile` is in the `doc` folder.
+   As an alternative, run Make, assuming Make is installed (see below) and `Makefile` is in the `doc` folder.
 
    ```
    make html
@@ -77,6 +77,20 @@ Tested on Windows with Python 3.12.10 and GNU Make 4.4.1.
 5. When the build finishes, HTML and associated files should be in the `../doc/build/html` folder. (The `../doc/build/doctrees` folder is used during the build and not needed to display the HTML files.)
 
 To see Help, open the `../doc/html/index.html` file.
+
+### Make Installation Instructions (Optional)
+
+For Linux, Make comes with the operating system, so you do not need to install it.
+
+For macOS, Make is part of the Command Line Tools that are required to build SAM from source. See [Installing the command-line tools](https://developer.apple.com/documentation/xcode/installing-the-command-line-tools/) if you need to install them.
+
+For Windows:
+
+1. Download the "Complete package, except sources" from https://gnuwin32.sourceforge.net/packages/make.htm.
+
+2. Run the make installer (`make-3.81.exe`).
+
+3. Add the make installation folder `C:\Program Files (x86)\GnuWin32\bin` to the Windows `Path` user environment variable.
 
 ## Help Context IDs in SAM
 
@@ -231,7 +245,7 @@ To insert the content of `snip_system_availability.rst` from a file in a `../doc
 .. include:: ../includes/snip_system_availability.rst
 ```
 
-If possible, avoid using headings in snippet files to avoid inconsistencies between the heading level in the snippet file and the file it is being inserted to. 
+If possible, avoid using headings in snippet files to avoid inconsistencies between the heading level in the snippet file and the file it is being inserted to. *Check this: The Sphinx documentation suggests document structure is preserved if the heading order is the same as the document containing the `include` directive: "If an included document fragment contains section structure, the title adornments must match those of the master document" from https://docutils.sourceforge.io/docs/ref/rst/directives.html#include*.
 
 **Important note about snippets**: Do not include targets (`.. _target-name-in-snippet`), cross references, references to targets in other snippet files, or cross references to other snippet files in snippet files. Doing so results in duplicate target names which breaks the Sphinx build. You can include cross references in snippet files to topic files that are not in the `../doc/includes` folder.
 
@@ -283,6 +297,18 @@ For the title of step-by-step instructions, use **bold** text (`**bold**`) inste
 #. This is Step 3.
 
 #. This is Step 4.
+```
+
+For multi-level lists, separate indented sections with blank lines:
+
+```
+* First item in bullet list.
+* Second item.
+
+  * First sub-item of second item.
+  * Second sub-item.
+
+* Third item.
 ```
 
 ## Variable Definitions

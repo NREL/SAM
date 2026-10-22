@@ -707,7 +707,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "grpTotalInstalledCost"
+                    "String": "Total Installed Cost"
                 },
                 "Bold": {
                     "Type": 2.0,

@@ -1,5 +1,5 @@
 {
-    "Name": "Operating Costs Generic Battery",
+    "Name": "Operating Costs Custom Generation Battery",
     "Width": 862.0,
     "Height": 254.0,
     "FormObjects": {
@@ -111,7 +111,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -173,7 +173,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -235,7 +235,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -297,7 +297,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -359,7 +359,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 54.0
+                    "Integer": 51.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -421,7 +421,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 69.0
                 },
                 "Y": {
                     "Type": 3.0,

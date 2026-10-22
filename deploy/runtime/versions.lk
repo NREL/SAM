@@ -59,7 +59,8 @@ version_upgrade{'2026.7.3'} = define() {
 	const cfg = config();
 	
 	is_itc_fin = ( cfg.fin == 'Single Owner' || cfg.fin == 'Leveraged Partnership Flip' || cfg.fin == 'All Equity Partnership Flip' || cfg.fin == 'Sale Leaseback' || cfg.fin == 'Merchant Plant' || cfg.fin == 'Community Solar' || cfg.fin == 'Host Developer');
-
+	is_cash_flow = cfg.fin != "LCOE Calculator" && cfg.fin != "None";
+	
 	if (is_itc_fin) {
 		message("Front-of-meter financial models have new options to determine depreciation allocations and ITC qualifying costs.", "error");
 		value('itc_qualification_choice', 1, "ITC qualification and depreciation can now be calculated automatically as a percentage of installation cost. Previous manual depreciation allocations have been retained.");
@@ -154,14 +155,23 @@ version_upgrade{'2026.7.3'} = define() {
 	if (cfg.tech == 'MEwave' || cfg.tech == 'MEtidal' || cfg.tech == 'MEwave Battery')
 	{
 		//variable name changes
-		variable_name_change('project_contingency_budget_cost', 'project_contingency_cost');
-		variable_name_change('project_contingency_budget_cost_rvalue', 'project_contingency_cost_rvalue');
-		variable_name_change('insurance_during_construction_method', 'insurance_during_construction_cost_method');
-		variable_name_change('insurance_during_construction_modeled', 'insurance_during_construction_cost_modeled');
-		variable_name_change("generic_degradation", "ac_degradation");
+		//variable_name_change('project_contingency_budget_cost', 'project_contingency_cost');
+		//variable_name_change('project_contingency_budget_cost_rvalue', 'project_contingency_cost_rvalue');
+		//variable_name_change('insurance_during_construction_method', 'insurance_during_construction_cost_method');
+		//variable_name_change('insurance_during_construction_modeled', 'insurance_during_construction_cost_modeled');
+		//variable_name_change("generic_degradation", "ac_degradation");
+		if (cfg.fin != "None") {
+			variable_name_change('project_contingency_cost', 'project_contingency_budget_cost');
+			variable_name_change('project_contingency_cost_rvalue', 'project_contingency_budget_cost_rvalue');
+			variable_name_change('insurance_during_construction_cost_method', 'insurance_during_construction_method');
+			variable_name_change('insurance_during_construction_cost_modeled', 'insurance_during_construction_modeled');
+		}
+		if (is_cash_flow) {
+			variable_name_change("ac_degradation", "generic_degradation");
+		}
 	}
 
-	if(cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery') {
+	if((cfg.tech == 'PVWatts' || cfg.tech == 'PVWatts Battery') && is_cash_flow) {
 		message('PVWatts now runs in lifetime mode so that time series outputs are over the analysis period instead of one year.', 'warning');
 		message('PVWatts degradation is now modeled as DC degradation instead of AC degradation. DC degradation is an annual reduction in the DC output of the array instead of AC output of the system. DC degradation is applied linearly.', 'warning');
 		old_degradation = oldvalue('degradation');
@@ -288,21 +298,22 @@ version_upgrade{'2026.7.3'} = define() {
 	
 	if (cfg.tech == 'Wind Power') {
 		message('Wind balance of system cost estimators have been removed. Total capital costs remain the same in this version. Please uses SAM 2025.4.16 or older if you need access to the balance of system cost estimators within SAM.', 'warning');
-	
-		wind_degradation = oldvalue('degradation');
-		value('ac_degradation', wind_degradation, 'Wind has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degrdation". For Wind Power, lifetime mode applies degradation linearly.');
+		if (is_cash_flow) {
+			wind_degradation = oldvalue('degradation');
+			value('ac_degradation', wind_degradation, 'Wind has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation". For Wind Power, lifetime mode applies degradation linearly.');
+		}
 	}
 	
-	if (cfg.tech == 'Custom Generation Profile' ) {
+	if (cfg.tech == 'Custom Generation Profile' && is_cash_flow ) {
 		ac_degradation = oldvalue('degradation');
-		value('ac_degradation', ac_degradation, 'Custom generation profile has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degrdation".');
+		value('ac_degradation', ac_degradation, 'Custom generation profile has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation".');
 	
 	}
 	
 	
 	if (strpos(cfg.tech, "Hybrid") > -1) {
 		// Detailed PV already used lifetime, no changes there
-		if (cfg.tech != 'Photovoltaic Wind Battery Hybrid') {
+		if (cfg.tech != 'Photovoltaic Wind Battery Hybrid' && is_cash_flow) {
 			message('PVWatts now runs in lifetime mode so that time series outputs are over the analysis period instead of one year.', 'warning');
 			message('PVWatts degradation is now modeled as DC degradation instead of AC degradation. DC degradation is an annual reduction in the DC output of the array instead of AC output of the system. DC degradation is applied linearly.', 'warning');
 			old_degradation = oldvalue('pvwatts_degradation');
@@ -311,9 +322,8 @@ version_upgrade{'2026.7.3'} = define() {
 		}
 	
 		message('Wind balance of system cost estimators have been removed. Total capital costs remain the same in this version. Please uses SAM 2025.4.16 or older if you need access to the balance of system cost estimators within SAM.', 'warning');
-	
 		wind_degradation = oldvalue('wind_degradation');
-		value('wind_ac_degradation', wind_degradation, 'Wind has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degrdation". For Wind Power, lifetime mode applies degradation linearly.');
+		value('wind_ac_degradation', wind_degradation, 'Wind has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation". For Wind Power, lifetime mode applies degradation linearly.');
 	}
 	
 	if (cfg.tech == 'CustomGeneration PVWatts Wind FuelCell Battery Hybrid') {
@@ -323,7 +333,7 @@ version_upgrade{'2026.7.3'} = define() {
 		}
 		
 		ac_degradation = oldvalue('customgeneration_degradation');
-		value('customgeneration_ac_degradation', ac_degradation, 'Custom generation profile has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degrdation".');
+		value('customgeneration_ac_degradation', ac_degradation, 'Custom generation profile has been updated to run in lifetime mode, the name of the degradation input has changed to "ac_degradation".');
 	
 	}
 	

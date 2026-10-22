@@ -9,7 +9,7 @@ Design Point Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Solar Field
-...........
+-----------
 
 **Design-point DNI, W/m****\ :sup:`2`\**
   The direct normal irradiance (DNI) available at the design point.
@@ -33,7 +33,7 @@ Solar Field
   The temperature of the HTF at the outlet of the loop under design conditions. During operation, the actual value may differ from this set point. This value represents the target temperature for control of the HTF flow through the solar field and will be maintained when possible.
 
 Heat Sink
-.........
+---------
 
 The heat sink parameters describe the process heat application's thermal load.
 
@@ -47,13 +47,13 @@ The heat sink parameters describe the process heat application's thermal load.
   This macro allows the user to specify the number of loops in the simulation. The macro then calculates the corresponding heat sink power and gives the user the option to set it as the new input.
 
 Thermal Storage
-...............
+---------------
 
 **Hours of storage at design point, hours**
   The nominal thermal storage capacity expressed in hours at full load: The number of hours that the storage system can supply energy at the design point.
 
 System Availability
-...................
+-------------------
 
 .. include:: ../includes/snip_system_availability.rst
 

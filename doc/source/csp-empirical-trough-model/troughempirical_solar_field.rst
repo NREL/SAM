@@ -91,7 +91,7 @@ Solar Multiple (Design Point)
 .. note:: The ambient temperature, direct normal radiation, and wind velocity reference variables differ from the hourly weather data that SAM uses for system output calculations. SAM uses the reference ambient condition variables to size the solar field. Hourly data from the weather file shown on the :doc:`Location and Resource <troughempirical_location_and_resource>` page determine the solar resource at the site.
 
 Calculated Values
-.................
+-----------------
 
 The two calculated values variables depend on whether you choose Option 1 or Option 2 to specify the solar field size. When you choose Option 1, the solar multiple calculated value is equal to the value you specify under **Field Layout** and SAM calculates the aperture reflective area. When you choose Option 2, the aperture reflective area is equal to the Solar Field Area value you specify, and SAM calculates the solar multiple.
 
@@ -106,7 +106,7 @@ The two calculated values variables depend on whether you choose Option 1 or Opt
 *Aperture Reflective Area = Solar Multiple × Exact Aperture Reflective Area at SM=1*
 
 Solar Multiple Reference Conditions
-...................................
+-----------------------------------
 
 **Ambient Temp (ºC)**
   Reference ambient temperature in degrees Celsius. Used to calculate the design solar field pipe heat losses.
@@ -120,7 +120,7 @@ Solar Multiple Reference Conditions
   Reference wind velocity in meters per second. SAM uses this value to calculate the design HCE heat losses displayed on the :doc:`SCA / HCE page <troughempirical_collectors_scas>`  .
 
 Reference Condition (SM=1)
-..........................
+--------------------------
 
 **Exact Aperture Reflective Area (m****\ :sup:`2`\****)**
   The solar field area required to deliver sufficient solar energy to drive the power block at the design turbine gross output level under reference weather conditions. It is equivalent to a solar multiple of one, and used to calculate the solar field area when the Layout mode is Solar Multiple.
@@ -136,7 +136,7 @@ Reference Condition (SM=1)
 *Exact Num SCAs = Exact Aperture Reflective Area ÷ Aperture Area per SCA*
 
 Values from Other Pages
-.......................
+-----------------------
 
 **Aperture Area per SCA (m****\ :sup:`2`\****)**
   SCA aperture reflective area variable from the :doc:`SCA / HCE page <troughempirical_collectors_scas>`  . SAM uses this value in the solar field size equations to calculate the value of the Aperture Reflective Area variable described above.

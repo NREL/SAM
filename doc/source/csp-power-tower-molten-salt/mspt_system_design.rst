@@ -29,7 +29,7 @@ Tower and Receiver
 ~~~~~~~~~~~~~~~~~~
 
 **HTF hot temperature, °C**
-  The  temperature of the hot heat transfer fluid at the receiver outlet when the power cycle operates at its design point.
+  The temperature of the hot heat transfer fluid at the receiver outlet when the power cycle operates at its design point.
 
 **HTF cold temperature, °C**
   The temperature of the cold heat transfer fluid at the receiver inlet when the power cycle operates at its design point.

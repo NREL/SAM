@@ -32,7 +32,7 @@ Click the information icon ("i") next to the uncertainty source to see a descrip
 #. When the simulation finishes, SAM displays three graphs, each with a blue line on the graph and number under the graph indicating a P-value. Type a value for **Custom Px** to set the P-value shown in the graphs. For example, type 50 to show the P50 value in the graphs, or type 90 to show the P90 value.
 
 Uncertainty Graphs and P-value
-..............................
+------------------------------
 
 A P-value is a value that is expected to be met or exceeded a given percentage of time. For example, a P90 value of 35 GWh for annual energy calculated from 20 years of weather data would indicate that the system generates 35 GWh or more for 18 of the 20 years.
 

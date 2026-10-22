@@ -2,7 +2,7 @@
 The Project Term Debt inputs determine the :ref:`size of debt <debt>` or amount borrowed, and debt-related costs. You can see the annual debt interest, principal and total payments on the :doc:`Cash Flow <../results/cashflow>` tab of the :doc:`Results <../getting-started/results_page>` page.
 
 Debt Sizing Options
-...................
+-------------------
 
 SAM allows you to size the debt as a percentage of the total installed cost or based on the debt service coverage ratio:
 
@@ -11,7 +11,7 @@ SAM allows you to size the debt as a percentage of the total installed cost or b
 * For the debt-service coverage ratio (DSCR) option, you specify the DSCR, and allow SAM to size the debt based on the annual cash available for debt service from the project cash flow. The size of debt depends on annual revenue and operating costs rather than the total installed cost. This type of debt is sometimes called sculpted debt, where the total annual debt payment varies from year to year, and the annual DSCR is constant throughout the debt period.
 
 Project Term Debt
-.................
+-----------------
 
 **Debt percent, % of total installed cost**
   The size of debt as a percentage of the installed cost.

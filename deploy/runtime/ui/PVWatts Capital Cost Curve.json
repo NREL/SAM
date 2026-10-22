@@ -1,7 +1,7 @@
 {
     "Name": "PVWatts Capital Cost Curve",
-    "Width": 830.0,
-    "Height": 328.0,
+    "Width": 826.0,
+    "Height": 292.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -178,7 +178,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 474.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -240,7 +240,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 486.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -302,7 +302,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 462.0
                 },
                 "Y": {
                     "Type": 3.0,

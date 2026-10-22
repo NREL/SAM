@@ -12,7 +12,7 @@ SAM assumes that the system has a mechanism for adjusting the power output to me
 .. note:: For systems with battery storage, you can choose whether to consider the grid interconnection limit and curtailment for some dispatch options.
 
 Grid Interconnection Limit
-..........................
+--------------------------
 
 The grid interconnection limit is the maximum AC power that the system can deliver to the grid. SAM considers any power above the limit to be curtailed power.
 
@@ -25,7 +25,7 @@ The grid interconnection limit is the maximum AC power that the system can deliv
 The **Annual energy loss from interconnection limit** result variables (available on the :doc:`Data Tables <../results/data>` tab of the Results page) shows the amount of energy that would have been generated without the interconnection limit. The **System power before grid interconnection** time series result variable shows what the system power would have been without the limit.
 
 Grid Curtailment
-................
+----------------
 
 Grid curtailment is a reduction in the amount of power the system is allowed to deliver to the grid. SAM models curtailment as a maximum system AC power output in each time step.
 

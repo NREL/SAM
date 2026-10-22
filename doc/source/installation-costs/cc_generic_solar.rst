@@ -34,5 +34,17 @@ A direct capital cost represents an expense for a specific piece of equipment or
 **Total Direct Cost, $**
   The sum of improvements, solar field, HTF system, storage, fossil backup, power plant costs, and contingency costs.
 
+Indirect Costs
+~~~~~~~~~~~~~~
+
 .. include:: ../includes/snip_csp_indirect_om_costs.rst
 
+Sales Tax
+~~~~~~~~~
+
+.. include:: /includes/snip_sales_tax.rst
+
+Total Installed Cost
+~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /includes/snip_total_installed_cost.rst

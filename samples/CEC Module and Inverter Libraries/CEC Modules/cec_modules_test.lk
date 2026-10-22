@@ -11,7 +11,7 @@ Performance ratios less than 0.70 or more than .90 may indicate a problem with
 the module parameters.
 
 Written and tested in SAM 2020.2.29, 4/30/2020
-Revised 2/23/22
+Revised 6/23/23
 
 */
 
@@ -54,7 +54,7 @@ function run()
 	msg = '\"' + msg + '\"';
 	pr = get('performance_ratio');
 	module = get('module_name');
-	return [module, pr, msg];
+	return module + ',' + to_string(pr) + ',' + msg;
 }
 
 function f_name()
@@ -74,21 +74,22 @@ function f_name()
 
 modules = library( 'CEC Modules' );
 
-results = [['Module Name','Performance Ratio','Simulation Message']];
+fin = f_name();
+f = open(fin, 'w');
+if ( f == 0 ) { outln('Failed to open file for writing.'); }
+else { outln('File open for writing:\n  ' + fin ); }
+
+write_line(f, 'Module Name,Performance Ratio,Simulation Message');
 outln('Total modules = ' + #modules);
 for ( i=1; i<#modules; i++ )
 {
 	if ( mod( i, 100 ) == 0 ) { outln(i); }
 	set( 'module_name', modules[i] );
 	set_inverter_params();
-	arr = run();
-	for ( j=0; j<#arr; j++ )
-	{
-		results[i][j] = arr[j];
-	}
-
+	str = run();
+	write_line(f, str);
 }
 
+close(fin);
 outln('Done.');
-csvwrite( f_name(), results );
-browse(f_name()); 
+browse(fin);

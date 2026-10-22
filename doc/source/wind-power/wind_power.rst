@@ -54,7 +54,7 @@ For wind direction data, SAM interpolates to estimate wind direction at differen
 .. note:: The measurement height used for the wind speed is more than 10 meters from the measurement height used for direction.
 
 Wind Power Law
-..............
+--------------
 
 SAM uses the value of the **Shear Coefficient** on the :doc:`Turbine <wind_turbine>` page to estimate the wind speed at the hub height instead of the method described above under the following conditions:
 
@@ -107,7 +107,7 @@ SAM allows you to choose from three different wake effect models to estimate the
 * **Eddy-Viscosity** is described in `Open Wind Theoretical Basis and Validation <https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://collateral-library-production.s3.amazonaws.com/uploads/asset_file/attachment/51094/OpenWind_Theory_and_Validation-v3_HH_ULSolutions.pdf>`__ (Version 1.3, April 2010), 2.3 Eddy-Viscocity Wake Model, p. 7.
 
 Simple Wake Model
-.................
+-----------------
 
 The model makes the following simplifying assumptions:
 

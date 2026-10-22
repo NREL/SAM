@@ -1,7 +1,7 @@
 {
     "Name": "MSPT Parallel Heater",
-    "Width": 512.0,
-    "Height": 416.0,
+    "Width": 462.0,
+    "Height": 383.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,

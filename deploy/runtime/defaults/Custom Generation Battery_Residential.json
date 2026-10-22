@@ -8860,9 +8860,9 @@
     "batt_computed_stacks_series": 1.0,
     "batt_computed_strings": 107.0,
     "batt_computed_voltage": 51.74,
-    "batt_current_charge_max": 96.30000000000001,
+    "batt_current_charge_max": 96.3,
     "batt_current_choice": 1.0,
-    "batt_current_discharge_max": 96.30000000000001,
+    "batt_current_discharge_max": 96.3,
     "batt_custom_dispatch": [
         0.0
     ],
@@ -8912,7 +8912,7 @@
     "batt_h_to_ambient": 7.5,
     "batt_initial_SOC": 50.0,
     "batt_inverter_efficiency_cutoff": 90.0,
-    "batt_itc_basis_cost": 9231.464459635201,
+    "batt_itc_basis_cost": 9231.464459635199,
     "batt_itc_basis_cost_fed_include": 1.0,
     "batt_itc_basis_cost_sta_include": 1.0,
     "batt_itc_basis_percent": 35.34265842986778,
@@ -9832,7 +9832,7 @@
         0.0,
         0.0
     ],
-    "batt_mass": 177.94864285714287,
+    "batt_mass": 177.9486428571429,
     "batt_maximum_SOC": 95.0,
     "batt_meter_position": 0.0,
     "batt_minimum_SOC": 30.0,
@@ -9897,7 +9897,7 @@
     "batt_size_choice": 0.0,
     "batt_specific_energy_per_mass": 70.0,
     "batt_specific_energy_per_volume": 82.0,
-    "batt_surface_area": 1.7081938826471875,
+    "batt_surface_area": 1.7081938826471877,
     "batt_target_choice": 0.0,
     "batt_target_power": [
         1.0,
@@ -18702,7 +18702,7 @@
     "battery_power": 4.982562000000001,
     "battery_thermal_shown": 0.0,
     "battery_total": 7404.087132000001,
-    "battery_total_cost_lcos": 9231.464459635201,
+    "battery_total_cost_lcos": 9231.464459635199,
     "battery_voltage_shown": 0.0,
     "cap_vs_temp": [
         [
@@ -36336,7 +36336,7 @@
         ],
         [
             2.0,
-            9231.464459635201,
+            9231.464459635199,
             35.34265842986778,
             1.0,
             1.0,
@@ -37051,7 +37051,7 @@
     "federal_tax_rate": [
         15.0
     ],
-    "first_year_output": 13455.359999999999,
+    "first_year_output": 13455.36,
     "first_year_output_peak": 7.68,
     "fixed_plant_input": 0.0,
     "grid_curtailment": [
@@ -45869,8 +45869,8 @@
     "inflation_rate": 2.5,
     "insurance_rate": 0.0,
     "is_btm": 1.0,
-    "itc_basis_cost_capex_fed": 9231.464459635201,
-    "itc_basis_cost_capex_sta": 9231.464459635201,
+    "itc_basis_cost_capex_fed": 9231.464459635199,
+    "itc_basis_cost_capex_sta": 9231.464459635199,
     "itc_basis_cost_percent_fed": 35.34265842986778,
     "itc_basis_cost_percent_sta": 35.34265842986778,
     "itc_basis_percent_input": 0.0,
@@ -45880,7 +45880,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        0.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -63457,7 +63457,7 @@
         1.87435
     ],
     "nameplate_capacity": 8.0,
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.060000000000004,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
         15.0
@@ -63547,7 +63547,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 1.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -63583,8 +63583,8 @@
     "scale_factor": 1.0,
     "show_itc_qualification": 1.0,
     "spec_mode": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],
@@ -63595,7 +63595,7 @@
     "system_itc_basis_cost_sta_include": 0.0,
     "system_itc_basis_percent": 64.65734157013222,
     "system_use_lifetime_output": 1.0,
-    "total_battery_indirect_cost": 1827.3773276352002,
+    "total_battery_indirect_cost": 1827.3773276352,
     "total_direct_cost": 16174.2914886,
     "total_indirect_cost": 9136.886638176,
     "total_installed_cost": 26119.892701206,

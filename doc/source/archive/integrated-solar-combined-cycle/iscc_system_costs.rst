@@ -64,10 +64,23 @@ A direct capital cost represents an expense for a specific piece of equipment or
 **Total Direct Cost ($)**
   The sum of improvements, site improvements, heliostat field, balance of plant, power block, storage system, fixed solar field, total tower, total receiver, and contingency costs.
 
+Indirect Capital Costs
+~~~~~~~~~~~~~~
+
 .. include:: ../includes/snip_csp_indirect_om_costs.rst
 
+Sales Tax
+~~~~~~~~~
+
+.. include:: /includes/snip_sales_tax.rst
+
+Total Installed Cost
+~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /includes/snip_total_installed_cost.rst
+
 Entering Periodic Operation and Maintenance costs
-.................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. include:: ../includes/snip_o_and_m_periodic_costs.rst
 

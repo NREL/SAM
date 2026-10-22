@@ -2,7 +2,7 @@
 The total project returns rows of the cash flow table show pre- and after-tax cash flows and returns from the project perspective. Returns from each partner's perspective appear under the Partners Returns heading and are described below.
 
 Project pre-tax returns
-.......................
+-----------------------
 
 **Total project pre-tax returns**
   The total annual pre-tax cash flow is the cash flow and accounts for operating expenses, investment earnings, and incentive payments.
@@ -32,7 +32,7 @@ Project pre-tax returns
   Where *C*\ :sub:`PreTax,n`\    is the pre-tax cash flow described above, *d*\ :sub:`nominal`\    is the nominal discount rate from the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page.
 
 Project after-tax returns
-.........................
+-------------------------
 
 **Cash**
   The pre-tax cash flow, described above.
@@ -65,7 +65,7 @@ Project after-tax returns
   Where *C*\ :sub:`AfterTax,n`\    is the after-tax cash flow described above, and *d*\ :sub:`nominal`\    is the nominal discount rate from the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page.
 
 Project LCOE
-............
+------------
 
 SAM reports quantities used in the LCOE calculation in the cash flow table for reference. For a description of the LCOE see :doc:`Levelized Cost of Energy (LCOE) <../financial-metrics/mtf_lcoe>`.
 

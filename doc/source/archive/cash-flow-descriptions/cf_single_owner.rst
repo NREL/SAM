@@ -16,7 +16,7 @@ Revenues
 Operating Expenses
 ~~~~~~~~~~~~~~~~~~
 
-The expense rows are for annual project costs calculated from assumptions you specify on the :doc:`Financing <../financial-parameters/fin_single_owner>`, :doc:`Installation costs <../installation-costs/installation_costs>`, and :doc:`Operating costs <../operating-costs/operating_costs>` pages.
+The expense rows are for annual project costs calculated from assumptions you specify on the :doc:`Financing <../financial-parameters/fin_single_owner>`, :doc:`Installation costs <../installation-costs/index>`, and :doc:`Operating costs <../operating-costs/operating_costs>` pages.
 
 The operating expenses are based on the first year or annual schedule costs you specify on the :doc:`Operating costs <../operating-costs/operating_costs>` page, and are adjusted by the inflation rate from the :doc:`Financial Parameters <../financial-parameters/fin_single_owner>` page and optional escalation rate from the Operating costs page.
 

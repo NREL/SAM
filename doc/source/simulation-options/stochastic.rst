@@ -55,7 +55,7 @@ For example, if you choose a Normal distribution, enter a mean value for the inp
 .. note:: Stochastic simulation inputs, simulations and results are separate from the case simulation and results that you get by clicking the Simulate button.
 
 Tips for Exporting Stochastic Simulation Data
-.............................................
+---------------------------------------------
 
 SAM displays stochastic simulation inputs and outputs in separate tables, which makes it difficult to interpret the results. There are two ways to work around this limitation. You can use Show Inputs to see all of the inputs for a given row in the outputs table, or you can copy and paste data from the inputs and outputs table to a spreadsheet or text file.
 

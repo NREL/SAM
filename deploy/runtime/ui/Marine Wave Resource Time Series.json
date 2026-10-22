@@ -1,7 +1,7 @@
 {
     "Name": "Marine Wave Resource Time Series",
-    "Width": 1097.0,
-    "Height": 731.0,
+    "Width": 1095.0,
+    "Height": 748.0,
     "FormObjects": {
         "Hyperlink": {
             "Visible": 1.0,
@@ -16,7 +16,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 546.0
+                    "Integer": 567.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -94,7 +94,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 387.0
+                    "Integer": 390.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -168,7 +168,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 510.0
+                    "Integer": 531.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -275,7 +275,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 43.0
+                    "Integer": 70.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -366,7 +366,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 621.0
+                    "Integer": 636.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -374,7 +374,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 51.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -428,7 +428,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 678.0
+                    "Integer": 696.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -623,7 +623,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 597.0
+                    "Integer": 612.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -631,7 +631,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 129.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -668,7 +668,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 159.0
+                    "Integer": 174.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

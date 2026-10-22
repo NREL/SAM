@@ -1,7 +1,7 @@
 {
     "Name": "Degradation AC Lifetime Linear",
-    "Width": 794.0,
-    "Height": 134.0,
+    "Width": 790.0,
+    "Height": 156.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 128.0
+                    "Integer": 149.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -114,7 +114,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 78.0
+                    "Integer": 81.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -168,7 +168,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 111.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -176,7 +176,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

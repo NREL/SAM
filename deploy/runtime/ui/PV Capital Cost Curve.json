@@ -1,7 +1,7 @@
 {
     "Name": "PV Capital Cost Curve",
-    "Width": 825.0,
-    "Height": 228.0,
+    "Width": 826.0,
+    "Height": 273.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 663.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -95,11 +95,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 663.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -178,11 +178,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 663.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -261,11 +261,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 129.0
+                    "Integer": 159.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -323,11 +323,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 132.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,11 +385,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 462.0
+                    "Integer": 468.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 222.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -447,11 +447,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 477.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 156.0
+                    "Integer": 186.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -509,11 +509,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 651.0
+                    "Integer": 657.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 183.0
+                    "Integer": 213.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -571,7 +571,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 217.0
+                    "Integer": 256.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -608,7 +608,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 67.0
+                    "Integer": 88.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -658,11 +658,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 663.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 222.0
                 },
                 "Width": {
                     "Type": 3.0,

@@ -1,7 +1,7 @@
 {
     "Name": "Marine Wave Resource Header",
-    "Width": 1118.0,
-    "Height": 148.0,
+    "Width": 1100.0,
+    "Height": 180.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 138.0
+                    "Integer": 156.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 66.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -115,7 +115,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,

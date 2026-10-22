@@ -1,7 +1,7 @@
 {
     "Name": "Solar Resource Library",
     "Width": 882.0,
-    "Height": 534.0,
+    "Height": 556.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 525.0
+                    "Integer": 543.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -90,7 +90,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 495.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 414.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -172,7 +172,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 37.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -455,7 +455,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 28.0
+                    "Integer": 40.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -626,11 +626,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -667,7 +667,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 495.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -708,7 +708,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 495.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,

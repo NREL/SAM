@@ -13,7 +13,7 @@ For information about SAM in addition to this Help system, please use the follow
 
 * Excel workbooks documenting methods in SAM's financial models are listed on the Financial Model pages.
 
-To contact SAM support:
+**To contact SAM support:**
 
 * Post a question or comment on the `Support forum <https://sam.nlr.gov/forum>`__.
 

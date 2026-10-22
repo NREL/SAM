@@ -11,7 +11,7 @@ A direct capital cost represents an expense for a specific piece of equipment or
 .. note:: Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different direct capital cost categories does not affect the final results.
 
 Heliostat Field
-...............
+---------------
 
 **Site improvement cost, $/m****\ :sup:`2`\**
   A cost per square meter of total reflective area from the Heliostat Field page to account for expenses related to site preparation and other equipment not included in the heliostat field cost category.
@@ -23,7 +23,7 @@ Heliostat Field
   A fixed cost to account for any epenses related to installation of the heliostats that do not scale with the reflective area of the field.
 
 Tower
-.....
+-----
 
 **Tower cost fixed, $**
   A fixed cost to account for tower construction, materials and labor costs. The fixed tower cost serves as the multiplier in the tower cost scaling equation shown below.
@@ -36,7 +36,7 @@ The total tower cost shown in blue is calculated as follows:
 *Total Tower Cost = Fixed Tower costs x e ^ ( Tower Cost Scaling Exponent x ( Tower Height - Receiver Height ÷ 2 + Heliostat Height ÷ 2 ) )*
 
 Reciever
-........
+--------
 
 **Receiver reference cost, $**
   The cost per receiver reference area to account for receiver installation costs, including labor and equipment.
@@ -52,13 +52,13 @@ The total receiver cost shown in blue is calculated as follows:
 *Receiver Cost = Receiver Reference Cost x ( Receiver Area / Receiver Reference Area ) ^ Receiver Cost Scaling Exponent*
 
 Thermal Energy Storage
-......................
+----------------------
 
 **Thermal energy storage cost, $/kWht**
   Cost per thermal megawatt-hour of storage capacity from the Thermal Storage page to account for the installation of a thermal energy storage system, including equipment and labor.
 
 Power Cycle (CSP Only)
-......................
+----------------------
 
 **Fossil backup cost, $/kWe**
   Cost per electric kilowatt of power block gross capacity to account for the installation of a fossil backup system, including equipment and labor.
@@ -72,29 +72,42 @@ Power Cycle (CSP Only)
   A cost per electric kilowatt of power cycle gross capacity from the Power Cycle page for expenses related to installation of the power cycle  components, including labor and equipment. The power cycle and balance of plant costs are rolled together into a single number for calculation purposes.
 
 Heat Sink (IPH Only)
-....................
+--------------------
 
 **Balance of plant cost, $/kWt**
   A cost per thermal kilowatt of heat sink capacity from the System Design page for expenses related to installation of the heat sink, including labor and equipment.
 
 Parallel Heater
-...............
+---------------
 
 **Heater cost, $/kWt**
   Applies only to systems with the electric heater enabled on the System Design page. A cost per unit of heater capacity for expenses related to the electric heater components, including labor and equipment.
 
 Contingency
-...........
+-----------
 
 **Contingency, % of subtotal**
   A percentage of the sum of the above direct costs to account for expected uncertainties in direct cost estimates.
 
 Total Direct Cost, $
-....................
+--------------------
 
 The total direct cost is the sum of heliostat field, tower, receiver, thermal energy storage, power cycle (heat sink for IPH), parallel heater, and contingency costs.
 
+Indirect Capital Costs
+~~~~~~~~~~~~~~~~~~~~~~
+
 .. include:: ../includes/snip_csp_indirect_om_costs.rst
+
+Sales Tax
+~~~~~~~~~
+
+.. include:: /includes/snip_sales_tax.rst
+
+Total Installed Cost
+~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /includes/snip_total_installed_cost.rst
 
 About the CSP Default Cost Assumptions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

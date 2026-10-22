@@ -30,13 +30,13 @@ For the single owner, merchant plant, and community solar financial models, the 
 .. _year:
 
 Year IRR is Achieved
-....................
+--------------------
 
 When you specify either a PPA price or target IRR on the Financial Parameters page, you also specify the year in which you want the IRR to be achieved. SAM calculates an IRR value for each year in the analysis period and reports it as the after-tax cumulative IRR the :doc:`cash flow <../results/cashflow>`. The year the IRR is achieved is as close as possible to the target year that you specify on the Financial Parameters page.
 
 .. _endanalysisperiod:
 
 IRR at End of Analysis Period
-.............................
+-----------------------------
 
 The single owner financial model reports the IRR at the end of the analysis period in addition to the IRR in the target year.

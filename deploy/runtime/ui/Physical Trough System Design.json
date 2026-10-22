@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough System Design",
-    "Width": 1068.0,
-    "Height": 957.0,
+    "Width": 952.0,
+    "Height": 934.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 280.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -95,7 +95,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 280.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -261,7 +261,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 280.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -344,7 +344,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 760.0
+                    "Integer": 771.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -427,7 +427,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 280.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -510,7 +510,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 280.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -593,7 +593,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 760.0
+                    "Integer": 771.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -676,7 +676,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 760.0
+                    "Integer": 771.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -759,7 +759,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 760.0
+                    "Integer": 771.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -842,7 +842,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 280.0
+                    "Integer": 309.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1248,7 +1248,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 760.0
+                    "Integer": 771.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1580,7 +1580,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 760.0
+                    "Integer": 771.0
                 },
                 "Y": {
                     "Type": 3.0,

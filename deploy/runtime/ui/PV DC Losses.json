@@ -1239,15 +1239,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 102.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 903.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -4186,7 +4186,7 @@
         "\tn_subarrays_max = 4;\r",
         "\tfor (i=2;i<=n_subarrays_max;i++) {\r",
         "\t\tprefix = 'subarray'+to_string(i);\r",
-        "\t\tif (prefix+'_enable') {\r",
+        "\t\tif (value(prefix+'_enable') == 1) {\r",
         "\t\t\tenable(prefix + '_electrical_mismatch',  is_bifacial() && !calculate_mismatch);\r",
         "\t\t}\t\r",
         "\t}\t\r",
@@ -4221,9 +4221,7 @@
         "\trefresh();\r",
         "\t\r",
         "\tenable('calculate_bifacial_electrical_mismatch', is_bifacial());\r",
-        "\tif ( is_bifacial() ) {\r",
-        "\t\tbifacial_mismatch_enable();\r",
-        "\t}\r",
+        "\tbifacial_mismatch_enable(); //this will enable or disable bifacial inputs, so needs to be called even if not bifacial\r",
         "\t\r",
         "\tmsg = '';\r",
         "\tif ( value('subarray2_enable') || value('subarray3_enable') || value('subarray4_enable') ) {\r",

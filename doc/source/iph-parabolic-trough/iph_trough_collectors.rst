@@ -113,7 +113,7 @@ The optical calculations are values that SAM calculates using the equations desc
 .. |EQ_TRP_Lcol| image:: ../images/EQ_TRP_Lcol.png
 
 Solar Position/Collector Incidence Angles
-.........................................
+-----------------------------------------
 
 You can select one of three options for characterizing the optical performance of the solar field. The three methods determine how the optical efficiency varies with sun position.
 
@@ -139,7 +139,7 @@ The optical efficiency is defined as follows:
   During simulations, SAM limits the value of the incidence angle modifier that it calculates to values between 0 and 1, inclusive.
 
 Solar Position/Collector Incidence Angle Table
-..............................................
+----------------------------------------------
 
 **Import**
   Import a table from a text or data file. The file can contain values separated by comma, space, or tab characters, but must be formatted according to the following rules:

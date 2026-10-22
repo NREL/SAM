@@ -324,8 +324,12 @@
     "analysis_period_warning": "No messages.",
     "annual_albedo": 0.217164,
     "annual_beam": 7.36408,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.33978,
     "annual_global": 5.83819,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 18.1261,
     "annual_twet": NaN,
@@ -19635,7 +19639,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "qdisp": [
         0.0
     ],
@@ -19659,8 +19663,8 @@
     "solar_resource": "tucson_az_32.116521_-110.933042_psmv3_60_tmy",
     "solar_resource_file": "tucson_az_32.116521_-110.933042_psmv3_60_tmy.csv",
     "solution_mode_message": "",
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0

@@ -11,6 +11,7 @@ The System Advisor Model™ (SAM™) is a performance and financial model design
 
 * Researchers
 
+For information about SAM versions see :doc:`../reference/release_notes`.
 
 SAM makes performance predictions and cost of energy estimates for grid-connected power projects based on installation and operating costs and system design parameters that you specify as inputs to the model.
 
@@ -29,7 +30,7 @@ The first step in creating a SAM file is to choose a performance and financial m
 Next, you provide information about a project's location, the type of equipment in the system, the cost of installing and operating the system, and financial and incentives assumptions. 
 
 SAM Models and Databases
-........................
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 SAM represents the cost and performance of renewable energy projects using computer models developed at NLR, Sandia National Laboratories, the University of Wisconsin, and other organizations. Each performance model represents a part of the system, and each financial model represents a project's financial structure. The models require input data to describe the performance characteristics of physical equipment in the system and project costs. SAM's user interface makes it possible for people with no experience developing computer models to build a model of a renewable energy project, and to make cost and performance projections based on model results.
 
@@ -140,7 +141,6 @@ SAM includes financial models for the following kinds of projects:
 
 * Power purchase agreement, PPA (utility-scale or power generation project)
 
-
   * Single owner
 
   * Leveraged partnership flip
@@ -154,7 +154,7 @@ SAM includes financial models for the following kinds of projects:
 * Simple LCOE calculator using fixed charge rate method
 
 Residential and Commercial Projects
-...................................
+-----------------------------------
 
 Residential and commercial projects are financed through either a loan or cash payment, and recover investment costs by selling electricity through either a net metering or time-of-use pricing agreement. For these projects, SAM reports the following financial metrics in addition to a detailed annual cash flow:
 
@@ -167,7 +167,7 @@ Residential and commercial projects are financed through either a loan or cash p
 * Payback Period
 
 Power Purchase Agreement (PPA), Merchant Plant, and Community Solar Projects
-............................................................................
+----------------------------------------------------------------------------
 
 PPA projects are assumed to sell electricity through a power purchase agreement at a fixed price with optional annual escalation and time-of-delivery (TOD)  factors. For these projects, SAM calculates a detailed annual cash flow and the following metrics:
 
@@ -184,7 +184,7 @@ PPA projects are assumed to sell electricity through a power purchase agreement 
 SAM can either calculate the internal rate of return based on a power price you specify, or calculate the power price based on the rate of return you specify.
 
 Project Cash Flow
-.................
+-----------------
 
 SAM calculates financial metrics from project cash flows representing the value of energy savings for projects using retail electricity rates, and the value of revenue from electricity sales for projects selling electricity under a power purchase agreement. For the PPA partnership models, SAM calculates cash flows from the project perspective and from the perspective of each partner.
 
@@ -211,7 +211,7 @@ The project annual cash flows include:
 * Project and partner's internal rate of return requirements (for PPA projects)
 
 Incentives
-..........
+----------
 
 The financial model can account for a wide range of incentive payments and tax credits: 
 
@@ -254,7 +254,7 @@ The DOE, NLR, and Sandia continue to use the model for program planning and gran
 Downloading SAM and User Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SAM is free software and runs on Windows, MacOS, and Linux. It requires about 500 MB of storage space on your computer. See :doc:`Software Installation <../reference/installation>` for details.
+SAM is free software and runs on Windows, MacOS, and Linux. See :doc:`Software Installation <../reference/installation>` for installation details.
 
 To run SAM, you must register your copy of SAM by providing NLR with a valid email address.
 

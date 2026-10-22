@@ -1,6 +1,7 @@
 {
 	"defaults": {
 		"Lifetime": {
+			"analysis_period": 1,
 			"system_use_lifetime_output": 0
 		},
 		"SystemOutput": {

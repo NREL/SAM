@@ -19,12 +19,19 @@
 			"system_capacity": 8
 		},
 		"SystemCosts": {
+			"add_om_num_types": 1,
+			"om_batt_capacity_cost": [15.000000],
+			"om_batt_fixed_cost": [0.000000],
+			"om_batt_nameplate": 12.4564,
+			"om_batt_replacement_cost": [434.000000],
+			"om_batt_variable_cost": [0.000000],
 			"om_capacity": [30.000000],
 			"om_capacity_escal": 0,
 			"om_fixed": [0.000000],
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
+			"om_replacement_cost_escal": 0,
 			"total_installed_cost": 40698.3
 		},
 		"LandLease": {
@@ -56,7 +63,7 @@
 			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"PaymentIncentives": {
 			"cbi_fed_amount": 0,

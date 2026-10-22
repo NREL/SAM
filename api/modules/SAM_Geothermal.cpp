@@ -14,15 +14,21 @@ SAM_EXPORT int SAM_Geothermal_execute(SAM_table data, int verbosity, SAM_error* 
 	return SAM_module_exec("geothermal", data, verbosity, err);
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_CT_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Geothermal_SystemControl_sim_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "CT", number);
+		ssc_data_set_number(ptr, "sim_type", number);
 	});
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_HTF_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Geothermal_FinancialModel_geo_financial_model_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "HTF", number);
+		ssc_data_set_number(ptr, "geo_financial_model", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_CT_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "CT", number);
 	});
 }
 
@@ -68,12 +74,6 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_T_htf_cold_ref_nset(SAM_table ptr, doub
 	});
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_T_htf_hot_ref_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "T_htf_hot_ref", number);
-	});
-}
-
 SAM_EXPORT void SAM_Geothermal_GeoHourly_allow_reservoir_replacements_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "allow_reservoir_replacements", number);
@@ -89,6 +89,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_ambient_pressure_nset(SAM_table ptr, do
 SAM_EXPORT void SAM_Geothermal_GeoHourly_analysis_type_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "analysis_type", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_calc_drill_costs_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "calc_drill_costs", number);
 	});
 }
 
@@ -122,12 +128,6 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_delta_pressure_equip_nset(SAM_table ptr
 	});
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_design_temp_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "design_temp", number);
-	});
-}
-
 SAM_EXPORT void SAM_Geothermal_GeoHourly_drilling_success_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "drilling_success_rate", number);
@@ -149,12 +149,6 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_eta_ref_nset(SAM_table ptr, double numb
 SAM_EXPORT void SAM_Geothermal_GeoHourly_excess_pressure_pump_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "excess_pressure_pump", number);
-	});
-}
-
-SAM_EXPORT void SAM_Geothermal_GeoHourly_exploration_wells_production_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "exploration_wells_production", number);
 	});
 }
 
@@ -200,6 +194,102 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_fracture_width_nset(SAM_table ptr, doub
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_conf_multiplier_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.conf_multiplier", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_conf_non_drill_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.conf_non_drill", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_conf_num_wells_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.conf_num_wells", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_confirm_wells_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.confirm_wells_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_contingency_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.contingency_percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_drilling_amount_specified_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.drilling.amount_specified", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_drilling_calc_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.drilling.calc", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_epc_fixed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.epc.fixed", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_epc_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.epc.percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_expl_lump_sum_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.expl_lump_sum", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_expl_multiplier_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.expl_multiplier", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_expl_non_drill_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.expl_non_drill", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_expl_num_wells_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.expl_num_wells", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_indirect_amount_specified_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.indirect.amount_specified", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_indirect_calc_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.indirect.calc", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.inj_cost_curve", number);
+	});
+}
+
 SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "geotherm.cost.inj_cost_curve_welldiam", number);
@@ -218,6 +308,42 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nset(
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_plant_auto_estimate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.plant_auto_estimate", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_plant_per_kW_input_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.plant_per_kW_input", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_plant_total_calc_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.plant_total.calc", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_plm_fixed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.plm.fixed", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_plm_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.plm.percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.prod_cost_curve", number);
+	});
+}
+
 SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "geotherm.cost.prod_cost_curve_welldiam", number);
@@ -230,9 +356,63 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welltype_
 	});
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_geothermal_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_prod_inj_non_drill_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "geothermal_analysis_period", number);
+		ssc_data_set_number(ptr, "geotherm.cost.prod_inj_non_drill", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_pump_casing_cost_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.pump_casing_cost", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_pump_fixed_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.pump_fixed", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_pump_per_foot_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.pump_per_foot", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_pumping_amount_specified_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.pumping.amount_specified", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_pumping_calc_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.pumping.calc", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_recap_specified_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.recap_specified", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_recap_use_calc_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.recap_use_calc", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_sales_tax_percent_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.sales_tax.percent", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_geotherm_cost_stim_non_drill_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.stim_non_drill", number);
 	});
 }
 
@@ -338,12 +518,6 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_num_wells_nset(SAM_table ptr, double nu
 	});
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_num_wells_getem_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "num_wells_getem", number);
-	});
-}
-
 SAM_EXPORT void SAM_Geothermal_GeoHourly_pb_bd_frac_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "pb_bd_frac", number);
@@ -353,6 +527,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_pb_bd_frac_nset(SAM_table ptr, double n
 SAM_EXPORT void SAM_Geothermal_GeoHourly_plant_efficiency_input_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "plant_efficiency_input", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_GeoHourly_ppi_base_year_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "ppi_base_year", number);
 	});
 }
 
@@ -452,6 +632,12 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_rock_thermal_conductivity_nset(SAM_tabl
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_GeoHourly_sales_tax_rate_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "sales_tax_rate", number);
+	});
+}
+
 SAM_EXPORT void SAM_Geothermal_GeoHourly_specified_pump_work_amount_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "specified_pump_work_amount", number);
@@ -500,12 +686,6 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_subsurface_water_loss_nset(SAM_table pt
 	});
 }
 
-SAM_EXPORT void SAM_Geothermal_GeoHourly_system_use_lifetime_output_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "system_use_lifetime_output", number);
-	});
-}
-
 SAM_EXPORT void SAM_Geothermal_GeoHourly_temp_decline_max_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "temp_decline_max", number);
@@ -515,12 +695,6 @@ SAM_EXPORT void SAM_Geothermal_GeoHourly_temp_decline_max_nset(SAM_table ptr, do
 SAM_EXPORT void SAM_Geothermal_GeoHourly_temp_decline_rate_nset(SAM_table ptr, double number, SAM_error *err){
 	translateExceptions(err, [&]{
 		ssc_data_set_number(ptr, "temp_decline_rate", number);
-	});
-}
-
-SAM_EXPORT void SAM_Geothermal_GeoHourly_ui_calculations_only_nset(SAM_table ptr, double number, SAM_error *err){
-	translateExceptions(err, [&]{
-		ssc_data_set_number(ptr, "ui_calculations_only", number);
 	});
 }
 
@@ -572,20 +746,161 @@ SAM_EXPORT void SAM_Geothermal_AdjustmentFactors_adjust_timeindex_aset(SAM_table
 	});
 }
 
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_analysis_period_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "analysis_period", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_Costs_geotherm_cost_plant_total_amount_specified_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "geotherm.cost.plant_total.amount_specified", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_interest_rate1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate1", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_interest_rate2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate2", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_interest_rate3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate3", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_interest_rate4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate4", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_interest_rate5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_interest_rate5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_months1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months1", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_months2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months2", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_months3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months3", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_months4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months4", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_months5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_months5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_percent1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent1", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_percent2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent2", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_percent3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent3", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_percent4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent4", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_percent5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_percent5", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_upfront_rate1_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate1", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_upfront_rate2_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate2", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_upfront_rate3_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate3", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_upfront_rate4_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate4", number);
+	});
+}
+
+SAM_EXPORT void SAM_Geothermal_FinancialParameters_const_per_upfront_rate5_nset(SAM_table ptr, double number, SAM_error *err){
+	translateExceptions(err, [&]{
+		ssc_data_set_number(ptr, "const_per_upfront_rate5", number);
+	});
+}
+
+SAM_EXPORT double SAM_Geothermal_SystemControl_sim_type_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sim_type", &result))
+		make_access_error("SAM_Geothermal", "sim_type");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialModel_geo_financial_model_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geo_financial_model", &result))
+		make_access_error("SAM_Geothermal", "geo_financial_model");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_GeoHourly_CT_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "CT", &result))
 		make_access_error("SAM_Geothermal", "CT");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Geothermal_GeoHourly_HTF_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "HTF", &result))
-		make_access_error("SAM_Geothermal", "HTF");
 	});
 	return result;
 }
@@ -653,15 +968,6 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_T_htf_cold_ref_nget(SAM_table ptr, SA
 	return result;
 }
 
-SAM_EXPORT double SAM_Geothermal_GeoHourly_T_htf_hot_ref_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "T_htf_hot_ref", &result))
-		make_access_error("SAM_Geothermal", "T_htf_hot_ref");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_Geothermal_GeoHourly_allow_reservoir_replacements_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -685,6 +991,15 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_analysis_type_nget(SAM_table ptr, SAM
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "analysis_type", &result))
 		make_access_error("SAM_Geothermal", "analysis_type");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_calc_drill_costs_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "calc_drill_costs", &result))
+		make_access_error("SAM_Geothermal", "calc_drill_costs");
 	});
 	return result;
 }
@@ -734,15 +1049,6 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_delta_pressure_equip_nget(SAM_table p
 	return result;
 }
 
-SAM_EXPORT double SAM_Geothermal_GeoHourly_design_temp_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "design_temp", &result))
-		make_access_error("SAM_Geothermal", "design_temp");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_Geothermal_GeoHourly_drilling_success_rate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -775,15 +1081,6 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_excess_pressure_pump_nget(SAM_table p
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "excess_pressure_pump", &result))
 		make_access_error("SAM_Geothermal", "excess_pressure_pump");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Geothermal_GeoHourly_exploration_wells_production_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "exploration_wells_production", &result))
-		make_access_error("SAM_Geothermal", "exploration_wells_production");
 	});
 	return result;
 }
@@ -852,6 +1149,150 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_fracture_width_nget(SAM_table ptr, SA
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_conf_multiplier_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.conf_multiplier", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.conf_multiplier");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_conf_non_drill_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.conf_non_drill", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.conf_non_drill");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_conf_num_wells_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.conf_num_wells", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.conf_num_wells");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_confirm_wells_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.confirm_wells_percent", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.confirm_wells_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_contingency_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.contingency_percent", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.contingency_percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_drilling_amount_specified_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.drilling.amount_specified", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.drilling.amount_specified");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_drilling_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.drilling.calc", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.drilling.calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_epc_fixed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.epc.fixed", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.epc.fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_epc_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.epc.percent", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.epc.percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_expl_lump_sum_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.expl_lump_sum", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.expl_lump_sum");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_expl_multiplier_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.expl_multiplier", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.expl_multiplier");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_expl_non_drill_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.expl_non_drill", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.expl_non_drill");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_expl_num_wells_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.expl_num_wells", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.expl_num_wells");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_indirect_amount_specified_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.indirect.amount_specified", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.indirect.amount_specified");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_indirect_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.indirect.calc", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.indirect.calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.inj_cost_curve", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.inj_cost_curve");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -879,6 +1320,60 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_inj_prod_well_ratio_nge
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_plant_auto_estimate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.plant_auto_estimate", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.plant_auto_estimate");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_plant_per_kW_input_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.plant_per_kW_input", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.plant_per_kW_input");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_plant_total_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.plant_total.calc", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.plant_total.calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_plm_fixed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.plm.fixed", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.plm.fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_plm_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.plm.percent", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.plm.percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.prod_cost_curve", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.prod_cost_curve");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welldiam_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -897,11 +1392,92 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_cost_curve_welltyp
 	return result;
 }
 
-SAM_EXPORT double SAM_Geothermal_GeoHourly_geothermal_analysis_period_nget(SAM_table ptr, SAM_error *err){
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_prod_inj_non_drill_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "geothermal_analysis_period", &result))
-		make_access_error("SAM_Geothermal", "geothermal_analysis_period");
+	if (!ssc_data_get_number(ptr, "geotherm.cost.prod_inj_non_drill", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.prod_inj_non_drill");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_pump_casing_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.pump_casing_cost", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.pump_casing_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_pump_fixed_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.pump_fixed", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.pump_fixed");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_pump_per_foot_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.pump_per_foot", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.pump_per_foot");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_pumping_amount_specified_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.pumping.amount_specified", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.pumping.amount_specified");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_pumping_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.pumping.calc", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.pumping.calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_recap_specified_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.recap_specified", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.recap_specified");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_recap_use_calc_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.recap_use_calc", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.recap_use_calc");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_sales_tax_percent_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.sales_tax.percent", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.sales_tax.percent");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_geotherm_cost_stim_non_drill_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.stim_non_drill", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.stim_non_drill");
 	});
 	return result;
 }
@@ -1060,15 +1636,6 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_num_wells_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
-SAM_EXPORT double SAM_Geothermal_GeoHourly_num_wells_getem_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "num_wells_getem", &result))
-		make_access_error("SAM_Geothermal", "num_wells_getem");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_Geothermal_GeoHourly_pb_bd_frac_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1083,6 +1650,15 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_plant_efficiency_input_nget(SAM_table
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "plant_efficiency_input", &result))
 		make_access_error("SAM_Geothermal", "plant_efficiency_input");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_GeoHourly_ppi_base_year_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "ppi_base_year", &result))
+		make_access_error("SAM_Geothermal", "ppi_base_year");
 	});
 	return result;
 }
@@ -1232,6 +1808,15 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_rock_thermal_conductivity_nget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_GeoHourly_sales_tax_rate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sales_tax_rate", &result))
+		make_access_error("SAM_Geothermal", "sales_tax_rate");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_GeoHourly_specified_pump_work_amount_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1304,15 +1889,6 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_subsurface_water_loss_nget(SAM_table 
 	return result;
 }
 
-SAM_EXPORT double SAM_Geothermal_GeoHourly_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
-		make_access_error("SAM_Geothermal", "system_use_lifetime_output");
-	});
-	return result;
-}
-
 SAM_EXPORT double SAM_Geothermal_GeoHourly_temp_decline_max_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1327,15 +1903,6 @@ SAM_EXPORT double SAM_Geothermal_GeoHourly_temp_decline_rate_nget(SAM_table ptr,
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "temp_decline_rate", &result))
 		make_access_error("SAM_Geothermal", "temp_decline_rate");
-	});
-	return result;
-}
-
-SAM_EXPORT double SAM_Geothermal_GeoHourly_ui_calculations_only_nget(SAM_table ptr, SAM_error *err){
-	double result;
-	translateExceptions(err, [&]{
-	if (!ssc_data_get_number(ptr, "ui_calculations_only", &result))
-		make_access_error("SAM_Geothermal", "ui_calculations_only");
 	});
 	return result;
 }
@@ -1414,6 +1981,204 @@ SAM_EXPORT double* SAM_Geothermal_AdjustmentFactors_adjust_timeindex_aget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_analysis_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "analysis_period", &result))
+		make_access_error("SAM_Geothermal", "analysis_period");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Costs_geotherm_cost_plant_total_amount_specified_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geotherm.cost.plant_total.amount_specified", &result))
+		make_access_error("SAM_Geothermal", "geotherm.cost.plant_total.amount_specified");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_interest_rate1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate1", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest_rate1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_interest_rate2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate2", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest_rate2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_interest_rate3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate3", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest_rate3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_interest_rate4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate4", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest_rate4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_interest_rate5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_rate5", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest_rate5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_months1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months1", &result))
+		make_access_error("SAM_Geothermal", "const_per_months1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_months2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months2", &result))
+		make_access_error("SAM_Geothermal", "const_per_months2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_months3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months3", &result))
+		make_access_error("SAM_Geothermal", "const_per_months3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_months4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months4", &result))
+		make_access_error("SAM_Geothermal", "const_per_months4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_months5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_months5", &result))
+		make_access_error("SAM_Geothermal", "const_per_months5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_percent1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent1", &result))
+		make_access_error("SAM_Geothermal", "const_per_percent1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_percent2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent2", &result))
+		make_access_error("SAM_Geothermal", "const_per_percent2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_percent3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent3", &result))
+		make_access_error("SAM_Geothermal", "const_per_percent3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_percent4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent4", &result))
+		make_access_error("SAM_Geothermal", "const_per_percent4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_percent5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent5", &result))
+		make_access_error("SAM_Geothermal", "const_per_percent5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_upfront_rate1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate1", &result))
+		make_access_error("SAM_Geothermal", "const_per_upfront_rate1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_upfront_rate2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate2", &result))
+		make_access_error("SAM_Geothermal", "const_per_upfront_rate2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_upfront_rate3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate3", &result))
+		make_access_error("SAM_Geothermal", "const_per_upfront_rate3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_upfront_rate4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate4", &result))
+		make_access_error("SAM_Geothermal", "const_per_upfront_rate4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_FinancialParameters_const_per_upfront_rate5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_upfront_rate5", &result))
+		make_access_error("SAM_Geothermal", "const_per_upfront_rate5");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_GF_flowrate_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1438,6 +2203,42 @@ SAM_EXPORT double* SAM_Geothermal_Outputs_annual_energy_distribution_time_mget(S
 	result = ssc_data_get_matrix(ptr, "annual_energy_distribution_time", nrows, ncols);
 	if (!result)
 		make_access_error("SAM_Geothermal", "annual_energy_distribution_time");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_atb_drilling_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "atb_drilling_cost", &result))
+		make_access_error("SAM_Geothermal", "atb_drilling_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_atb_exploration_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "atb_exploration_cost", &result))
+		make_access_error("SAM_Geothermal", "atb_exploration_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_atb_plant_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "atb_plant_cost", &result))
+		make_access_error("SAM_Geothermal", "atb_plant_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_baseline_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "baseline_cost", &result))
+		make_access_error("SAM_Geothermal", "baseline_cost");
 	});
 	return result;
 }
@@ -1478,6 +2279,222 @@ SAM_EXPORT double SAM_Geothermal_Outputs_condensate_pump_power_nget(SAM_table pt
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_conf_drilling_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "conf_drilling_cost", &result))
+		make_access_error("SAM_Geothermal", "conf_drilling_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_conf_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "conf_total_cost", &result))
+		make_access_error("SAM_Geothermal", "conf_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_interest1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest1", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_interest2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest2", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_interest3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest3", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_interest4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest4", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_interest5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest5", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_interest_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_interest_total", &result))
+		make_access_error("SAM_Geothermal", "const_per_interest_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_percent_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_percent_total", &result))
+		make_access_error("SAM_Geothermal", "const_per_percent_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_principal1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal1", &result))
+		make_access_error("SAM_Geothermal", "const_per_principal1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_principal2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal2", &result))
+		make_access_error("SAM_Geothermal", "const_per_principal2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_principal3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal3", &result))
+		make_access_error("SAM_Geothermal", "const_per_principal3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_principal4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal4", &result))
+		make_access_error("SAM_Geothermal", "const_per_principal4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_principal5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal5", &result))
+		make_access_error("SAM_Geothermal", "const_per_principal5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_principal_total_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_principal_total", &result))
+		make_access_error("SAM_Geothermal", "const_per_principal_total");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_total1_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total1", &result))
+		make_access_error("SAM_Geothermal", "const_per_total1");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_total2_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total2", &result))
+		make_access_error("SAM_Geothermal", "const_per_total2");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_total3_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total3", &result))
+		make_access_error("SAM_Geothermal", "const_per_total3");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_total4_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total4", &result))
+		make_access_error("SAM_Geothermal", "const_per_total4");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_const_per_total5_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "const_per_total5", &result))
+		make_access_error("SAM_Geothermal", "const_per_total5");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_construction_financing_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "construction_financing_cost", &result))
+		make_access_error("SAM_Geothermal", "construction_financing_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_contingency_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "contingency_cost", &result))
+		make_access_error("SAM_Geothermal", "contingency_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_cp_battery_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_battery_nameplate", &result))
+		make_access_error("SAM_Geothermal", "cp_battery_nameplate");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_cp_system_nameplate_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "cp_system_nameplate", &result))
+		make_access_error("SAM_Geothermal", "cp_system_nameplate");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_cw_pump_head_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1505,6 +2522,25 @@ SAM_EXPORT double SAM_Geothermal_Outputs_cwflow_nget(SAM_table ptr, SAM_error *e
 	return result;
 }
 
+SAM_EXPORT double* SAM_Geothermal_Outputs_degradation_aget(SAM_table ptr, int* length, SAM_error *err){
+	double* result = nullptr;
+	translateExceptions(err, [&]{
+	result = ssc_data_get_array(ptr, "degradation", length);
+	if (!result)
+		make_access_error("SAM_Geothermal", "degradation");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_design_temp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "design_temp", &result))
+		make_access_error("SAM_Geothermal", "design_temp");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_dt_rock_well_head_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1519,6 +2555,60 @@ SAM_EXPORT double SAM_Geothermal_Outputs_eff_secondlaw_nget(SAM_table ptr, SAM_e
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "eff_secondlaw", &result))
 		make_access_error("SAM_Geothermal", "eff_secondlaw");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_engineering_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "engineering_cost", &result))
+		make_access_error("SAM_Geothermal", "engineering_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_epc_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "epc_total_cost", &result))
+		make_access_error("SAM_Geothermal", "epc_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_expl_drilling_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "expl_drilling_cost", &result))
+		make_access_error("SAM_Geothermal", "expl_drilling_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_expl_per_well_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "expl_per_well_cost", &result))
+		make_access_error("SAM_Geothermal", "expl_per_well_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_expl_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "expl_total_cost", &result))
+		make_access_error("SAM_Geothermal", "expl_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_field_gathering_num_wells_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "field_gathering_num_wells", &result))
+		make_access_error("SAM_Geothermal", "field_gathering_num_wells");
 	});
 	return result;
 }
@@ -1551,6 +2641,15 @@ SAM_EXPORT double* SAM_Geothermal_Outputs_gen_aget(SAM_table ptr, int* length, S
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_geothermal_analysis_period_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "geothermal_analysis_period", &result))
+		make_access_error("SAM_Geothermal", "geothermal_analysis_period");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_gross_cost_output_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1578,11 +2677,83 @@ SAM_EXPORT double SAM_Geothermal_Outputs_hp_flash_pressure_nget(SAM_table ptr, S
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_indirect_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "indirect_cost", &result))
+		make_access_error("SAM_Geothermal", "indirect_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_indirect_pump_gathering_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "indirect_pump_gathering_cost", &result))
+		make_access_error("SAM_Geothermal", "indirect_pump_gathering_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_inj_num_pumps_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inj_num_pumps", &result))
+		make_access_error("SAM_Geothermal", "inj_num_pumps");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_inj_pump_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inj_pump_cost", &result))
+		make_access_error("SAM_Geothermal", "inj_pump_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_inj_pump_cost_per_pump_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inj_pump_cost_per_pump", &result))
+		make_access_error("SAM_Geothermal", "inj_pump_cost_per_pump");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_inj_pump_hp_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "inj_pump_hp", &result))
 		make_access_error("SAM_Geothermal", "inj_pump_hp");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_inj_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inj_total_cost", &result))
+		make_access_error("SAM_Geothermal", "inj_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_inj_well_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "inj_well_cost", &result))
+		make_access_error("SAM_Geothermal", "inj_well_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_installed_cost_per_kW_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "installed_cost_per_kW", &result))
+		make_access_error("SAM_Geothermal", "installed_cost_per_kW");
 	});
 	return result;
 }
@@ -1672,6 +2843,33 @@ SAM_EXPORT double SAM_Geothermal_Outputs_ncg_condensate_pump_nget(SAM_table ptr,
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_net_plant_output_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "net_plant_output", &result))
+		make_access_error("SAM_Geothermal", "net_plant_output");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_num_confirm_wells_to_production_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "num_confirm_wells_to_production", &result))
+		make_access_error("SAM_Geothermal", "num_confirm_wells_to_production");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_num_wells_getem_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "num_wells_getem", &result))
+		make_access_error("SAM_Geothermal", "num_wells_getem");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_num_wells_getem_inj_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1717,11 +2915,29 @@ SAM_EXPORT double SAM_Geothermal_Outputs_num_wells_getem_prod_failed_nget(SAM_ta
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_piping_cost_per_well_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "piping_cost_per_well", &result))
+		make_access_error("SAM_Geothermal", "piping_cost_per_well");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_plant_brine_eff_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "plant_brine_eff", &result))
 		make_access_error("SAM_Geothermal", "plant_brine_eff");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_plm_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "plm_total_cost", &result))
+		make_access_error("SAM_Geothermal", "plm_total_cost");
 	});
 	return result;
 }
@@ -1753,6 +2969,60 @@ SAM_EXPORT double SAM_Geothermal_Outputs_pressure_ratio_3_nget(SAM_table ptr, SA
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_prod_inj_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "prod_inj_total_cost", &result))
+		make_access_error("SAM_Geothermal", "prod_inj_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_prod_pump_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "prod_pump_cost", &result))
+		make_access_error("SAM_Geothermal", "prod_pump_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_prod_pump_cost_per_well_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "prod_pump_cost_per_well", &result))
+		make_access_error("SAM_Geothermal", "prod_pump_cost_per_well");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_prod_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "prod_total_cost", &result))
+		make_access_error("SAM_Geothermal", "prod_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_prod_well_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "prod_well_cost", &result))
+		make_access_error("SAM_Geothermal", "prod_well_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_pump_cost_install_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pump_cost_install", &result))
+		make_access_error("SAM_Geothermal", "pump_cost_install");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_pump_depth_ft_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1767,6 +3037,24 @@ SAM_EXPORT double SAM_Geothermal_Outputs_pump_hp_nget(SAM_table ptr, SAM_error *
 	translateExceptions(err, [&]{
 	if (!ssc_data_get_number(ptr, "pump_hp", &result))
 		make_access_error("SAM_Geothermal", "pump_hp");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_pump_only_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pump_only_cost", &result))
+		make_access_error("SAM_Geothermal", "pump_only_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_pump_size_hp_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "pump_size_hp", &result))
+		make_access_error("SAM_Geothermal", "pump_size_hp");
 	});
 	return result;
 }
@@ -1870,6 +3158,15 @@ SAM_EXPORT double SAM_Geothermal_Outputs_reservoir_pressure_nget(SAM_table ptr, 
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_sales_tax_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sales_tax_cost", &result))
+		make_access_error("SAM_Geothermal", "sales_tax_cost");
+	});
+	return result;
+}
+
 SAM_EXPORT double SAM_Geothermal_Outputs_spec_vol_nget(SAM_table ptr, SAM_error *err){
 	double result;
 	translateExceptions(err, [&]{
@@ -1888,12 +3185,84 @@ SAM_EXPORT double SAM_Geothermal_Outputs_spec_vol_lp_nget(SAM_table ptr, SAM_err
 	return result;
 }
 
+SAM_EXPORT double SAM_Geothermal_Outputs_stim_cost_non_drill_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "stim_cost_non_drill", &result))
+		make_access_error("SAM_Geothermal", "stim_cost_non_drill");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_stim_cost_per_well_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "stim_cost_per_well", &result))
+		make_access_error("SAM_Geothermal", "stim_cost_per_well");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_stim_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "stim_total_cost", &result))
+		make_access_error("SAM_Geothermal", "stim_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_sum_prod_inj_total_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "sum_prod_inj_total_cost", &result))
+		make_access_error("SAM_Geothermal", "sum_prod_inj_total_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_system_capacity_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_capacity", &result))
+		make_access_error("SAM_Geothermal", "system_capacity");
+	});
+	return result;
+}
+
 SAM_EXPORT double* SAM_Geothermal_Outputs_system_lifetime_recapitalize_aget(SAM_table ptr, int* length, SAM_error *err){
 	double* result = nullptr;
 	translateExceptions(err, [&]{
 	result = ssc_data_get_array(ptr, "system_lifetime_recapitalize", length);
 	if (!result)
 		make_access_error("SAM_Geothermal", "system_lifetime_recapitalize");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_system_recapitalization_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_recapitalization_cost", &result))
+		make_access_error("SAM_Geothermal", "system_recapitalization_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_system_use_lifetime_output_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_lifetime_output", &result))
+		make_access_error("SAM_Geothermal", "system_use_lifetime_output");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_system_use_recapitalization_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "system_use_recapitalization", &result))
+		make_access_error("SAM_Geothermal", "system_use_recapitalization");
 	});
 	return result;
 }
@@ -1944,6 +3313,141 @@ SAM_EXPORT double* SAM_Geothermal_Outputs_timestep_wet_bulb_aget(SAM_table ptr, 
 	result = ssc_data_get_array(ptr, "timestep_wet_bulb", length);
 	if (!result)
 		make_access_error("SAM_Geothermal", "timestep_wet_bulb");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_capital_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_capital_cost", &result))
+		make_access_error("SAM_Geothermal", "total_capital_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_direct_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_direct_cost", &result))
+		make_access_error("SAM_Geothermal", "total_direct_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_drilling_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_drilling_cost", &result))
+		make_access_error("SAM_Geothermal", "total_drilling_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_drilling_cost_used_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_drilling_cost_used", &result))
+		make_access_error("SAM_Geothermal", "total_drilling_cost_used");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_drilling_permitting_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_drilling_permitting", &result))
+		make_access_error("SAM_Geothermal", "total_drilling_permitting");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_expl_permitting_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_expl_permitting", &result))
+		make_access_error("SAM_Geothermal", "total_expl_permitting");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_gathering_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_gathering_cost", &result))
+		make_access_error("SAM_Geothermal", "total_gathering_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_getem_om_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_getem_om_cost", &result))
+		make_access_error("SAM_Geothermal", "total_getem_om_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_installed_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_installed_cost", &result))
+		make_access_error("SAM_Geothermal", "total_installed_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_plant_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_plant_cost", &result))
+		make_access_error("SAM_Geothermal", "total_plant_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_plant_cost_used_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_plant_cost_used", &result))
+		make_access_error("SAM_Geothermal", "total_plant_cost_used");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_pump_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_pump_cost", &result))
+		make_access_error("SAM_Geothermal", "total_pump_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_pump_gathering_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_pump_gathering_cost", &result))
+		make_access_error("SAM_Geothermal", "total_pump_gathering_cost");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_pump_gathering_cost_used_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_pump_gathering_cost_used", &result))
+		make_access_error("SAM_Geothermal", "total_pump_gathering_cost_used");
+	});
+	return result;
+}
+
+SAM_EXPORT double SAM_Geothermal_Outputs_total_surface_equipment_cost_nget(SAM_table ptr, SAM_error *err){
+	double result;
+	translateExceptions(err, [&]{
+	if (!ssc_data_get_number(ptr, "total_surface_equipment_cost", &result))
+		make_access_error("SAM_Geothermal", "total_surface_equipment_cost");
 	});
 	return result;
 }

@@ -18,7 +18,7 @@ The marine energy tidal model is for a system that uses a tidal energy converter
 SAM's marine energy tidal performance model is coupled with the LCOE Calculator to facilitate calculating the levelized cost of energy (LCOE) using an approach consistent with the method discussed in LaBonte, A. et al. (2013).
 
 Marine Energy References
-........................
+------------------------
 
 * Reference Model 1 of the U.S. DOE Water Power `Reference Model Project (RMP) <https://energy.sandia.gov/programs/renewable-energy/water-power/projects/reference-model-project-rmp/>`__.
 

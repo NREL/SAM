@@ -1,7 +1,7 @@
 {
     "Name": "Utility Rate - Enable",
-    "Width": 1418.0,
-    "Height": 200.0,
+    "Width": 1417.0,
+    "Height": 164.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -86,7 +86,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 180.0
+                    "Integer": 159.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -111,11 +111,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 228.0
+                    "Integer": 225.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -173,11 +173,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 24.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 99.0
                 },
                 "Width": {
                     "Type": 3.0,

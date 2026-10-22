@@ -39,7 +39,7 @@ Use your mouse to zoom in to a section of the graph:
    :alt: SS_DViewMouseZoom.png
 
 Graph Controls:
-...............
+---------------
 
 * Drag the mouse – zoom in
 
@@ -56,7 +56,7 @@ Graph Controls:
 .. _viewsettings:
 
 View Settings
-.............
+-------------
 
 Click |ss-icon-wrench| at the bottom right of the graph to open the View Settings window.
 

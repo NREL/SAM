@@ -16,7 +16,7 @@ SAM displays different metrics depending on the :doc:`financial model <../introd
 For tips on interpreting financial metrics, see :ref:`Interpreting the NPV <interpreting>`.
 
 Additional Resources
-....................
+--------------------
 
 You can explore the methodology for some of SAM's financial models by downloading the spreadsheets from the `SAM website <https://sam.nlr.gov/financial-models>`__. Each of the spreadsheets duplicates SAM's cash flow equations using Excel formulas. 
 

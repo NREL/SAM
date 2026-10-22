@@ -1,7 +1,7 @@
 {
     "Name": "Degradation Lifetime Variables",
-    "Width": 788.0,
-    "Height": 126.0,
+    "Width": 795.0,
+    "Height": 138.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -86,7 +86,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 118.0
+                    "Integer": 124.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -123,7 +123,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 56.0
+                    "Integer": 59.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

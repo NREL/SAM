@@ -1,7 +1,7 @@
 {
     "Name": "Physical Trough IPH Dispatch Control",
-    "Width": 844.0,
-    "Height": 719.0,
+    "Width": 847.0,
+    "Height": 738.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -86,7 +86,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 39.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 713.0
+                    "Integer": 731.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -177,7 +177,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 120.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -214,7 +214,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 402.0
+                    "Integer": 423.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -953,7 +953,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 286.0
+                    "Integer": 382.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -1782,7 +1782,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 141.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1827,7 +1827,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 423.0
+                    "Integer": 444.0
                 },
                 "Width": {
                     "Type": 3.0,

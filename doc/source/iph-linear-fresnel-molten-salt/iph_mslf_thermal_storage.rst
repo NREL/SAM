@@ -91,7 +91,7 @@ Storage System
 .. _iph-mslf-tes-equations:
 
 Equations for Calculated Values
-...............................
+-------------------------------
 
 The following table shows the equations SAM uses to calculate the values for the variables above that you cannot edit. (In Windows, the calculated values appear in blue.)
 

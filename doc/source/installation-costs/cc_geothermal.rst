@@ -54,7 +54,7 @@ The plant capital costs are entered on a "per Kw" basis, meaning that you enter 
 The calculated value can be over-ridden by un-checking the "Calculated" checkbox and entering a value in the "Specified Plant Cost" input.
 
 Pump Cost Inputs
-................
+----------------
 
 The pump costs are entered as a function of the pump depth and pump size (calculated on the Plant and Equipment input page). The installation and casing cost is specified on a per foot basis and multiplied by the calculated pump depth to determine the total cost. Pump cost is specified on a per horsepower basis and is multiplied by a function of the pump size to determine the cost per pump.
 
@@ -63,19 +63,19 @@ The total installed cost per pump is the sum of the pump cost and the installati
 The calculated value can be over-ridden by un-checking the "Calculated" checkbox and entering a value in the "Specified Pump Cost" input.
 
 Indirect Capital costs
-......................
+----------------------
 
 Indirect capital costs are broken down into three types: engineering, procurement, and construction; project, land, and misc; and sales tax. The first two can be entered as a percentage of direct costs, as a stand alone value, or both (which will be summed to calculate a total). The sales tax percentage is entered on the Financial Parameters page and is applied to some portion of the direct cost. These three types of indirect costs are summed to calculated the total indirect cost.
 
 The calculated value can be over-ridden by un-checking the "Calculated" checkbox and entering a value in the "Specified Indirect Cost" input.
 
 Recapitalization Cost
-.....................
+---------------------
 
 The recapitalization cost will be added each time the resource has to be re-drilled to reach a new section of the geothermal resource in order to increase the production well temperature. Recapitalization costs can be specified directly, or calculated by checking the "Calculate" checkbox. The calculated value is the sum of confirmation, production, and injection drilling costs (excluding non-drilling costs), the surface equipment and installation cost, and the total pump costs.
 
 Total Installed costs
-.....................
+---------------------
 
 .. include:: ../includes/snip_total_installed_cost.rst
 

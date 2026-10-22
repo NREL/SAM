@@ -1,7 +1,7 @@
 SAM Versions
 ============
 
-NLR releases new SAM versions and updates periodically. You can download the latest version from the SAM website at  https://sam.nlr.gov/download.
+NLR releases new SAM versions and updates periodically. You can download the latest version from the SAM website at https://sam.nlr.gov/download.
 
 SAM's :doc:`Welcome page <../getting-started/welcome_page>` also displays news from the SAM team, including announcements of new versions.
 
@@ -9,9 +9,7 @@ Related topics:
 
 * :doc:`Software Installation <../reference/installation>`
 
-
 * :doc:`Registration <../reference/registration>`
-
 
 SAM Version Information
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -24,11 +22,7 @@ SAM displays the version number in the title bar of the Main window:
    :align: center
    :alt: SS_MainWindow-VersionNumber.png
 
-You can more detailed SAM version information by opening a Help window (press the F1 key or click **Help**) and then clicking **About**:
-
-.. image:: ../images/SS_HelpAbout-VersionNumber.png
-   :align: center
-   :alt: SS_HelpAbout-VersionNumber.png
+You can see more detailed SAM version information by clicking **About** at the bottom righrt of the :doc:`SAM Welcome page <../getting-started/welcome_page>`.
 
 Updating SAM
 ~~~~~~~~~~~~

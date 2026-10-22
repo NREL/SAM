@@ -35,7 +35,7 @@ Inputs
 ~~~~~~
 
 Terms of Agreement
-..................
+------------------
 
 The terms of agreement determine how the host pays for the renewable energy system.
 
@@ -58,7 +58,7 @@ The terms of agreement determine how the host pays for the renewable energy syst
   For a PPA, the annual increase in the PPA price. If the PPA price is constant over the lease agreement period, enter an escalation rate of zero.
 
 Analysis Parameters
-...................
+-------------------
 
 **Agreement period**
   The number of years in the lease agreement or PPA. This is the period over which the system operates and the host makes payments to the third party owner.
@@ -78,7 +78,7 @@ Results
 ~~~~~~~
 
 Metrics
-.......
+-------
 
 The metrics appear in the :doc:`Metrics table <../results/summary>` and in the :doc:`Data table <../results/data>` under **Single Value**.
 
@@ -86,7 +86,7 @@ The metrics appear in the :doc:`Metrics table <../results/summary>` and in the :
   The net present value (NPV) is the present value of the annual cash flow, and represents the net savings over the agreement term. In general, a positive NPV represents a project that generates enough savings to justify the agreement cost. A negative NPV indicates a project whose cost is greater than the savings.
 
 Annual Results
-..............
+--------------
 
 The annual results appear in the :doc:`Data table <../results/data>` under **Annual Data**.
 

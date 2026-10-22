@@ -1,7 +1,7 @@
 {
     "Name": "Sandia PV Array Performance Model with Module Database",
-    "Width": 1017.0,
-    "Height": 778.0,
+    "Width": 1019.0,
+    "Height": 827.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 158.0
+                    "Integer": 179.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -428,7 +428,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 51.0
+                    "Integer": 69.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -614,7 +614,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 329.0
+                    "Integer": 347.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -693,7 +693,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 690.0
+                    "Integer": 711.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3368,7 +3368,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 717.0
+                    "Integer": 738.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3534,7 +3534,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 702.0
+                    "Integer": 723.0
                 },
                 "Width": {
                     "Type": 3.0,

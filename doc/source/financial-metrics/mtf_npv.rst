@@ -16,7 +16,7 @@ Where *C*\ :sub:`n`\  is the after-tax cash flow in Year *n* for the residential
 .. _interpreting:
 
 Interpreting the NPV
-....................
+--------------------
 
 The NPV is useful indicator of the financial feasibility of a project. In general, a positive NPV indicates a profitable project, an NPV of zero indicates a project that breaks even, and a negative NPV indicates a project that costs more than it earsn in revenue.
 
@@ -51,6 +51,6 @@ Strategies for decreasing the NPV are similar as above, except you should make c
 .. _communitysolar:
 
 Community Solar Subscriber Net Present Value
-............................................
+--------------------------------------------
 
 For the Community Solar financial model, *C*\ :sub:`n`\  for each subscriber class is the difference between the each subscriber class's bill credit amount and cost of participation, where the cost of participation is the total value of payments the subscriber class makes to the project.

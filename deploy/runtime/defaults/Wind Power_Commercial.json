@@ -28291,7 +28291,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "rate_escalation": [
         0.0
     ],
@@ -28318,8 +28318,8 @@
     "show_itc_qualification": 1.0,
     "sizing_warning": 0.0,
     "specify_label": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],

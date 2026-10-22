@@ -7,7 +7,7 @@ The default 2% transmission loss and a 5% array/device downtime loss are based o
   SAM applies the total loss to the annual energy production of the system. The total loss percentage is the sum of the different loss categories.
 
 System Availability
-...................
+-------------------
 
 .. include:: /includes/snip_system_availability.rst
 

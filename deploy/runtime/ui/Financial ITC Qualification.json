@@ -1,7 +1,7 @@
 {
     "Name": "Financial ITC Qualification",
-    "Width": 861.0,
-    "Height": 259.0,
+    "Width": 860.0,
+    "Height": 263.0,
     "FormObjects": {
         "Label": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 655.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -74,11 +74,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 564.0
+                    "Integer": 562.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 117.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -86,7 +86,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -136,11 +136,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 552.0
+                    "Integer": 548.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 99.0
+                    "Integer": 90.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -148,7 +148,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -202,7 +202,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -281,11 +281,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 594.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -293,7 +293,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -322,11 +322,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 684.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -334,7 +334,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -367,7 +367,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -450,7 +450,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 168.0
+                    "Integer": 171.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -512,7 +512,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 198.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -544,7 +544,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "$"
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -595,7 +595,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 198.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -627,7 +627,7 @@
                 },
                 "Prefix": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "$"
                 },
                 "Suffix": {
                     "Type": 5.0,
@@ -678,7 +678,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -714,7 +714,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "%"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -761,7 +761,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -797,7 +797,7 @@
                 },
                 "Suffix": {
                     "Type": 5.0,
-                    "String": ""
+                    "String": "%"
                 },
                 "ThousandsSep": {
                     "Type": 2.0,
@@ -844,7 +844,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 63.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -860,7 +860,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "See depreciation class allocations below."
+                    "String": "See depreciation class allocations below for ITC qualification."
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -906,7 +906,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 63.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -963,7 +963,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 247.0
+                    "Integer": 250.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -992,7 +992,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 198.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1054,7 +1054,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1116,7 +1116,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1124,7 +1124,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 48.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1132,7 +1132,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Choose whether to determine ITC qualifying costs from system components or from depreciation class allocations. Determining from system components is designed for systems with battery storage when only that equipment qualifies for the ITC. See Help for details."
+                    "String": "Choose whether to determine ITC qualifying costs from system components or from depreciation class allocations. Determining from system components is desiged for systems with battery storage when only that equipment qualifies for the ITC. See Help for details.\n"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -1178,7 +1178,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1240,7 +1240,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1319,7 +1319,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 594.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1331,7 +1331,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1360,7 +1360,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 684.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1372,7 +1372,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 24.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -1405,7 +1405,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 141.0
+                    "Integer": 144.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1857,24 +1857,38 @@
         "\r",
         "function check_residential() {\r",
         "\tfin = financing();\r",
-        "\tif (fin == \"Residential\") {\r",
-        "\t\tenable(\"itc_qualification_choice\", false);\r",
+        "\tif (fin == 'Residential') {\r",
+        "\t\tenable('itc_qualification_choice', false);\r",
         "\t\tvalue('itc_qualification_choice', 0);\r",
         "\t}\r",
         "}\r",
         "\r",
         "function set_itc_basis_choice() {\r",
         "\r",
-        "\t// ui text on depreciation form\r",
+        " \tis_depr_fin = financing() != 'Residential';\r",
+        "\r",
+        "\t// ui text on depreciation forms\r",
         "\tmsg = '';\r",
         "\tif (value('itc_qualification_choice') == 0) {\r",
-        "\t\tmsg = 'Allocations are based on system components.';\r",
+        "\t\tmsg = 'Choose \\\"Determine ITC qualification from depreciation class allocations\\\" above to enable these inputs.';\r",
         "\t}\r",
         "\tproperty('lbl_alloc_inputs','Caption',msg);\r",
         "\r",
+        "\tmsg = 'Choose \\\"Determine ITC qualification from system components\\\" above to enable these inputs.';\r",
+        "\tif (value('itc_qualification_choice') == 0) {\r",
+        "\t\tmsg = 'Depreciation allocations are based on ITC qualifying costs. This option allows for two depreciation classes for ITC qualifying costs and non-qualifying costs. Depreciation basis can be federal ITC qualifying cost or state ITC qualifying cost.';\r",
+        "\t}\r",
+        "\tproperty('lbl_system_components','Caption',msg);\r",
+        "\r",
+        "\tmsg = 'Applied allocations are from allocation inputs. If bonus depreciation applies, enter federal and state percentages and check the box for each class that qualifies for bonus depreciation.';\r",
+        "\tif (value('itc_qualification_choice') == 0) {\r",
+        "\t\tmsg = 'Applied allocations are from ITC qualification above. If bonus depreciation applies, enter federal and state percentages and check the box for each class that qualifies for bonus depreciation.';\r",
+        "\t}\r",
+        "\tproperty('lbl_applied_allocations','Caption',msg);\r",
+        "\r",
         "\tchoice = value('itc_qualification_choice');\r",
         "\t\r",
-        "\t//Installed Costs Driven Controls\r",
+        "\t// ITC qualification\r",
         "\tenable('depr_itc_fed_capex', !choice);\r",
         "\tenable('depr_itc_sta_capex', !choice);\r",
         "\tenable('system_itc_basis_cost_fed_include', !choice);\r",
@@ -1882,26 +1896,33 @@
         "\tenable('batt_itc_basis_cost_fed_include', !choice);\r",
         "\tenable('batt_itc_basis_cost_sta_include', !choice);\r",
         "\tenable('itc_basis_percent_input', !choice);\r",
-        "\t\r",
-        "\t//Depreciation Driven Controls\r",
+        "\tenable('itc_basis_cost_percent_fed', !choice);\r",
+        "\tenable('itc_basis_cost_percent_sta', !choice);\r",
+        "\tenable('itc_basis_cost_capex_fed', !choice);\r",
+        "\tenable('itc_basis_cost_capex_sta', !choice);\r",
         "\tshow('itc_qual_warning', choice);\r",
-        "\tenable('depr_itc_fed_macrs_5', choice);\r",
-        "\tenable('depr_itc_sta_macrs_5', choice);\r",
-        "\tenable('depr_itc_fed_macrs_15', choice);\r",
-        "\tenable('depr_itc_sta_macrs_15', choice);\r",
-        "\tenable('depr_itc_fed_sl_5', choice);\r",
-        "\tenable('depr_itc_sta_sl_5', choice);\r",
-        "\tenable('depr_itc_fed_sl_15', choice);\r",
-        "\tenable('depr_itc_sta_sl_15', choice);\r",
-        "\tenable('depr_itc_fed_sl_20', choice);\r",
-        "\tenable('depr_itc_sta_sl_20', choice);\r",
-        "\tenable('depr_itc_fed_sl_39', choice);\r",
-        "\tenable('depr_itc_sta_sl_39', choice);\r",
-        "\tenable('depr_itc_fed_custom', choice);\r",
-        "\tenable('depr_itc_sta_custom', choice);\r",
-        "\tenable('depr_custom_schedule',choice);\r",
-        "\t\r",
         "\trefresh();\r",
+        "\r",
+        "\t// Depreciation driven controls\r",
+        "\tif (is_depr_fin) {\r",
+        "\t\tenable('depr_itc_fed_macrs_5', choice);\r",
+        "\t\tenable('depr_itc_sta_macrs_5', choice);\r",
+        "\t\tenable('depr_itc_fed_macrs_15', choice);\r",
+        "\t\tenable('depr_itc_sta_macrs_15', choice);\r",
+        "\t\tenable('depr_itc_fed_sl_5', choice);\r",
+        "\t\tenable('depr_itc_sta_sl_5', choice);\r",
+        "\t\tenable('depr_itc_fed_sl_15', choice);\r",
+        "\t\tenable('depr_itc_sta_sl_15', choice);\r",
+        "\t\tenable('depr_itc_fed_sl_20', choice);\r",
+        "\t\tenable('depr_itc_sta_sl_20', choice);\r",
+        "\t\tenable('depr_itc_fed_sl_39', choice);\r",
+        "\t\tenable('depr_itc_sta_sl_39', choice);\r",
+        "\t\tenable('depr_itc_fed_custom', choice);\r",
+        "\t\tenable('depr_itc_sta_custom', choice);\r",
+        "\t\tis_custom_depr = (value('itc_basis_depreciation_allocation')==6 || value('non_itc_basis_depreciation_allocation')==6);\r",
+        "\t\tenable('depr_custom_schedule',(choice||is_custom_depr));\r",
+        "\t}\r",
+        "\t\r",
         "}\r",
         "\r",
         "function itc_basis_depreciation_choice() {\r",

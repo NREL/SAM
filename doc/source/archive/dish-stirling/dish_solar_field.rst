@@ -58,7 +58,7 @@ Equations for Calculated Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Number of Collectors
-....................
+--------------------
 
 The total number of collectors is calculated based on the numbers of north-south and east-west oriented collectors.
 
@@ -80,7 +80,7 @@ Where,
      - Number of Collectors East-West
 
 Total Solar Field Area
-......................
+----------------------
 
 The total solar field area is the product of the north-south and east west dish collector separation distances and the number of collectors.
 
@@ -104,7 +104,7 @@ Where,
      - Number of Collectors
 
 Total Capacity
-..............
+--------------
 
 The total solar field capacity is the product of the number of collectors and the engine nameplate capacity on the Stirling Engine page.
 

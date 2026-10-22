@@ -1,7 +1,7 @@
 Net Capital Cost
 ================
 
-The net capital cost is total installed cost from the :doc:`Installation costs <../installation-costs/installation_costs>` page less any cash investment-based and capacity-based incentives from the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>` page and plus any additional financing costs and fees from the :doc:`Financial Parameters <../financial-parameters/fin_overview>` page. The exact equation depends on the financial model as described below.
+The net capital cost is total installed cost from the :doc:`Installation costs <../installation-costs/index>` page less any cash investment-based and capacity-based incentives from the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>` page and plus any additional financing costs and fees from the :doc:`Financial Parameters <../financial-parameters/fin_overview>` page. The exact equation depends on the financial model as described below.
 
 Residential and Commercial
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

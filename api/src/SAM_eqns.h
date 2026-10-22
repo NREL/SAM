@@ -53,6 +53,8 @@ SAM_EXPORT void SAM_Reopt_size_standalone_battery_post_eqn(SAM_table data, SAM_e
 
 SAM_EXPORT void SAM_getem_om_cost_calc_eqn(SAM_table data, SAM_error* err);
 
+SAM_EXPORT void SAM_size_battery(SAM_table data, SAM_error* err);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

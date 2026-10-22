@@ -26,7 +26,7 @@ Plant Characteristics
   The power cycle's nominal capacity, calculated as the product of the design gross output and estimated gross to net conversion factor. SAM uses this value to calculate the system's rated capacity for capacity-related calculations, including the estimated total cost per net capacity value on the :doc:`Installation costs <../installation-costs/cc_trough>`   page, capacity-based incentives on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and the capacity factor reported in the :doc:`results <../getting-started/results_page>`  .
 
 System Availability
-...................
+-------------------
 
 .. include:: ../includes/snip_system_availability.rst
 

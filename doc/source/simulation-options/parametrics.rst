@@ -41,7 +41,7 @@ To set up parametric inputs, you can either use Quick Setup, or create a table b
 .. _quicksetup:
 
 Option 1. Quick Setup
-.....................
+---------------------
 
 Use Quick Setup with a single parametric input, or when you want to model all combinations of values of multiple inputs.
 
@@ -90,7 +90,7 @@ To use Quick Setup:
 SAM automatically populates the table with the input variables and values along with the **Number of runs**. If you cannot see the entire table, you can use the vertical scroll bar or drag the grey divider line downward to see more of the table.
 
 Option 2: Set up parametric table by hand
-.........................................
+-----------------------------------------
 
 Set up the parametric table by hand when your analysis involves more than one parametric input and you want to limit the combinations of values. For example, for a parametric study of different types of wind turbines, you might want to use a specific hub height for each wind turbine.
 
@@ -131,7 +131,7 @@ Parametric Table Tips and Tricks
 Each row in the parametric table represents a parametric case with a complete set of results. Each column in the table is for an input variable or output variable. Right-click the row or column heading to see a menu of commands.
 
 Input Column Commands (right-click input column heading)
-........................................................
+--------------------------------------------------------
 
 Use the input column commands to set the value of inputs as an alternative to using Quick Setup or setting up the table by hand as described below. The input column commands make it easier to populate the table with patterns of values.
 
@@ -154,7 +154,7 @@ Use the input column commands to set the value of inputs as an alternative to us
   Hide values in the column that are outside of the range of values you specify.
 
 Output Column Commands (right-click output column heading)
-..........................................................
+----------------------------------------------------------
 
 Use the output column commands after you run a parametric simulation.
 
@@ -172,7 +172,7 @@ Use the output column commands after you run a parametric simulation.
   Hide values in the column that are outside of the range of values you specify.
 
 Row Commands (right-click row heading)
-......................................
+--------------------------------------
 
 Each row in the table represents a parametric case, which consists of the input variables in the table with all of the remaining inputs set to values on the input pages. The SAM case consists of input variables on the input pages.
 
@@ -187,7 +187,7 @@ Each row in the table represents a parametric case, which consists of the input 
   Create a new SAM case with inputs from the parametric case.
 
 Table Commands (right-click top left corner of table)
-.....................................................
+-----------------------------------------------------
 
 The table commands replicate commands on the Export menu described below.
 

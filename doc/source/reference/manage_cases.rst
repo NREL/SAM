@@ -57,5 +57,4 @@ For a file with more cases than can fit on the toolbar, click the ellipses to sh
    :alt: SS_MainWindow-CaseTabsScroll.png
 
 
-
 .. |SS_Button-ContextArrow| image:: ../images/SS_Button-ContextArrow.png

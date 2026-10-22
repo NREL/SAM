@@ -3,7 +3,7 @@ Costs
 
 When you run SAM, you provide information about the cost of installing and operating the system by specifying inputs on the Installation Costs and Operating Costs pages. SAM organizes the costs into installation and operating costs:
 
-:doc:`Installation Costs <../installation-costs/installation_costs>` are in Year 0 of the project cash flow:
+:doc:`Installation Costs <../installation-costs/index>` are in Year 0 of the project cash flow:
 
 * Direct capital costs for equipment purchases and installation labor
 

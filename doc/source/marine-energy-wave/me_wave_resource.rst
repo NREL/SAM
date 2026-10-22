@@ -25,7 +25,7 @@ For information about sources of wave energy resource data, see the following we
 .. _wavelibrary:
 
 Wave Energy Resource Library
-............................
+----------------------------
 
 The wave energy resource library is a collection of wave energy resource files from folders on your computer that you have identified as containing waver energy resource files.
 
@@ -56,7 +56,7 @@ For the Frequency of Occurrence option, SAM shows dominant wave parameters calcu
   The sum of frequency of occurrence values in the diagram. The sum should be 100%, but may vary slightly from 100 due to rounding error.
 
 Download Marine Energy Resource Files
-.....................................
+-------------------------------------
 
 For the Time Series option, SAM can download three-hour marine energy resource data from the `Hindcast Data Downloads web API <https://developer.nlr.gov/docs/wave/hindcast/>`__ for the U.S. West Coast, East Coast, Hawaii, and Alaska.
 
@@ -71,7 +71,7 @@ To download a marine energy resource file:
 #. After the download, SAM should add the file to your resource library and select it.
 
 Convert Time Series Data to Frequency of Occurrence Data (JPD File Generation)
-..............................................................................
+------------------------------------------------------------------------------
 
 You can convert data from a file with time series data to frequency of occurrence (also called joint probability distribution, or JPD) data.
 

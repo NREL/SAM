@@ -5,7 +5,7 @@ Operating costs are annual expenditures on equipment and services that occur aft
 
 .. note:: The operating cost inputs are in Year 1 dollars. SAM applies the inflation rate from the Financial Parameters page to calculate the operating cost in each year of the cash flow. If you specify a non-zero escalation rate for an operating cost category, it applies both the inflation rate and escalation rate.
 
-.. note:: For financial models with reserve accounts on the Financial Parameters page, you can use either the operating costs or the major equipment replacement reserve accounts for the cost of major equipment replacements.
+   For financial models with reserve accounts on the Financial Parameters page, you can use either the operating costs or the major equipment replacement reserve accounts for the cost of major equipment replacements.
 
  For expenses such as component replacements that occur in particular years, you can use an :ref:`annual schedule <oc-fuel-cell-annualschedule>` to assign costs to individual years.
 

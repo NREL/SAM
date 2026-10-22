@@ -8843,9 +8843,9 @@
     "batt_computed_stacks_series": 1.0,
     "batt_computed_strings": 107.0,
     "batt_computed_voltage": 51.74,
-    "batt_current_charge_max": 96.30000000000001,
+    "batt_current_charge_max": 96.3,
     "batt_current_choice": 0.0,
-    "batt_current_discharge_max": 96.30000000000001,
+    "batt_current_discharge_max": 96.3,
     "batt_custom_dispatch": [
         0.0
     ],
@@ -9809,7 +9809,7 @@
         0.0,
         0.0
     ],
-    "batt_mass": 177.94864285714287,
+    "batt_mass": 177.9486428571429,
     "batt_maximum_SOC": 95.0,
     "batt_meter_position": 0.0,
     "batt_minimum_SOC": 15.0,
@@ -9874,7 +9874,7 @@
     "batt_size_choice": 0.0,
     "batt_specific_energy_per_mass": 70.0,
     "batt_specific_energy_per_volume": 82.0,
-    "batt_surface_area": 1.7081938826471875,
+    "batt_surface_area": 1.7081938826471877,
     "batt_target_choice": 0.0,
     "batt_target_power": [
         0.0
@@ -45884,7 +45884,7 @@
         1.71415,
         1.87435
     ],
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.060000000000004,
     "normalize_to_utility_bill": 0.0,
     "om_batt_capacity_cost": [
         15.0
@@ -45961,7 +45961,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 0.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -46008,10 +46008,10 @@
     "standalonebatt.cost.plm.percent": 0.0,
     "standalonebatt.cost.plm.total": 0.0,
     "standalonebatt.cost.sales_tax.percent": 100.0,
-    "standalonebatt.cost.sales_tax.total": 370.20435660000006,
+    "standalonebatt.cost.sales_tax.total": 370.2043566000001,
     "standalonebatt.cost.sales_tax.value": 5.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],

@@ -16,7 +16,7 @@
 			"real_discount_rate": 6.4,
 			"salvage_percentage": 0,
 			"state_tax_rate": [7.000000],
-			"system_capacity": 8.00718
+			"system_capacity": 8.00246
 		},
 		"SystemCosts": {
 			"om_capacity": [28.780000],
@@ -25,13 +25,13 @@
 			"om_fixed_escal": 0,
 			"om_production": [0.000000],
 			"om_production_escal": 0,
-			"total_installed_cost": 25304.5
+			"total_installed_cost": 25289.6
 		},
 		"LandLease": {
 		},
 		"Depreciation": {
 			"depr_basis_mat": [
-				[1.000000, 25304.490416, 100.000000, 0.000000, 0.000000, 7.000000],
+				[1.000000, 25289.561513, 100.000000, 0.000000, 0.000000, 7.000000],
 				[2.000000, 0.000000, 0.000000, 0.000000, 0.000000, 7.000000]
 			],
 			"depr_en_basis_mat": 1
@@ -56,7 +56,7 @@
 			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"PaymentIncentives": {
 			"cbi_fed_amount": 0,

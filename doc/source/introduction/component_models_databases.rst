@@ -110,7 +110,7 @@ Some of the component models use a library of input parameters to represent the 
    :align: center
    :header-rows: 1
 
-   * -  Library Name
+   * - Library Name
      - Component
      - Owner
    * - CEC Modules

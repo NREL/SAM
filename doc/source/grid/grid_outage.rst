@@ -16,7 +16,7 @@ Use the options on the Grid Outage page to determine:
 Modeling grid outages requires that you specify critical electric loads, and depending on your analysis, the timing of grid outages. It also requires that you specify the battery minimum state of charge during grid outages.
 
 Grid Outage Input Combinations
-..............................
+------------------------------
 
 How SAM uses grid outage and critical load data in the simulation calculations depends on the combination of grid outage inputs. Use the table below to help you choose the right combination of inputs for your analysis.
 

@@ -23,8 +23,12 @@
     "analysis_period_warning": "No messages.",
     "annual_albedo": NaN,
     "annual_beam": 4.11599,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.66759,
     "annual_global": 3.84577,
+    "annual_precipitation": 0.0,
     "annual_snow": 23.0,
     "annual_tdry": 5.47658,
     "annual_twet": 2.88032,
@@ -666655,7 +666659,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "rate_escalation": [
         0.0
     ],
@@ -666675,7 +666679,7 @@
     "solar_data_source": "TMY2",
     "solar_resource": "fargo_nd_46.9_-96.8_mts1_60_tmy",
     "solar_resource_file": "fargo_nd_46.9_-96.8_mts1_60_tmy.csv",
-    "start_day_of_year": 3.335046e-317,
+    "start_day_of_year": 0.0,
     "start_day_of_year_merchant_ui": 3.335046e-317,
     "state": "ND",
     "state_tax_rate": [

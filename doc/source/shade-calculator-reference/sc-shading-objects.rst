@@ -41,7 +41,7 @@ Examples of Box Shading Objects with Properties and in 3D Scene View
   False is a box with six sides. True is a box with no top or bottom, useful for parapets or wall enclosures.
 
 Cylinder
-........
+--------
 
 A cylinder shading object is useful for representing poles, chimneys, some kinds of roof protrusions, and other cylindrical objects.
 

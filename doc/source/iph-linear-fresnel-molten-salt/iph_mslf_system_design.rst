@@ -6,7 +6,7 @@ The System Design page shows inputs for design point parameters that determine t
 .. note:: All of the system design inputs are nominal values, or values at the system's design point. SAM calculates actual values during simulation and reports them in the :doc:`results <../getting-started/results_page>`.
 
 Solar Field
-...........
+-----------
 
 The solar field design parameters determine the size of the solar field. See the :doc:`Solar Field <iph_mslf_solar_field>`, and :doc:`Collector and Receiver <iph_mslf_collector_receiver>` pages to set detailed parameters for the field.
 
@@ -44,7 +44,7 @@ The solar field design parameters determine the size of the solar field. See the
   The number of loops in the field, equal to the solar multiple times the required number of loops at a solar multiple of 1.0. The required number of loops is rounded to the nearest integer to represent a realistic field layout.
 
 Heat Sink
-.........
+---------
 
 The heat sink parameters describe the process heat application's thermal load.
 
@@ -58,7 +58,7 @@ The heat sink parameters describe the process heat application's thermal load.
   Electrical power required to circulate the heat transfer fluid.
 
 Thermal Energy Storage
-......................
+----------------------
 
 The thermal storage design parameters determine the size of the thermal energy storage system (TES). See the :doc:`Thermal Storage <iph_mslf_thermal_storage>` page for detailed TES parameters.
 

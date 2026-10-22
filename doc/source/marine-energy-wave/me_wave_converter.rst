@@ -10,7 +10,7 @@ You can either choose a wave power matrix from the wave energy converter library
 .. _weclibrary:
 
 WEC Library
-...........
+-----------
 
 SAM's wave energy converter library stores power matrix data and some descriptive information for different types of WECs.
 
@@ -35,7 +35,7 @@ SAM populates the power matrix table with data from the library and shows conver
 .. note:: You can select the data in the table by holding down the Shift key and using the up and down arrows to select the entire table. Then press Control-C (or Commad-C on a Mac) to copy the data to your clipboard.
 
 Import WEC Power Matrix Data
-............................
+----------------------------
 
 To model a WEC not found in the library, you can import its power matrix data from a file.
 

@@ -23,7 +23,7 @@ Tax and Insurance Rates
 .. include:: ../includes/snip_financing_taxes_insurance.rst
 
 Property Tax
-............
+------------
 
 .. include:: ../includes/snip_financing_property_tax.rst
 

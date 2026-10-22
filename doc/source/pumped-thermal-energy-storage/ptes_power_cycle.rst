@@ -34,7 +34,7 @@ Component Parameters
 ~~~~~~~~~~~~~~~~~~~~
 
 Startup
-.......
+-------
 
 **Fraction of design power allowed during startup**
   Fraction of the design cycle thermal power input allowed to bring the cycle up to operating temperature after a period of non-operation. This input is meant to capture ramping constraints.
@@ -43,7 +43,7 @@ Startup
   The amount of time at the maximum allowed thermal power at startup that is required to reach operating temperature during startup. This input is meant to capture the energy required to reach operating temperature.
 
 Operation
-.........
+---------
 
 **Maximum cycle heat input fraction**
   The maximum cycle thermal power input allowed as a fraction of the design point.
@@ -55,7 +55,7 @@ Operation
   The fraction of the design thermal power required to maintain the cycle at standby. Energy consumed by the cycle during standby does not generate electricity, so standby is rarely used in cases where 1) the penalty for generating electricity at the current timestep offsets the standby energy consumption and 2) standby energy requirements are less than startup energy requirements.
 
 Cycle Parasitics
-................
+----------------
 
 **Parasitics (non-pumping) as fraction of thermodynamic power**
   Electrical consumption of cycle parasitics, not including HTF pumping power, defined as a fraction of the design cycle net thermodynamic power output. Examples of potentially relevant parasitics include electric motor and generator inefficiencies and heat rejection parasitics. At off-design this value is calculated by scaling by the ratio of off-design thermodynamic power to design thermodynamic power.
@@ -64,7 +64,7 @@ Cycle Parasitics
   Calculated electrical consumption of cycle parasitics at design conditions, not including HTF pumping power.
 
 Hot HTF Pumping Power
-.....................
+---------------------
 
 **Pumping power rate through hot heat exchanger, kWe/kg/s**
   Electrical power required to move 1 kg/s of hot HTF through the hot side heat exchanger.
@@ -76,7 +76,7 @@ Hot HTF Pumping Power
   Electrical power required to pump hot HTF at design conditions.
 
 Cold HTF Pumping Power
-......................
+----------------------
 
 **Pumping power rate through cold heat exchanger, kWe/kg/s**
   Electrical power required to move 1 kg/s of cold HTF through the cold side heat exchanger.

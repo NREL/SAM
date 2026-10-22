@@ -8,7 +8,7 @@ SAM calculates two types parasitic loss values. The first is an estimate of the 
 .. note:: Parasitic losses from components that do not exist in the system should be set to zero.
 
 Parasitic Energy Consumption
-............................
+----------------------------
 
 **Piping thermal loss coefficient (W/K-m2-aper)**
   Thermal loss per area of collector aperture as calculated on the :doc:`Solar Field <dslf_solar_field>`   page. 

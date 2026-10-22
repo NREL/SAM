@@ -64,12 +64,12 @@ SAM provides options for calculating a power purchase price given a target inter
 The power price can be made to vary annually over the analysis period using either a fixed annual escalation rate, or by assigning a separate price to each year. The price can be made to vary diurnally using time-of-delivery (TOD) factors defined either using hour-by-month schedules or hourly (or subhourly) time series factors.
 
 Single Owner
-............
+------------
 
 In the :doc:`Single Owner <../financial-parameters/fin_single_owner>` model, the project owner builds, owns, and operates the power system and has sufficient tax liability to fully utilize all tax benefits. The owner may be either the original developer or a third-party tax investor that purchases the project from the developer.
 
 Partnership Flip with and without Debt
-......................................
+--------------------------------------
 
 The partnership flip with debt (:doc:`Leveraged Partnership Flip <../financial-parameters/fin_leveraged_partnership>`) and partnership flip without debt (:doc:`All Equity Partnership Flip <../financial-parameters/fin_all_equity_partnership>`) models are for two-party projects that involve equity investments by a project developer and a third party tax investor. 
 
@@ -78,7 +78,7 @@ The investor has sufficient tax liability from its other business operations to 
 The project allocates a majority of the cash and tax benefits to the investor when the project begins operation and until the "flip year" when tax investor receives a pre-negotiated after-tax internal rate of return or "target IRR." Once the target IRR is reached, a majority of the cash and any remaining tax benefits are allocated to the developer.
 
 Sale Leaseback
-..............
+--------------
 
 The :doc:`Sale Leaseback <../financial-parameters/fin_sale_leaseback>` model is another two-party structure that involves a tax investor purchasing 100% of the project from the developer and then leasing it back to the developer. This structure differs from the partnership flip structures in that the tax investor and the developer do not share the project cash and tax benefits (or liability). Instead, each party has its own separate cash flow and taxable income. 
 

@@ -9,7 +9,7 @@ Design Point Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Solar Field
-...........
+-----------
 
 **Boiling**
   The solar field delivers two-phase steam.
@@ -47,7 +47,7 @@ This set of inputs defines the design-point operating conditions of the steam in
   The estimated temperature of feedwater from the power cycle at the inlet of the solar field. This value is used to calculate estimated thermal losses from the solar field at design, and is not directly used in calculating the hourly performance for the annual simulation. The field inlet temperature is calculated during performance runs based on the power cycle conversion efficiency and the steam temperature at the inlet of the power cycle.
 
 Heat Sink
-.........
+---------
 
 The heat sink parameters describe the process heat application's thermal load.
 
@@ -61,7 +61,7 @@ The heat sink parameters describe the process heat application's thermal load.
   The pressure drop across the heat sink.
 
 System Availability
-...................
+-------------------
 
 .. include:: ../includes/snip_system_availability.rst
 

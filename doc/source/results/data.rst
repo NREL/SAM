@@ -35,7 +35,7 @@ The data categories are based on the number of values that a variable represents
 **Single Values**
   Results that have a single value, including:
 
-*   Some input variable values from the :doc:`Installation costs <../installation-costs/installation_costs>`, :doc:`Operating costs <../operating-costs/operating_costs>`, :doc:`Financial Parameters <../financial-parameters/fin_overview>`, and :doc:`Incentive <../incentives-and-depreciation/cash_incentives>`   pages.
+*   Some input variable values from the :doc:`Installation costs <../installation-costs/index>`, :doc:`Operating costs <../operating-costs/operating_costs>`, :doc:`Financial Parameters <../financial-parameters/fin_overview>`, and :doc:`Incentive <../incentives-and-depreciation/cash_incentives>`   pages.
 
 *   Annual totals or averages of hourly performance model results, or time-dependent pricing data.
 

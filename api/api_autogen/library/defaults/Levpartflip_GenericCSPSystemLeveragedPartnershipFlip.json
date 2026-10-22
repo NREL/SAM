@@ -112,7 +112,7 @@
 			"ptc_fed_term": 0,
 			"ptc_sta_amount": [0.000000],
 			"ptc_sta_escal": 0,
-			"ptc_sta_term": 10
+			"ptc_sta_term": 0
 		},
 		"Depreciation": {
 			"depr_alloc_custom_percent": 0,

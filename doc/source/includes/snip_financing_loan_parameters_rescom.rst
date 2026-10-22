@@ -17,7 +17,7 @@
 
 *Principal Amount ($) = Total Installed Cost ($) × Debt Fraction (%)*
 
-  Where *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page.
+  Where *Total Installed Cost*   is from the :doc:`Installation Costs <../installation-costs/index>`   page.
 
 .. include:: /includes/snip_wacc.rst
 

@@ -157,7 +157,7 @@ The tank model is subdivided spatially along the thermal gradient. The solid med
 * Vortmeyer, D., and R. J. Schaefer. “Equivalence of One- and Two-Phase Models for Heat Transfer Processes in Packed Beds: One Dimensional Theory.” Chemical Engineering Science 29, no. 2 (February 1, 1974): 485–91. https://linkinghub.elsevier.com/retrieve/pii/000925097480059X.
 
 Packed Bed TES Parameters
-.........................
+-------------------------
 
 **Number of spatial sections**
   Number of subsections the model divides the thermal gradient into.
@@ -191,7 +191,7 @@ TES Pressurized Water Cylinder with Piston Separator
 The pressurized water cylinder with piston separator storage technology consists of one tank with a piston separating the hot and cold sections of the tank. When the storage is fully discharged, the tank is filled with cold HTF. As the storage charges, the hot side of the tank fills with hot HTF and the piston moves along the tank, reducing the size of the cold section. When the tank is fully charged, it is filled with hot HTF. The tank is filled with HTF at all times to maintain pressure.
 
 Piston Cylinder TES Parameters
-..............................
+------------------------------
 
 **Tank wall thickness, m**
   The thickness of the tank wall, used to calculate the tank wall mass.

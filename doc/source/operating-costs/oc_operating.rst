@@ -12,10 +12,10 @@ For technologies that consume a fuel, such as some concentrating solar power (CS
 
 Land Lease costs
 ~~~~~~~~~~~~~~~~
+
 .. include:: ../includes/snip_operating_cost_land_lease.rst
 
 Using Annual Schedules to Specify Operating costs in Specific Years
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. include:: ../includes/snip_o_and_m_periodic_costs.rst
-

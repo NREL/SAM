@@ -7,9 +7,9 @@ The inputs that appear on the Operating costs page depend on whether you are usi
 
 .. note:: The operating cost inputs are in Year 1 dollars. SAM applies the inflation rate from the Financial Parameters page to calculate the operating cost in each year of the cash flow. If you specify a non-zero escalation rate for an operating cost category, it applies both the inflation rate and escalation rate.
 
-**Note.** For financial models with reserve accounts on the Financial Parameters page, you can use either the operating costs or the major equipment replacement reserve accounts for the cost of major equipment replacements.
+   For financial models with reserve accounts on the Financial Parameters page, you can use either the operating costs or the major equipment replacement reserve accounts for the cost of major equipment replacements.
 
-.. note:: For expenses such as component replacements that occur in particular years, you can use an :ref:`annual schedule <oc-battery-annualschedule>` to assign costs to individual years.
+   For expenses such as component replacements that occur in particular years, you can use an :ref:`annual schedule <oc-battery-annualschedule>` to assign costs to individual years.
 
 **Nameplate capacity**
   The nominal storage capacity of the battery in DC kilowatt-hours from the Battery Cell and System page.
@@ -28,7 +28,7 @@ The inputs that appear on the Operating costs page depend on whether you are usi
 **Replacement cost, $/kWhdc of battery nameplate capacity**
   The replacement cost in Year 1 dollars per unit of nameplate battery capacity as defined above.
 
-.. note:: To include battery replacements costs in your analysis, be sure to choose a battery replacement option on the :doc:`Battery Life <../battery-storage/battery_life>` page.
+  .. note:: To include battery replacements costs in your analysis, be sure to choose a battery replacement option on the :doc:`Battery Life <../battery-storage/battery_life>` page.
 
 **Escalation rate, %/yr**
   For each operating cost category, you can specify an optional annual **Escalation Rate** to represent an expected annual increase or decrease in operating cost above the annual inflation rate specified on the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page.
@@ -37,6 +37,7 @@ The inputs that appear on the Operating costs page depend on whether you are usi
 
 Land Lease costs
 ~~~~~~~~~~~~~~~~
+
 .. include:: ../includes/snip_operating_cost_land_lease.rst
 
 .. _oc-battery-annualschedule:

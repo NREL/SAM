@@ -28,7 +28,7 @@ Parasitics
   A parasitic load that is applied as a function of the thermal output of the auxiliary fossil-fired heaters. Applies only when the system includes fossil backup. See :doc:`the fossil backup inputs on the Power Cycle page <mslf_power_cycle>`  .
 
 Design Point Totals
-...................
+-------------------
 
 The design point total values represent the maximum limit of parasitic losses, and are an estimate of the losses. SAM calculates actual parasitic losses during the simulation and reports them in :doc:`time series <../results/timeseries>` results with variable names beginning with "Parasitic".
 

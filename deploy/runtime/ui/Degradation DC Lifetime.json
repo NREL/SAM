@@ -1,7 +1,7 @@
 {
     "Name": "Degradation DC Lifetime",
-    "Width": 788.0,
-    "Height": 132.0,
+    "Width": 790.0,
+    "Height": 161.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -24,7 +24,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 122.0
+                    "Integer": 149.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -106,7 +106,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 90.0
+                    "Integer": 108.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -114,7 +114,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 27.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -238,7 +238,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 66.0
+                    "Integer": 87.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

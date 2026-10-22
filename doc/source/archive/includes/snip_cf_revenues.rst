@@ -26,7 +26,7 @@ When you choose **Specify PPA Price** for **Solution Mode** on the Financial Par
 .. note:: SAM uses the PPA Price to calculate the :doc:`levelized cost of energy <../financial-metrics/mtf_lcoe>`.
 
 Revenue for PPA Single Owner Financial Model
-............................................
+--------------------------------------------
 
 The Single Owner financial model reports three revenue values in the project cash flow.
 
@@ -42,7 +42,7 @@ The Single Owner financial model reports three revenue values in the project cas
   The net revenue earned from electricity sales, accounting for revenue lost do self-consumption.
 
 Revenue for PPA Partnership and Sale Leaseback Models
-.....................................................
+-----------------------------------------------------
 
 **PPA revenue to project**
   The project's annual revenue from electricity sales, not accounting for salvage value:

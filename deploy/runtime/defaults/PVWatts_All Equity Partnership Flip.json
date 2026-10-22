@@ -32,8 +32,12 @@
     "analysis_period_warning": "No messages.",
     "annual_albedo": 0.183951,
     "annual_beam": 7.33564,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.34843,
     "annual_global": 5.79476,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 21.9385,
     "annual_twet": NaN,
@@ -19326,7 +19330,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv_capex_cost_choice": 0.0,
     "pv_land_area_is_shown": 0.0,
     "pvwatts.advanced.is_shown": 0.0,
@@ -19394,8 +19398,8 @@
     "solution_mode_message": "",
     "sponsor_cap_recovery_mode": 0.0,
     "sponsor_cap_recovery_year": 3.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0

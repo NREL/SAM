@@ -21,7 +21,7 @@ Expenses
 .. include:: ../includes/snip_cf_expenses.rst
 
 Operating Margin Not Including Lease Payment
-............................................
+--------------------------------------------
 
 *Operating Margin Not Including Lease Payment = Total Revenue - Total Operating Expense*
 
@@ -29,7 +29,7 @@ Cash Flow: Developer (Lessee LLC)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Cash Flows from Operating Activities
-....................................
+------------------------------------
 
 The developer's cash flow from operating activities includes revenue less operating expenses plus interest earned on reserves.
 
@@ -51,19 +51,19 @@ The developer's cash flow from operating activities includes revenue less operat
 *Total in Year n = Operating Margin Not Including Lease Payment + Plus Interest Earned*
 
 Developer Cash Flows from Investing Activities
-..............................................
+----------------------------------------------
 
 The developer's cash flow from investing activities occurs in Year Zero, except for the salvage value adjustment which is in the final year of the cash flow.
 
 **Sale of Property**
 *Sale of Property in Year Zero = Total Construction Financing Cost + Development Fee + Equity Closing Cost + Other Financing Cost + Total Installed costs*
 
-  Where *Total Construction Financing Cost*, *Development Fee*, *Equity Closing Cost*, and *Other Financing Cost*   are from the :doc:`Financial Parameters <../financial-parameters/fin_sale_leaseback>`   page, and *Total Installed costs*   is from the :doc:`Installation costs <../installation-costs/installation_costs>`   page.
+  Where *Total Construction Financing Cost*, *Development Fee*, *Equity Closing Cost*, and *Other Financing Cost*   are from the :doc:`Financial Parameters <../financial-parameters/fin_sale_leaseback>`   page, and *Total Installed costs*   is from the :doc:`Installation costs <../installation-costs/index>`   page.
 
 **Purchase of Plant**
 *Purchase of Plant in Year Zero = Total Installed Cost - Equity Closing Cost - Total Construction Financing*
 
-  Where *Total Construction Financing Cost*, and *Equity Closing Cost*   are from the :doc:`Financial Parameters <../financial-parameters/fin_sale_leaseback>`   page, and *Total Installed costs*   is from the :doc:`Installation costs <../installation-costs/installation_costs>`   page.
+  Where *Total Construction Financing Cost*, and *Equity Closing Cost*   are from the :doc:`Financial Parameters <../financial-parameters/fin_sale_leaseback>`   page, and *Total Installed costs*   is from the :doc:`Installation costs <../installation-costs/index>`   page.
 
 **Distribution of Development Fee**
 *Distribution of Development Fee in Year 0 = Development Fee*
@@ -125,38 +125,38 @@ The developer's cash flow from investing activities occurs in Year Zero, except 
 *Total in Year n>0 = Major Equipment Reserve Account + Major Equipment Capital Spending*
 
 Developer Cash Flows from Financing Activities
-..............................................
+----------------------------------------------
 
 **Developer Equity in Lessee LLC (funding of reserve accounts)**
 **Total**
 **Pre-tax cash flow including release of reserves**
 **Adjustment for release of reserves**
 Developer Pre-tax operating cash flow (effective lease payment)
-...............................................................
+---------------------------------------------------------------
 
 Cash Flow: Tax Investor (Lessor)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Tax Investor Cash Flows from Operating Activities
-.................................................
+-------------------------------------------------
 
 **Lease Payment**
 **Total**
 Tax Investor Cash Flows from Investing Activities
-.................................................
+-------------------------------------------------
 
 **Purchase of Property**
 **Pre-Tax Salvage Value**
 **Total**
 Tax Investor Cash Flows from Financing Activities
-.................................................
+-------------------------------------------------
 
 **Issuance of equity**
 **IBI**
 **CBI**
 **Total**
 Tax Investor Pre-tax Cash Flow
-..............................
+------------------------------
 
 LCOE
 ~~~~
@@ -206,7 +206,7 @@ Party Returns
 ~~~~~~~~~~~~~
 
 Tax Investor (Lessor) Pre-tax
-.............................
+-----------------------------
 
 **Purchase price of asset**
 **IBI income**
@@ -217,7 +217,7 @@ Tax Investor (Lessor) Pre-tax
 **Cumulative IRR**
 **Cumulative NPV**
 Tax Investor (Lessor) After-tax
-...............................
+-------------------------------
 
 **Purchase price of asset**
 **IBI income**
@@ -236,7 +236,7 @@ Tax Investor (Lessor) After-tax
 **Cumulative IRR**
 **Cumulative NPV**
 Developer Pre-tax
-.................
+-----------------
 
 **Developer equity in Lessee LLC (funding of reserve accounts)**
 **Distribution of development fee**
@@ -251,7 +251,7 @@ Developer Pre-tax
 **IRR**
 **NPV**
 Developer After-tax
-...................
+-------------------
 
 **Developer equity in Lessee LLC (funding of reserve accounts)**
 **Distribution of development fee**

@@ -2,7 +2,7 @@
 You can model a system with a single device or more than one device.
 
 System Sizing
-.............
+-------------
 
 Use the system sizing options to determine how to size the system.
 
@@ -16,7 +16,7 @@ Use the system sizing options to determine how to size the system.
   Use this option to define an array of devices by specifying the number of rows and devices per row under **Array Layout**.
 
 Array Layout
-............
+------------
 
 The Array Layout parameters define the relative positions of devices when there is more than one device, and the lengths of electrical cable connecting the array to the shore. SAM can only model devices arranged in rectangular arrays.
 
@@ -53,7 +53,7 @@ The Array Layout parameters define the relative positions of devices when there 
   Adds extra length to export cable length, assuming two export cables instead of one.
 
 Calculated Cable Lengths
-........................
+------------------------
 
 The calculated cable length values are determined from the array layout parameters and used to calculate cable costs on the Installation Costs page. All lengths are in meters.
 

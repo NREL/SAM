@@ -85,3 +85,9 @@ SAM_EXPORT void SAM_getem_om_cost_calc_eqn(SAM_table data, SAM_error* err) {
         getem_om_cost_calc(data);
         });
 }
+
+SAM_EXPORT void SAM_size_battery(SAM_table data, SAM_error* err) {
+    translateExceptions(err, [&] {
+        Size_battery(data);
+        });
+}

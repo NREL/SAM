@@ -1,7 +1,7 @@
 {
     "Name": "Marine Costs - BoS",
-    "Width": 1070.0,
-    "Height": 560.0,
+    "Width": 1052.0,
+    "Height": 612.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,
@@ -12,11 +12,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -95,11 +95,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -178,11 +178,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -219,11 +219,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -302,11 +302,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -385,11 +385,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -468,11 +468,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -551,11 +551,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 645.0
+                    "Integer": 678.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 552.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -592,11 +592,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -675,11 +675,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 117.0
+                    "Integer": 150.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 459.0
+                    "Integer": 507.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -737,11 +737,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -820,11 +820,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -903,11 +903,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 543.0
+                    "Integer": 576.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -965,11 +965,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1006,11 +1006,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1089,11 +1089,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1172,11 +1172,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1255,11 +1255,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1338,11 +1338,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1421,11 +1421,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1462,11 +1462,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1545,11 +1545,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1628,11 +1628,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1711,11 +1711,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1794,11 +1794,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1877,11 +1877,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1918,11 +1918,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2001,11 +2001,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2084,11 +2084,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2167,11 +2167,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2229,11 +2229,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2291,11 +2291,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2353,11 +2353,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2415,11 +2415,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2477,11 +2477,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2539,11 +2539,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 897.0
+                    "Integer": 942.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2601,11 +2601,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 762.0
+                    "Integer": 795.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 444.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2663,7 +2663,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 540.0
+                    "Integer": 594.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2688,11 +2688,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 324.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2754,7 +2754,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 126.0
+                    "Integer": 174.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2812,11 +2812,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 432.0
+                    "Integer": 465.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2874,15 +2874,15 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 798.0
+                    "Integer": 834.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 114.0
+                    "Integer": 111.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2936,11 +2936,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 666.0
+                    "Integer": 699.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 186.0
+                    "Integer": 234.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2998,11 +2998,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 600.0
+                    "Integer": 630.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 513.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3072,7 +3072,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 87.0
+                    "Integer": 135.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -3122,11 +3122,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 40.0
+                    "Integer": 72.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3184,11 +3184,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 57.0
+                    "Integer": 90.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 213.0
+                    "Integer": 261.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3246,11 +3246,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 12.0
+                    "Integer": 45.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 246.0
+                    "Integer": 294.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3308,11 +3308,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 15.0
+                    "Integer": 48.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 279.0
+                    "Integer": 327.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3370,11 +3370,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 63.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3432,11 +3432,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 63.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3494,11 +3494,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 30.0
+                    "Integer": 63.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 378.0
+                    "Integer": 426.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3556,11 +3556,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3639,11 +3639,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3722,11 +3722,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3763,11 +3763,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3846,11 +3846,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -3929,11 +3929,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4012,11 +4012,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 540.0
+                    "Integer": 573.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 411.0
+                    "Integer": 459.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4095,11 +4095,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4178,11 +4178,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4261,11 +4261,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4302,11 +4302,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4385,11 +4385,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 312.0
+                    "Integer": 360.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4468,11 +4468,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 807.0
+                    "Integer": 840.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4551,11 +4551,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4634,11 +4634,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 240.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4675,11 +4675,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 438.0
+                    "Integer": 471.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4758,11 +4758,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 699.0
+                    "Integer": 732.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -4841,11 +4841,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 558.0
+                    "Integer": 591.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 345.0
+                    "Integer": 393.0
                 },
                 "Width": {
                     "Type": 3.0,

@@ -30,7 +30,7 @@ CEC Performance Model with Module Database
 
 The California Energy Commission (CEC) Performance Model uses a modified version of the University of Wisconsin-Madison Solar Energy Laboratory's five-parameter single-diode model with a database of module parameters for modules from the database of eligible photovoltaic modules maintained by the California Energy Commission (CEC). The model calculates a module's current and voltage under a range of solar resource conditions represented by an I-V curve using an equivalent electrical circuit whose electrical properties can be determined from the five parameters. These five parameters are determined from standard reference condition data provided by either the module manufacturer or an independent testing laboratory. 
 
-The model is described in Gilman, P. (2015). SAM Photovoltaic Model Technical Reference. National Renewable Energy Laboratory. 59 pp.; NREL/TP-6A20-64102. (`PDF 840 KB <https://docs.nlr.gov/docs/fy15osti/64102.pdf>`__), and in De Soto 2004, `Improvement and Validation of a Model for Photovoltaic Array Performance <https://minds.wisconsin.edu/handle/1793/7602>`__, Master of Science Thesis, University of Wisconsin-Madison.
+The model is described in Gilman, P. (2015). SAM Photovoltaic Model Technical Reference. National Renewable Energy Laboratory. NREL/TP-6A20-64102. (`PDF 840 KB <https://docs.nlr.gov/docs/fy15osti/64102.pdf>`__), and in De Soto 2004, `Improvement and Validation of a Model for Photovoltaic Array Performance <https://minds.wisconsin.edu/handle/1793/7602>`__, Master of Science Thesis, University of Wisconsin-Madison.
 
 .. note:: SAM's CEC module library contains data from the `California Energy Commission (CEC) Solar Equipment Lists Program <https://www.energy.ca.gov/programs-and-topics/programs/solar-equipment-lists>`__ as of the date of the SAM software release for the current version.
 
@@ -45,7 +45,7 @@ The model is described in Gilman, P. (2015). SAM Photovoltaic Model Technical Re
 SAM's implementation of the model uses the `air mass model <https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/effective-irradiance/spectral-mismatch-models/>`__ for spectral mismatch from the Sandia Array Performance Model with "a" coefficients for polycrystalline modules from Table A1 of De Soto W.; Klein, S.; Beckman, W.; (2006) `Improvement and validation of a model for photovoltaic array performance <https://www.sciencedirect.com/science/article/abs/pii/S0038092X05002410>`__. Solar Energy. Vol 80 Issue 1. pp 78-88.
 
 To use the CEC Performance Model with Module Database:
-......................................................
+------------------------------------------------------
 
 #. On the Module page, choose **CEC Performance Model**.
 
@@ -117,7 +117,7 @@ The heat transfer method uses a steady state heat transfer model to calculate ce
 .. _module-tempcorr-noct:
 
 NOCT Method Parameters
-......................
+----------------------
 
 The NOCT method parameters are enabled for the **Nominal operating cell (NOCT) method** option.
 
@@ -135,7 +135,7 @@ The NOCT method parameters are enabled for the **Nominal operating cell (NOCT) m
 .. _module-tempcorr-heat-transfer:
 
 Heat Transfer Method Parameters
-...............................
+-------------------------------
 
 The heat transfer method parameters are enabled for the **Heat transfer method** option.
 
@@ -163,7 +163,7 @@ The heat transfer method parameters are enabled for the **Heat transfer method**
   Enabled when **Mounting configuratino** is **gap**. The distance between the back of the modules and the roof or wall surface behind the module.
 
 Transient Thermal Model Correction
-..................................
+----------------------------------
 
 .. include:: ../includes/snip_pv_transient_thermal_model.rst
 
@@ -843,3 +843,19 @@ It accounts for spectral effects by applying an air mass modifier to the plane-o
   These are the five air mass modifier equation coefficients (a0...a4) from the equation for    from Page 14 of King (2004):
 
   The default values are from the Sandia module model's library for the First Solar FS-267 module.
+
+Spectral Correction
+~~~~~~~~~~~~~~~~~~~
+
+Spectral correction factors adjust the effective irradiance on PV modules to account for different amounts of irradiance from each wavelength of light depending on the atmospheric conditions, and different cell technologies' responses to different spectral content. Air mass is the relative measure of the optical atmosphere length and is alwas used in estimating the air mass impact on spectrum. For thin film modules especially, using models that account for other atmospheric conditions such as the amount of precipitable water and the clearsky index can lead to better estimates of effective irradiance. For more details about these methods, see the `SAM website <https://sam.nlr.gov/photovoltaic/pv-publications.html>`__.
+
+**Air mass only**
+  This is the default option, and is most useful for crystalline silicon module analysis. It accounts for the impact of air mass on the spectrum, but does not account for other atmospheric conditions. This is an implementation of the approach described in De Soto et al. (2006) `Improvement and Validation of a Model for Photovoltaic Array Performance <https://doi.org/10.1016/j.solener.2005.06.010>`__ and used in the `Sandia PV Array Performance Model <https://pvpmc.sandia.gov/modeling-guide/2-dc-module-iv/point-value-models/sandia-pv-array-performance-model/>`__.
+
+**Air mass and precipitable water**
+  This option accounts for the impact of air mass and precipitable water on the spectrum, and has model coefficients for both silicon, thin film, and other cell types. This is an implementation of the approach described in Lee et al. (2016) `Spectral correction for photovoltaic module performance based on air mass and precipitable water <https://doi.org/10.1109/PVSC.2016.7749836>`__.
+
+**Air mass and clearsky index**
+  This option accounts for the impact of air mass and clearsky index on the spectrum, and has model coefficients for both silicon, thin film, and other cell types without requiring precipitable water in the weather data. This is an implementation of the approach described in Pelland et a. (2020) `Development and Testing of the PVSPEC Model of Photovoltaic Spectral Mismatch Factor <https://doi.org/10.1109/PVSC45281.2020.9300932>`__.
+
+.. note:: Spectral correction is implemented in SSC and PySAM as `spectral_correction_model_choice` with options 0=Air Mass Only (De Soto), 1=Air mass and precipitable water (Lee), 2=Air mass and clearsky index (Pelland).

@@ -14,7 +14,7 @@ Once you have created a scene with shading objects and active objects, you can g
 .. _sam:
 
 Generating Shade Data to use In SAM
-...................................
+-----------------------------------
 
 When you :doc:`close <../shade-calculator-reference/sc-save-close>` the shade calculator, it automatically applies shading losses to SAM's :doc:`../detailed-photovoltaic-model/pv_soiling_shading_snow` inputs.
 
@@ -29,7 +29,7 @@ To apply shading data to SAM's shading inputs:
    :alt: ss-generate-shade-data-in-sam.png
 
 Generating Shade Data to use Outside of SAM
-...........................................
+-------------------------------------------
 
 You can generate diurnal or hourly shade data to either use outside of SAM, or to import into SAM later.
 

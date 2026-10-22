@@ -5,7 +5,7 @@ For the residential and commercial financial models, SAM assumes that electricit
 
 SAM calculates the total annual electricity bill for two scenarios, one with and one without the power system, and then calculates the net savings as the difference between the two. SAM   assumes the same electric load and electricity rate structure for both scenarios.
 
-.. note:: The electricity bill and savings values in the Metrics table are for Year one of the project cash flow. For a description of how to display annual, monthly, and hourly values, see :doc:`Retail Electricity Savings <../electricity-rates-and-load/electricity_rates_load>`.
+.. note:: The electricity bill and savings values in the Metrics table are for Year one of the project cash flow. For a description of how to display annual, monthly, and hourly values, see :doc:`Retail Electricity Savings <../electricity-rates-and-load/electricity_bill_results>`.
 
 **Electricity bill without system, $/year**
   The total annual cost of electricity that would be purchased to meet the building or facility electric load and charge the battery with no power system.

@@ -1,0 +1,1179 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Electricity Bill Results &#8212; SAM Help</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2da3bde9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'electricity-rates-and-load/electricity_bill_results';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Thermal Rates and Load" href="../thermal-rates-and-load/index.html" />
+    <link rel="prev" title="Electricity Purchases" href="electricity_purchases.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/SAM-logo-horizontal.png" class="logo__image only-light" alt="SAM Help - Home"/>
+    <script>document.write(`<img src="../_static/SAM-logo-horizontal.png" class="logo__image only-dark" alt="SAM Help - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/index.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/introduction.html">About SAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/technology_options.html">Performance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/fin_overview.html">Financial Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/user_support.html">User Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/keep_up_to_date.html">SAM Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/component_models_databases.html">Models and Databases</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/welcome_page.html">Welcome Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/create_project.html">Create a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/choose_models.html">Choose Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/main_window.html">Main Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/input_pages.html">Input Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/costs.html">Costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/financial_model_inputs.html">Financial Model Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/run_simulations.html">Run Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/results_page.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/youtube_channel.html">Videos</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_menu.html">File Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/case_menu.html">Case Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/manage_cases.html">Manage Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/export_data.html">Export Data and Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/inputs_browser.html">Inputs Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/time_series_viewer.html">Time Series Data Viewer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/weekday_schedule.html">Weekday Weekend Schedules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/notes.html">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/excel_exchange.html">Excel Exchange</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/macros.html">Macros and Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sdk.html">Software Development Kit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/file_formats.html">File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/installation.html">Software Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/registration.html">Registration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/configure_proxy_server.html">Web Access and Proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/function_keys.html">Keyboard Shortcuts</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../window-reference/index.html">Window reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_combine_cases.html">Combine Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_array.html">Edit Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_lifetime.html">Edit Lifetime Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_losses.html">Edit Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_material_properties.html">Edit Material Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_monthly_values.html">Edit Monthly Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_column.html">Edit Data Table by Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_data_table_row.html">Edit Data Table by Row</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_parametric_variables.html">Edit Parametric Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_edit_shading_data.html">Edit Shading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_parametric_quick_setup.html">Parametric Quick Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nohrsc_advanced_download.html">Advanced NOHRSC Download Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_nsrdb_advanced_download.html">NSRDB Advanced Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_ptes_design_pt.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wave_download.html">Wave Resource Data Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../window-reference/win_wind_toolkit_download.html">WIND Toolkit Download</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../simulation-options/index.html">Simulation Options</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/simulation_options.html">Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/parametrics.html">Parametric Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/stochastic.html">Stochastic Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/p50p90.html">P50/P90 Simulations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/pvuncertainty.html">Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation-options/optimization.html">Optimization</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/release_notes.html">Release Notes</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Weather Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-data/index.html">Weather Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data.html">Weather Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_manage_folders.html">Folders and Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_data_elements.html">Weather Data Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_typical_single.html">Typical and Single Year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/weather_time_convention.html">Time and Sun Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/accessing-weather-data-from-lk.html">Weather Data and LK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-data/irradiance_error_codes.html">Irradiance Error Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../weather-file-formats/index.html">Weather File Formats</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format.html">Weather File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_sam_csv_solar.html">SAM CSV Format for Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_wind.html">SAM CSV Format for Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_csv_marine_energy.html">CSV Format for Marine Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../weather-file-formats/weather_format_srw_wind.html">SRW Format for Wind</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../detailed-photovoltaic-model/index.html">Detailed Photovoltaic Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_overview.html">Getting Started with the Detailed Photovoltaic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_system_size.html">System Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_tracking_layout_land.html">Tracking Layout Land</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_soiling_shading_snow.html">Soiling Shading Snow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_electrical_losses.html">Electrical Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_sizing_instructions.html">PV Sizing Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../detailed-photovoltaic-model/pv_results.html">Detailed PV Model Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pvwatts/index.html">PVWatts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts.html">PVWatts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pvwatts/pvwatts_results.html">PVWatts Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../high-concentration-photovoltaic/index.html">High Concentration Photovoltaic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_overview.html">High Concentration Photovoltaic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_module.html">Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_inverter.html">Inverter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../high-concentration-photovoltaic/hcpv_results.html">Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../battery-storage/index.html">Battery Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_storage.html">Battery Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_cell_and_system.html">Battery Cell and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_btm.html">Battery Dispatch BTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_dispatch_fom.html">Battery Dispatch FOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_time_step.html">Battery Time Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_life.html">Battery Life</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../battery-storage/battery_results.html">Battery Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../hybrid-systems/index.html">Hybrid Systems</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_systems.html">Hybrid Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system.html">Hybrid System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hybrid-systems/hybrid_system_costs.html">Hybrid System costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../wind-power/index.html">Wind Power</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_power.html">Wind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_resource.html">Wind Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_turbine.html">Wind Turbine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_farm.html">Wind Farm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../wind-power/wind_uncertainties.html">Uncertainties</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-wave/index.html">Marine Energy Wave</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave.html">Marine Energy Wave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_resource.html">Wave Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_converter.html">Wave Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-wave/me_wave_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../marine-energy-tidal/index.html">Marine Energy Tidal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal.html">Marine Energy Tidal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_resource.html">Tidal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_converter.html">Tidal Energy Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marine-energy-tidal/me_tidal_losses.html">Losses</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../solar-water-heating/index.html">Solar Water Heating</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_overview.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_system.html">Solar Water Heating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../solar-water-heating/swh_results.html">Solar Water Heating Model Hourly Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fuel-cell/index.html">Fuel Cell</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_fuel_cell.html">Fuel Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fuel-cell/fuelcell_dispatch.html">Fuel Cell Dispatch</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../biopower/index.html">Biomass Combustion</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower.html">Biomass Combustion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_location_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock.html">Feedstock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_plant_specs.html">Plant Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_emissions.html">Emissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../biopower/biopower_feedstock_costs.html">Feedstock costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geothermal/index.html">Geothermal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_overview.html">Geothermal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_ambient_conditions.html">Ambient Conditions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_geothermal_resource.html">Geothermal Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_plant_equipment.html">Plant and Equipment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geothermal/geo_power_block.html">Power Block</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../custom-generation/index.html">Custom Generation Profile</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation.html">Custom Generation Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../custom-generation/custom_generation_profile.html">Generation Profile</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Concentrating Solar-Thermal Power</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-empirical-trough-model/index.html">CSP Empirical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_overview.html">CSP Empirical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-empirical-trough-model/troughempirical_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-physical-trough-model/index.html">CSP Physical Trough Model</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_overview.html">CSP Physical Trough Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_collectors_scas.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_receivers_hces.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-physical-trough-model/troughphysical_script_parameters.html">Script-only Parameters</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-power-tower-molten-salt/index.html">CSP Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_overview.html">CSP Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_tower_and_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_electric_htf_heater.html">Electric HTF Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-power-tower-molten-salt/mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/index.html">CSP Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_overview.html">CSP Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-direct-steam/dslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/index.html">CSP Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_overview.html">CSP Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_collector_and_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_system_control.html">System Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-linear-fresnel-molten-salt/mslf_parasitics.html">Parasitics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../csp-generic-solar/index.html">CSP Generic Solar</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_overview.html">CSP Generic Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_power_block.html">Power Block</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../csp-generic-solar/gss_thermal_storage.html">Thermal Storage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-parabolic-trough/index.html">IPH Parabolic Trough</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough.html">IPH Parabolic Trough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_collectors.html">Collectors (SCAs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_receivers.html">Receivers (HCEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_tes.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-parabolic-trough/iph_trough_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/index.html">IPH Linear Fresnel Direct Steam</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds.html">IPH Linear Fresnel Direct Steam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-direct-steam/iph_linear_ds_collector_receiver.html">Collector and Receiver</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/index.html">IPH Linear Fresnel Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf.html">IPH Linear Fresnel Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_solar_field.html">Solar Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_collector_receiver.html">Collector and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-linear-fresnel-molten-salt/iph_mslf_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../iph-power-tower-molten-salt/index.html">IPH Power Tower Molten Salt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt.html">IPH Power Tower Molten Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_heliostat_field.html">Heliostat Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_tower_receiver.html">Tower and Receiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../iph-power-tower-molten-salt/iph_mspt_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../electric-thermal-energy-storage/index.html">Electric Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes.html">Electric Thermal Energy Storage)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_heater.html">Heater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_thermal_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../electric-thermal-energy-storage/etes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pumped-thermal-energy-storage/index.html">Pumped Thermal Energy Storage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes.html">Pumped Thermal Energy Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_location_and_resource.html">Location and Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_design.html">System Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_energy_storage.html">Thermal Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_heat_pump.html">Heat Pump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_power_cycle.html">Power Cycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pumped-thermal-energy-storage/ptes_system_control.html">System Control</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Degradation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../degradation/index.html">Degradation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation.html">Degradation Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_ac.html">AC Degradation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../degradation/degradation_dc.html">DC Degradation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grid</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grid/index.html">Grid</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_limits.html">Grid Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grid/grid_outage.html">Grid Outage</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Financial Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation-costs/index.html">Installation costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_pv.html">PV Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_standalone_battery.html">Battery Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_wind.html">Wind Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_geothermal.html">Geothermal Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_swh.html">SWH Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_fuel_cell.html">Fuel Cell Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_biopower.html">Biomass Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_custom_generation.html">Custom Generation Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_trough.html">Trough Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_tower.html">Tower Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_linear_fresnel.html">Fresnel Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_generic_solar.html">Generic Solar System (GSS) costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_etes.html">ETES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_ptes.html">PTES Installation costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation-costs/cc_marine_energy.html">Marine Energy Installation costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../operating-costs/index.html">Operating costs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/operating_costs.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_operating.html">Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_battery.html">Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_pv-battery.html">PV Battery Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_fuel_cell.html">Fuel Cell Operating costs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../operating-costs/oc_marine_energy.html">Marine Energy Operating costs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-parameters/index.html">Financial Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_overview.html">Financial Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_residential.html">Residential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_commercial.html">Commercial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host.html">Third Party Ownership - Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_tpo_host_developer.html">Third Party Ownership - Host / Developer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_community_solar.html">Community Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_single_owner.html">Single Owner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_merchant_plant.html">Merchant Plant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_leveraged_partnership.html">Leveraged Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_all_equity_partnership.html">All Equity Partnership Flip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_sale_leaseback.html">Sale Leaseback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoefcr.html">LCOE Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-parameters/fin_lcoh.html">LCOH Calculator</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../revenue/index.html">Revenue</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_ppa.html">PPA Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_merchant_plant.html">Merchant Revenue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_tod_factors.html">Time of Delivery Factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../revenue/revenue_iph.html">Industrial Process Heat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../incentives-and-depreciation/index.html">Incentives and Depreciation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/cash_incentives.html">Cash Incentives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../incentives-and-depreciation/tax_credits_depreciation.html">Tax Credits and Depreciation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Electricity Rates and Load</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="electricity_load.html">Electric Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electricity_rates.html">Electricity Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electricity_purchases.html">Electricity Purchases</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Electricity Bill Results</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../thermal-rates-and-load/index.html">Thermal Rates and Load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_load.html">Thermal Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../thermal-rates-and-load/thermal_rates.html">Thermal Rates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Results</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../results/index.html">Results Page</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../results/results.html">Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/losses.html">Losses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/graphs.html">Graphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/data.html">Data Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/cashflow.html">Cash Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/timeseries.html">Time Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/profiles.html">Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/statistics.html">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/heatmap.html">Heat Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/pdfcdf.html">PDF / CDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/uncertainties.html">Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/spatial.html">Spatial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../results/notices.html">Notices</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../financial-metrics/index.html">Financial Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_overview.html">Financial Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_debt_and_equity.html">Debt and Equity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_revenues.html">Electricity Bill and Savings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_indifference_point.html">Indifference Point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_irr.html">Internal Rate of Return (IRR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_levelized.html">Levelized Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcoe.html">Levelized cost of Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lcos.html">Levelized Cost of Storage (LCOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_lppa.html">Levelized PPA price (LPPA)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_npv.html">Net Present Value (NPV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_payback.html">Payback Period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_price.html">PPA Price</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_ppa_escalation.html">PPA Price Escalation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../financial-metrics/mtf_costs.html">Net Capital Cost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../performance-metrics/index.html">Performance Metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_overview.html">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_biomass_usage.html">Annual Biomass Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_energy.html">Annual Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_annual_water_usage.html">Annual Water Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_aux_w_wo_solar.html">Aux with and without Solar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_capacity_factor.html">Capacity Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_kwhkwyear1.html">Energy Yield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_gross_to_net_conv_factor.html">Gross-to-net Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_heat_rate.html">Heat Rate and Thermal Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_pump_power.html">Pump Power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_p90_energy.html">p90 Energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_solar_fraction.html">Solar Fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../performance-metrics/mtp_system_performance_factor.html">Performance Ratio</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Shade Calculator</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-reference/index.html">3D Shade Calculator Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-overview.html">3D Shade Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shade-data-description.html">Shade data description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-location.html">Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-create.html">Active surfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shading-objects.html">Shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-3d-scene.html">3D scene view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-birds-eye.html">Bird’s eye view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-elevations.html">Elevations view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-analyze.html">Analyze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-import_export.html">Import and Export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-save-close.html">Save and Close</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-shortcuts.html">Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-reference/sc-file-types.html">File Types</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../shade-calculator-howto/index.html">3D Shade Calculator How-To</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-define-location.html">Define the scene location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-underlay.html">Use an image underlay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-add-shading-objects.html">Add shading objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-active-surface.html">Add active surface objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-change-view.html">Change the view</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-zoom-pan.html">Zoom and pan the scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-select.html">Select an object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-move.html">Move objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-resize.html">Resize objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-rotate.html">Rotate objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-delete.html">Delete and copy objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-colors.html">Change object colors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-generate-data.html">Generate shade data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../shade-calculator-howto/sc-export.html">Export shade data</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/electricity-rates-and-load/electricity_bill_results.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Electricity Bill Results</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-tables">Data Tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-data-electricity-rate-data-by-year">Monthly Data / Electricity Rate Data by Year</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hourly-n-minute-data">Hourly / n Minute Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electricity-rate-data-by-tier-and-period">Electricity Rate Data by Tier and Period</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electricity-demand-data-by-period">Electricity Demand Data by Period</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="electricity-bill-results">
+<h1>Electricity Bill Results<a class="headerlink" href="#electricity-bill-results" title="Link to this heading">#</a></h1>
+<p>The electricity bill is the residential or commercial building owner’s monthly electricity payment to the electric service provider. In order to calculate the value of the energy generated by the power system, SAM calculates the electricity bill with the system and the bill without the system. The savings is the difference between the two. SAM calculates the with and without system bill for the same electricity rate schedule as it is defined on the <a class="reference internal" href="electricity_rates.html"><span class="doc">Electricity Rates</span></a> page:</p>
+<ul class="simple">
+<li><p><strong>With system:</strong> The customer’s electricity bill for an electric load met by power from both the renewable energy system and grid.</p></li>
+<li><p><strong>Without system:</strong> The customer’s electricity bill if the entire load is met with grid power only.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are modeling a rate switching scenario, where the electricity rate structure for the electricity bill without the system is different from the rate structure for the bill with the system, you can use the <strong>Value of RE System</strong> <a class="reference internal" href="../reference/macros.html"><span class="doc">macro</span></a> to specify two different electricity rates and calculate key metrics based on the results of two separate simulations.</p>
+</div>
+<section id="summary">
+<span id="utility-bill-metrics"></span><h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<img alt="SS_Metrics-Residential.png" class="align-center" src="../_images/SS_Metrics-Residential.png" />
+<p>The following <a class="reference internal" href="../results/summary.html"><span class="doc">metrics</span></a> are based on the utility bill calculations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../financial-metrics/mtf_revenues.html"><span class="doc">Electricity bill without system</span></a> and <a class="reference internal" href="../financial-metrics/mtf_revenues.html"><span class="doc">Electricity bill with system</span></a> in the Metrics table is the Year 1 total annual electricity bill with and without the system.</p></li>
+<li><p><a class="reference internal" href="../financial-metrics/mtf_revenues.html"><span class="doc">Net savings with system</span></a> is the difference between the bill without system and the bill with system, and is also the value of electricity savings for Year 1 on the project cash flow.</p></li>
+<li><p><a class="reference internal" href="../financial-metrics/mtf_npv.html"><span class="doc">Net present value (NPV)</span></a> is the present value of the project’s annual after-tax cash flow. A positive value indicates the value of the electricity bill savings  is greater than the cost of the system over the analysis period. A negative value indicates that the project costs more than it saves.</p></li>
+<li><p><a class="reference internal" href="../financial-metrics/mtf_payback.html"><span class="doc">Payback period</span></a> is affected by the net savings: A project with more savings will have a shorter payback period than one with less savings.</p></li>
+</ul>
+</section>
+<section id="data-tables">
+<h2>Data Tables<a class="headerlink" href="#data-tables" title="Link to this heading">#</a></h2>
+<p>Use the Data Tables tab to explore the electricity bill results.</p>
+<img alt="ss_Bill-ResultsDataTables.png" class="align-center" src="../_images/ss_Bill-ResultsDataTables.png" />
+<p>The Data Tables tab shows data for the electricity bill with and without the system over different periods. The following tables show data used for  electricity bill calculations:</p>
+<dl class="simple">
+<dt><strong>Monthly Data</strong></dt><dd><p>The monthly data tables show the electricity bill components by month. Use these tables to see how the monthly electricity bill is calculated from the fixed, energy, and demand components, and how credits for excess generation are applied.</p>
+</dd>
+<dt><strong>Annual Data</strong></dt><dd><p>The annual data tables show annual totals of the electricity bill components over the analysis period. You can compare these values to the annual cash flow data to see how the electricity bill affects the project cash flow.</p>
+</dd>
+<dt><strong>Electricity Rate Data By Year</strong></dt><dd><p>The data-by-year tables are month-by-year matrices that show the electricity bill components by month over the analysis period. These tables show how credits roll over from year to year.</p>
+</dd>
+<dt><strong>Electricity Rate Data by Tier and Period</strong></dt><dd><p>For complex electricity rates with time-of-use and tiered energy rates, these tables show energy charges for each month in Year 1 by time-of-use period and tier. Use these tables to see how time-of-use and tiered charges are calculated, and to see how credits are applied.</p>
+</dd>
+<dt><strong>Electricity Demand Data by Period</strong></dt><dd><p>For electricity rates with time-of-use demand rates, these tables show demand charges for each month in Year 1.</p>
+</dd>
+<dt><strong>Hourly Data / Subhourly Data</strong></dt><dd><p>The hourly/subhourly data tables shows time series data over the first year (Year 1) of the analysis period. Use this table to compare time series power data and  electricity sales and purchase data for the net billing and buy all / sell all options that calculate electricity bill amounts from time series data instead of monthly totals.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Lifetime Hourly/Subhourly Data tables show data from the performance model. They do not show data from the electricity bill calculations.</p>
+</div>
+</section>
+<section id="monthly-data-electricity-rate-data-by-year">
+<h2>Monthly Data / Electricity Rate Data by Year<a class="headerlink" href="#monthly-data-electricity-rate-data-by-year" title="Link to this heading">#</a></h2>
+<p>The Monthly Data list on the Data Tables tab shows monthly totals that SAM uses for electricity bill calculations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The monthly electricity bill may be negative in some situations when the value of electricity credits is more than the electricity bill. SAM treats the negative bill as savings in the project cash flow.</p>
+<p>SAM uses the following method to calculate monthly and annual kWh totals from kW time series data:</p>
+<p><em>Monthly Total (kWh) = SUM OVER MONTH( Time Series Value (kW/time step) × Time Steps per Hour (1/h) )</em></p>
+</div>
+<dl>
+<dt><strong>Buy all sell all electricity sales to grid ($)</strong></dt><dd><p>For the buy all / sell all metering option, the dollar value of monthly electricity sales. Set to zero for the net metering and net billing options.</p>
+</dd>
+<dt><strong>Billing demand (kW)</strong></dt><dd><p>A value in kW representing the billable peak demand over a given period.</p>
+<p>The billing demand may be the maximum consumption over a month, over a time-of-use period and tier within a month, or over a lookback period of more than one month.</p>
+<p>The billing demand may equal to the actual maximum consumption over the period, or calculated as a percentage of the actual maximum consumption.</p>
+</dd>
+<dt><strong>Demand charge ($)</strong></dt><dd><p>The demand charge component of the monthly electricity bill. The total electricity bill includes both a fixed demand charge and TOU demand charge.</p>
+<p>The <strong>flat</strong> demand charge is calculated from the demand rates by month with optional tiers rates on the <a class="reference internal" href="electricity_rates.html#electricity-rates-demand"><span class="std std-ref">Electricity Rates</span></a> page.</p>
+<p>The <strong>TOU</strong> demand charge is calculated from the demand rates by time-of-use and/or tiers rates on the Electricity Rates page.</p>
+</dd>
+<dt><strong>Demand peak (kW)</strong></dt><dd><p>The peak electricity usage for each month, which is the monthly maximum of the electricity from grid time series data (equivalent to the minimum of electricity to/from grid).</p>
+</dd>
+<dt><strong>Electricity bill ($)</strong></dt><dd><p>The total monthly electricity bill, calculated as the sum of the fixed, energy, and demand charges less any credits. The monthly electricity bill may be negative for some billing options in months when dollar credits exceed the monthly bill.</p>
+</dd>
+<dt><strong>Electricity load ($)</strong></dt><dd><p>The total electric load for each month, the sum of the time series electricity load data over the month.</p>
+</dd>
+<dt><strong>Electricity to/from grid (kWh)</strong></dt><dd><p>The total net electricity delivered to the grid over the month. A negative value indicates electricity delivered by the grid. This is the sum of the time series electricity to/from grid data.</p>
+</dd>
+<dt><strong>Electricity use with system (kWh)</strong></dt><dd><p>The total net electricity delivered by the grid over the month. Each month’s value is equal to the negative of electricity to/from grid.</p>
+</dd>
+<dt><strong>Energy charge with system ($)</strong></dt><dd><p>The energy charge portion of the electricity bill, calculated from the rates for energy charges on the Electricity Rates page.</p>
+</dd>
+<dt><strong>Energy charge with system before credits ($)</strong></dt><dd><p>The energy charge portion of the electricity bill without dollar credits for excess generation for metering options with a sell rate. For all billing options except net energy metering, compare this value to the energy charge to see how credits affect the bill.</p>
+</dd>
+<dt><strong>Excess generation (kWh)</strong></dt><dd><p>The total monthly electricity generated by the power system in excess of the load for months when total generation is greater than the load. For months when total generation is less than the load, excess generation is zero. Excess generation is total monthly energy (AC energy for PV systems) minus the total monthly electricity load.</p>
+<p>For net energy metering and net energy metering with $ credits, this is the value used to determine the value of net metering credits.</p>
+<p>For the net billing options, the excess generation is calculated for each hourly or subhourly time step.</p>
+</dd>
+<dt><strong>Fixed monthly charge ($)</strong></dt><dd><p>The fixed charge component of the electricity bill, determined by the fixed monthly charge on the Electricity Rates page.</p>
+</dd>
+<dt><strong>Minimum charge ($)</strong></dt><dd><p>When the monthly minimum charge on the Electricity Rates page is greater than zero, if the sum of the monthly fixed, energy, and demand charges less any credits is less than the minimum, the monthly bill is set to the monthly minimum charge.</p>
+<p>The annual minimum charge on the Electricity Rates page does not affect the monthly minimum charge, but does affect the total annual electricity bill. When the sum of monthly fixed, energy, and demand charges less any credits is less than the minimum annual charge, the annual bill is set to the annual minimum charge. You can see the annual electricity bill and minimum charge on the Annual Data variables.</p>
+</dd>
+<dt><strong>Monthly energy / AC energy (kWh)</strong></dt><dd><p>Total AC electricity generated by the power system, including electricity discharged by the battery if the system includes storage. This is the sum of the time series system power generated data.</p>
+</dd>
+<dt><strong>Net annual true-up payments ($)</strong></dt><dd><p>For the net metering and net billing metering options with annual true-up payments, the amount of the payment in the month that it occurs.</p>
+</dd>
+<dt><strong>Net billing credit ($)</strong></dt><dd><p>For net billing and net billing with carryover to next month, the value of credits for excess generation credited in dollars to the current month’s electricity bill.</p>
+<p>For net billing with carryover to next month, the month at the end of the true-up period includes any net excess compensation.</p>
+<p>When the total net billing credit amount is greater than the total monthly bill, the billing credit is treated as a cash payment to the electricity customer, which results in a negative monthly bill.</p>
+</dd>
+<dt><strong>Net metering credit ($)</strong></dt><dd><p>For net energy metering with $ credits, the value of credits for excess generation credit in dollars to the current month’s electricity bill. For the month at the end of the true-up period, the net billing credit includes any net excess compensation.</p>
+</dd>
+<dt><strong>Net metering cumulative kWh credit earned for annual true-up (kWh)</strong></dt><dd><p>For net energy metering, SAM applies the cumulative credit in the true-up month to the electricity bill for that month at the compensation rate for net excess generation. If the credit amount is greater than the monthly bill, the monthly bill is negative.</p>
+<p>The net excess generation for annual true-up accumulates on a monthly basis regardless of time-of-use (TOU) periods.</p>
+<p>Excess generation credits for monthly rollovers are allocated based the (TOU) schedule. To see how net metering credits accrue on a monthly basis, use the <strong>Electricity Rate Data by Tier and Period</strong> table to compare the electricity exports with system and electricity usage with system for each month.</p>
+</dd>
+</dl>
+</section>
+<section id="hourly-n-minute-data">
+<h2>Hourly / n Minute Data<a class="headerlink" href="#hourly-n-minute-data" title="Link to this heading">#</a></h2>
+<p>The Hourly or <em>n</em> Minute Data list depends on the simulation time step. For hourly simulations, SAM displays an Hourly Data list. For subhourly simulations, it displays the simulation time step. For example, for 15-minute simulations it displays a 15 Minute Data list.</p>
+<p>In time series results (hourly or subhourly), some electricity bill values are in the last hour of each month:</p>
+<img alt="IMG_UtilityRate-month-end-hours.png" class="align-center" src="../_images/IMG_UtilityRate-month-end-hours.png" />
+<dl>
+<dt><strong>Bill load (kWh)</strong></dt><dd><p>The load values used for energy charge and credit calculations. These values are converted to kilowatt-hour (kWh) from the electricity load data kilowatt (kW) values:</p>
+<p><em>Bill Load (kWh) = Electricity Load (kW) × Simulation Time Stem (minutes) ÷ 60 minutes</em></p>
+</dd>
+<dt><strong>Demand charge with system ($)</strong></dt><dd><p>The demand charge amount, shown in the last hour of the month.</p>
+</dd>
+<dt><strong>Electricity from grid (kWh)</strong></dt><dd><p>Electricity delivered by the grid for energy charge calculations.</p>
+</dd>
+<dt><strong>Electricity from system to load (kWh)</strong></dt><dd><p>Electricity delivered by the system for energy charge and excess generation calculations.</p>
+</dd>
+<dt><strong>Electricity load (year 1) (kW)</strong></dt><dd><p>The electric load data in kW as entered on the Electric Load page.</p>
+</dd>
+<dt><strong>Electricity peak from grid per TOU period (kW)</strong></dt><dd><p>The peak load for the month for each TOU period. Use these values to see when the peaks occur in the month. (This may be easier to see on the Time Series or Heat Map tab.)</p>
+</dd>
+<dt><strong>Electricity peak from system to load (kW)</strong></dt><dd><p>No explanation available. Not used in calculations.</p>
+</dd>
+<dt><strong>Electricity sales/purchases with system ($)</strong></dt><dd><p>Sales (positive) and purchases (negative) of electricity to and from the grid for net billing and buy all / sell all metering.</p>
+</dd>
+<dt><strong>Electricity sales/purchases without system ($)</strong></dt><dd><p>Purchases (negative) to meet the load without the system.</p>
+</dd>
+<dt><strong>Electricity to grid (kWh)</strong></dt><dd><p>Electricity delivered to the grid for energy charge and credit calculations. These are the positive values of electricity to / from grid.</p>
+</dd>
+<dt><strong>Electricity to/from grid (kWh)</strong></dt><dd><p>Electricity delivered to the grid (positive) or delivered by the grid (negative) for energy charge and credit calculations.</p>
+</dd>
+<dt><strong>Electricity to/from grid peak (kW)</strong></dt><dd><p>The peak power delivered to the grid (positive) or delivered by the grid (negative) for demand charge calculations.</p>
+</dd>
+<dt><strong>Energy charge with system ($)</strong></dt><dd><p>The cost of electricity for net billing and buy all / sell all. The monthly energy charge is the sum of these dollar values for each month.</p>
+<p>For net energy metering, SAM calculates the energy charge portion of electricity bill from monthly total values of time series electricity values. These time series energy charge with system values are a representation of the energy charge on a time step basis required for Levelized Cost of Storage calculations. A positive value for a given time step indicates that the time step contributed to the monthly energy charge. A negative value indicates that the time step contributed to net metering credits. The sum of the time series <strong>Energy charge with system</strong> for a given month is equal to the monthly <strong>Energy charges before credits</strong> for that month.</p>
+</dd>
+<dt><strong>Energy charge without system ($)</strong></dt><dd><p>The cost of electricity for net billing and buy all / sell all to meet the load without the system.</p>
+</dd>
+<dt><strong>TOU period for demand charges</strong></dt><dd><p>The time-of-use period number, between 1 and 9 for each time step as defined by the demand rate schedule on the Electricity Rates page.</p>
+</dd>
+<dt><strong>TOU period for energy charges</strong></dt><dd><p>The time-of-use period number, between 1 and 9 for each time step as defined by the energy rate schedule on the Electricity Rates page.</p>
+</dd>
+</dl>
+</section>
+<section id="electricity-rate-data-by-tier-and-period">
+<h2>Electricity Rate Data by Tier and Period<a class="headerlink" href="#electricity-rate-data-by-tier-and-period" title="Link to this heading">#</a></h2>
+<p>The Electricity Rate Data by Tier and Period list shows data used to calculate the energy charge portion of the electricity bill for each month when the rate structure includes time-of-use (TOU) periods and/or tiers.</p>
+<dl>
+<dt><strong>Electricity exports with system MMM (kWh)</strong></dt><dd><p>The kWh in each time-of-use period treated as exports to the grid for electricity bill calculation purposes.</p>
+<p>For the net energy metering option, this value includes any kWh credits rolled over from the TOU period in the previous month, so the total electricity exports in a given month could be greater than the actual excess generation reported under <strong>Monthly Data</strong>.</p>
+</dd>
+<dt><strong>Electricity usage with system MMM (kWh)</strong></dt><dd><p>The kWh in each time-of-use period treated as imports from the grid for electricity bill calculation purposes. The electricity usage is the total load in a given time-of-use period minus the total generation in that time-of-use period.</p>
+</dd>
+<dt><strong>Energy charge with system MMM ($)</strong></dt><dd><p>The cost in dollars of electricity imports by time-of-use period and tier accounting for any for any excess generation credits or payments.</p>
+</dd>
+</dl>
+</section>
+<section id="electricity-demand-data-by-period">
+<h2>Electricity Demand Data by Period<a class="headerlink" href="#electricity-demand-data-by-period" title="Link to this heading">#</a></h2>
+<p>The Electricity Demand Data by period list shows data used to calculate demand charge portion of the electricity bill for each month when the rate structure includes demand charges.</p>
+<dl>
+<dt><strong>Demand peak charge ($)</strong></dt><dd><p>The portion of the demand charge assessed for each time-of-use period in each month. The total demand charge for each month is the sum of demand charges by time-of-use period.</p>
+</dd>
+<dt><strong>Demand peak (kW)</strong></dt><dd><p>The peak demand value that SAM uses to calculate the demand charge for each time-of-use period by month. For demand rates with time-of-use periods, SAM calculates the billing demand for each time-of-use period.</p>
+<p>If billing demand lookback is enabled on the Electricity Rates page, the billing demand for a given time-of-use period or tier may be different than the actual maximum consumption depending on the lookback parameters on the Electricity Rates page.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="electricity_purchases.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Electricity Purchases</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../thermal-rates-and-load/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Thermal Rates and Load</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-tables">Data Tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-data-electricity-rate-data-by-year">Monthly Data / Electricity Rate Data by Year</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hourly-n-minute-data">Hourly / n Minute Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electricity-rate-data-by-tier-and-period">Electricity Rate Data by Tier and Period</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electricity-demand-data-by-period">Electricity Demand Data by Period</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Author name not set
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, National Laboratory of the Rockies.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

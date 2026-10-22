@@ -40,7 +40,7 @@ The WECs in the library are based on open-source wave energy point designs as pa
 SAM's marine energy wave performance model is coupled with the LCOE Calculator to facilitate calculating the levelized cost of energy (LCOE) using an approach consistent with the method discussed in LaBonte, A. et al. (2013).
 
 Marine Energy References
-........................
+------------------------
 
 * Reference Model 3 of the U.S. DOE Water Power `Reference Model Project (RMP) <https://energy.sandia.gov/programs/renewable-energy/water-power/projects/reference-model-project-rmp/>`__.
 

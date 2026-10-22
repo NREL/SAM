@@ -83,7 +83,7 @@ The five indirect cost categories, **Permitting and environmental studies**, **E
   A fixed cost in dollars.
 
 Land costs
-..........
+----------
 
 SAM calculates the total land cost as the sum of **Land area**, **Land purchase**, and **Land prep. and transmission**. The land cost categories use the Cost $/acre category in addition to the categories for the other indirect costs.
 

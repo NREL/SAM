@@ -1,0 +1,5 @@
+pyomo >= 6.0
+pandas
+numpy
+matplotlib
+openpyxl  # For Excel file reading

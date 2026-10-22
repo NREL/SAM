@@ -1,7 +1,7 @@
 {
     "Name": "PV Losses",
     "Width": 856.0,
-    "Height": 1113.0,
+    "Height": 1134.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 972.0
+                    "Integer": 996.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -90,7 +90,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 570.0
+                    "Integer": 567.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -98,7 +98,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 200.0
+                    "Integer": 209.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 771.0
+                    "Integer": 774.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -135,7 +135,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 141.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -164,7 +164,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 891.0
+                    "Integer": 921.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -172,7 +172,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 77.0
+                    "Integer": 74.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -759,7 +759,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -821,7 +821,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -883,7 +883,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -945,7 +945,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 69.0
+                    "Integer": 66.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1007,7 +1007,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 150.0
+                    "Integer": 147.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1069,7 +1069,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 360.0
+                    "Integer": 357.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1317,7 +1317,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 993.0
+                    "Integer": 1017.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1450,7 +1450,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1014.0
+                    "Integer": 1038.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1700,11 +1700,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 261.0
+                    "Integer": 258.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 714.0
+                    "Integer": 723.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1753,7 +1753,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 1014.0
+                    "Integer": 1038.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1814,7 +1814,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 993.0
+                    "Integer": 1017.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1943,11 +1943,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 243.0
+                    "Integer": 228.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 687.0
+                    "Integer": 696.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2034,11 +2034,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 18.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 642.0
+                    "Integer": 639.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2125,15 +2125,15 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 660.0
+                    "Integer": 657.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 822.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 24.0
+                    "Integer": 36.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2141,7 +2141,7 @@
                 },
                 "Caption": {
                     "Type": 5.0,
-                    "String": "Clipping correction accounts for inverter power limiting that may occur within the hour on partly cloudy days (hourly simulations only)."
+                    "String": "Clipping correction accounts for inverter power limiting that may occur within the hour on partly cloudy days (hourly simulation only)"
                 },
                 "TextColour": {
                     "Type": 4.0,
@@ -2162,7 +2162,7 @@
                 },
                 "WordWrap": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 },
                 "AlignRight": {
                     "Type": 2.0,
@@ -2170,7 +2170,7 @@
                 },
                 "AlignTop": {
                     "Type": 2.0,
-                    "Boolean": 0.0
+                    "Boolean": 1.0
                 }
             }
         },
@@ -2183,19 +2183,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 6.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 222.0
+                    "Integer": 225.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 840.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 36.0
+                    "Integer": 27.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2493,7 +2493,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -2501,7 +2501,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 837.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -2555,19 +2555,19 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 21.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 789.0
+                    "Integer": 792.0
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 813.0
+                    "Integer": 834.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 42.0
+                    "Integer": 63.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2621,7 +2621,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 990.0
+                    "Integer": 1014.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2629,7 +2629,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 72.0
+                    "Integer": 105.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -2745,7 +2745,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 909.0
+                    "Integer": 939.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6275,7 +6275,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 861.0
+                    "Integer": 888.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6354,11 +6354,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 252.0
+                    "Integer": 249.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 834.0
+                    "Integer": 858.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -6441,7 +6441,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 936.0
+                    "Integer": 966.0
                 },
                 "Width": {
                     "Type": 3.0,

@@ -12,7 +12,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 192.0
+                    "Integer": 189.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -406,7 +406,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 195.0
+                    "Integer": 192.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -716,7 +716,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 363.0
+                    "Integer": 360.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1172,7 +1172,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1271,7 +1271,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1333,7 +1333,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 120.0
+                    "Integer": 117.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1395,7 +1395,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 276.0
+                    "Integer": 273.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1457,7 +1457,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1519,7 +1519,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1581,7 +1581,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 198.0
+                    "Integer": 195.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1643,7 +1643,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 102.0
+                    "Integer": 99.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1705,7 +1705,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 288.0
+                    "Integer": 285.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1767,7 +1767,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1829,7 +1829,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 315.0
+                    "Integer": 312.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1891,7 +1891,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 96.0
+                    "Integer": 93.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -1953,7 +1953,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 291.0
+                    "Integer": 288.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -3801,7 +3801,7 @@
         "insurance_during_construction_cost_modeled": {
             "Version": 4.0,
             "Type": 1.0,
-            "Label": " ",
+            "Label": "Insurance during construction modeled cost",
             "Units": "$",
             "Group": "ME Costs - Structural Assembly",
             "IndexLabels": "",

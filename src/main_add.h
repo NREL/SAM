@@ -375,7 +375,7 @@ extern void RegisterReportObjectTypes();
 		return false;
 	}
 
-	g_config = new wxConfig("SystemAdvisorModel", "NLR");
+	g_config = new wxConfig("SystemAdvisorModel", "NREL");
 
 	wxInitAllImageHandlers();
 
@@ -425,7 +425,7 @@ extern void RegisterReportObjectTypes();
 		Settings().Write(fl_key, false);
 
 		// enable web update app
-		wxConfig cfg("SamUpdate3", "NLR");
+		wxConfig cfg("SamUpdate3", "NREL");
 		cfg.Write("allow_web_updates", true);
 
 		// after installing a new version, always show the reminders again until the user turns them off

@@ -1149,7 +1149,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 462.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -2252,7 +2252,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 54.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -5977,7 +5977,8 @@
         "",
         "\t// not ideal, but need a way to check for critical load when Grid Outage Critical Load page is not in configuration",
         "\ttech = technology();",
-        "\tis_critical_load_tech = ( tech == 'PV Battery' \r",
+        "\tis_critical_load_tech = ( tech == 'PV Battery'\r",
+        "\t  || tech == 'PVWatts Battery' \r",
         "\t  || tech == 'Custom Generation Battery'\r",
         "\t  || tech == 'Standalone Battery' \r",
         "\t  || tech == 'Fuel Cell'\r",
@@ -6227,6 +6228,7 @@
         "\r",
         "\ttech = technology();\r",
         "\tis_critical_load_tech = ( tech == 'PV Battery' \r",
+        "\t  || tech == 'PVWatts Battery'\r",
         "\t  || tech == 'Custom Generation Battery'\r",
         "\t  || tech == 'Standalone Battery' \r",
         "\t  || tech == 'Fuel Cell'\r",

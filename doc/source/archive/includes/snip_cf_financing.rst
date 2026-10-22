@@ -6,7 +6,7 @@
 
 *Debt Balance in Year One = - (Total Installed Costs - Total IBI - Total CBI) × Debt Percent*
 
-  Where *Total Installed Costs*   is from the :doc:`Installation Costs <../installation-costs/installation_costs>`   page, *Total IBI* and *Total CBI*   are the sums of all investment-based and capacity-based incentives specified on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Debt Percent*   is the value specified on the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page. *Construction Financing Costs*   is from the Financial Parameters page.
+  Where *Total Installed Costs*   is from the :doc:`Installation Costs <../installation-costs/index>`   page, *Total IBI* and *Total CBI*   are the sums of all investment-based and capacity-based incentives specified on the :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page, and *Debt Percent*   is the value specified on the :doc:`Financial Parameters <../financial-parameters/fin_overview>`   page. *Construction Financing Costs*   is from the Financial Parameters page.
 
   In Years Two and later, the debt balance is calculated from the previous year's debt balance and debt repayment amounts:
 

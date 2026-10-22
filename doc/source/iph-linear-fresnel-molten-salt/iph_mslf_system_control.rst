@@ -55,7 +55,7 @@ The dispatch control periods determine the timing of adjustments to the heat sin
   For each of up to nine time-of-delivery periods, specify a multiple of the heat sink thermal input to scale the system's thermal output up or down as desired to match power pricing schedules or other time-dependent constraints.
 
 Defining Dispatch Schedules
-...........................
+---------------------------
 
 The storage dispatch schedules determine when each of the nine periods apply during weekdays and weekends throughout the year.
 

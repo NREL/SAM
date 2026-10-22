@@ -1,7 +1,7 @@
 {
     "Name": "Utility Rate - Flat",
-    "Width": 1413.0,
-    "Height": 567.0,
+    "Width": 1418.0,
+    "Height": 622.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -53,7 +53,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 492.0
+                    "Integer": 528.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 477.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -172,7 +172,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 225.0
+                    "Integer": 267.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -201,7 +201,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 441.0
+                    "Integer": 477.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -238,7 +238,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 492.0
+                    "Integer": 528.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -477,11 +477,11 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 622.0
+                    "Integer": 583.0
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 58.0
+                    "Integer": 91.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -539,7 +539,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 737.0
+                    "Integer": 950.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -597,7 +597,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 465.0
+                    "Integer": 501.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -650,7 +650,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 531.0
+                    "Integer": 567.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -729,7 +729,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 618.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -737,7 +737,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 378.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -770,7 +770,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 657.0
+                    "Integer": 618.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -778,7 +778,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 348.0
+                    "Integer": 378.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -864,7 +864,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 456.0
+                    "Integer": 492.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -947,7 +947,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 504.0
+                    "Integer": 540.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -1034,7 +1034,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 391.0
+                    "Integer": 390.0
                 },
                 "Height": {
                     "Type": 3.0,

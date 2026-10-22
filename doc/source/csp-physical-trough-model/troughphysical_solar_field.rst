@@ -241,7 +241,7 @@ Single Loop Configuration
 .. _physical_sfloopconfiguration:
 
 Specifying the Loop Configuration
-.................................
+---------------------------------
 
 The solar field consists of loops of collector-receiver assemblies. On the Solar Field page, you specify the characteristics of a single loop in the field.
 
@@ -296,7 +296,7 @@ To specify the loop configuration:
 .. _physical_sfcollectordefocusing:
 
 Defining Collector Defocusing
-.............................
+-----------------------------
 
 During hours when the solar field delivers more thermal energy than the power cycle (and thermal storage system, if available) can accept, or when the mass flow rate is higher than the maximum single loop flow rate defined on the Solar Field page, SAM defocuses collectors in the solar field to reduce the solar field thermal output. Mathematically, the model multiplies the radiation incident on the collector by a defocusing factor. In a physical system, the collector tracker would adjust the collector angle to reduce the amount of absorbed energy.
 

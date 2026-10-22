@@ -4,7 +4,7 @@ Tidal Energy Converter
 The tidal energy converter (TEC) is characterized by a power curve derived from a table of tide velocities in meters per second (m/s) and electrical power in kilowatts (kW). The power should be the the net electrical power at the TEC device output terminals accounting for power used by onboard electrical systems.
 
 Tidal Turbine Design
-....................
+--------------------
 
 There are three options for specifying the characteristics of the TEC.
 
@@ -18,7 +18,7 @@ There are three options for specifying the characteristics of the TEC.
   Enter physical characteristics of the TEC that SAM uses to calculate the converter power curve.
 
 Choose Tidal Converter from Library
-...................................
+-----------------------------------
 
 The Tidal Energy Converter library contains parameters for reference TEC from the   U.S. Department of Energy (DOE) Reference Model Project (RMP) `Reference Model 1: Tidal Current Turbine <https://energy.sandia.gov/programs/renewable-energy/water-power/projects/reference-model-project-rmp/>`__  .
 
@@ -31,7 +31,7 @@ To choose a converter from the library:
 The data for the Tidal Energy Converter library is stored in the Tidal Energy Converters.csv file in the libraries folder of the :ref:`SAM installation folder <installationfolder>`. If you have your own data, use the Import Tidal Converter option rather than editing the library CSV file to ensure you don't lose your data when you remove or install the SAM software.
 
 Import Tidal Converter
-......................
+----------------------
 
 If you have your own TEC power curve data, you can use it in SAM.
 
@@ -61,7 +61,7 @@ The following screenshot shows a TEC power curve file and the resulting power cu
   The device rated power is the maximum power value in the TEC power curve and determines the device and array rated power for cost calculations. SAM automatically determines the device rated power from the power curve data.
 
 Design Tidal Converter
-......................
+----------------------
 
 You can specify the basic TEC characteristics, and SAM will calculate a TEC power curve.
 

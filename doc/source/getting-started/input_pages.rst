@@ -36,7 +36,7 @@ Colors of Text and Variables
 SAM indicates different kinds of variables with colors.
 
 Input Variables
-...............
+---------------
 
 Input variables that you can change are in white boxes with black values:
 
@@ -45,7 +45,7 @@ Input variables that you can change are in white boxes with black values:
    :alt: SS_InputBoxesWhite.png
 
 Calculated Values
-.................
+-----------------
 
 Blue indicates a value that you cannot edit: Either a calculated value, a value from another input page, or a value from a :doc:`library <../reference/libraries>`: 
 
@@ -56,7 +56,7 @@ Blue indicates a value that you cannot edit: Either a calculated value, a value 
 .. note:: In Windows, press the F1 key (Command-? in OS X) to see the Help topic with descriptions of the equations SAM uses for most calculated values.
 
 Inactive Variables
-..................
+------------------
 
 Gray data boxes show values for your reference. For example, these input variables on the Location and Resource page show annual averages calculated from data stored in the weather file. You cannot modify data in gray:
 
@@ -65,7 +65,7 @@ Gray data boxes show values for your reference. For example, these input variabl
    :alt: SS_InputBoxesGray.png
 
 Web Links
-.........
+---------
 
 Blue underlined text indicates links to websites with useful information related to the input page:
 

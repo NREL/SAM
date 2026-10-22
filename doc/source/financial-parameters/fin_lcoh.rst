@@ -162,7 +162,7 @@ To exclude depreciation from the analysis, set the depreciation percentage(s) to
   A value of zero will cause the FCR to be zero, and is caused by setting the annual cost during construction to zero. If you want to exclude construction financing (CFF = 1), you should set the annual cost during construction to 100%, and the nominal construction interest rate to zero.
 
 Equations for FCR Calculation
-.............................
+-----------------------------
 
 When you use the **Calculate fixed charge rate** option, SAM uses the following equations to calculate the financing factors.
 

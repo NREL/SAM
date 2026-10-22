@@ -1,0 +1,1451 @@
+{
+    "Name": "Geothermal System Design No Fin",
+    "Width": 824.0,
+    "Height": 184.0,
+    "FormObjects": {
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "construction_financing_cost_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 186.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 42.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "is_success_auto_exec"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 456.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 30.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "TextEntry": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "object 9"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 153.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 84.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 150.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Text": {
+                    "Type": 5.0,
+                    "String": "No Financial Model"
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        },
+        "Numeric": {
+            "Visible": 1.0,
+            "ObjectProperties": {
+                "Name": {
+                    "Type": 5.0,
+                    "String": "total_getem_om_cost_calc"
+                },
+                "X": {
+                    "Type": 3.0,
+                    "Integer": 480.0
+                },
+                "Y": {
+                    "Type": 3.0,
+                    "Integer": 78.0
+                },
+                "Width": {
+                    "Type": 3.0,
+                    "Integer": 90.0
+                },
+                "Height": {
+                    "Type": 3.0,
+                    "Integer": 24.0
+                },
+                "Tool Tip": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Value": {
+                    "Type": 1.0,
+                    "Double": 0.0
+                },
+                "Mode": {
+                    "Type": 3.0,
+                    "Integer": 1.0
+                },
+                "Format": {
+                    "Type": 3.0,
+                    "Integer": 0.0
+                },
+                "Decimals": {
+                    "Type": 3.0,
+                    "Integer": 3.0
+                },
+                "Prefix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "Suffix": {
+                    "Type": 5.0,
+                    "String": ""
+                },
+                "ThousandsSep": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "Editable": {
+                    "Type": 2.0,
+                    "Boolean": 1.0
+                },
+                "ForeColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 0.0,
+                        "Green": 0.0,
+                        "Blue": 0.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "BackColour": {
+                    "Type": 4.0,
+                    "Color": {
+                        "Red": 255.0,
+                        "Green": 255.0,
+                        "Blue": 255.0,
+                        "Alpha": 255.0
+                    }
+                },
+                "TabOrder": {
+                    "Type": 3.0,
+                    "Integer": -1.0
+                }
+            }
+        }
+    },
+    "VarDatabase": {
+        "baseline_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "bottom_hole_pressure_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "conf_drilling_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "conf_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "construction_financing_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "construction financing",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "contingency_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "design_temp_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "epc_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "expl_cost_per_well_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "expl_drilling_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "expl_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "field_gathering_num_wells_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "geo_financial_model": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "geothermal_analysis_period": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "gross_cost_output_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "gross_output_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "indirect_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "indirect_pump_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inj_num_pumps_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inj_pump_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inj_pump_cost_per_pump_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inj_pump_hp_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inj_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "inj_well_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "installed_cost_per_kW_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "is_success_auto_exec": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "Is success auto exec",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "net_plant_output_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_confirm_wells_to_production_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "adfaf",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_wells_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_wells_getem_inj_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_wells_getem_inj_drilled_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_wells_getem_prod_drilled_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "num_wells_getem_prod_inj_sum_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "nu",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "piping_cost_per_well_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "plant_brine_eff_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "plm_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prod_inj_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prod_pump_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prod_pump_cost_per_well_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prod_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "prod_well_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pump_cost_install_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "pump cost install calc",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pump_depth_ft_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pump_only_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "pump only cost calc",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pump_size_hp_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pump_watthr_per_lb_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pump_work_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pumpwork_inj_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "pumpwork_prod_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "pumpwork_prod_calc",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reservoir_avg_temp_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "reservoir_pressure_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sales_tax_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "stim_cost_per_well_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "stim_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "sum_prod_inj_total_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "system_capacity_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "system_recapitalization_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_capital_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_direct_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_drilling_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_drilling_cost_used_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_gathering_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_getem_om_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "OM costs calc",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_installed_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_plant_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_plant_cost_used_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_pump_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_pump_gathering_cost_used_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        },
+        "total_surface_equipment_cost_calc": {
+            "Version": 4.0,
+            "Type": 1.0,
+            "Label": "",
+            "Units": "",
+            "Group": "",
+            "IndexLabels": "",
+            "Flags": 8.0,
+            "DefaultValue": -999.0,
+            "UIObject": "Default",
+            "sscVariableName": "",
+            "sscVariableValue": ""
+        }
+    },
+    "Equations": [
+        "equations{ 'geo_financial_model' } = define() {\r",
+        "\tif (financing() == \"Single Owner\"){\r",
+        "\t\treturn 1;\r",
+        "\t}\r",
+        "\telse if(financing() == \"Leveraged Partnership Flip\"){\r",
+        "\t\treturn 2;\r",
+        "\t}\r",
+        "\telse if(financing() == \"All Equity Partnership Flip\"){\r",
+        "\t\treturn 3;\r",
+        "\t}\r",
+        "\telse if(financing() == \"Sale Leaseback\"){\r",
+        "\t\treturn 4;\r",
+        "\t}\r",
+        "\telse if(financing() == \"Commercial\"){\r",
+        "\t\treturn 5;\r",
+        "\t}\r",
+        "\telse if(financing() == \"Merchant Plant\"){\r",
+        "\t\treturn 6;\r",
+        "\t}\r",
+        "\telse if(financing() == \"LCOE Calculator\"){\r",
+        "\t\treturn 7;\r",
+        "\t}\r",
+        "\telse if(financing() == \"None\"){\r",
+        "\t\treturn 8;\r",
+        "\t}\r",
+        "\telse{\r",
+        "\t\treturn -1;\r",
+        "\t}\r",
+        "};\r",
+        "\r",
+        "equations{ '$MIMO$ ui_mspt_system_design__mspt_cmod' } = define()\r",
+        "{\r",
+        "\tobj = ssc_create();\r",
+        "\t\r",
+        "\tgeo_fin_model = ${geo_financial_model};\r",
+        "\r",
+        "\t//#ssc_auto_exec(obj, 'geothermal_no_fin', 2);\r",
+        "\r",
+        "\t//ret_d = ssc_dump(obj, 'geothermal_ssc_auto_exec.lk');\r",
+        "\t\r",
+        "\tif(geo_fin_model < 8){\r",
+        "\t\tret = ssc_exec(obj, 'geothermal');\r",
+        "\t}\r",
+        "\telse{\r",
+        "\t\tret = ssc_exec(obj, 'geothermal_no_fin');\r",
+        "\t}\r",
+        "\t\r",
+        "\tif(ret == 0)\r",
+        "\t{\r",
+        "\t\t${is_success_auto_exec} = 1;\r",
+        "\t\t${geothermal_analysis_period} = ssc_var(obj, 'geothermal_analysis_period');\r",
+        "\t\t\r",
+        "\t\t${design_temp_calc} = ssc_var(obj, \"design_temp\");\r",
+        "\t\t\r",
+        "\t\t${plant_brine_eff_calc} = ssc_var( obj, 'plant_brine_eff');\r",
+        "\t\t${gross_output_calc} = ssc_var(obj, \"gross_output\");\r",
+        "\t\t${gross_cost_output_calc} = ssc_var(obj, \"gross_cost_output\");\r",
+        "\t\t\r",
+        "\t\t${num_wells_calc} = ssc_var(obj, \"num_wells_getem_output\");\r",
+        "\t\t${num_wells_getem_inj_calc} = ssc_var(obj, \"num_wells_getem_inj\");\r",
+        "\t\t${num_wells_getem_prod_drilled_calc} = ssc_var(obj, \"num_wells_getem_prod_drilled\");\r",
+        "\t\t${num_wells_getem_inj_drilled_calc} = ssc_var(obj, \"num_wells_getem_inj_drilled\");\r",
+        "\t\t\r",
+        "\t\t${pump_watthr_per_lb_calc} = ssc_var(obj, \"pump_watthr_per_lb\");\r",
+        "\t\t${pumpwork_prod_calc} = ssc_var(obj, \"pumpwork_prod\");\r",
+        "\t\t${pump_size_hp_calc} = ssc_var(obj, \"pump_size_hp\");\r",
+        "\t\t${pumpwork_inj_calc} = ssc_var(obj, \"pumpwork_inj\");\r",
+        "\t\t${pump_depth_ft_calc} = ssc_var(obj, \"pump_depth_ft\");\r",
+        "\t\t${inj_pump_hp_calc} = ssc_var(obj, \"inj_pump_hp\");\r",
+        "\t\t${pump_work_calc} = ssc_var(obj, \"pump_work\");\r",
+        "\t\t\r",
+        "\t\t${reservoir_pressure_calc} = ssc_var(obj, \"reservoir_pressure\");\r",
+        "\t\t${reservoir_avg_temp_calc} = ssc_var(obj, \"reservoir_avg_temp\");\r",
+        "\t\t${bottom_hole_pressure_calc} = ssc_var(obj, \"bottom_hole_pressure\");\r",
+        "\t\t\r",
+        "\t\t${net_plant_output_calc} = ssc_var(obj, \"net_plant_output\");\r",
+        "\t\t${system_capacity_calc} = ssc_var(obj, \"system_capacity\");\r",
+        "\t\t\r",
+        "\t\t${num_confirm_wells_to_production_calc} = ssc_var(obj, 'num_confirm_wells_to_production');\r",
+        "\t\t\r",
+        "\t\tif(geo_fin_model < 8){\r",
+        "\t\t\t${baseline_cost_calc} = ssc_var(obj, 'baseline_cost');\r",
+        "\t\t\t${total_pump_cost_calc} = ssc_var(obj, 'total_pump_cost');\r",
+        "\r",
+        "\t\t\t${total_gathering_cost_calc} = ssc_var(obj, 'total_gathering_cost');\r",
+        "\t\t\t${pump_cost_install_calc} = ssc_var(obj, 'pump_cost_install');\r",
+        "\t\t\t${pump_only_cost_calc} = ssc_var(obj, 'pump_only_cost');\r",
+        "\t\t\t${prod_pump_cost_per_well_calc} = ssc_var(obj, 'prod_pump_cost_per_well');\r",
+        "\t\t\t${inj_pump_cost_per_pump_calc} = ssc_var(obj, 'inj_pump_cost_per_pump');\r",
+        "\t\t\t${inj_num_pumps_calc} = ssc_var(obj, 'inj_num_pumps');\r",
+        "\t\t\t\t\r",
+        "\t\t\t${prod_pump_cost_calc} = ssc_var(obj, 'prod_pump_cost');\r",
+        "\t\t\t${inj_pump_cost_calc} = ssc_var(obj, 'inj_pump_cost');\r",
+        "\t\t\t${indirect_pump_cost_calc} = ssc_var(obj, 'indirect_pump_gathering_cost');\r",
+        "\t\t\t${total_pump_gathering_cost_used_calc} = ssc_var(obj, 'total_pump_gathering_cost_used');\r",
+        "\t\t\t\r",
+        "\t\t\t${total_surface_equipment_cost_calc} = ssc_var(obj, 'total_surface_equipment_cost');\r",
+        "\r",
+        "\t\t\t${sum_prod_inj_total_cost_calc} = ssc_var(obj, 'sum_prod_inj_total_cost');\r",
+        "\t\t\t${prod_inj_total_cost_calc} = ssc_var(obj, 'prod_inj_total_cost');\r",
+        "\r",
+        "\t\t\t${piping_cost_per_well_calc} = ssc_var(obj, 'piping_cost_per_well');\r",
+        "\t\t\t${field_gathering_num_wells_calc} = ssc_var(obj, 'field_gathering_num_wells');\r",
+        "\t\t\t${stim_cost_per_well_calc} = ssc_var(obj, 'stim_cost_per_well');\r",
+        "\t\t\t${stim_total_cost_calc} = ssc_var(obj, 'stim_total_cost');\r",
+        "\r",
+        "\t\t\t${num_wells_getem_prod_inj_sum_calc} = ssc_var(obj, 'num_wells_getem_prod_inj_sum');\r",
+        "\r",
+        "\t\t\t${expl_total_cost_calc} = ssc_var(obj, 'expl_total_cost');\r",
+        "\t\t\t${expl_drilling_cost_calc} = ssc_var(obj, 'expl_drilling_cost');\r",
+        "\t\t\t${conf_total_cost_calc} = ssc_var(obj, 'conf_total_cost');\r",
+        "\t\t\t${conf_drilling_cost_calc} = ssc_var(obj, 'conf_drilling_cost');\r",
+        "\t\t\t${expl_cost_per_well_calc} = ssc_var(obj, 'expl_cost_per_well');\r",
+        "\t\t\t\r",
+        "\t\t\t${prod_well_cost_calc} = ssc_var(obj, 'prod_well_cost');\r",
+        "\t\t\t${prod_total_cost_calc} = ssc_var(obj, 'prod_total_cost');\r",
+        "\t\t\t${inj_well_cost_calc} = ssc_var(obj, 'inj_well_cost');\r",
+        "\t\t\t${inj_total_cost_calc} = ssc_var(obj, 'inj_total_cost');\r",
+        "\t\t\t${total_drilling_cost_calc} = ssc_var(obj, 'total_drilling_cost');\r",
+        "\t\t\t${total_drilling_cost_used_calc} = ssc_var(obj, 'total_drilling_cost_used');\r",
+        "\r",
+        "\t\t\t${total_plant_cost_calc} = ssc_var(obj, 'total_plant_cost');\r",
+        "\t\t\t${total_plant_cost_used_calc} = ssc_var(obj, 'total_plant_cost_used');\r",
+        "\r",
+        "\t\t\t${system_recapitalization_cost_calc} = ssc_var(obj, 'system_recapitalization_cost');\r",
+        "\t\t\t${total_capital_cost_calc} = ssc_var(obj, 'total_capital_cost');\r",
+        "\t\t\t${contingency_cost_calc} = ssc_var(obj, 'contingency_cost');\r",
+        "\t\t\t${total_direct_cost_calc} = ssc_var(obj, 'total_direct_cost');\r",
+        "\t\t\t${epc_total_cost_calc} = ssc_var(obj, 'epc_total_cost');\r",
+        "\t\t\t${plm_total_cost_calc} = ssc_var(obj, 'plm_total_cost');\r",
+        "\t\t\t${sales_tax_cost_calc} = ssc_var(obj, 'sales_tax_cost');\r",
+        "\t\t\t${indirect_cost_calc} = ssc_var(obj, 'indirect_cost');\r",
+        "\t\t\t${total_installed_cost_calc} = ssc_var(obj, 'total_installed_cost');\r",
+        "\t\t\t${installed_cost_per_kW_calc} = ssc_var(obj, 'installed_cost_per_kW');\r",
+        "\r",
+        "\t\t\t//${total_getem_om_cost_calc} = ssc_var(obj, 'total_getem_om_cost');\r",
+        "\t\t\t//${construction_financing_cost_calc} = ssc_var(obj, 'construction_financing_cost');\r",
+        "\t\t}\r",
+        "\t}\r",
+        "\telse{\r",
+        "\t\t\r",
+        "\t\tfail = -6789;\r",
+        "\t\t\r",
+        "\t\t${is_success_auto_exec} = fail;\r",
+        "\t\t\r",
+        "\t\t${geothermal_analysis_period} = -1;\r",
+        "\t\t\r",
+        "\t\t${design_temp_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${plant_brine_eff_calc} = fail;\r",
+        "\t\t${gross_output_calc} = fail;\r",
+        "\t\t${gross_cost_output_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${num_wells_calc} = fail;\r",
+        "\t\t${num_wells_getem_inj_calc} = fail;\r",
+        "\t\t${num_wells_getem_prod_drilled_calc} = fail;\r",
+        "\t\t${num_wells_getem_inj_drilled_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${pump_watthr_per_lb_calc} = fail;\r",
+        "\t\t${pumpwork_prod_calc} = fail;\r",
+        "\t\t${pump_size_hp_calc} = fail;\r",
+        "\t\t${pumpwork_inj_calc} = fail;\r",
+        "\t\t${pump_depth_ft_calc} = fail;\r",
+        "\t\t${inj_pump_hp_calc} = fail;\r",
+        "\t\t${pump_work_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${reservoir_pressure_calc} = fail;\r",
+        "\t\t${reservoir_avg_temp_calc} = fail;\r",
+        "\t\t${bottom_hole_pressure_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${net_plant_output_calc} = fail;\r",
+        "\t\t${system_capacity_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${baseline_cost_calc} = fail;\r",
+        "\t\t${total_pump_cost_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${total_gathering_cost_calc} = fail;\r",
+        "\t\t${pump_cost_install_calc} = fail;\r",
+        "\t\t${pump_only_cost_calc} = fail;\r",
+        "\t\t${prod_pump_cost_per_well_calc} = fail;\r",
+        "\t\t${inj_pump_cost_per_pump_calc} = fail;\r",
+        "\t\t${inj_num_pumps_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${prod_pump_cost_calc} = fail;\r",
+        "\t\t${inj_pump_cost_calc} = fail;\r",
+        "\t\t${indirect_pump_cost_calc} = fail;\r",
+        "\t\t${total_pump_gathering_cost_used_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${total_surface_equipment_cost_calc} = fail; \r",
+        "\t\t\r",
+        "\t\t${sum_prod_inj_total_cost_calc} = fail;\r",
+        "\t\t${prod_inj_total_cost_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${piping_cost_per_well_calc} = fail;\r",
+        "\t\t${field_gathering_num_wells_calc} = fail;\r",
+        "\t\t${stim_cost_per_well_calc} = fail;\r",
+        "\t\t${stim_total_cost_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${num_wells_getem_prod_inj_sum_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${expl_total_cost_calc} = fail;\r",
+        "\t\t${expl_drilling_cost_calc} = fail;\r",
+        "\t\t${conf_total_cost_calc} = fail;\r",
+        "\t\t${conf_drilling_cost_calc} = fail;\r",
+        "\t\t${expl_cost_per_well_calc} = fail;\r",
+        "\t\t${num_confirm_wells_to_production_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${prod_well_cost_calc} = fail;\r",
+        "\t\t${prod_total_cost_calc} = fail;\r",
+        "\t\t${inj_well_cost_calc} = fail;\r",
+        "\t\t${inj_total_cost_calc} = fail;\r",
+        "\t\t${total_drilling_cost_calc} = fail;\r",
+        "\t\t${total_plant_cost_used_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${total_plant_cost_calc} = fail;\r",
+        "\t\t${total_plant_cost_used_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${system_recapitalization_cost_calc} = fail;\r",
+        "\t\t${total_capital_cost_calc} = fail;\r",
+        "\t\t${contingency_cost_calc} = fail;\r",
+        "\t\t${total_direct_cost_calc} = fail;\r",
+        "\t\t${epc_total_cost_calc} = fail;\r",
+        "\t\t${plm_total_cost_calc} = fail;\r",
+        "\t\t${sales_tax_cost_calc} = fail;\r",
+        "\t\t${indirect_cost_calc} = fail;\r",
+        "\t\t${total_installed_cost_calc} = fail;\r",
+        "\t\t${installed_cost_per_kW_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${total_getem_om_cost_calc} = fail;\r",
+        "\t\t\r",
+        "\t\t${construction_financing_cost_calc} = fail;\r",
+        "\t}\r",
+        "\t\r",
+        "};"
+    ],
+    "Callbacks": []
+}

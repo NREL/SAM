@@ -64,7 +64,7 @@ Irregular range example: To assign the values 0, 3, 4, 5, 6, 10 to a variable:
 Use the Up, Down, and Remove buttons to move through the list of variable values and to delete values.
 
 Variable Values
-...............
+---------------
 
 The Variable Values list shows the values that SAM will assign to the parametric variable or slider.
 
@@ -84,7 +84,7 @@ The Variable Values list shows the values that SAM will assign to the parametric
   Remove the selected value from the list.
 
 Define Range
-............
+------------
 
 **Start Value**
   The range of variable values displayed in the Variable Values list begins with this value. The start value units and magnitude should be appropriate for the variable to which values are being assigned.

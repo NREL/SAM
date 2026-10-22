@@ -1,8 +1,3 @@
-.. sphinx_test documentation master file, created by
-   sphinx-quickstart on Fri Nov  7 14:09:54 2025.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 SAM Help
 ========
 
@@ -22,18 +17,19 @@ SAM's source code is available at https://github.com/NatLabRockies/SAM.
 
 Software developer tools are available at https://sam.nlr.gov/sdk, and the PySAM Python package is available at https://pysam.readthedocs.io.
 
-Getting Started and Reference
------------------------------
+Overview
+--------
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started and Reference
+   :caption: Overview
 
    introduction/index
    getting-started/index
    reference/index
    window-reference/index
    simulation-options/index
+   reference/release_notes
 
 Weather Data
 ------------

@@ -1,7 +1,7 @@
 {
     "Name": "Financial Debt Residential",
-    "Width": 856.0,
-    "Height": 249.0,
+    "Width": 872.0,
+    "Height": 253.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -20,7 +20,7 @@
                 },
                 "Width": {
                     "Type": 3.0,
-                    "Integer": 847.0
+                    "Integer": 850.0
                 },
                 "Height": {
                     "Type": 3.0,
@@ -214,7 +214,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 45.0
+                    "Integer": 48.0
                 },
                 "Width": {
                     "Type": 3.0,

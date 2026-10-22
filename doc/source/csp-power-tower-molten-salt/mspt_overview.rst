@@ -9,7 +9,7 @@ The solar field optimization algorithm uses `SolarPILOT™ <https://www.nlr.gov/
 
 For additional technical documentation, see the `SAM website <https://sam.nlr.gov/concentrating-solar-power/csp-publications>`__.
 
-.. note:: The supercritical Carbon dioxide (sCO2) option is not available on the Power Cycle page for versions later than SAM 2020.2.29. It is replaced by the **sCO2 Cycle Integration** :doc:`macro <../reference/macros>` with the` NREL Supercritical Carbon Dioxide (sCO2) Python model <https://github.com/NatLabRockies/SAM/tree/develop/samples/CSP/sco2_analysis_python_V2>`__.
+.. note:: The supercritical Carbon dioxide (sCO2) option is not available on the Power Cycle page for versions later than SAM 2020.2.29. It is replaced by the **sCO2 Cycle Integration** :doc:`macro <../reference/macros>` with the` NLR Supercritical Carbon Dioxide (sCO2) Python model <https://github.com/NatLabRockies/SAM/tree/develop/samples/CSP/sco2_analysis_python_V2>`__.
 
    Thermocline storage and fossil backup are not available for versions later than SAM 2015.6.30 because they were not incorporated into the new dispatch controller logic at the time of the software release.
 

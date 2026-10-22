@@ -57,7 +57,7 @@ The following lists PVWatts versions in different versions of SAM. All versions 
      - *pvwattsv1*
 
 New features added in PVWatts Version 8
-.......................................
+---------------------------------------
 
 For SAM 2021.12.02, we updated PVWatts to Version 8 (*pvwattsv8*) and added a collapsible panel for "advanced inputs" so we could expose additional features.
 
@@ -78,7 +78,7 @@ Features now available as options under **Advanced Inputs**:
 * Soiling loss input as a beam irradiance loss.
 
 Differences between PVWatts Version 5 and Version 7
-...................................................
+---------------------------------------------------
 
 The following list summarizes the features added in SAM 2020.2.29 when we updated from PVWatts Version 5 (*pvwattsv5*) to Version 7 (*pvwattsv7*). For the default PVWatts - No Financial configuration in SAM, the total annual energy predicted by Version 7 is 2.8% higher than Version 5.
 
@@ -105,7 +105,7 @@ The following features are available to programmers using the SAM Software Devel
 * Soiling loss input as a beam irradiance loss.
 
 Module Type Parameters for PVWatts Versions 5, 7, and 8
-.......................................................
+-------------------------------------------------------
 
 The following table shows the differences in module type parameters between *pvwattsv5*, *pvwattsv7*, and *pvwattsv8*.
 

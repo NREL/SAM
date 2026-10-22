@@ -8,7 +8,7 @@ For more about the LK scripting language, see :doc:`Macros and Scripting <../ref
 For a sample script illustrating how to set some of these script-only parameters, see the `molten_salt_trough.lk <https://github.com/NatLabRockies/SAM/blob/develop/samples/LK%20Scripts%20for%20SAM/molten-salt-trough.lk>`__ file in the SAM Open Source repository on GitHub.com.
 
 Field Parameters
-................
+----------------
 
 **custom_sf_pipe_sizes  [-]**
   Whether the header and runner diameters, wall thicknesses and lengths should be calculated or input from the parameters:
@@ -70,7 +70,7 @@ Field Parameters
   The custom specified runner section wall thicknesses. The values are utilized if the parameter custom_sf_pipe_sizes is set to true. The number of runner wall thickness values needs to match the number of runner sections.
 
 Thermal Energy Storage/ Power Block Parameters
-..............................................
+----------------------------------------------
 
 **custom_sgs_pipe_sizes  [-]**
   Whether the thermal energy storage and power block pipe diameters and wall thicknesses should be calculated or input from the parameters:

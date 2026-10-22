@@ -8855,7 +8855,7 @@
     "batt_cell_power_charge_max": 2.0,
     "batt_cell_power_discharge_max": 2.0,
     "batt_chem": 1.0,
-    "batt_computed_bank_capacity": 1200.5431199999999,
+    "batt_computed_bank_capacity": 1200.54312,
     "batt_computed_series": 126.0,
     "batt_computed_stacks_series": 1.0,
     "batt_computed_strings": 1064.0,
@@ -9839,10 +9839,10 @@
     "batt_minimum_modetime": 10.0,
     "batt_minimum_outage_SOC": 10.0,
     "batt_num_cells": 134064.0,
-    "batt_power_charge_max_kwac": 135.47795624999999,
-    "batt_power_charge_max_kwdc": 130.05883799999999,
+    "batt_power_charge_max_kwac": 135.47795625,
+    "batt_power_charge_max_kwdc": 130.058838,
     "batt_power_discharge_max_kwac": 124.85648447999998,
-    "batt_power_discharge_max_kwdc": 130.05883799999999,
+    "batt_power_discharge_max_kwdc": 130.058838,
     "batt_pv_ac_forecast": [
         0.0
     ],
@@ -18681,7 +18681,7 @@
     "batt_ui_bank_voltage": 501.48,
     "batt_ui_cell_voltage": 3.98,
     "batt_ui_inverter_eff": 96.0,
-    "batt_ui_nominal_bank_power": 130.05883799999999,
+    "batt_ui_nominal_bank_power": 130.058838,
     "batt_unit_capacity": 400.0,
     "batt_unit_surface_area": 30.0,
     "batt_user_specified_weather_file_peak_shaving": "",
@@ -18693,15 +18693,15 @@
             0.0
         ]
     ],
-    "batt_volume": 14.640769756097559,
-    "battery_energy": 1200.5431199999999,
+    "batt_volume": 14.64076975609756,
+    "battery_energy": 1200.54312,
     "battery_indirect_cost_percent": 20.0,
     "battery_losses_shown": 0.0,
     "battery_per_kW": 667.0,
     "battery_per_kWh": 184.0,
-    "battery_power": 130.05883799999999,
+    "battery_power": 130.058838,
     "battery_thermal_shown": 0.0,
-    "battery_total": 307649.17902599999,
+    "battery_total": 307649.179026,
     "battery_total_cost_lcos": 419978.0747895943,
     "battery_voltage_shown": 0.0,
     "cap_vs_temp": [
@@ -36353,10 +36353,10 @@
     "customgen.cost.contingency": 43902.531038184,
     "customgen.cost.contingency_percent": 8.4,
     "customgen.cost.epc.fixed": 403010.0,
-    "customgen.cost.epc.nonfixed": 90648.27361026943,
+    "customgen.cost.epc.nonfixed": 90648.27361026945,
     "customgen.cost.epc.percent": 16.0,
     "customgen.cost.epc.total": 493658.2736102694,
-    "customgen.cost.installed_per_capacity": 5.3791803459784399,
+    "customgen.cost.installed_per_capacity": 5.37918034597844,
     "customgen.cost.per_watt": 1.0,
     "customgen.cost.plant": 0.0,
     "customgen.cost.plant_scaled": 215000.0,
@@ -55329,7 +55329,7 @@
         0.0
     ],
     "heat_rate": 10.0,
-    "host_nominal_discount_rate": 9.060000000000003,
+    "host_nominal_discount_rate": 9.060000000000004,
     "host_real_discount_rate": 6.4,
     "ibi_fed_amount": 0.0,
     "ibi_fed_amount_deprbas_fed": 0.0,
@@ -55392,7 +55392,7 @@
     "itc_fed_amount_deprbas_fed": 1.0,
     "itc_fed_amount_deprbas_sta": 1.0,
     "itc_fed_percent": [
-        0.0
+        30.0
     ],
     "itc_fed_percent_deprbas_fed": 1.0,
     "itc_fed_percent_deprbas_sta": 1.0,
@@ -73610,7 +73610,7 @@
         184.05
     ],
     "nameplate_capacity": 215.0,
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.060000000000004,
     "non_itc_basis_depreciation_allocation": 0.0,
     "non_itc_basis_percent_depr": 63.68617022051345,
     "normalize_to_utility_bill": 0.0,
@@ -73620,7 +73620,7 @@
     "om_batt_fixed_cost": [
         0.0
     ],
-    "om_batt_nameplate": 1200.5431199999999,
+    "om_batt_nameplate": 1200.54312,
     "om_batt_replacement_cost": [
         280.0
     ],
@@ -73709,7 +73709,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 1.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -73752,9 +73752,9 @@
     "show_itc_qualification": 1.0,
     "solution_mode_message": "",
     "spec_mode": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_load_ui": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_load_ui": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],

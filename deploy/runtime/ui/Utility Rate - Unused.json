@@ -1,7 +1,7 @@
 {
     "Name": "Utility Rate - Unused",
-    "Width": 1411.0,
-    "Height": 514.0,
+    "Width": 1422.0,
+    "Height": 524.0,
     "FormObjects": {
         "Divider": {
             "Visible": 1.0,
@@ -62,7 +62,7 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 6.0
+                    "Integer": 9.0
                 },
                 "Y": {
                     "Type": 3.0,
@@ -99,11 +99,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 898.0
+                    "Integer": 891.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 87.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -223,11 +223,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 898.0
+                    "Integer": 891.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 108.0
+                    "Integer": 111.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -268,11 +268,11 @@
                 },
                 "X": {
                     "Type": 3.0,
-                    "Integer": 490.0
+                    "Integer": 483.0
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 84.0
+                    "Integer": 87.0
                 },
                 "Width": {
                     "Type": 3.0,

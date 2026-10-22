@@ -46,8 +46,12 @@
     "analysis_period_warning": "",
     "annual_albedo": 0.1839506853933204,
     "annual_beam": 7.335643835616439,
+    "annual_csky_beam": 0.0,
+    "annual_csky_diffuse": 0.0,
+    "annual_csky_global": 0.0,
     "annual_diffuse": 1.3484328767123289,
     "annual_global": 5.794761643835617,
+    "annual_precipitation": 0.0,
     "annual_snow": NaN,
     "annual_tdry": 21.938470319634705,
     "annual_twet": NaN,
@@ -48438,7 +48442,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 1.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -48533,8 +48537,8 @@
     "solar_resource": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy",
     "solar_resource_file": "phoenix_az_33.450495_-111.983688_psmv3_60_tmy.csv",
     "solution_mode_message": "",
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state": "-",
     "state_tax_rate": [
         7.0

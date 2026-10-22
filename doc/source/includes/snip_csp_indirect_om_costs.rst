@@ -1,7 +1,4 @@
 
-Indirect Capital Costs
-~~~~~~~~~~~~~~~~~~~~~~
-
 An indirect cost is typically one that cannot be identified with a specific piece of equipment or installation service.
 
 .. note:: Because SAM uses only the total installed cost value in cash flow calculations, how you distribute costs among the different indirect capital cost categories does not affect the final results.
@@ -36,14 +33,3 @@ An indirect cost is typically one that cannot be identified with a specific piec
 
 **Total Indirect Cost ($)**
   The sum of engineer-procure-construct costs, project-land-miscellaneous costs.
-
-Sales Tax
-~~~~~~~~~
-
-.. include:: /includes/snip_sales_tax.rst
-
-Total Installed Cost
-~~~~~~~~~~~~~~~~~~~~
-
-.. include:: /includes/snip_total_installed_cost.rst
-

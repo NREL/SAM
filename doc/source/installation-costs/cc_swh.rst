@@ -13,18 +13,18 @@ A direct capital cost represents an expense for a specific piece of equipment or
 **Collector cost, $/m****\ :sup:`2`\****or $/Unit or $/W**
   The cost of collectors in the system. You can either include labor costs for collector installation in the collector cost, or account for it separately using the installation cost category. The total collector cost is calculated as either:
 
-*   Dollars per square meter multiplied by collector area on the :doc:`SWH System page <../solar-water-heating/swh_system>`, or
+  * Dollars per square meter multiplied by collector area on the :doc:`SWH System page <../solar-water-heating/swh_system>`, or
 
-*   Dollars per unit, representing the total collector cost, or
+  * Dollars per unit, representing the total collector cost, or
 
-*   Dollars per thermal watt of collector capacity multiplied by the nameplate capacity on the :doc:`SWH System page <../solar-water-heating/swh_system>`  .
+  * Dollars per thermal watt of collector capacity multiplied by the nameplate capacity on the :doc:`SWH System page <../solar-water-heating/swh_system>`  .
 
 **Storage cost, $/m****\ :sup:`3`\****or $/Unit**
   The cost of the solar storage tanks. The total storage cost is either:
 
-*   Dollars per cubic meters multiplied by the storage volume on the :doc:`SWH System page <../solar-water-heating/swh_system>`, or
+  * Dollars per cubic meters multiplied by the storage volume on the :doc:`SWH System page <../solar-water-heating/swh_system>`, or
 
-*   Dollars per unit, representing the total storage cost.
+  * Dollars per unit, representing the total storage cost.
 
 **Balance of system, $**
   A fixed cost that can be used to account for costs not included in the collector and storage cost categories, for example, the mounting racks and piping.
@@ -75,17 +75,7 @@ An indirect cost is typically one that cannot be identified with a specific piec
 Sales tax
 ~~~~~~~~~
 
-**Sales tax of, %**
-  The sales tax rate from the Financial Parameters page.
-
-**applies to, %**
-  The sales tax basis as a percentage of the total direct cost.
-
-SAM calculates the total sales tax amount by multiplying the sales tax rate from the :doc:`Financial Parameters <../financial-parameters/fin_overview>` page by the sales tax basis on the Installation costs page: 
-
-*Total Sales Tax ($) = Sales Tax Rate (%) × Sales Tax Basis (%) × Total Direct Cost ($)*
-
-For an explanation of the effect of sales tax on income tax, see **Sales Tax** on the :doc:`Financial Parameters <../financial-parameters/fin_overview>` topic for the financial model you are using (Residential, Commercial, Single Owner, etc.)
+.. include:: ../includes/snip_sales_tax.rst
 
 Total Installed Cost
 ~~~~~~~~~~~~~~~~~~~~

@@ -46,7 +46,7 @@ For either option, you specify the turbine hub height and shear coefficient:
   See :ref:`Wind Shear and Power Curve Adjustments <shear>`   for an explanation of how SAM uses this value.
 
 Wind Turbine Design Characteristics
-...................................
+-----------------------------------
 
 The wind turbine design parameters are the input variables that are active when you choose the **Define the turbine design characteristics** option.
 

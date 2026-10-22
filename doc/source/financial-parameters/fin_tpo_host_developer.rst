@@ -39,7 +39,7 @@ The analysis parameters specify the analysis period, inflation rate and discount
   Number of years covered by the analysis. Typically equivalent to the project or investment life. The analysis period determines the number of years in the project :doc:`cash flow <../results/cashflow>`  .
 
 **Inflation Rate**
-  Annual rate of change of costs, typically based on a price index, expressed as a percentage. SAM uses the inflation rate to calculate the value of costs in years two and later of the project cash flow based on Year One dollar values that you specify on the :doc:`Installation <../getting-started/costs>`   :doc:`costs <../installation-costs/installation_costs>`   page, Financial Parameters page, :doc:`Electricity Rates <../electricity-rates-and-load/electricity_rates>`   page, and :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
+  Annual rate of change of costs, typically based on a price index, expressed as a percentage. SAM uses the inflation rate to calculate the value of costs in years two and later of the project cash flow based on Year One dollar values that you specify on the :doc:`Installation <../getting-started/costs>`   :doc:`costs <../installation-costs/index>`   page, Financial Parameters page, :doc:`Electricity Rates <../electricity-rates-and-load/electricity_rates>`   page, and :doc:`Incentives <../incentives-and-depreciation/cash_incentives>`   page.
 
   The default value of 2.5% is based on consumer price index data from the U.S. Department of Labor Bureau of Labor Statistics, and is the average of the annual average consumer price index between 1991 and 2012.
 
@@ -71,7 +71,7 @@ Taxes and Insurance Rates
 .. include:: ../includes/snip_financing_taxes_insurance.rst
 
 Property Tax
-............
+------------
 
 .. include:: ../includes/snip_financing_property_tax.rst
 

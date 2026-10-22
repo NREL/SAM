@@ -245,7 +245,7 @@ The terrain slope and azimuth angles describe the inclination of the ground with
 
 .. note:: The terrain angles are not available for fixed (no tracking) subarrays, or subarrays with two-axis, azimuth, or seasonal tilt tracking options.
 
-The terrain slope model is described in Anderson, K.; Mikofski, M. (2020) Slope-aware Backtracking for Single-axis Trackers. National Renewable Energy Laboratory. 24 pp. NREL/TP-5K00-76626. (`PDF 783 KB <https://www.nlr.gov/docs/fy20osti/76626.pdf>`__), also listed at https://sam.nlr.gov/photovoltaic/pv-publications.html.
+The terrain slope model is described in Anderson, K.; Mikofski, M. (2020) Slope-aware Backtracking for Single-axis Trackers. National Renewable Energy Laboratory. NREL/TP-5K00-76626. (`PDF 783 KB <https://www.nlr.gov/docs/fy20osti/76626.pdf>`__), also listed at https://sam.nlr.gov/photovoltaic/pv-publications.html.
 
 **Terrain slope, degrees (0 to 90 degrees)**
   The grade slope angle, defined as the angle between the slope plane and the horizontal plane. Zero is for horizontal ground with no slope.

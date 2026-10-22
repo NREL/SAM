@@ -31,7 +31,7 @@ Reserve accounts are funds set aside to cover unexpected costs. Project financia
 .. note:: Debt Service Reserve Accounts for utility-scale projects are typically sized to cover 6 to 12 months of principal and interest payments.
 
 Major Equipment Replacement Reserve Accounts
-............................................
+--------------------------------------------
 
 Major equipment replacement reserve accounts are funds that the project sets aside to cover the cost of replacing equipment during the analysis period. You can specify up to three replacement reserve accounts.
 

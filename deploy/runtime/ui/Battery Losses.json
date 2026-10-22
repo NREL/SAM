@@ -1,7 +1,7 @@
 {
     "Name": "Battery Losses",
-    "Width": 1052.0,
-    "Height": 352.0,
+    "Width": 1053.0,
+    "Height": 399.0,
     "FormObjects": {
         "GroupBox": {
             "Visible": 1.0,
@@ -61,7 +61,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 135.0
+                    "Integer": 180.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,
@@ -127,7 +127,7 @@
                 },
                 "Y": {
                     "Type": 3.0,
-                    "Integer": 267.0
+                    "Integer": 312.0
                 },
                 "Width": {
                     "Type": 3.0,
@@ -463,7 +463,7 @@
                 },
                 "Height": {
                     "Type": 3.0,
-                    "Integer": 32.0
+                    "Integer": 59.0
                 },
                 "Tool Tip": {
                     "Type": 5.0,

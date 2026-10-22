@@ -8,7 +8,7 @@ The SWH model allows you to vary the location, hot water load profiles, mains an
 See the `SAM website <https://sam.nlr.gov/solar-water-heating>`__ for additional documentation.
 
 Solar Water Heating Model Notes
-...............................
+-------------------------------
 
 * SAM calculates the water mains inlet temperature based on the correlation to local air temperature used in the Building America Benchmark. The algorithm is described in Burch and Christensen (2007) `Towards Development of an Algorithm for Mains Water Temperature <https://research-hub.nlr.gov/en/publications/towards-development-of-an-algorithm-for-mains-water-temperature/>`__. SAM reports the hourly water mains temperatures on :doc:`Tables <../results/data>` on the :doc:`Results <../results/results>` page as **T mains (C)**. If you have your own mains temperature data, you can override the mains inlet temperature calculation import an 8,760 hourly mains profile on the :doc:`SWH System <swh_system>` page.
 

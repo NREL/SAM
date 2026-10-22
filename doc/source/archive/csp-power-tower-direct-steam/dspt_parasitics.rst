@@ -10,7 +10,7 @@ SAM calculates two types parasitic loss values. The first is an estimate of the 
 .. note:: Parasitic losses from components that do not exist in the system should be set to zero.
 
 Parasitic Energy Consumption
-............................
+----------------------------
 
 **Startup energy of a single heliostat, kWe-hr**
   The electric energy in kilowatt-hours required to move each heliostat into position. Applies during hours when the heliostat is starting up.

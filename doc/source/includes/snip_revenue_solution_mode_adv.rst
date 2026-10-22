@@ -12,7 +12,7 @@ The solution mode determines whether SAM calculates a PPA price based on an IRR 
 Solution Mode 1: Specify IRR Target
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Specify IRR Target option allows you to specify an IRR target value and the year that you would like the IRR to be achieved. SAM finds the :doc:`PPA price <../financial-metrics/mtf_ppa_price>` required to meet the target given your assumptions including financial parameters, :doc:`incentives <../incentives-and-depreciation/cash_incentives>` and :doc:`depreciation <../incentives-and-depreciation/tax_credits_depreciation>`, and the project's :doc:`installation <../installation-costs/installation_costs>` and :doc:`operating <../operating-costs/operating_costs>` costs.
+The Specify IRR Target option allows you to specify an IRR target value and the year that you would like the IRR to be achieved. SAM finds the :doc:`PPA price <../financial-metrics/mtf_ppa_price>` required to meet the target given your assumptions including financial parameters, :doc:`incentives <../incentives-and-depreciation/cash_incentives>` and :doc:`depreciation <../incentives-and-depreciation/tax_credits_depreciation>`, and the project's :doc:`installation <../installation-costs/index>` and :doc:`operating <../operating-costs/operating_costs>` costs.
 
 SAM uses an iterative algorithm to search for the PPA price that meets the IRR target in the year you specify. If it cannot find a solution, it finds the PPA price that results in an IRR and year as close as possible to the target values.
 

@@ -46,7 +46,7 @@ The system properties define the size, dynamic response and degradation characte
 .. note:: Because the fuel cell model is an energy flow model rather than an electrical model, it does not model current and voltages, so you do not need to specify how cells are configured in series and parallel.
 
 Size
-....
+----
 
 The size parameters determine the size and number of fuel cells in the cell stack.
 
@@ -74,7 +74,7 @@ The size parameters determine the size and number of fuel cells in the cell stac
 *Minimum System Output (kW) = Minimum Unit Output (kW) × Number of Units*
 
 Dynamic Response
-................
+----------------
 
 The dynamic response parameters determine how long it takes the cell stack to reach its rated power after startup or to respond to increases and decreases in electric load.
 
@@ -106,7 +106,7 @@ The dynamic response parameters determine how long it takes the cell stack to re
   Ramp Rate Down Limit (kW/hour) = Unit Nameplate (kW) *× Ramp Rate Down Limit (%/hour)*
 
 Degradation
-...........
+-----------
 
 The degradation parameters determine how the cell stack maximum power declines from year to year or after the cell stack is shut down and restarted.
 
@@ -119,7 +119,7 @@ The degradation parameters determine how the cell stack maximum power declines f
 .. note:: The fuel cell degradation is separate from the system degradation defined on the :doc:`Degradation <../degradation/degradation_dc>` page.
 
 Shutdown Schedule
-.................
+-----------------
 
 The shutdown schedule determines when the cell stack is taken out of service for service, repairs, or replacement.
 
@@ -170,7 +170,7 @@ Default Parameter Values
 The default parameters for the three fuel cell types are from the `Fuel Cell Power Model <https://research-hub.nlr.gov/en/publications/fuel-cell-power-model-version-2-startup-guide-system-designs-and-/>`__.
 
 Default Size and Dynamic Response Parameters
-............................................
+--------------------------------------------
 
 The percentages in the following table are percentage of nameplate capacity.
 
@@ -201,7 +201,7 @@ The percentages in the following table are percentage of nameplate capacity.
      - 250%/hr
 
 Default Efficiency Curves
-.........................
+-------------------------
 
 The default electrical and thermal efficiency curves for each fuel cell type are shown in the tables below.
 

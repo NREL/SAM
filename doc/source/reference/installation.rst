@@ -18,17 +18,20 @@ Your SAM installation contains the SAM executable file and supporting files and 
 The SAM installation folder is the folder that contains the SAM executable and its supporting files:
 
 **Windows**
-*   By default, the SAM installation is in c:\SAM\, although you can install SAM in any folder on your computer.
+
+By default, the SAM installation is in c:\SAM\, although you can install SAM in any folder on your computer.
 
 **Mac**
-*   On a Mac, the SAM installation is the SAM application bundle, which is distributed on a disk image named sam-osx-.dmg  .
 
-*   SAM runs directly from the disk image, which can be in the Applications folder, desktop, or other folder on your computer.
+On a Mac, the SAM installation is the SAM application bundle, which is distributed on a disk image named sam-osx.dmg.
 
-*   To open the application bundle, in Finder, control-click (or right-click) the SAM name and click **Show Contents**. If SAM is in your Applications folder, command-click the name to open it in Finder.
+SAM runs directly from the disk image, which can be in the Applications folder, desktop, or other folder on your computer.
+
+To open the application bundle, in Finder, control-click (or right-click) the SAM name and click **Show Contents**. If SAM is in your Applications folder, command-click the name to open it in Finder.
 
 **Linux**
-*   In Linux, SAM installs by default in home/<user>/SAM/, although you can install SAM in any folder on your computer.
+
+In Linux, SAM installs by default in home/<user>/SAM/, although you can install SAM in any folder on your computer.
 
 .. _removesam:
 
@@ -38,17 +41,20 @@ Removing SAM from your computer
 When you install a new version of SAM or no longer need the software, you can remove it from your computer:
 
 **Windows**
-#.   In the Windows Control Panel, under **Programs**, click **Uninstall a Program** (Control Panel\Programs\Programs and Features  ), and select the SAM version you want to uninstall from the list. The SAM program is listed as SAM <version number>.
 
-#.   Click **Uninstall**.
+#. In the Windows Control Panel, under **Programs**, click **Uninstall a Program** (Control Panel\Programs\Programs and Features  ), and select the SAM version you want to uninstall from the list. The SAM program is listed as SAM <version number>.
+
+#. Click **Uninstall**.
 
 .. note:: Any files in the :ref:`SAM installation folder <installationfolder>` that you added or modified are not removed by the uninstall process. You can safely delete the folder if you do not need those files.
 
 **Mac**
-*   Drag the SAM application bundle to the Trash.
+
+* Drag the SAM application bundle to the Trash.
 
 **Linux**
-*   Open a terminal window and run   *rm -rf /path/to/SAM/*  .
+
+* Open a terminal window and run   *rm -rf /path/to/SAM/*  .
 
 Running multiple versions of SAM
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

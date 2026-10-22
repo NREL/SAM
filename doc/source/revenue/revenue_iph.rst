@@ -4,7 +4,7 @@ Industrial Process Heat
 Industrial Process Heat (IPH) systems earn revenue through sales of thermal energy at a power price with optional escalation rate.
 
 Price of Heat
-.............
+-------------
 
 **PPA price**
   The price in $/MMBtu that the project receives for each unit of thermal energy it delivers.
@@ -23,6 +23,7 @@ Price of Heat
 
 Time of Delivery
 ~~~~~~~~~~~~~~~~
+
 .. include:: ../includes/snip_revenue_tod_factors.rst
 
 

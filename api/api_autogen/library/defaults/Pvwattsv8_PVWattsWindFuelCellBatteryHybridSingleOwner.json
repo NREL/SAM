@@ -51,6 +51,8 @@
 			],
 			"adjust_timeindex": [0.000000]
 		},
+		"SpectralCorrection": {
+		},
 		"HybridCosts": {
 			"degradation": [0.000000],
 			"land_area": 433.518,

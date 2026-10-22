@@ -18,7 +18,7 @@
     "batt_Qexp": 0.04000005,
     "batt_Qexp_percent": 1.77778,
     "batt_Qfull": 2.25,
-    "batt_Qfull_flow": 478583.99999999997,
+    "batt_Qfull_flow": 478584.0,
     "batt_Qnom": 2.0000002500000004,
     "batt_Qnom_percent": 88.8889,
     "batt_Vcut": 2.706,
@@ -9984,7 +9984,7 @@
     "cost_debt_fee": 2.75,
     "cost_dev_fee_percent": 3.0,
     "cost_dev_fee_tax_liability": 622259.2860237741,
-    "cost_dev_fee_value": 2345492.9740813199,
+    "cost_dev_fee_value": 2345492.97408132,
     "cost_equity_closing": 300000.0,
     "cost_other_financing": 0.0,
     "debt_message": "",
@@ -29032,7 +29032,7 @@
     "mera_name3": "Replacement Reserve 3",
     "months_receivables_reserve": 0.0,
     "months_working_reserve": 6.0,
-    "nominal_discount_rate": 9.060000000000003,
+    "nominal_discount_rate": 9.060000000000004,
     "non_itc_basis_depreciation_allocation": 0.0,
     "non_itc_basis_percent_depr": 0.0,
     "om_batt_capacity_cost": [
@@ -29104,7 +29104,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pv.storage.p1.charge": 0.0,
     "pv.storage.p1.discharge": 0.0,
     "pv.storage.p1.dischargetogrid": 0.0,
@@ -29158,8 +29158,8 @@
     "standalonebatt.cost.sales_tax.percent": 100.0,
     "standalonebatt.cost.sales_tax.total": 3723004.720764,
     "standalonebatt.cost.sales_tax.value": 5.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],

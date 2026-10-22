@@ -7,7 +7,7 @@ Basic Steps
 ~~~~~~~~~~~
 
 1. On the Location and Resource page, choose a weather file to represent the solar resource at the project location
-...................................................................................................................
+-------------------------------------------------------------------------------------------------------------------
 
   SAM offers three weather data options. You can:
 
@@ -24,7 +24,7 @@ For preliminary analyses in the United States either use a TMY2 file if there is
 For more robust analysis, download TMY3 data, or use your own data. You may also want to analyze your project using weather data from different sources to develop an understanding of how uncertainty in the weather data affects the metrics of interest for your project.
 
 4. Specify the system's characteristics
-.......................................
+---------------------------------------
 
 #. On the :doc:`Inverter <hcpv_inverter>` page, choose an inverter.
 
@@ -33,14 +33,14 @@ For more robust analysis, download TMY3 data, or use your own data. You may also
 #. On the :doc:`Array <hcpv_array>` page, specify the system's size and other parameters.
 
 5. On the Installation costs and Operating costs pages, specify the project costs
-.................................................................................
+---------------------------------------------------------------------------------
 
 The :doc:`installation costs <../installation-costs/cc_pv>` apply to year zero of the cash flow. 
 
 The :doc:`operating costs <../operating-costs/oc_operating>` apply in years one and later of the cash flow.
 
 6. Run a simulation and review results
-......................................
+--------------------------------------
 
 .. image:: ../images/SS_MainWindow-RunAllSimulationsButton.png
    :align: center

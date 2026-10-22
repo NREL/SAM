@@ -192,7 +192,7 @@ Receiver Parameters
 ~~~~~~~~~~~~~~~~~~~
 
 External Receiver
-.................
+-----------------
 
 **Receiver height, m**
   Height in meters of the receiver panels.
@@ -217,7 +217,7 @@ External Receiver
      :alt: MSPT_receiver-external-flow-pattern.png
 
 Cavity Receiver
-...............
+---------------
 
 .. image:: /images/MSPT_receiver-cavity.png
    :align: center

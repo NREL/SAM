@@ -36,7 +36,7 @@ Custom Power Cycle Simulations Required to Populate SAM's Data Table
 .. note:: The inputs for the table are normalized values, where 1 is the value at the design point. The table uses the following shorthand: **Ẇ cycle** = Power cycle gross output, **Heat in** = Cycle thermal input power, **Ẇ cooling** = Electrical consumption for cooling, **ṁ water** = Water usage.
 
 Importing Cycle Performance Data
-................................
+--------------------------------
 
 You can import data into the cycle performance table from either a text file a spreadsheet. The image below shows the first few rows of the performance table that you can use as a guide to store the data in a spreadsheet.
 
@@ -63,7 +63,7 @@ To import from a spreadsheet, select and copy the data in the spreadsheet and cl
 SAM displays a summary of the HTF temperature, normalized HTF mass flow rate, and ambient temperature data from the cycle performance data under **Independent variable information calculated from power cycle data in table below**. The summary data is a quick way to verify that the data imported correctly.
 
 Creating a Template for your Performance Data
-.............................................
+---------------------------------------------
 
 You can use SAM to generate a template for your data. The template contains the ranges of values you specify for HTF temperature, HTF mass flow rate, and ambient temperature. After you generate the template, you can add your own data for cycle gross output, cycle thermal input power, cycle cooling power, and water usage.
 
@@ -96,7 +96,7 @@ SAM also sets the values in the **Ẇ cycle**, **Heat in**, **Ẇ cooling**, and
 #. Click **Export** to export the data to a comma-separated text file. You can then edit the file to add your data and import it back into SAM. Or, click **Copy** to copy and paste the data into a spreadsheet.
 
 Variable Descriptions
-.....................
+---------------------
 
 **Low, design, and high HTF temperature,  °C**
   The low and high hot HTF temperatures define the range of high HTF temperature values in the cycle performance table.

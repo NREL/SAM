@@ -4,7 +4,7 @@ Curtailment payments generate revenue in addition to energy payment or PPA reven
 Use the grid curtailment inputs on the :doc:`Grid <../grid/grid_limits>` page to define the curtailment schedule.
 
 Curtailment Compensation
-........................
+------------------------
 
 **Curtailed energy compensation, $/kWh**
   The compensation rate in dollars per kWh of curtailed energy.

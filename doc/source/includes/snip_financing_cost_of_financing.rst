@@ -5,7 +5,7 @@ The Cost of Acquiring Financing inputs represent the cost of securing debt or th
   A dollar amount for financing costs not included in the equity closing cost or development fee.
 
 **Development fee (Partnership Flip and Sale Leaseback models only)**
-  A fee paid to the developer in Year 0, specified as a percentage of the total installed cost on the :doc:`Installation Costs <../installation-costs/installation_costs>`   page. The developer is liable for tax on the development fee in Year 1.
+  A fee paid to the developer in Year 0, specified as a percentage of the total installed cost on the :doc:`Installation Costs <../installation-costs/index>`   page. The developer is liable for tax on the development fee in Year 1.
 
 *Development Fee ($) = Development Fee (%) × Total Installed Cost ($)*
 

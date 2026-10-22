@@ -33202,7 +33202,7 @@
         0.0
     ],
     "ptc_sta_escal": 0.0,
-    "ptc_sta_term": 10.0,
+    "ptc_sta_term": 0.0,
     "pto_override": 0.0,
     "pto_shown": 0.0,
     "pv.storage.p1.charge": 1.0,
@@ -36230,8 +36230,8 @@
     "staging_port_cost_total": 0.0,
     "staging_port_cost_total_check": 0.0,
     "stakeholder_outreach_cost": 0.0,
-    "start_day_of_year": 3.335046e-317,
-    "start_day_of_year_tod_ui": 3.335046e-317,
+    "start_day_of_year": 0.0,
+    "start_day_of_year_tod_ui": 0.0,
     "state_tax_rate": [
         7.0
     ],

@@ -1,7 +1,7 @@
 {
     "Name": "MSPT Receiver Cavity",
-    "Width": 922.0,
-    "Height": 193.0,
+    "Width": 846.0,
+    "Height": 181.0,
     "FormObjects": {
         "Numeric": {
             "Visible": 1.0,

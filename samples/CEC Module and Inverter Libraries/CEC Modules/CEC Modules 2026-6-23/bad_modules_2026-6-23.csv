@@ -1,0 +1,101 @@
+Module Name,Performance Ratio,Simulation Message
+GermanSolar USA Inc GSM10-144-585W,1.09676,ok
+PT LESSO NEW ENERGY 530C(HWB)66(182),1.09275,ok
+KOSOL ENERGIE PVT LTD KE-405-54XS,1.08327,ok
+Sonali Energees USA LLC SS-405-54IIMJ,1.08327,ok
+Arka Energy Inc AEP-821-00020-A,1.07353,ok
+Caterpillar Inc PVC360MP03HA,1.05015,ok
+LONGi Green Energy Technology Co Ltd LR4-60HPB-360M,1.05015,ok
+Mission Solar Energy LLC TXI10-395108BB,0.986652,ok
+Jinko Solar Co Ltd JKMS300M-60B-MX,0.954856,ok
+Jinko Solar Co Ltd JKMS280M-60-MX,0.952274,ok
+Jinko Solar Co Ltd JKMS280M-60B-MX,0.950773,ok
+Jinko Solar Co Ltd JKMS285M-60B-MX,0.939601,ok
+Hengdian Group DMEGC Magnetics Co Ltd DM620G12RT-B66yyy,0.910702,ok
+Aptos Solar Technology LLC DNA-108-MF10-390W,0.889193,ok
+CertainTeed CTM10390HC11-06,0.889193,ok
+Mission Solar Energy LLC TXI10-390108BB,0.889193,ok
+PT IDN SOLAR TECH NUSA108-390MB,0.889193,ok
+PT IDN SOLAR TECH NUSA108H-390M,0.889193,ok
+PT IDN SOLAR TECH NUSA108H-390MB,0.889193,ok
+TOPCO SOLAR INC TP108H-390MB,0.889193,ok
+JOLYWOOD (TAIZHOU) SOLAR TECHNOLOGY CO LTD JW-HD144N-R0-595,0.887305,ok
+Mission Solar Energy LLC MSE405HT0B,0.887286,ok
+Boviet Solar Technology Co Ltd BVM7612M-525-H-HC-BF,0.886347,ok
+Global Power Services LLC GP390-54-182PMBB,0.886281,ok
+Global Power Services LLC GP390-54-182PMWB,0.886281,ok
+Sonali Energees USA LLC SS108-390MB,0.886281,ok
+Sonali Energees USA LLC SS108H-390MB,0.886281,ok
+Zhejiang Sunpro Power Technology Co Ltd SPDG405-108M10,0.885328,ok
+Mate Solar Co Ltd MS530M-72HB,0.885158,ok
+SunEvo Solar Co Ltd SE5-72H-530MB,0.885158,ok
+United Energy Co Ltd UE530M-72HB,0.885158,ok
+Heliene 108HC-385 M10 SL,0.885035,ok
+SunPower SPR-A400-BLK,0.884108,ok
+SunSpark Technology Inc SST-M156(HCBF)-575W,0.880329,ok
+Jinko Solar Co Ltd JKM360M-66H-V,0.875606,ok
+Zhejiang Sunpro Power Technology Co Ltd SP415-108M10T,0.872429,ok
+Sinotec USA LLC STS-400M3-72,0.872111,ok
+Jinko Solar Co Ltd JKM445M-60HL4-B,0.870104,ok
+LG Electronics Inc LG330Q1C-V5,0.868095,ok
+LG Electronics Inc LG385N1K-E6,0.867572,ok
+SOLAREVER TECNOLOG A DE AMERICA SA DE CV SE-182*91-560M-144,0.862918,ok
+AEG SOLAR ENERGY SRL ALPS54D30-420/TP,0.853848,Warning: Inverter oversized: The maximum inverter output was 74.06% of the rated value 0.438 kWac.
+New East Solar Energy (Cambodia) CoLtd NESE430-54THB-M10,0.84805,Warning: Inverter oversized: The maximum inverter output was 73.55% of the rated value 0.448 kWac.
+Suzhou Talesun Solar Technologies Co Ltd TM7G72M-575,0.846891,Warning: Inverter oversized: The maximum inverter output was 74.16% of the rated value 0.6 kWac.
+TOPCO SOLAR INC TPM7-SH108-395/M,0.844343,ok
+WYONE TRADING INC SM395-M754SH-BB,0.844343,ok
+ZNSHINE PV-TECH Co Ltd ZXM7-SH108-395/M,0.844343,ok
+Zhejiang Sunpro Power Technology Co Ltd SPDG570-N120R12,0.843497,ok
+S-Energy Co Ltd SL65-54TEP-420V,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+United Renewable Energy Co Ltd FBF420BFG-BB,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+United Renewable Energy Co Ltd FBF420BFG-BT,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+United Renewable Energy Co Ltd FBF420BFG-BW,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+United Renewable Energy Co Ltd FBF420BFG-WT,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+Vietnam Sunergy Joint Stock Company VSUN420N-108BMH-DG,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+Vietnam Sunergy Joint Stock Company VSUN420N-108BMH-DG-BB,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+Vietnam Sunergy Joint Stock Company VSUN420N-108BMH-DG-BT,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+Vietnam Sunergy Joint Stock Company VSUN420N-108BMH-DG-BW,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+Vietnam Sunergy Joint Stock Company VSUN420N-108BMH-DG-WT,0.841158,Warning: Inverter oversized: The maximum inverter output was 72.89% of the rated value 0.438 kWac.
+S-Energy Co Ltd SL65-54TEP-415V,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+United Renewable Energy Co Ltd FBF415BFG-BB,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+United Renewable Energy Co Ltd FBF415BFG-BT,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+United Renewable Energy Co Ltd FBF415BFG-BW,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+United Renewable Energy Co Ltd FBF415BFG-WT,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+Vietnam Sunergy Joint Stock Company VSUN415N-108BMH-DG,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+Vietnam Sunergy Joint Stock Company VSUN415N-108BMH-DG-BB,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+Vietnam Sunergy Joint Stock Company VSUN415N-108BMH-DG-BT,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+Vietnam Sunergy Joint Stock Company VSUN415N-108BMH-DG-BW,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+Vietnam Sunergy Joint Stock Company VSUN415N-108BMH-DG-WT,0.840937,Warning: Inverter oversized: The maximum inverter output was 72.78% of the rated value 0.433 kWac.
+AEG SOLAR ENERGY SRL ALPS54D30-430/TP,0.837913,Warning: Inverter oversized: The maximum inverter output was 72.57% of the rated value 0.448 kWac.
+Aptos Solar Technology LLC DNA-120-BF10-445W,0.837398,Warning: Inverter oversized: The maximum inverter output was 74.10% of the rated value 0.465 kWac.
+Dehui Solar Power (Vietnam) CoLtd DH-M160T 445W,0.837398,Warning: Inverter oversized: The maximum inverter output was 74.10% of the rated value 0.465 kWac.
+ELITE Solar ET-M754BH395TB,0.83707,ok
+ELITE Solar ET-M754BH395TW,0.83707,ok
+Jinko Solar Co Ltd JKM340M-6TL3-V,0.836738,ok
+Trina Solar TSM-305DD05A052(II),0.83629,ok
+Vikram Solar SOMERA VSMH7244005,0.834873,ok
+Boviet Solar Technology Co Ltd BVM7610M-470-H-HC-BF,0.833165,Warning: Inverter oversized: The maximum inverter output was 72.32% of the rated value 0.491 kWac.
+Heliene 108HC-420 M10 NTYP SL,0.831756,Warning: Inverter oversized: The maximum inverter output was 71.95% of the rated value 0.439 kWac.
+Shanghai Aerospace Automobile Electromechanical Co Ltd HT72-156M(V)-C-410,0.82642,ok
+LOF SOLAR CORP LOF-MG61-C335,0.823431,ok
+CSI Solar Co Ltd CS3Y-495MS,0.822757,ok
+Du Pont Apollo DA095-A6,0.82103,ok
+ELITE Solar ET-N772TBH605GB,0.650817,Warning: Inverter oversized: The maximum inverter output was 65.84% of the rated value 0.631 kWac.
+ELITE Solar ET-N772TBH605GL,0.650817,Warning: Inverter oversized: The maximum inverter output was 65.84% of the rated value 0.631 kWac.
+Qcells North America QTRON XL-G23/BFG 635,0.637602,Warning: Inverter oversized: The maximum inverter output was 70.20% of the rated value 0.662 kWac.
+Advance Power API-P270,0.634494,Warning: Inverter oversized: The maximum inverter output was 72.58% of the rated value 0.282 kWac.
+Auxin Solar AXN6P610T270,0.634494,Warning: Inverter oversized: The maximum inverter output was 72.58% of the rated value 0.282 kWac.
+GOLDI SUN PRIVATE LIMITED GS10-B144-GF-540,0.634326,Warning: Inverter oversized: The maximum inverter output was 69.97% of the rated value 0.563 kWac.
+Silfab Solar Inc SSA285M,0.610175,Warning: Inverter oversized: The maximum inverter output was 71.18% of the rated value 0.297 kWac.
+ZNSHINE PV-TECH Co Ltd ZXM6-LDD72-380/M,0.601158,Warning: Inverter oversized: The maximum inverter output was 67.65% of the rated value 0.396 kWac.
+GermanSolar USA Inc GSM-450W-H,0.598149,Warning: Inverter oversized: The maximum inverter output was 67.62% of the rated value 0.469 kWac.
+Topsun Co Ltd TOP CLASS 460DE14,0.597301,Warning: Inverter oversized: The maximum inverter output was 67.08% of the rated value 0.48 kWac.
+Win Win Precision Technology Co Ltd WST-460MGXB-E2,0.597301,Warning: Inverter oversized: The maximum inverter output was 67.08% of the rated value 0.48 kWac.
+Hansol Technics Co Ltd HS415UE-AN1,0.590862,Warning: Inverter oversized: The maximum inverter output was 66.61% of the rated value 0.433 kWac.
+WAAREE ENERGIES LIMITED Bi-33-420,0.580935,Warning: Inverter oversized: The maximum inverter output was 65.39% of the rated value 0.438 kWac.
+Aptos Solar Technology LLC DNA-108-MF10-410W-USAptos1a,0.572057,Warning: Inverter oversized: The maximum inverter output was 64.71% of the rated value 0.428 kWac.
+Sun Gold Power Inc SG400WM,0.568585,Warning: Inverter oversized: The maximum inverter output was 64.31% of the rated value 0.418 kWac.
+Topsun Co Ltd TOP CLASS 540DE11,0.562118,Warning: Inverter oversized: The maximum inverter output was 63.52% of the rated value 0.563 kWac.
+Win Win Precision Technology Co Ltd WST-540MGXC-E2,0.562118,Warning: Inverter oversized: The maximum inverter output was 63.52% of the rated value 0.563 kWac.
+Boviet Solar Technology Co Ltd BVM6612M-395L-H-HC-BF,0.558222,Warning: Inverter oversized: The maximum inverter output was 64.14% of the rated value 0.413 kWac.

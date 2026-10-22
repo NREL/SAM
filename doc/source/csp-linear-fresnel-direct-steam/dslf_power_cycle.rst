@@ -153,7 +153,7 @@ The dispatch control periods determine the following:
   If your system has an auxiliary fossil backup boiler, and you want to account for fuel costs in the financial model, you should assign a fossil fuel cost on the :doc:`Operating costs <../operating-costs/oc_operating>`   page.
 
 Defining Dispatch Schedules
-...........................
+---------------------------
 
 The storage dispatch schedules determine when each of the nine periods apply during weekdays and weekends throughout the year.
 
