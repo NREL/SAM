@@ -3733,7 +3733,8 @@
         "\t{ on_change{'Q_rec_des'}();\r",
         "\t  on_change{'is_parallel_htr'}();\r",
         "\t  on_change{'is_control_target_elec'}();\r",
-        "\t  };",
+        "\t  check_control_target_hybrid();\r",
+        "};",
         "\r",
         "on_change{'Q_rec_des'} = define()\r",
         "\t{ compare_solarmult(); };\r",
@@ -3752,6 +3753,16 @@
         "\tenable(\"tshours_heater\", is_htr);\r",
         "\tenable(\"q_dot_heater_des_calc\", is_htr);\r",
         "\tis_dispatch = value('is_dispatch') == 1;\r",
-        "    };"
+        "    };\r",
+        "    \r",
+        "function check_control_target_hybrid() {\r",
+        "\ttech = technology();\r",
+        "\tis_hybrid = strpos(tech, \"Hybrid\") != -1;\r",
+        "\tif (is_hybrid) {\r",
+        "\t\tvalue('is_control_target_elec', 1);\r",
+        "\t}\r",
+        "\tenable('is_control_target_elec', !is_hybrid);\r",
+        "\t\r",
+        "}"
     ]
 }

@@ -3161,6 +3161,7 @@
     "Callbacks": [
         "on_load{\"MSPT System Control\"} = define()",
         "{",
+        "\thybrid_dispatch_option();\r",
         "\ton_change{\"is_dispatch\"}();",
         "};",
         "",
@@ -3195,6 +3196,15 @@
         "\tshow(\"disp_batt_lifecycle_cost\", batt_show);\r",
         "\t\r",
         "\trefresh();",
-        "};"
+        "};\r",
+        "\r",
+        "function hybrid_dispatch_option() {\r",
+        "\ttech = technology();\r",
+        "\tis_hybrid = strpos(tech, \"Hybrid\") != -1;\r",
+        "\tif (is_hybrid) {\r",
+        "\t\tvalue('is_dispatch', 1);\r",
+        "\t}\r",
+        "\tenable('is_dispatch', !is_hybrid);\r",
+        "}"
     ]
 }
